@@ -1,0 +1,2926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growzio Store - Premium Apps & Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #FF0000;
+            --accent-color: #1A0000;
+            --text-color: #FFFFFF;
+            --text-secondary: #CCCCCC;
+            --dark-bg: #0A0A0A;
+            --light-bg: #1A1A1A;
+            --neon-glow: 0 0 10px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.6), 0 0 30px rgba(255, 0, 0, 0.4);
+            --offer-color: #FFD700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            padding-top: 120px; /* Add padding to body to account for fixed header */
+        }
+
+        /* Header Styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background-color: rgba(0, 0, 0, 0.9);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .neon-logo {
+            position: relative;
+        }
+
+        .neon-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-color);
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+            animation: textGlow 2s infinite alternate;
+        }
+
+        @keyframes textGlow {
+            from {
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+            }
+            to {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+            }
+        }
+
+        .neon-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            animation: borderPulse 2s infinite alternate;
+        }
+
+        @keyframes borderPulse {
+            0% {
+                border-color: rgba(255, 255, 255, 0.2);
+                box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+            }
+            100% {
+                border-color: rgba(255, 255, 255, 0.4);
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            }
+        }
+
+        .logo-subtext {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            margin-left: 10px;
+            letter-spacing: 3px;
+            color: var(--text-secondary);
+        }
+
+        .main-nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        .main-nav a {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 500;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        .main-nav a:hover::after {
+            width: 100%;
+        }
+
+        .main-nav a.active {
+            color: var(--secondary-color);
+        }
+
+        .main-nav a.active::after {
+            width: 100%;
+        }
+
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            padding: 5px 10px;
+            border: 1px solid rgba(255, 0, 0, 0.3);
+        }
+
+        .search-box input {
+            background: transparent;
+            border: none;
+            color: var(--text-color);
+            padding: 5px;
+            width: 150px;
+            outline: none;
+        }
+
+        .search-box button {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        .search-box button:hover {
+            color: var(--secondary-color);
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--text-color);
+            transition: color 0.3s ease;
+        }
+
+        .cart-icon:hover {
+            color: var(--secondary-color);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+            box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+            padding: 0 50px;
+            background: linear-gradient(to right, var(--primary-color) 50%, rgba(0, 0, 0, 0.7));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 50%, rgba(255, 0, 0, 0.1), transparent 70%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            flex: 1;
+            padding-right: 50px;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        .hero-title span {
+            color: var(--secondary-color);
+            text-shadow: var(--neon-glow);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 4px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            box-shadow: var(--neon-glow);
+        }
+
+        .btn-primary:hover {
+            background-color: #E60000;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-color);
+            border: 2px solid var(--secondary-color);
+            box-shadow: var(--neon-glow);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+        }
+
+        .btn-explore {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            box-shadow: var(--neon-glow);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-explore:hover {
+            background-color: #E60000;
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+        }
+
+        .hero-image {
+            flex: 1;
+            position: relative;
+            height: 500px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            border: 2px solid rgba(255, 0, 0, 0.3);
+        }
+
+        .glow-effect {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: calc(100% + 40px);
+            height: calc(100% + 40px);
+            border: 2px solid var(--secondary-color);
+            border-radius: 15px;
+            animation: pulse 2s infinite alternate;
+            z-index: -1;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 0.3;
+                box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            }
+            100% {
+                opacity: 0.7;
+                box-shadow: 0 0 30px rgba(255, 0, 0, 0.8);
+            }
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: 100px 50px;
+            background-color: var(--dark-bg);
+            position: relative;
+        }
+
+        /* Offer Banner - Moved to categories section */
+        .offer-banner {
+            background: linear-gradient(90deg, #FF0000, #FF4500, #FF0000);
+            background-size: 200% auto;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            width: 100%;
+            animation: gradient 3s linear infinite;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid var(--offer-color);
+            margin-bottom: 30px;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% center; }
+            100% { background-position: 100% center; }
+        }
+
+        .offer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .offer-tag {
+            background-color: var(--offer-color);
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+        }
+
+        .offer-text {
+            font-size: 1.1rem;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .countdown {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+
+        .countdown-item {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border-radius: 5px;
+            min-width: 40px;
+            text-align: center;
+            border: 1px solid var(--offer-color);
+        }
+
+        .countdown-separator {
+            font-size: 1.2rem;
+            color: var(--offer-color);
+        }
+
+        /* Add these styles for the original price display */
+        .original-price {
+            text-decoration: line-through;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-right: 5px;
+        }
+
+        .discounted-price {
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .price-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .discount-badge {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+            font-weight: bold;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .section-title span {
+            color: var(--secondary-color);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary-color);
+            box-shadow: var(--neon-glow);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .category-card {
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.2);
+        }
+
+        .category-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .category-card p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn-category {
+            background-color: transparent;
+            color: var(--text-color);
+            border: 2px solid var(--secondary-color);
+            align-self: flex-start;
+            padding: 8px 20px;
+            font-size: 0.9rem;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+        }
+
+        .btn-category:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Premium Apps Section */
+        .premium-apps {
+            padding: 100px 50px;
+            background-color: var(--dark-bg);
+        }
+        
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .app-card {
+            background-color: var(--light-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 0, 0, 0.1);
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .app-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.2);
+            border-color: rgba(255, 0, 0, 0.3);
+        }
+        
+        .app-image {
+            height: 100px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .app-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 15px;
+        }
+        
+        .app-details h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+        
+        .price-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-right: 5px;
+        }
+        
+        .discounted-price {
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+        }
+        
+        .discount-badge {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+            font-weight: bold;
+        }
+        
+        .btn-add-to-cart-app {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+            width: 100%;
+        }
+        
+        .btn-add-to-cart-app:hover {
+            background-color: #E60000;
+        }
+
+        /* Tools Section */
+        .tools {
+            padding: 100px 50px;
+            background-color: var(--primary-color);
+        }
+
+        /* VPNs Section */
+        .vpns {
+            padding: 100px 50px;
+            background-color: var(--dark-bg);
+        }
+
+        /* IPTV Section */
+        .iptv {
+            padding: 100px 50px;
+            background-color: var(--primary-color);
+        }
+
+        /* Proxies & RDP Section */
+        .proxies-rdp {
+            padding: 100px 50px;
+            background-color: var(--dark-bg);
+        }
+
+        /* TikTok Services Section */
+        .tiktok-services {
+            padding: 100px 50px;
+            background-color: var(--primary-color);
+        }
+
+        /* YouTube Services Section */
+        .youtube-services {
+            padding: 100px 50px;
+            background-color: var(--dark-bg);
+        }
+
+        /* Facebook Services Section */
+        .facebook-services {
+            padding: 100px 50px;
+            background-color: var(--primary-color);
+        }
+
+        /* Instagram Services Section */
+        .instagram-services {
+            padding: 100px 50px;
+            background-color: var(--dark-bg);
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 80px 50px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .newsletter-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter-content h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .newsletter-content h2 span {
+            color: var(--secondary-color);
+        }
+
+        .newsletter-content p {
+            color: var(--text-secondary);
+            max-width: 500px;
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .newsletter-form input {
+            padding: 15px 20px;
+            border-radius: 4px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+            width: 300px;
+            border: 1px solid rgba(255, 0, 0, 0.3);
+        }
+
+        .newsletter-form input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+        }
+
+        .btn-subscribe {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            padding: 15px 30px;
+            font-size: 1rem;
+            box-shadow: var(--neon-glow);
+        }
+
+        .btn-subscribe:hover {
+            background-color: #E60000;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-bg);
+            padding: 80px 50px 30px;
+            border-top: 1px solid rgba(255, 0, 0, 0.1);
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            max-width: 300px;
+        }
+
+        .footer-logo .neon-logo {
+            margin-bottom: 20px;
+        }
+
+        .footer-logo p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 50px;
+        }
+
+        .links-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .links-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+
+        .links-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .links-column ul li a {
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .links-column ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            transform: translateY(-3px);
+            box-shadow: var(--neon-glow);
+        }
+
+        .copyright p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--light-bg);
+            padding: 40px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            border: 1px solid var(--secondary-color);
+            box-shadow: var(--neon-glow);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Payment Modal */
+        .payment-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .payment-content {
+            background-color: var(--light-bg);
+            padding: 30px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+            border: 1px solid var(--secondary-color);
+            box-shadow: var(--neon-glow);
+        }
+
+        .payment-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .payment-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .payment-tab.active {
+            border-bottom: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+        }
+
+        .payment-tab:hover {
+            color: var(--secondary-color);
+        }
+
+        .payment-method {
+            display: none;
+        }
+
+        .payment-method.active {
+            display: block;
+        }
+
+        .payment-info {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+        }
+
+        .payment-info p {
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        .payment-info strong {
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .payment-qr {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .payment-qr img {
+            max-width: 200px;
+            border-radius: 5px;
+        }
+
+        .payment-instructions {
+            margin-top: 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .btn-confirm-payment {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: var(--neon-glow);
+        }
+
+        .btn-confirm-payment:hover {
+            background-color: #E60000;
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            left: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100%;
+            background-color: var(--light-bg);
+            z-index: 3000;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid rgba(255, 0, 0, 0.3);
+        }
+
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2500;
+            display: none;
+        }
+
+        .cart-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h3 {
+            font-size: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .close-cart {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-cart:hover {
+            color: var(--secondary-color);
+        }
+
+        .cart-items {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            margin-right: 15px;
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-details h4 {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cart-item-quantity span {
+            font-size: 0.9rem;
+        }
+
+        .quantity-btn {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .remove-item {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .remove-item:hover {
+            color: var(--secondary-color);
+        }
+
+        .empty-cart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: var(--text-secondary);
+        }
+
+        .empty-cart i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .cart-footer {
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .total-amount {
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .btn-checkout {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            font-size: 1rem;
+            box-shadow: var(--neon-glow);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-checkout:hover {
+            background-color: #E60000;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .hero {
+                flex-direction: column;
+                padding-top: 0;
+            }
+            
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 50px;
+                text-align: center;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .hero-image {
+                width: 80%;
+            }
+            
+            .newsletter-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+            
+            .newsletter-form {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .header {
+                padding: 15px 30px;
+            }
+            
+            .main-nav {
+                display: none;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+                gap: 50px;
+            }
+            
+            .footer-links {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .app-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .cart-sidebar {
+                width: 100%;
+                max-width: 350px;
+            }
+
+            .payment-content {
+                max-width: 90%;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 30px;
+                left: 30px;
+                font-size: 25px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header {
+                padding: 15px;
+            }
+            
+            .user-actions {
+                gap: 10px;
+            }
+            
+            .search-box {
+                display: none;
+            }
+            
+            .hero {
+                padding: 0 20px;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .categories, .premium-apps, .tools, .vpns, .iptv, .proxies-rdp, .tiktok-services, .youtube-services, .facebook-services, .instagram-services {
+                padding: 70px 20px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .newsletter-form input {
+                width: 100%;
+            }
+            
+            .footer {
+                padding: 70px 20px 30px;
+            }
+            
+            .app-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .whatsapp-float {
+                width: 40px;
+                height: 40px;
+                bottom: 20px;
+                left: 20px;
+                font-size: 20px;
+            }
+
+            .offer-content {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+
+        /* Search results dropdown */
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: var(--light-bg);
+            border-radius: 0 0 4px 4px;
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            border-top: none;
+        }
+
+        .search-results.active {
+            display: block;
+        }
+
+        .search-result-item {
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .search-result-item:hover {
+            background-color: rgba(255, 0, 0, 0.1);
+        }
+
+        .search-result-item h4 {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+
+        .search-result-item p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/923295478732" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Top Navigation Bar -->
+    <header class="header">
+        <div class="logo-container">
+            <div class="neon-logo">
+                <span class="neon-text">GROWZIO</span>
+                <span class="neon-border"></span>
+            </div>
+            <span class="logo-subtext">STORE</span>
+        </div>
+        
+        <nav class="main-nav" style="display: none;">
+            <!-- Navigation menu removed -->
+        </nav>
+        
+        <div class="user-actions">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Search products...">
+                <button id="search-button"><i class="fas fa-search"></i></button>
+                <div class="search-results" id="search-results">
+                    <!-- Search results will appear here -->
+                </div>
+            </div>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">PREMIUM <span>APPS</span> & <span>SERVICES</span></h1>
+            <p class="hero-subtitle">Get premium apps for cybersecurity, design, and entertainment along with powerful services to boost your online presence</p>
+            <button class="btn-explore" id="explore-products-btn">Explore Products <i class="fas fa-arrow-right"></i></button>
+        </div>
+        <div class="hero-image">
+            <div class="glow-effect"></div>
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Hero Image">
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="categories">
+        <!-- Offer Banner - Moved to categories section -->
+        <div class="offer-banner">
+            <div class="offer-content">
+                <div class="offer-tag">30% OFF</div>
+                <div class="offer-text">Limited Time Offer - Ends in:</div>
+                <div class="countdown">
+                    <div class="countdown-item" id="countdown-hours">00</div>
+                    <div class="countdown-separator">:</div>
+                    <div class="countdown-item" id="countdown-minutes">00</div>
+                    <div class="countdown-separator">:</div>
+                    <div class="countdown-item" id="countdown-seconds">00</div>
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="section-title">OUR <span>CATEGORIES</span></h2>
+        <div class="category-grid">
+            <div class="category-card" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://tse1.mm.bing.net/th/id/OIP.KqXhmpzn2dSgKsPPnyYuVwHaEK?rs=1&pid=ImgDetMain&o=7&rm=3');">
+                <h3>Premium Apps</h3>
+                <p>Get premium versions of your favorite apps</p>
+                <button class="btn-category">View Apps</button>
+            </div>
+            <div class="category-card" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://th.bing.com/th/id/R.7e983c5faffc298f174ccf73f8e834ad?rik=opz0cF%2b4QGOPhg&pid=ImgRaw&r=0');">
+                <h3>VPN Services</h3>
+                <p>Secure your internet connection with premium VPNs</p>
+                <button class="btn-category">View VPNs</button>
+            </div>
+            <div class="category-card" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://tse2.mm.bing.net/th/id/OIP.ZyeN0Q6OIJVB9g8RpOz0ZwHaE8?rs=1&pid=ImgDetMain&o=7&rm=3');">
+                <h3>Social Media Services</h3>
+                <p>Boost your social media presence</p>
+                <button class="btn-category">View Services</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Apps Section -->
+    <section class="premium-apps" id="premium-apps">
+        <h2 class="section-title">PREMIUM <span>APPS</span></h2>
+        <div class="app-grid">
+            <!-- App 1 -->
+            <div class="app-card" data-id="app1" data-title="Capcut Pro" data-price="1500">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs2VpcYMsT90SfvKG6V-63wtYnSboBdUapag&s" alt="Capcut Pro">
+                </div>
+                <div class="app-details">
+                    <h3>Capcut Pro</h3>
+                    <div class="price-container">
+                        <span class="original-price">2143PKR</span>
+                        <span class="discounted-price">1500PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- App 2 -->
+            <div class="app-card" data-id="app2" data-title="Canva Pro" data-price="250">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpqagKqMEAYfajhHl67Xt_NITxxvJmhUjCtg&s" alt="Canva Pro">
+                </div>
+                <div class="app-details">
+                    <h3>Canva Pro</h3>
+                    <div class="price-container">
+                        <span class="original-price">357PKR</span>
+                        <span class="discounted-price">250PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- App 3 -->
+            <div class="app-card" data-id="app3" data-title="Youtube Pro" data-price="350">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW6i55JlZERhJXLCzwqezFIbdEkGyM3HUA0A&s" alt="Youtube Pro">
+                </div>
+                <div class="app-details">
+                    <h3>Youtube Pro</h3>
+                    <div class="price-container">
+                        <span class="original-price">500PKR</span>
+                        <span class="discounted-price">350PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- App 4 -->
+            <div class="app-card" data-id="app4" data-title="Spotify Pro" data-price="1500">
+                <div class="app-image">
+                    <img src="https://spotiffyapk.com/wp-content/uploads/2025/05/Spotify-Premium-APK-Logo.webp" alt="Spotify Pro">
+                </div>
+                <div class="app-details">
+                    <h3>Spotify Pro</h3>
+                    <div class="price-container">
+                        <span class="original-price">2143PKR</span>
+                        <span class="discounted-price">1500PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- App 5 -->
+            <div class="app-card" data-id="app5" data-title="Netflix Pro" data-price="600">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV8x8Smbp4lIacRS7RpkTo-3ODdoS98kFyUw&s" alt="Netflix Pro">
+                </div>
+                <div class="app-details">
+                    <h3>Netflix Pro</h3>
+                    <div class="price-container">
+                        <span class="original-price">857PKR</span>
+                        <span class="discounted-price">600PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- App 6 -->
+            <div class="app-card" data-id="app6" data-title="Prime Video" data-price="250">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjEAHgv7k8XfGZHznPKMu9-YQ3djUn1-Da1Q&s" alt="Prime Video">
+                </div>
+                <div class="app-details">
+                    <h3>Prime Video</h3>
+                    <div class="price-container">
+                        <span class="original-price">357PKR</span>
+                        <span class="discounted-price">250PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- App 7 -->
+            <div class="app-card" data-id="app7" data-title="Hotflix" data-price="750">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjCl7faWnecAYl4gPWIZqOJRtry-GTzBCwIg&s" alt="Hotflix">
+                </div>
+                <div class="app-details">
+                    <h3>Hotflix</h3>
+                    <div class="price-container">
+                        <span class="original-price">1071PKR</span>
+                        <span class="discounted-price">750PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- App 8 -->
+            <div class="app-card" data-id="app8" data-title="Apple Music" data-price="3800">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCILiYSmQG4bavERxrdjOyAfH2CdF3ipqazw&s" alt="Apple Music">
+                </div>
+                <div class="app-details">
+                    <h3>Apple Music</h3>
+                    <div class="price-container">
+                        <span class="original-price">5429PKR</span>
+                        <span class="discounted-price">3800PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- App 9 -->
+            <div class="app-card" data-id="app9" data-title="Apple TV" data-price="3800">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyWIgU4hvxUZK7PZMNR5an1lCwtwPKZB4YGQ&s" alt="Apple TV">
+                </div>
+                <div class="app-details">
+                    <h3>Apple TV</h3>
+                    <div class="price-container">
+                        <span class="original-price">5429PKR</span>
+                        <span class="discounted-price">3800PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="tools" id="tools">
+        <h2 class="section-title">PREMIUM <span>TOOLS</span></h2>
+        <div class="app-grid">
+            <!-- Tool 1 -->
+            <div class="app-card" data-id="tool1" data-title="CHAT GPT PVT" data-price="1900">
+                <div class="app-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/1200px-ChatGPT_logo.svg.png" alt="CHAT GPT PVT">
+                </div>
+                <div class="app-details">
+                    <h3>CHAT GPT PVT</h3>
+                    <div class="price-container">
+                        <span class="original-price">2714PKR</span>
+                        <span class="discounted-price">1900PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- Tool 2 -->
+            <div class="app-card" data-id="tool2" data-title="Grammarly" data-price="700">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8y6wi5Tg40IDq9eMNJuPOKcuw8FGNKloTiw&s" alt="Grammarly">
+                </div>
+                <div class="app-details">
+                    <h3>Grammarly</h3>
+                    <div class="price-container">
+                        <span class="original-price">1000PKR</span>
+                        <span class="discounted-price">700PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- Tool 3 -->
+            <div class="app-card" data-id="tool3" data-title="Quillbot" data-price="600">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI5E9A31t0HK9G3xZ-QWF0_l7mkM872a3PlQ&s" alt="Quillbot">
+                </div>
+                <div class="app-details">
+                    <h3>Quillbot</h3>
+                    <div class="price-container">
+                        <span class="original-price">857PKR</span>
+                        <span class="discounted-price">600PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- Tool 4 -->
+            <div class="app-card" data-id="tool4" data-title="Freepik" data-price="1400">
+                <div class="app-image">
+                    <img src="https://images.seeklogo.com/logo-png/40/1/freepik-logo-png_seeklogo-406311.png" alt="Freepik">
+                </div>
+                <div class="app-details">
+                    <h3>Freepik</h3>
+                    <div class="price-container">
+                        <span class="original-price">2000PKR</span>
+                        <span class="discounted-price">1400PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- Tool 5 -->
+            <div class="app-card" data-id="tool5" data-title="Filmora PC" data-price="4000">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT78efrn6gFajNjGBEOf6HDfAE48NcrmwAIqw&s" alt="Filmora PC">
+                </div>
+                <div class="app-details">
+                    <h3>Filmora PC</h3>
+                    <div class="price-container">
+                        <span class="original-price">5714PKR</span>
+                        <span class="discounted-price">4000PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VPNs Section -->
+    <section class="vpns" id="vpns">
+        <h2 class="section-title">PREMIUM <span>VPNs</span></h2>
+        <div class="app-grid">
+            <!-- VPN 1 -->
+            <div class="app-card" data-id="vpn1" data-title="Express VPN" data-price="1000">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqhbWyQYlMqtyBpforqHJtCKefrJQo2yMm0g&s" alt="Express VPN">
+                </div>
+                <div class="app-details">
+                    <h3>Express VPN</h3>
+                    <div class="price-container">
+                        <span class="original-price">1429PKR</span>
+                        <span class="discounted-price">1000PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- VPN 2 -->
+            <div class="app-card" data-id="vpn2" data-title="Express VPN PC KEY" data-price="1400">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqhbWyQYlMqtyBpforqHJtCKefrJQo2yMm0g&s" alt="Express VPN PC KEY">
+                </div>
+                <div class="app-details">
+                    <h3>Express VPN PC KEY</h3>
+                    <div class="price-container">
+                        <span class="original-price">2000PKR</span>
+                        <span class="discounted-price">1400PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- VPN 3 -->
+            <div class="app-card" data-id="vpn3" data-title="HMA VPN" data-price="800">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8OC6G0rvkYcrSl-xd1MXVvcAHUehSGlNrDw&s" alt="HMA VPN">
+                </div>
+                <div class="app-details">
+                    <h3>HMA VPN</h3>
+                    <div class="price-container">
+                        <span class="original-price">1143PKR</span>
+                        <span class="discounted-price">800PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- VPN 4 -->
+            <div class="app-card" data-id="vpn4" data-title="HAMA VPN PC KEY" data-price="1100">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8OC6G0rvkYcrSl-xd1MXVvcAHUehSGlNrDw&s" alt="HAMA VPN PC KEY">
+                </div>
+                <div class="app-details">
+                    <h3>HAMA VPN PC KEY</h3>
+                    <div class="price-container">
+                        <span class="original-price">1571PKR</span>
+                        <span class="discounted-price">1100PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- VPN 5 -->
+            <div class="app-card" data-id="vpn5" data-title="PROTON VPN" data-price="900">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMux1dIqipWRrhPHD9W_WpEcIOHn6GWnRSkg&s" alt="PROTON VPN">
+                </div>
+                <div class="app-details">
+                    <h3>PROTON VPN</h3>
+                    <div class="price-container">
+                        <span class="original-price">1286PKR</span>
+                        <span class="discounted-price">900PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- VPN 6 -->
+            <div class="app-card" data-id="vpn6" data-title="WIND SCRIBE" data-price="700">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS_GODDjWHkkE5shaUEK8_VEQFTuOZumXeLZu_WRmw4pq5sCcr8Cc5-vOJmG5yFL3Wsgg&usqp=CAU" alt="WIND SCRIBE">
+                </div>
+                <div class="app-details">
+                    <h3>WIND SCRIBE</h3>
+                    <div class="price-container">
+                        <span class="original-price">1000PKR</span>
+                        <span class="discounted-price">700PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- VPN 7 -->
+            <div class="app-card" data-id="vpn7" data-title="NORD VPN" data-price="700">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBP5_Na_oPz7p1qYlduJS5jjeshl0cZ8Xz6A&s" alt="NORD VPN">
+                </div>
+                <div class="app-details">
+                    <h3>NORD VPN</h3>
+                    <div class="price-container">
+                        <span class="original-price">1000PKR</span>
+                        <span class="discounted-price">700PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- VPN 8 -->
+            <div class="app-card" data-id="vpn8" data-title="NORTON VPN" data-price="900">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy3v4YjDiZ1CYGco5-LdzxNuxSDBnV28Nfdg&s" alt="NORTON VPN">
+                </div>
+                <div class="app-details">
+                    <h3>NORTON VPN</h3>
+                    <div class="price-container">
+                        <span class="original-price">1286PKR</span>
+                        <span class="discounted-price">900PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- VPN 9 -->
+            <div class="app-card" data-id="vpn9" data-title="CYBER GHOST" data-price="600">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7OVKexwiii2foQ25ww-rdU9PRHZbJ2dPPqw&s" alt="CYBER GHOST">
+                </div>
+                <div class="app-details">
+                    <h3>CYBER GHOST</h3>
+                    <div class="price-container">
+                        <span class="original-price">857PKR</span>
+                        <span class="discounted-price">600PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- VPN 10 -->
+            <div class="app-card" data-id="vpn10" data-title="HOLA VPN" data-price="900">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSayzIC4bUgDwOCf_OEtCd0LIVis43Kn8yL4w&s" alt="HOLA VPN">
+                </div>
+                <div class="app-details">
+                    <h3>HOLA VPN</h3>
+                    <div class="price-container">
+                        <span class="original-price">1286PKR</span>
+                        <span class="discounted-price">900PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- VPN 11 -->
+            <div class="app-card" data-id="vpn11" data-title="SURF SHARK" data-price="700">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgFwfjbHC6Q9KKIDaUDgCJuvG40wU1T8Pcag&s" alt="SURF SHARK">
+                </div>
+                <div class="app-details">
+                    <h3>SURF SHARK</h3>
+                    <div class="price-container">
+                        <span class="original-price">1000PKR</span>
+                        <span class="discounted-price">700PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- VPN 12 -->
+            <div class="app-card" data-id="vpn12" data-title="IP VANISH" data-price="500">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlBEmLEdkOVatqJVg82ur1vz6zZ2gQ7vjJ9A&s" alt="IP VANISH">
+                </div>
+                <div class="app-details">
+                    <h3>IP VANISH</h3>
+                    <div class="price-container">
+                        <span class="original-price">714PKR</span>
+                        <span class="discounted-price">500PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- VPN 13 -->
+            <div class="app-card" data-id="vpn13" data-title="PIA VPN" data-price="900">
+                <div class="app-image">
+                    <img src="https://files.raycast.com/vok6ir7gv00pyosrsv08z9eg3qt8" alt="PIA VPN">
+                </div>
+                <div class="app-details">
+                    <h3>PIA VPN</h3>
+                    <div class="price-container">
+                        <span class="original-price">1286PKR</span>
+                        <span class="discounted-price">900PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- VPN 14 -->
+            <div class="app-card" data-id="vpn14" data-title="HOTSPOT SHIELD" data-price="650">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfZz_sXn0M4HVN0q9p85H4YS_zaTzbyITh9g&s" alt="HOTSPOT SHIELD">
+                </div>
+                <div class="app-details">
+                    <h3>HOTSPOT SHIELD</h3>
+                    <div class="price-container">
+                        <span class="original-price">929PKR</span>
+                        <span class="discounted-price">650PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IPTV Services Section -->
+    <section class="iptv" id="iptv">
+        <h2 class="section-title">PREMIUM <span>IPTV SERVICES</span></h2>
+        <div class="app-grid">
+            <!-- IPTV 1 -->
+            <div class="app-card" data-id="iptv1" data-title="Rolex TV" data-price="500">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA9nqA1rea3TsEdskMAf5YRy66MCxcjb5Fcg&s" alt="Rolex TV">
+                </div>
+                <div class="app-details">
+                    <h3>Rolex TV</h3>
+                    <div class="price-container">
+                        <span class="original-price">714PKR</span>
+                        <span class="discounted-price">500PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- IPTV 2 -->
+            <div class="app-card" data-id="iptv2" data-title="Bos TV" data-price="500">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBh-hqJkH3Lrt-9e_xIEc2w_jIK6t780bMEg&s" alt="Bos TV">
+                </div>
+                <div class="app-details">
+                    <h3>Bos TV</h3>
+                    <div class="price-container">
+                        <span class="original-price">714PKR</span>
+                        <span class="discounted-price">500PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- IPTV 3 -->
+            <div class="app-card" data-id="iptv3" data-title="Zain TV" data-price="700">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiMMjS7GMbOEObTShNfGQWzihz22dDBpULjQ&s" alt="Zain TV">
+                </div>
+                <div class="app-details">
+                    <h3>Zain TV</h3>
+                    <div class="price-container">
+                        <span class="original-price">1000PKR</span>
+                        <span class="discounted-price">700PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- IPTV 4 -->
+            <div class="app-card" data-id="iptv4" data-title="Trex" data-price="1100">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhbybcHQ0JHsXm6LsLcTGCwCh_DyECu1IzAQ&s" alt="Trex">
+                </div>
+                <div class="app-details">
+                    <h3>Trex</h3>
+                    <div class="price-container">
+                        <span class="original-price">1571PKR</span>
+                        <span class="discounted-price">1100PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proxies & RDP Section -->
+    <section class="proxies-rdp" id="proxies-rdp">
+        <h2 class="section-title">PROXIES & <span>RDP</span></h2>
+        <div class="app-grid">
+            <!-- Proxy 1 -->
+            <div class="app-card" data-id="proxy1" data-title="Proxies" data-price="5000">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyrwumX6HCxFSvxIVGfo0XXrhw5DWEX8GZ4A&s" alt="Proxies">
+                </div>
+                <div class="app-details">
+                    <h3>Proxies</h3>
+                    <div class="price-container">
+                        <span class="original-price">7143PKR</span>
+                        <span class="discounted-price">5000PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- RDP 1 -->
+            <div class="app-card" data-id="rdp1" data-title="RDP" data-price="1500">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcH8BjRAY7Px9398mgUej0YU7sG0jdJbogmA&s" alt="RDP">
+                </div>
+                <div class="app-details">
+                    <h3>RDP</h3>
+                    <div class="price-container">
+                        <span class="original-price">2143PKR</span>
+                        <span class="discounted-price">1500PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TikTok Services Section -->
+    <section class="tiktok-services" id="tiktok-services">
+        <h2 class="section-title">TIKTOK <span>SERVICES</span></h2>
+        <div class="app-grid">
+            <!-- TikTok Service 1 -->
+            <div class="app-card" data-id="tiktok1" data-title="TikTok Followers" data-price="1200">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlEQ3vNBk6FXAX1oFLF_DMs3kbmUoOqx9QIg&s" alt="TikTok Followers">
+                </div>
+                <div class="app-details">
+                    <h3>TikTok Followers</h3>
+                    <div class="price-container">
+                        <span class="original-price">1714PKR</span>
+                        <span class="discounted-price">1200PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- TikTok Service 2 -->
+            <div class="app-card" data-id="tiktok2" data-title="TikTok Likes" data-price="1200">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk-jaWdL_F8N6T9OpDv1QjrPAWGovx6bKZzw&s" alt="TikTok Likes">
+                </div>
+                <div class="app-details">
+                    <h3>TikTok Likes</h3>
+                    <div class="price-container">
+                        <span class="original-price">1714PKR</span>
+                        <span class="discounted-price">1200PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- TikTok Service 3 -->
+            <div class="app-card" data-id="tiktok3" data-title="TikTok Views" data-price="1200">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9GmNtRJB9hHgoAF2zCM8WZukQzHNIUyMaLw&s" alt="TikTok Views">
+                </div>
+                <div class="app-details">
+                    <h3>TikTok Views</h3>
+                    <div class="price-container">
+                        <span class="original-price">1714PKR</span>
+                        <span class="discounted-price">1200PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- TikTok Service 4 -->
+            <div class="app-card" data-id="tiktok4" data-title="TikTok Shares & Saves" data-price="120">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9GmNtRJB9hHgoAF2zCM8WZukQzHNIUyMaLw&s" alt="TikTok Shares & Saves">
+                </div>
+                <div class="app-details">
+                    <h3>TikTok Shares & Saves</h3>
+                    <div class="price-container">
+                        <span class="original-price">171PKR</span>
+                        <span class="discounted-price">120PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <p>1k saves and Shares</p>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- TikTok Service 5 -->
+            <div class="app-card" data-id="tiktok5" data-title="TikTok Comments" data-price="1500">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSve7OpSDf0HRKYqtELq7z3xUzMuX1rK5pnaw&s" alt="TikTok Comments">
+                </div>
+                <div class="app-details">
+                    <h3>TikTok Comments</h3>
+                    <div class="price-container">
+                        <span class="original-price">2143PKR</span>
+                        <span class="discounted-price">1500PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <p>1k Custom Comments</p>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- TikTok Service 6 -->
+            <div class="app-card" data-id="tiktok6" data-title="TikTok UK Account" data-price="750">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_gZ3PDUlFIWnPoQ6sWSbPp8vkIbcwvRhe6w&s" alt="TikTok UK Account">
+                </div>
+                <div class="app-details">
+                    <h3>TikTok UK Account</h3>
+                    <div class="price-container">
+                        <span class="original-price">1071PKR</span>
+                        <span class="discounted-price">750PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- TikTok Service 7 -->
+            <div class="app-card" data-id="tiktok7" data-title="TikTok Premium Bundle" data-price="5000">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShfOK4kWzmIALaJUxVK5ucDb5URHvQK8_Hkg&s" alt="TikTok Premium Bundle">
+                </div>
+                <div class="app-details">
+                    <h3>TikTok Premium Bundle</h3>
+                    <div class="price-container">
+                        <span class="original-price">7143PKR</span>
+                        <span class="discounted-price">5000PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YouTube Services Section -->
+    <section class="youtube-services" id="youtube-services">
+        <h2 class="section-title">YOUTUBE <span>SERVICES</span></h2>
+        <div class="app-grid">
+            <!-- YouTube Service 1 -->
+            <div class="app-card" data-id="youtube1" data-title="YouTube Subscribers" data-price="2200">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfPjXDf05OD8FrX3UOrvgTUGnmDe33dTvG6w&s" alt="YouTube Subscribers">
+                </div>
+                <div class="app-details">
+                    <h3>YouTube Subscribers</h3>
+                    <div class="price-container">
+                        <span class="original-price">3143PKR</span>
+                        <span class="discounted-price">2200PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <p>Non Drop Organic Subscribers</p>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- YouTube Service 2 -->
+            <div class="app-card" data-id="youtube2" data-title="YouTube Views" data-price="400">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLBzPVIwxvr7vnJglwWiFiXmVYoW5wsx_Vmw&s" alt="YouTube Views">
+                </div>
+                <div class="app-details">
+                    <h3>YouTube Views</h3>
+                    <div class="price-container">
+                        <span class="original-price">571PKR</span>
+                        <span class="discounted-price">400PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- YouTube Service 3 -->
+            <div class="app-card" data-id="youtube3" data-title="YouTube Watch Time" data-price="5500">
+                <div class="app-image">
+                    <img src="https://www.promisemedia.com/wp-content/uploads/2018/11/youtube_watch_time.jpg" alt="YouTube Watch Time">
+                </div>
+                <div class="app-details">
+                    <h3>YouTube Watch Time</h3>
+                    <div class="price-container">
+                        <span class="original-price">7857PKR</span>
+                        <span class="discounted-price">5500PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- YouTube Service 4 -->
+            <div class="app-card" data-id="youtube4" data-title="YouTube Proper SEO Bundle" data-price="5000">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqzlacpr0D7Aq7cs8Z3Bp-zjA0BkvwCSDsBQ&s" alt="YouTube Proper SEO Bundle">
+                </div>
+                <div class="app-details">
+                    <h3>YouTube Proper SEO Bundle</h3>
+                    <p class="app-description">Includes YouTube Logo, Banner, Full SEO to rank your channel</p>
+                    <div class="price-container">
+                        <span class="original-price">7143PKR</span>
+                        <span class="discounted-price">5000PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facebook Services Section -->
+    <section class="facebook-services" id="facebook-services">
+        <h2 class="section-title">FACEBOOK <span>SERVICES</span></h2>
+        <div class="app-grid">
+            <!-- Facebook Service 1 -->
+            <div class="app-card" data-id="facebook1" data-title="Facebook Followers" data-price="500">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWICpqFjA41HTGjEhktOFM9iSAphCS831zAw&s" alt="Facebook Followers">
+                </div>
+                <div class="app-details">
+                    <h3>Facebook Followers</h3>
+                    <div class="price-container">
+                        <span class="original-price">714PKR</span>
+                        <span class="discounted-price">500PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <p>1K Followers Non Drop</p>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- Facebook Service 2 -->
+            <div class="app-card" data-id="facebook2" data-title="Facebook Likes" data-price="2000">
+                <div class="app-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyr5yrpBCrRjiZjHqgvtqQf2QPBD2CTCCL1Q&s" alt="Facebook Likes">
+                </div>
+                <div class="app-details">
+                    <h3>Facebook Likes</h3>
+                    <div class="price-container">
+                        <span class="original-price">2857PKR</span>
+                        <span class="discounted-price">2000PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <p>1K Likes Organic</p>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- Facebook Service 3 -->
+            <div class="app-card" data-id="facebook3" data-title="Facebook Views" data-price="400">
+                <div class="app-image">
+                    <img src="https://i1.sndcdn.com/artworks-jgSDy8BEEluPPThm-rpDSKA-t1080x1080.jpg" alt="Facebook Views">
+                </div>
+                <div class="app-details">
+                    <h3>Facebook Views</h3>
+                    <div class="price-container">
+                        <span class="original-price">571PKR</span>
+                        <span class="discounted-price">400PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Services Section -->
+    <section class="instagram-services" id="instagram-services">
+        <h2 class="section-title">INSTAGRAM <span>SERVICES</span></h2>
+        <div class="app-grid">
+            <!-- Instagram Service 1 -->
+            <div class="app-card" data-id="instagram1" data-title="Instagram Followers" data-price="500">
+                <div class="app-image">
+                    <img src="https://5.imimg.com/data5/SELLER/Default/2022/2/QI/CX/FE/98850797/instagram-followers-500x500.jpg" alt="Instagram Followers">
+                </div>
+                <div class="app-details">
+                    <h3>Instagram Followers</h3>
+                    <div class="price-container">
+                        <span class="original-price">714PKR</span>
+                        <span class="discounted-price">500PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <p>1K Followers Non Drop</p>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- Instagram Service 2 -->
+            <div class="app-card" data-id="instagram2" data-title="Instagram Likes" data-price="2000">
+                <div class="app-image">
+                    <img src="https://miro.medium.com/v2/resize:fit:1200/1*LZKAmnCIcTlOK0JR9KZnPw.jpeg" alt="Instagram Likes">
+                </div>
+                <div class="app-details">
+                    <h3>Instagram Likes</h3>
+                    <div class="price-container">
+                        <span class="original-price">2857PKR</span>
+                        <span class="discounted-price">2000PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <p>1K Likes Organic</p>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            
+            <!-- Instagram Service 3 -->
+            <div class="app-card" data-id="instagram3" data-title="Instagram Views" data-price="400">
+                <div class="app-image">
+                    <img src="https://tse2.mm.bing.net/th/id/OIP.xA_2ydj4RlukoITL6yJmkwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Instagram Views">
+                </div>
+                <div class="app-details">
+                    <h3>Instagram Views</h3>
+                    <div class="price-container">
+                        <span class="original-price">571PKR</span>
+                        <span class="discounted-price">400PKR</span>
+                        <span class="discount-badge">30% OFF</span>
+                    </div>
+                    <button class="btn-add-to-cart-app">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="newsletter-container">
+            <div class="newsletter-content">
+                <h2>JOIN OUR <span>NEWSLETTER</span></h2>
+                <p>Get exclusive discounts and updates directly to your inbox</p>
+            </div>
+            <div class="newsletter-form">
+                <input type="email" placeholder="Your email address">
+                <button class="btn-subscribe">Subscribe</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <div class="neon-logo">
+                    <span class="neon-text">GROWZIO</span>
+                    <span class="neon-border"></span>
+                </div>
+                <span class="logo-subtext">STORE</span>
+                <p>Premium apps and services for professionals and enthusiasts</p>
+            </div>
+            
+            <div class="footer-links">
+                <div class="links-column">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="#premium-apps">Premium Apps</a></li>
+                        <li><a href="#tools">Premium Tools</a></li>
+                        <li><a href="#vpns">VPN Services</a></li>
+                        <li><a href="#iptv">IPTV Services</a></li>
+                        <li><a href="#proxies-rdp">Proxies & RDP</a></li>
+                        <li><a href="#tiktok-services">TikTok Services</a></li>
+                        <li><a href="#youtube-services">YouTube Services</a></li>
+                        <li><a href="#facebook-services">Facebook Services</a></li>
+                        <li><a href="#instagram-services">Instagram Services</a></li>
+                    </ul>
+                </div>
+                
+                <div class="links-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Affiliates</a></li>
+                        <li><a href="#footer">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="links-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Growzio Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Payment Modal -->
+    <div class="payment-modal" id="paymentModal">
+        <div class="payment-content">
+            <span class="close-modal">&times;</span>
+            <h2>Complete Your Payment</h2>
+            
+            <div class="payment-tabs">
+                <div class="payment-tab active" data-tab="jazzcash">JazzCash</div>
+                <div class="payment-tab" data-tab="easypaisa">EasyPaisa</div>
+                <div class="payment-tab" data-tab="binance">Binance</div>
+            </div>
+            
+            <!-- JazzCash Payment Method -->
+            <div class="payment-method active" id="jazzcash-method">
+                <div class="payment-info">
+                    <p>Please send the payment to the following JazzCash number:</p>
+                    <p><strong>JazzCash Number: +92325478732</strong></p>
+                    <p><strong>Account Name: khairunnisa</strong></p>
+                </div>
+                <div class="payment-instructions">
+                    <p>After making the payment, please send the transaction details to our WhatsApp support.</p>
+                </div>
+                <button class="btn-confirm-payment" data-method="jazzcash">I've Made the Payment</button>
+            </div>
+            
+            <!-- EasyPaisa Payment Method -->
+            <div class="payment-method" id="easypaisa-method">
+                <div class="payment-info">
+                    <p>Please send the payment to the following EasyPaisa number:</p>
+                    <p><strong>EasyPaisa Number: +923325982480</strong></p>
+                    <p><strong>Account Name: Khairunisa</strong></p>
+                </div>
+                <div class="payment-instructions">
+                    <p>After making the payment, please send the transaction details to our WhatsApp support.</p>
+                </div>
+                <button class="btn-confirm-payment" data-method="easypaisa">I've Made the Payment</button>
+            </div>
+            
+            <!-- Binance Payment Method -->
+            <div class="payment-method" id="binance-method">
+                <div class="payment-info">
+                    <p>Please send the payment to the following Binance Pay ID:</p>
+                    <p><strong>Binance Pay ID: 949995586</strong></p>
+                </div>
+                <div class="payment-instructions">
+                    <p>After making the payment, please send the transaction details to our WhatsApp support.</p>
+                </div>
+                <button class="btn-confirm-payment" data-method="binance">I've Made the Payment</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <span class="close-cart">&times;</span>
+        </div>
+        <div class="cart-items">
+            <!-- Cart items will be dynamically added here -->
+            <div class="empty-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Your cart is empty</p>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="total-amount">0.00PKR</span>
+            </div>
+            <button class="btn-checkout">Proceed to Payment</button>
+        </div>
+    </div>
+    <div class="cart-overlay"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Countdown timer for the offer
+            function updateCountdown() {
+                // Set the end time for the offer (24 hours from now)
+                const now = new Date();
+                const endTime = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+                
+                // Calculate the remaining time
+                const diff = endTime - now;
+                
+                // Calculate hours, minutes, seconds
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                // Update the countdown display
+                document.getElementById('countdown-hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('countdown-minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('countdown-seconds').textContent = seconds.toString().padStart(2, '0');
+            }
+            
+            // Update the countdown every second
+            updateCountdown();
+            const countdownInterval = setInterval(updateCountdown, 1000);
+
+            // Modal functionality
+            const paymentModal = document.getElementById('paymentModal');
+            const closeModals = document.querySelectorAll('.close-modal');
+            
+            // Cart functionality
+            const cartIcon = document.querySelector('.cart-icon');
+            const cartSidebar = document.querySelector('.cart-sidebar');
+            const closeCart = document.querySelector('.close-cart');
+            const cartOverlay = document.querySelector('.cart-overlay');
+            const addToCartAppBtns = document.querySelectorAll('.btn-add-to-cart-app');
+            const cartItemsContainer = document.querySelector('.cart-items');
+            const cartCount = document.querySelector('.cart-count');
+            const cartTotal = document.querySelector('.total-amount');
+            const checkoutBtn = document.querySelector('.btn-checkout');
+            
+            // Payment functionality
+            const paymentTabs = document.querySelectorAll('.payment-tab');
+            const paymentMethods = document.querySelectorAll('.payment-method');
+            const confirmPaymentBtns = document.querySelectorAll('.btn-confirm-payment');
+            
+            // Search functionality
+            const searchInput = document.getElementById('search-input');
+            const searchButton = document.getElementById('search-button');
+            const searchResults = document.getElementById('search-results');
+            
+            // Navigation
+            const exploreProductsBtn = document.getElementById('explore-products-btn');
+            
+            let cart = [];
+            
+            // All apps data
+            const allApps = Array.from(document.querySelectorAll('.app-card')).map(card => ({
+                id: card.getAttribute('data-id'),
+                title: card.getAttribute('data-title'),
+                price: parseFloat(card.getAttribute('data-price')),
+                image: card.querySelector('img').src
+            }));
+
+            const allTools = Array.from(document.querySelectorAll('#tools .app-card')).map(card => ({
+                id: card.getAttribute('data-id'),
+                title: card.getAttribute('data-title'),
+                price: parseFloat(card.getAttribute('data-price')),
+                image: card.querySelector('img').src
+            }));
+
+            const allVpns = Array.from(document.querySelectorAll('#vpns .app-card')).map(card => ({
+                id: card.getAttribute('data-id'),
+                title: card.getAttribute('data-title'),
+                price: parseFloat(card.getAttribute('data-price')),
+                image: card.querySelector('img').src
+            }));
+
+            const allIptv = Array.from(document.querySelectorAll('#iptv .app-card')).map(card => ({
+                id: card.getAttribute('data-id'),
+                title: card.getAttribute('data-title'),
+                price: parseFloat(card.getAttribute('data-price')),
+                image: card.querySelector('img').src
+            }));
+
+            const allProxiesRdp = Array.from(document.querySelectorAll('#proxies-rdp .app-card')).map(card => ({
+                id: card.getAttribute('data-id'),
+                title: card.getAttribute('data-title'),
+                price: parseFloat(card.getAttribute('data-price')),
+                image: card.querySelector('img').src
+            }));
+
+            const allTiktokServices = Array.from(document.querySelectorAll('#tiktok-services .app-card')).map(card => ({
+                id: card.getAttribute('data-id'),
+                title: card.getAttribute('data-title'),
+                price: parseFloat(card.getAttribute('data-price')),
+                image: card.querySelector('img').src
+            }));
+
+            const allYoutubeServices = Array.from(document.querySelectorAll('#youtube-services .app-card')).map(card => ({
+                id: card.getAttribute('data-id'),
+                title: card.getAttribute('data-title'),
+                price: parseFloat(card.getAttribute('data-price')),
+                image: card.querySelector('img').src
+            }));
+
+            const allFacebookServices = Array.from(document.querySelectorAll('#facebook-services .app-card')).map(card => ({
+                id: card.getAttribute('data-id'),
+                title: card.getAttribute('data-title'),
+                price: parseFloat(card.getAttribute('data-price')),
+                image: card.querySelector('img').src
+            }));
+
+            const allInstagramServices = Array.from(document.querySelectorAll('#instagram-services .app-card')).map(card => ({
+                id: card.getAttribute('data-id'),
+                title: card.getAttribute('data-title'),
+                price: parseFloat(card.getAttribute('data-price')),
+                image: card.querySelector('img').src
+            }));
+            
+            const allProducts = [...allApps, ...allTools, ...allVpns, ...allIptv, ...allProxiesRdp, ...allTiktokServices, ...allYoutubeServices, ...allFacebookServices, ...allInstagramServices];
+            
+            // Close modals
+            closeModals.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    paymentModal.style.display = 'none';
+                });
+            });
+            
+            // Cart toggle
+            cartIcon.addEventListener('click', function() {
+                cartSidebar.style.right = '0';
+                cartOverlay.style.display = 'block';
+            });
+            
+            closeCart.addEventListener('click', function() {
+                cartSidebar.style.right = '-400px';
+                cartOverlay.style.display = 'none';
+            });
+            
+            cartOverlay.addEventListener('click', function() {
+                cartSidebar.style.right = '-400px';
+                cartOverlay.style.display = 'none';
+            });
+            
+            // Add to cart functionality for apps
+            addToCartAppBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const appCard = this.closest('.app-card');
+                    const appId = appCard.getAttribute('data-id');
+                    const appTitle = appCard.getAttribute('data-title');
+                    const appPrice = parseFloat(appCard.getAttribute('data-price'));
+                    const appImage = appCard.querySelector('img').src;
+                    
+                    // Check if app already in cart
+                    const existingItem = cart.find(item => item.id === appId);
+                    
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        cart.push({
+                            id: appId,
+                            title: appTitle,
+                            price: appPrice,
+                            image: appImage,
+                            quantity: 1
+                        });
+                    }
+                    
+                    updateCart();
+                    
+                    // Add animation to cart icon
+                    cartIcon.classList.add('animate');
+                    setTimeout(() => {
+                        cartIcon.classList.remove('animate');
+                    }, 500);
+                });
+            });
+            
+            // Update cart UI
+            function updateCart() {
+                // Update cart count
+                const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+                cartCount.textContent = totalItems;
+                
+                // Update cart items
+                cartItemsContainer.innerHTML = '';
+                
+                if (cart.length === 0) {
+                    cartItemsContainer.innerHTML = `
+                        <div class="empty-cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            <p>Your cart is empty</p>
+                        </div>
+                    `;
+                    cartTotal.textContent = '0.00PKR';
+                } else {
+                    let total = 0;
+                    
+                    cart.forEach(item => {
+                        const itemTotal = item.price * item.quantity;
+                        total += itemTotal;
+                        
+                        const cartItem = document.createElement('div');
+                        cartItem.className = 'cart-item';
+                        cartItem.innerHTML = `
+                            <div class="cart-item-image">
+                                <img src="${item.image}" alt="${item.title}">
+                            </div>
+                            <div class="cart-item-details">
+                                <h4>${item.title}</h4>
+                                <div class="cart-item-price">${item.price}PKR</div>
+                                <div class="cart-item-quantity">
+                                    <button class="quantity-btn minus" data-id="${item.id}">-</button>
+                                    <span>${item.quantity}</span>
+                                    <button class="quantity-btn plus" data-id="${item.id}">+</button>
+                                </div>
+                            </div>
+                            <button class="remove-item" data-id="${item.id}">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        `;
+                        
+                        cartItemsContainer.appendChild(cartItem);
+                    });
+                    
+                    // Update total
+                    cartTotal.textContent = `${total.toFixed(2)}PKR`;
+                    
+                    // Add event listeners to quantity buttons
+                    document.querySelectorAll('.quantity-btn').forEach(btn => {
+                        btn.addEventListener('click', function() {
+                            const id = this.getAttribute('data-id');
+                            const item = cart.find(item => item.id === id);
+                            
+                            if (this.classList.contains('minus')) {
+                                if (item.quantity > 1) {
+                                    item.quantity -= 1;
+                                } else {
+                                    cart = cart.filter(item => item.id !== id);
+                                }
+                            } else if (this.classList.contains('plus')) {
+                                item.quantity += 1;
+                            }
+                            
+                            updateCart();
+                        });
+                    });
+                    
+                    // Add event listeners to remove buttons
+                    document.querySelectorAll('.remove-item').forEach(btn => {
+                        btn.addEventListener('click', function() {
+                            const id = this.getAttribute('data-id');
+                            cart = cart.filter(item => item.id !== id);
+                            updateCart();
+                        });
+                    });
+                }
+            }
+            
+            // Checkout button - show payment options
+            checkoutBtn.addEventListener('click', function() {
+                if (cart.length === 0) {
+                    alert('Your cart is empty!');
+                } else {
+                    cartSidebar.style.right = '-400px';
+                    paymentModal.style.display = 'flex';
+                }
+            });
+            
+            // Payment tabs functionality
+            paymentTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    paymentTabs.forEach(t => t.classList.remove('active'));
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Hide all payment methods
+                    paymentMethods.forEach(method => method.classList.remove('active'));
+                    // Show the selected payment method
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(`${tabId}-method`).classList.add('active');
+                });
+            });
+            
+            // Confirm payment buttons
+            confirmPaymentBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const method = this.getAttribute('data-method');
+                    alert(`Thank you for your payment via ${method.toUpperCase()}! Please send the payment details Like screen shot of the payment to our WhatsApp support.`);
+                    
+                    // Redirect to WhatsApp as requested
+                    window.location.href = "https://wa.me/923170719070";
+                });
+            });
+            
+            // Explore Products button - scroll to featured products
+            exploreProductsBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('premium-apps').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Search functionality
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                
+                if (searchTerm.length === 0) {
+                    searchResults.classList.remove('active');
+                    return;
+                }
+                
+                // Filter products based on search term
+                const filteredProducts = allProducts.filter(product => 
+                    product.title.toLowerCase().includes(searchTerm)
+                );
+                
+                // Display results
+                if (filteredProducts.length > 0) {
+                    searchResults.innerHTML = '';
+                    filteredProducts.forEach(product => {
+                        const resultItem = document.createElement('div');
+                        resultItem.className = 'search-result-item';
+                        resultItem.innerHTML = `
+                            <h4>${product.title}</h4>
+                            <p>${product.price}PKR</p>
+                        `;
+                        resultItem.addEventListener('click', function() {
+                            // Scroll to the product
+                            const productElement = document.querySelector(`[data-id="${product.id}"]`);
+                            if (productElement) {
+                                productElement.scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'center'
+                                });
+                                
+                                // Add highlight effect
+                                productElement.style.boxShadow = '0 0 20px rgba(255, 0, 0, 0.5)';
+                                setTimeout(() => {
+                                    productElement.style.boxShadow = '';
+                                }, 2000);
+                            }
+                            
+                            // Close search results
+                            searchResults.classList.remove('active');
+                            searchInput.value = '';
+                        });
+                        searchResults.appendChild(resultItem);
+                    });
+                    searchResults.classList.add('active');
+                } else {
+                    searchResults.innerHTML = '<div class="search-result-item"><p>No products found</p></div>';
+                    searchResults.classList.add('active');
+                }
+            });
+            
+            // Close search results when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                    searchResults.classList.remove('active');
+                }
+            });
+            
+            document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input').value;
+                alert(`Thank you for subscribing with ${email}!`);
+                this.reset();
+            });
+            
+            // Add some animation to product cards on scroll
+            const observerOptions = {
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.category-card, .app-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
