@@ -2818,14 +2818,22 @@
                 });
             });
             
-            // Confirm payment buttons
+            // Confirm payment buttons - updated with your WhatsApp number
             confirmPaymentBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
                     const method = this.getAttribute('data-method');
-                    alert(`Thank you for your payment via ${method.toUpperCase()}! Please send the payment details Like screen shot of the payment to our WhatsApp support.`);
+                    const totalAmount = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+                    const orderDetails = cart.map(item => 
+                        `${item.title} (Qty: ${item.quantity}) - ${item.price}PKR`
+                    ).join('%0A');
                     
-                    // Redirect to WhatsApp as requested
-                    window.location.href = "https://wa.me/923170719070";
+                    const whatsappMessage = `New Order Payment Confirmation%0A%0A` +
+                                           `Payment Method: ${method.toUpperCase()}%0A` +
+                                           `Total Amount: ${totalAmount.toFixed(2)}PKR%0A%0A` +
+                                           `Order Items:%0A${orderDetails}%0A%0A` +
+                                           `Please confirm receipt of payment.`;
+                    
+                    window.location.href = `https://wa.me/923170719070?text=${whatsappMessage}`;
                 });
             });
             
