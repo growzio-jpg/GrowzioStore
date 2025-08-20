@@ -15,24 +15,32 @@
     .whatsapp-float{position:fixed;width:60px;height:60px;bottom:20px;right:20px;background:#25d366;color:#fff;border-radius:50px;text-align:center;font-size:30px;box-shadow:0 0 15px rgba(255,0,0,.7);z-index:1000;display:flex;align-items:center;justify-content:center}
     .glow-box{box-shadow:0 0 15px rgba(255,0,0,0.6);}
     .glow-red:hover{box-shadow:0 0 20px rgba(255,0,0,0.9);}
-
-    /* Mobile menu slide animation */
-    #mobile-menu {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 300ms ease-in-out, opacity 200ms ease-in-out;
-      opacity: 0;
+    .offer-timer {
+      background: linear-gradient(90deg, #ff0000, #ff5e00, #ff0000);
+      background-size: 200% 200%;
+      animation: gradientShift 3s ease infinite;
+      border: 2px solid #fff;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
     }
-    #mobile-menu.open {
-      max-height: 1000px; /* large enough to show content */
-      opacity: 1;
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
-
-    /* Ensure product images don't overflow on tiny devices */
-    img.object-contain { object-fit: contain; }
-
-    /* Improve dialog on small screens */
-    dialog { width: 95%; }
+    .timer-digit {
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 8px;
+      padding: 8px;
+      min-width: 45px;
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+    }
+    .original-price {
+      text-decoration: line-through;
+      opacity: 0.7;
+      font-size: 0.9em;
+      margin-right: 5px;
+    }
   </style>
 </head>
 <body class="min-h-screen bg-black text-white">
@@ -40,12 +48,8 @@
   <!-- Navbar -->
   <header class="sticky top-0 z-40 bg-black/90 backdrop-blur border-b border-red-600">
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-      <div class="flex items-center gap-4">
-        <a href="#home" class="font-extrabold text-xl text-red-500">Growzio</a>
-      </div>
-
-      <!-- Desktop Menu -->
-      <nav id="desktop-menu" class="hidden md:flex gap-6 text-sm font-medium" aria-label="Primary navigation">
+      <a href="#home" class="font-extrabold text-xl text-red-500">Growzio</a>
+      <nav class="hidden md:flex gap-6 text-sm font-medium">
         <a href="#home" class="hover:text-red-500">Home</a>
         <a href="#about" class="hover:text-red-500">About</a>
         <a href="#contact" class="hover:text-red-500">Contact</a>
@@ -55,35 +59,39 @@
         <a href="#iptv" class="hover:text-red-500">IPTV</a>
         <a href="#games" class="hover:text-red-500">Games</a>
       </nav>
+      <button id="btn-open-cart" class="relative rounded-xl px-3 py-2 border border-red-600 hover:shadow-sm transition flex items-center gap-2 text-red-500 hover:bg-red-600 hover:text-black">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span>Cart</span>
+        <span id="cart-count" class="ml-1 text-xs bg-red-600 text-white rounded-full px-2 py-0.5">0</span>
+      </button>
+    </div>
+  </header>
 
-      <div class="flex items-center gap-3">
-        <!-- Cart -->
-        <button id="btn-open-cart" class="relative rounded-xl px-3 py-2 border border-red-600 hover:shadow-sm transition flex items-center gap-2 text-red-500 hover:bg-red-600 hover:text-black" aria-label="Open cart">
-          <i class="fa-solid fa-cart-shopping"></i>
-          <span class="sr-only">Cart</span>
-          <span>Cart</span>
-          <span id="cart-count" class="ml-1 text-xs bg-red-600 text-white rounded-full px-2 py-0.5">0</span>
-        </button>
-
-        <!-- Mobile Menu Button -->
-        <button id="menu-toggle" class="md:hidden text-red-500 text-2xl ml-1 p-2 rounded hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-red-500" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle menu">
-          <i class="fa-solid fa-bars" aria-hidden="true"></i>
-        </button>
+  <!-- Offer Timer Banner -->
+  <div class="offer-timer text-white text-center py-3 px-4">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-3">
+      <span class="font-bold text-lg animate-pulse">🔥 30% OFF ON ALL SERVICES - LIMITED TIME OFFER!</span>
+      <div class="flex items-center gap-2">
+        <span>Ends in:</span>
+        <div class="flex gap-2 items-center">
+          <div class="timer-digit">
+            <span id="hours">23</span>
+            <span class="text-xs block">HRS</span>
+          </div>
+          <span>:</span>
+          <div class="timer-digit">
+            <span id="minutes">59</span>
+            <span class="text-xs block">MIN</span>
+          </div>
+          <span>:</span>
+          <div class="timer-digit">
+            <span id="seconds">59</span>
+            <span class="text-xs block">SEC</span>
+          </div>
+        </div>
       </div>
     </div>
-
-    <!-- Mobile Menu (collapsible) -->
-    <nav id="mobile-menu" class="md:hidden bg-black border-t border-red-600 p-4 space-y-3" aria-hidden="true">
-      <a href="#home" class="block hover:text-red-500">Home</a>
-      <a href="#about" class="block hover:text-red-500">About</a>
-      <a href="#contact" class="block hover:text-red-500">Contact</a>
-      <a href="#privacy" class="block hover:text-red-500">Privacy Policy</a>
-      <a href="#apps" class="block hover:text-red-500">Premium Apps</a>
-      <a href="#vpns" class="block hover:text-red-500">Premium VPNs</a>
-      <a href="#iptv" class="block hover:text-red-500">IPTV</a>
-      <a href="#games" class="block hover:text-red-500">Games</a>
-    </nav>
-  </header>
+  </div>
 
   <!-- Cart Modal -->
   <dialog id="cart-modal" class="rounded-xl p-6 bg-gray-900 text-white max-w-lg w-full">
@@ -113,6 +121,10 @@
     <div class="relative max-w-5xl mx-auto px-4 py-24 text-center">
       <h1 class="text-5xl font-extrabold mb-6 text-red-500">Growzio – Premium Apps & VPNs at Lowest Price</h1>
       <p class="text-lg opacity-90 mb-8">Get Netflix Premium, CapCut Pro, Canva Pro, Spotify, ExpressVPN, NordVPN, IPTV, PUBG UC & more. Pay easily via JazzCash, Easypaisa & Binance.</p>
+      <div class="mb-6 bg-red-600/20 border border-red-500 rounded-lg p-3 inline-block">
+        <span class="font-bold text-red-300">🔥 Special Offer: 30% OFF on all services!</span>
+      </div>
+      <br>
       <a href="#apps" class="bg-red-600 text-white font-semibold px-6 py-3 rounded-xl shadow hover:bg-red-700 glow-red transition">Start Shopping</a>
     </div>
   </section>
@@ -173,7 +185,6 @@
   </a>
 
 <script>
-// ====== Product data (unchanged) ======
 const apps=[
   {name:"CapCut Pro",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs2VpcYMsT90SfvKG6V-63wtYnSboBdUapag&s"},
   {name:"Canva Pro",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpqagKqMEAYfajhHl67Xt_NITxxvJmhUjCtg&s"},
@@ -205,19 +216,28 @@ const games=[
   {name:"8 Ball Pool Coins",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrVTvFJBh3TrFEpXwIZuOMZC36JfJhsHDemw&s"},
 ];
 
+// Calculate discounted price (30% off)
+function getDiscountedPrice(originalPrice) {
+  return Math.round(originalPrice * 0.7);
+}
+
 function renderProducts(list,containerId){
   const container=document.getElementById(containerId);
   list.forEach((item,i)=>{
-    const price=500+i*100;
+    const originalPrice=500+i*100;
+    const discountedPrice = getDiscountedPrice(originalPrice);
     const card=document.createElement("div");
     card.className="bg-gray-950 rounded-xl border border-red-600 glow-box p-4 transition transform hover:-translate-y-1 hover:glow-red";
     card.innerHTML=`
-      <img src='${item.img}' alt='${item.name}' class='rounded mb-3 h-32 w-full object-contain bg-black p-2 object-contain'>
+      <img src='${item.img}' alt='${item.name}' class='rounded mb-3 h-32 w-full object-contain bg-black p-2'>
       <h3 class='font-bold mb-2 line-clamp-2 text-red-400'>${item.name}</h3>
       <div class='flex items-center justify-between'>
-        <span class='font-semibold text-white'>${price} PKR</span>
+        <div>
+          <span class='original-price'>${originalPrice} PKR</span>
+          <span class='font-semibold text-white'>${discountedPrice} PKR</span>
+        </div>
         <button class='bg-red-600 text-white text-sm px-3 py-1 rounded-lg hover:bg-red-700 transition' 
-          data-name='${item.name}' data-price='${price}'>Add to Cart</button>
+          data-name='${item.name}' data-price='${discountedPrice}'>Add to Cart</button>
       </div>`;
     container.appendChild(card);
   });
@@ -230,7 +250,6 @@ renderProducts(games,"games-list");
 
 // ==== Cart Logic ====
 let cart=[];
-// add to cart (delegated)
 document.addEventListener("click",e=>{
   if(e.target.matches("[data-name]")){
     const name=e.target.dataset.name;
@@ -240,7 +259,6 @@ document.addEventListener("click",e=>{
   }
 });
 
-// open cart modal
 document.getElementById("btn-open-cart").onclick=()=>{
   const modal=document.getElementById("cart-modal");
   const items=document.getElementById("cart-items");
@@ -252,12 +270,9 @@ document.getElementById("btn-open-cart").onclick=()=>{
     items.innerHTML+=`<p>${c.name} – ${c.price} PKR</p>`;
   });
   total.textContent=sum;
-  try{ modal.showModal(); }catch(err){ /* fallback for browsers without dialog */
-    alert('Cart total: ' + sum + ' PKR');
-  }
+  modal.showModal();
 };
 
-// confirm order -> send to WhatsApp (unchanged behavior)
 document.getElementById("confirm-order").onclick=()=>{
   if(cart.length===0){alert("Cart is empty!");return;}
   const method=document.querySelector("input[name='payment']:checked").value;
@@ -265,42 +280,39 @@ document.getElementById("confirm-order").onclick=()=>{
   cart.forEach(c=>{text+=`- ${c.name} (${c.price} PKR)%0A`;});
   text+=`%0A💰 Total: ${document.getElementById("cart-total").textContent} PKR`;
   text+=`%0A📲 Payment Method: ${method}`;
-  // open whatsapp chat with prefilled text
   window.open(`https://wa.me/923195179084?text=${text}`,"_blank");
 };
 
-// ===== Mobile menu toggle (fixed) =====
-const menuToggle=document.getElementById('menu-toggle');
-const mobileMenu=document.getElementById('mobile-menu');
-menuToggle.addEventListener('click',()=>{
-  const isOpen = mobileMenu.classList.toggle('open');
-  // manage aria attributes for accessibility
-  menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  mobileMenu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
-  // toggle visible class for simpler CSS fallback on no-JS
-  if(!isOpen){
-    // keep the element hidden after animation completes
-    setTimeout(()=>{},300);
-  }
-});
+// ==== Offer Timer Logic (fixed) ====
+// Define the offer duration (24 hours) and set the end time once when the page loads.
+const OFFER_DURATION_MS = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+const endTime = new Date(Date.now() + OFFER_DURATION_MS);
 
-// Close mobile menu when a link is clicked (improves UX)
-mobileMenu.querySelectorAll('a').forEach(a=>{
-  a.addEventListener('click',()=>{
-    mobileMenu.classList.remove('open');
-    menuToggle.setAttribute('aria-expanded','false');
-    mobileMenu.setAttribute('aria-hidden','true');
-  });
-});
+function updateTimer() {
+  const now = new Date();
+  const timeLeft = endTime - now;
 
-// Optional: close mobile menu on resize to desktop
-window.addEventListener('resize',()=>{
-  if(window.innerWidth>=768 && mobileMenu.classList.contains('open')){
-    mobileMenu.classList.remove('open');
-    menuToggle.setAttribute('aria-expanded','false');
-    mobileMenu.setAttribute('aria-hidden','true');
+  if (timeLeft <= 0) {
+    document.getElementById('hours').textContent = '00';
+    document.getElementById('minutes').textContent = '00';
+    document.getElementById('seconds').textContent = '00';
+    // Optionally hide or change the offer banner when expired:
+    // document.querySelector('.offer-timer').style.display = 'none';
+    return;
   }
-});
+
+  const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+  const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+  document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+  document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+  document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+}
+
+// Initialize and update timer every second
+updateTimer();
+setInterval(updateTimer, 1000);
 </script>
 </body>
 </html>
