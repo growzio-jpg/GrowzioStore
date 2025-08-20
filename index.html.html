@@ -10,17 +10,20 @@
   <script src="https://unpkg.com/scrollreveal"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
+    /* Heading style: white and uppercase for all major headings */
+    h1, h2 { color: #ffffff !important; text-transform: uppercase !important; }
+
     .line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
     dialog::backdrop{background:rgba(0,0,0,.7)}
-    .whatsapp-float{position:fixed;width:60px;height:60px;bottom:20px;right:20px;background:#25d366;color:#fff;border-radius:50px;text-align:center;font-size:30px;box-shadow:0 0 15px rgba(255,0,0,.7);z-index:1000;display:flex;align-items:center;justify-content:center}
-    .glow-box{box-shadow:0 0 15px rgba(255,0,0,0.6);}
-    .glow-red:hover{box-shadow:0 0 20px rgba(255,0,0,0.9);}
+    .whatsapp-float{position:fixed;width:60px;height:60px;bottom:20px;right:20px;background:#25d366;color:#fff;border-radius:50px;text-align:center;font-size:30px;box-shadow:0 0 15px rgba(37,211,102,0.35);z-index:1000;display:flex;align-items:center;justify-content:center}
+    .glow-box{box-shadow:0 0 15px rgba(255,0,0,0.25);}
+    .glow-red:hover{box-shadow:0 0 20px rgba(255,0,0,0.6);}
     .offer-timer {
       background: linear-gradient(90deg, #ff0000, #ff5e00, #ff0000);
       background-size: 200% 200%;
       animation: gradientShift 3s ease infinite;
       border: 2px solid #fff;
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.35);
     }
     @keyframes gradientShift {
       0% { background-position: 0% 50%; }
@@ -28,10 +31,10 @@
       100% { background-position: 0% 50%; }
     }
     .timer-digit {
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.65);
       border-radius: 8px;
       padding: 8px;
-      min-width: 45px;
+      min-width: 48px;
       text-align: center;
       font-variant-numeric: tabular-nums;
     }
@@ -41,6 +44,17 @@
       font-size: 0.9em;
       margin-right: 5px;
     }
+
+    /* navbar link overrides */
+    .nav-link { color: #fff; }
+    .nav-link:hover { color: #ff5555; }
+
+    /* mobile menu */
+    #mobile-menu { display:none; }
+    @media (max-width: 767px){
+      nav.desktop { display:none; }
+      #mobile-menu { display:block; }
+    }
   </style>
 </head>
 <body class="min-h-screen bg-black text-white">
@@ -48,22 +62,54 @@
   <!-- Navbar -->
   <header class="sticky top-0 z-40 bg-black/90 backdrop-blur border-b border-red-600">
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-      <a href="#home" class="font-extrabold text-xl text-red-500">Growzio</a>
-      <nav class="hidden md:flex gap-6 text-sm font-medium">
-        <a href="#home" class="hover:text-red-500">Home</a>
-        <a href="#about" class="hover:text-red-500">About</a>
-        <a href="#contact" class="hover:text-red-500">Contact</a>
-        <a href="#privacy" class="hover:text-red-500">Privacy Policy</a>
-        <a href="#apps" class="hover:text-red-500">Premium Apps</a>
-        <a href="#vpns" class="hover:text-red-500">Premium VPNs</a>
-        <a href="#iptv" class="hover:text-red-500">IPTV</a>
-        <a href="#games" class="hover:text-red-500">Games</a>
+      <a href="#home" class="font-extrabold text-xl text-white">Growzio</a>
+
+      <!-- Desktop Nav -->
+      <nav class="desktop hidden md:flex gap-6 text-sm font-medium">
+        <a href="#home" class="nav-link hover:text-red-500">Home</a>
+        <a href="#about" class="nav-link hover:text-red-500">About</a>
+        <a href="#contact" class="nav-link hover:text-red-500">Contact</a>
+        <a href="#privacy" class="nav-link hover:text-red-500">Privacy Policy</a>
+        <a href="#apps" class="nav-link hover:text-red-500">Premium Apps</a>
+        <a href="#vpns" class="nav-link hover:text-red-500">Premium VPNs</a>
+        <a href="#iptv" class="nav-link hover:text-red-500">IPTV</a>
+        <a href="#games" class="nav-link hover:text-red-500">Games</a>
       </nav>
-      <button id="btn-open-cart" class="relative rounded-xl px-3 py-2 border border-red-600 hover:shadow-sm transition flex items-center gap-2 text-red-500 hover:bg-red-600 hover:text-black">
-        <i class="fa-solid fa-cart-shopping"></i>
-        <span>Cart</span>
-        <span id="cart-count" class="ml-1 text-xs bg-red-600 text-white rounded-full px-2 py-0.5">0</span>
-      </button>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden flex items-center gap-2">
+        <button id="btn-open-cart-mobile" class="relative rounded-xl px-3 py-2 border border-red-600 hover:shadow-sm transition flex items-center gap-2 text-red-500 hover:bg-red-600 hover:text-black">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="sr-only">Cart</span>
+          <span id="cart-count-mobile" class="ml-1 text-xs bg-red-600 text-white rounded-full px-2 py-0.5">0</span>
+        </button>
+        <button id="mobile-toggle" aria-expanded="false" aria-controls="mobile-menu" class="p-2 rounded-md border border-red-600">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+      <!-- Cart Button (desktop) -->
+      <div class="hidden md:flex items-center gap-2">
+        <button id="btn-open-cart" class="relative rounded-xl px-3 py-2 border border-red-600 hover:shadow-sm transition flex items-center gap-2 text-red-500 hover:bg-red-600 hover:text-black">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="sr-only">Cart</span>
+          <span id="cart-count" class="ml-1 text-xs bg-red-600 text-white rounded-full px-2 py-0.5">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="bg-gray-900 border-t border-red-700 md:hidden">
+      <div class="px-4 py-3 flex flex-col gap-2">
+        <a href="#home" class="py-2 nav-link">Home</a>
+        <a href="#about" class="py-2 nav-link">About</a>
+        <a href="#apps" class="py-2 nav-link">Premium Apps</a>
+        <a href="#vpns" class="py-2 nav-link">Premium VPNs</a>
+        <a href="#iptv" class="py-2 nav-link">IPTV</a>
+        <a href="#games" class="py-2 nav-link">Games</a>
+        <a href="#contact" class="py-2 nav-link">Contact</a>
+        <a href="#privacy" class="py-2 nav-link">Privacy Policy</a>
+      </div>
     </div>
   </header>
 
@@ -95,13 +141,13 @@
 
   <!-- Cart Modal -->
   <dialog id="cart-modal" class="rounded-xl p-6 bg-gray-900 text-white max-w-lg w-full">
-    <h2 class="text-xl font-bold mb-4 text-red-500">Your Cart</h2>
+    <h2 class="text-xl font-bold mb-4">YOUR CART</h2>
     <div id="cart-items" class="space-y-3 mb-4"></div>
     <p class="font-bold mb-4">Total: <span id="cart-total">0</span> PKR</p>
 
     <!-- Payment Methods -->
     <div class="mb-4">
-      <h3 class="font-semibold mb-2">Select Payment Method:</h3>
+      <h3 class="font-semibold mb-2">SELECT PAYMENT METHOD:</h3>
       <label class="block mb-2"><input type="radio" name="payment" value="JazzCash" checked> JazzCash (Khairunisa – 03295478732)</label>
       <label class="block mb-2"><input type="radio" name="payment" value="Easypaisa"> Easypaisa (Khairunisa – 03325982480)</label>
       <label class="block mb-2"><input type="radio" name="payment" value="Binance"> Binance (Khairunisa – 949995586)</label>
@@ -116,10 +162,10 @@
   <!-- Hero -->
   <section id="home" class="relative bg-gradient-to-br from-black to-gray-900 text-white">
     <div class="absolute inset-0">
-      <img src="https://images.unsplash.com/photo-1553484771-898ed465e931?auto=format&fit=crop&w=1920&q=80" alt="Digital services" class="w-full h-full object-cover opacity-10">
+      <img src="https://images.unsplash.com/photo-1553484771-898ed465e931?auto=format&fit=crop&w=1920&q=80" alt="Digital services background" class="w-full h-full object-cover opacity-10">
     </div>
     <div class="relative max-w-5xl mx-auto px-4 py-24 text-center">
-      <h1 class="text-5xl font-extrabold mb-6 text-red-500">Growzio – Premium Apps & VPNs at Lowest Price</h1>
+      <h1 class="text-5xl font-extrabold mb-6 text-white">GROWZIO – PREMIUM APPS & VPNS AT LOWEST PRICE</h1>
       <p class="text-lg opacity-90 mb-8">Get Netflix Premium, CapCut Pro, Canva Pro, Spotify, ExpressVPN, NordVPN, IPTV, PUBG UC & more. Pay easily via JazzCash, Easypaisa & Binance.</p>
       <div class="mb-6 bg-red-600/20 border border-red-500 rounded-lg p-3 inline-block">
         <span class="font-bold text-red-300">🔥 Special Offer: 30% OFF on all services!</span>
@@ -131,40 +177,40 @@
 
   <!-- About -->
   <section id="about" class="max-w-6xl mx-auto px-4 py-16 text-center">
-    <h2 class="text-3xl font-bold mb-6 text-red-500">About Growzio</h2>
+    <h2 class="text-3xl font-bold mb-6">ABOUT GROWZIO</h2>
     <p class="text-lg text-gray-300 leading-relaxed">Growzio is your trusted digital store for <strong>premium apps, VPNs, IPTV, and gaming services</strong>. We provide 100% genuine subscriptions like <em>Netflix, Spotify, Canva Pro, ExpressVPN, NordVPN</em>, and more – at affordable rates in Pakistan. With secure payments via <strong>JazzCash, Easypaisa, and Binance</strong>, we make it simple and safe to upgrade your digital experience.</p>
   </section>
 
   <!-- Product Sections -->
   <section id="apps" class="max-w-7xl mx-auto px-4 py-16">
-    <h2 class="text-3xl font-bold text-center mb-12 text-red-500">Premium Apps</h2>
+    <h2 class="text-3xl font-bold text-center mb-12">PREMIUM APPS</h2>
     <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="apps-list"></div>
   </section>
 
   <section id="vpns" class="max-w-7xl mx-auto px-4 py-16">
-    <h2 class="text-3xl font-bold text-center mb-12 text-red-500">Premium VPNs</h2>
+    <h2 class="text-3xl font-bold text-center mb-12">PREMIUM VPNS</h2>
     <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="vpns-list"></div>
   </section>
 
   <section id="iptv" class="max-w-7xl mx-auto px-4 py-16">
-    <h2 class="text-3xl font-bold text-center mb-12 text-red-500">IPTV Services</h2>
+    <h2 class="text-3xl font-bold text-center mb-12">IPTV SERVICES</h2>
     <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="iptv-list"></div>
   </section>
 
   <section id="games" class="max-w-7xl mx-auto px-4 py-16">
-    <h2 class="text-3xl font-bold text-center mb-12 text-red-500">Games Services</h2>
+    <h2 class="text-3xl font-bold text-center mb-12">GAMES SERVICES</h2>
     <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="games-list"></div>
   </section>
 
   <!-- Privacy -->
   <section id="privacy" class="bg-gray-900 py-16 px-6 text-center">
-    <h2 class="text-3xl font-bold mb-6 text-red-500">Privacy Policy</h2>
+    <h2 class="text-3xl font-bold mb-6">PRIVACY POLICY</h2>
     <p class="max-w-3xl mx-auto text-gray-300">At Growzio, your privacy and trust are our top priorities. We do not store sensitive financial data on our website. Payments are processed securely via JazzCash, Easypaisa, or Binance. Your order details are only used for processing and delivering your purchased digital services. We never share your information with third parties.</p>
   </section>
 
   <!-- Contact -->
   <section id="contact" class="max-w-6xl mx-auto px-4 py-16 text-center">
-    <h2 class="text-3xl font-bold mb-6 text-red-500">Contact Us</h2>
+    <h2 class="text-3xl font-bold mb-6">CONTACT US</h2>
     <p class="mb-6">For orders & support, reach us anytime:</p>
     <div class="flex justify-center gap-6 text-2xl">
       <a href="https://wa.me/923195179084" target="_blank" class="text-green-500 hover:scale-110 transition"><i class="fa-brands fa-whatsapp"></i></a>
@@ -180,11 +226,14 @@
   </footer>
 
   <!-- WhatsApp Floating -->
-  <a href="https://wa.me/923195179084" target="_blank" class="whatsapp-float">
+  <a href="https://wa.me/923195179084" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
 <script>
+/* -------------------------
+   Product Data
+   ------------------------- */
 const apps=[
   {name:"CapCut Pro",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs2VpcYMsT90SfvKG6V-63wtYnSboBdUapag&s"},
   {name:"Canva Pro",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpqagKqMEAYfajhHl67Xt_NITxxvJmhUjCtg&s"},
@@ -216,7 +265,9 @@ const games=[
   {name:"8 Ball Pool Coins",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrVTvFJBh3TrFEpXwIZuOMZC36JfJhsHDemw&s"},
 ];
 
-// Calculate discounted price (30% off)
+/* -------------------------
+   Utility & Rendering
+   ------------------------- */
 function getDiscountedPrice(originalPrice) {
   return Math.round(originalPrice * 0.7);
 }
@@ -230,13 +281,13 @@ function renderProducts(list,containerId){
     card.className="bg-gray-950 rounded-xl border border-red-600 glow-box p-4 transition transform hover:-translate-y-1 hover:glow-red";
     card.innerHTML=`
       <img src='${item.img}' alt='${item.name}' class='rounded mb-3 h-32 w-full object-contain bg-black p-2'>
-      <h3 class='font-bold mb-2 line-clamp-2 text-red-400'>${item.name}</h3>
+      <h3 class='font-bold mb-2 line-clamp-2 text-white'>${item.name}</h3>
       <div class='flex items-center justify-between'>
         <div>
           <span class='original-price'>${originalPrice} PKR</span>
           <span class='font-semibold text-white'>${discountedPrice} PKR</span>
         </div>
-        <button class='bg-red-600 text-white text-sm px-3 py-1 rounded-lg hover:bg-red-700 transition' 
+        <button class='add-to-cart bg-red-600 text-white text-sm px-3 py-1 rounded-lg hover:bg-red-700 transition' 
           data-name='${item.name}' data-price='${discountedPrice}'>Add to Cart</button>
       </div>`;
     container.appendChild(card);
@@ -248,44 +299,63 @@ renderProducts(vpns,"vpns-list");
 renderProducts(iptv,"iptv-list");
 renderProducts(games,"games-list");
 
-// ==== Cart Logic ====
+/* -------------------------
+   Cart Logic
+   ------------------------- */
 let cart=[];
-document.addEventListener("click",e=>{
-  if(e.target.matches("[data-name]")){
-    const name=e.target.dataset.name;
-    const price=parseInt(e.target.dataset.price);
-    cart.push({name,price});
-    document.getElementById("cart-count").textContent=cart.length;
+function updateCartDisplays(){
+  const count = cart.length;
+  document.getElementById("cart-count").textContent = count;
+  const mobileCount = document.getElementById("cart-count-mobile");
+  if(mobileCount) mobileCount.textContent = count;
+}
+
+document.addEventListener("click", e=>{
+  // Add to cart
+  if(e.target.matches(".add-to-cart") || e.target.closest(".add-to-cart")){
+    const btn = e.target.closest(".add-to-cart");
+    const name = btn.dataset.name;
+    const price = parseInt(btn.dataset.price);
+    cart.push({name, price});
+    updateCartDisplays();
   }
 });
 
-document.getElementById("btn-open-cart").onclick=()=>{
+document.getElementById("btn-open-cart").onclick = openCartModal;
+document.getElementById("btn-open-cart-mobile")?.addEventListener("click", openCartModal);
+
+function openCartModal(){
   const modal=document.getElementById("cart-modal");
   const items=document.getElementById("cart-items");
   const total=document.getElementById("cart-total");
   items.innerHTML="";
   let sum=0;
-  cart.forEach(c=>{
+  cart.forEach((c, idx)=>{
     sum+=c.price;
-    items.innerHTML+=`<p>${c.name} – ${c.price} PKR</p>`;
+    items.innerHTML+=`<p>${idx+1}. ${c.name} – ${c.price} PKR</p>`;
   });
   total.textContent=sum;
-  modal.showModal();
-};
+  try { modal.showModal(); } catch(err){ console.warn(err); }
+}
 
+/* Confirm order -> open whatsapp with filled message */
 document.getElementById("confirm-order").onclick=()=>{
-  if(cart.length===0){alert("Cart is empty!");return;}
-  const method=document.querySelector("input[name='payment']:checked").value;
-  let text="🛒 *New Order*%0A";
-  cart.forEach(c=>{text+=`- ${c.name} (${c.price} PKR)%0A`;});
-  text+=`%0A💰 Total: ${document.getElementById("cart-total").textContent} PKR`;
-  text+=`%0A📲 Payment Method: ${method}`;
-  window.open(`https://wa.me/923195179084?text=${text}`,"_blank");
+  if(cart.length===0){ alert("Cart is empty!"); return; }
+  const method = document.querySelector("input[name='payment']:checked").value;
+  let text = "🛒 *New Order*%0A";
+  cart.forEach(c => { text += `- ${c.name} (${c.price} PKR)%0A`; });
+  const total = document.getElementById("cart-total").textContent;
+  text += `%0A💰 Total: ${total} PKR`;
+  text += `%0A📲 Payment Method: ${method}`;
+  // open whatsapp with user (autofill)
+  const waNumber = "923195179084";
+  window.open(`https://wa.me/${waNumber}?text=${text}`, "_blank");
 };
 
-// ==== Offer Timer Logic (fixed) ====
-// Define the offer duration (24 hours) and set the end time once when the page loads.
-const OFFER_DURATION_MS = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+/* -------------------------
+   Offer Timer Logic (24 hours from page load)
+   ------------------------- */
+const OFFER_DURATION_MS = 24 * 60 * 60 * 1000; // 24h
 const endTime = new Date(Date.now() + OFFER_DURATION_MS);
 
 function updateTimer() {
@@ -296,8 +366,8 @@ function updateTimer() {
     document.getElementById('hours').textContent = '00';
     document.getElementById('minutes').textContent = '00';
     document.getElementById('seconds').textContent = '00';
-    // Optionally hide or change the offer banner when expired:
-    // document.querySelector('.offer-timer').style.display = 'none';
+    // optionally hide banner:
+    // document.querySelector('.offer-timer').style.display='none';
     return;
   }
 
@@ -305,14 +375,48 @@ function updateTimer() {
   const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-  document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-  document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-  document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+  document.getElementById('hours').textContent = hours.toString().padStart(2,'0');
+  document.getElementById('minutes').textContent = minutes.toString().padStart(2,'0');
+  document.getElementById('seconds').textContent = seconds.toString().padStart(2,'0');
 }
-
-// Initialize and update timer every second
 updateTimer();
 setInterval(updateTimer, 1000);
+
+/* -------------------------
+   Mobile menu toggle
+   ------------------------- */
+const mobileToggle = document.getElementById('mobile-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+if(mobileToggle){
+  mobileToggle.addEventListener('click', ()=>{
+    const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+    mobileToggle.setAttribute('aria-expanded', String(!expanded));
+    if(mobileMenu.style.display === 'block') mobileMenu.style.display = 'none';
+    else mobileMenu.style.display = 'block';
+  });
+  // close menu when clicking a link (smooth)
+  mobileMenu.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click', ()=> mobileMenu.style.display = 'none');
+  });
+}
+
+/* -------------------------
+   Smooth scroll for anchor links
+   ------------------------- */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', function(e){
+    const target = document.querySelector(this.getAttribute('href'));
+    if(target){
+      e.preventDefault();
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  });
+});
+
+/* -------------------------
+   Initialize cart UI count
+   ------------------------- */
+updateCartDisplays();
 </script>
 </body>
 </html>
