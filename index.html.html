@@ -4,20 +4,41 @@
   <!-- Meta & SEO -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>GROWZIO – Premium Apps, VPNs, IPTV & Gaming Services</title>
-  <meta name="description" content="GROWZIO – Buy cheap premium apps, VPNs, IPTV, gaming top-ups, and subscriptions like Netflix, Canva Pro, CapCut Pro, Spotify, ExpressVPN. Pay via Easypaisa, JazzCash, or Binance." />
-  <meta name="keywords" content="GROWZIO, premium apps, buy Netflix cheap, Canva Pro, CapCut Pro, Spotify Premium, YouTube Pro, Prime Video, VPN service Pakistan, ExpressVPN, NordVPN, IPTV Pakistan, PUBG UC, Free Fire Diamonds, buy apps cheap" />
+  <title>GROWZIO – Premium Apps, VPNs, IPTV & Gaming Services in Pakistan</title>
+  <meta name="description" content="Buy genuine premium apps, VPNs, IPTV & gaming services in Pakistan. Netflix, Spotify, Canva Pro, ExpressVPN, PUBG UC at lowest prices. Pay via JazzCash, Easypaisa, Binance." />
+  <meta name="keywords" content="premium apps Pakistan, buy Netflix cheap, VPN Pakistan, IPTV subscription, PUBG UC topup, Free Fire diamonds, Canva Pro Pakistan, Spotify Premium" />
+  <meta name="author" content="GROWZIO">
   <meta name="geo.region" content="PK" />
   <meta name="geo.placename" content="Pakistan" />
-
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://growzio.com/" />
+  
   <!-- Preconnects -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
 
   <!-- Libraries -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#dc2626',
+            secondary: '#991b1b',
+            dark: '#0a0a0a',
+          }
+        }
+      }
+    }
+  </script>
   <script src="https://unpkg.com/scrollreveal"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -26,9 +47,12 @@
     "@type": "Store",
     "name": "GROWZIO",
     "description": "Premium digital services and subscriptions at affordable prices in Pakistan",
-    "url": "https://yourdomain.com",
+    "url": "https://growzio.com",
     "telephone": "+92-319-5179084",
-    "address": {"@type": "PostalAddress", "addressCountry": "PK"},
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "PK"
+    },
     "openingHours": "Mo-Su 00:00-23:59",
     "priceRange": "$$",
     "sameAs": [
@@ -40,47 +64,281 @@
 
   <style>
     /* Global */
-    body { scroll-behavior: smooth; }
-    img { loading: lazy; }
-    h1, h2 { color: #ffffff !important; text-transform: uppercase !important; }
-    .line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-    dialog::backdrop{background:rgba(0,0,0,.7)}
-    .whatsapp-float{position:fixed;width:60px;height:60px;bottom:20px;right:20px;background:#25d366;color:#fff;border-radius:50px;text-align:center;font-size:30px;box-shadow:0 0 15px rgba(37,211,102,0.35);z-index:1000;display:flex;align-items:center;justify-content:center}
-    .glow-box{box-shadow:0 0 15px rgba(255,0,0,0.25);} 
-    .glow-red:hover{box-shadow:0 0 20px rgba(255,0,0,0.6);} 
+    :root {
+      --primary: #dc2626;
+      --primary-dark: #991b1b;
+      --dark: #0a0a0a;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body { 
+      scroll-behavior: smooth; 
+      background-color: var(--dark);
+      color: #fff;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+    }
+    
+    img { 
+      max-width: 100%;
+      height: auto;
+      loading: lazy; 
+    }
+    
+    h1, h2, h3, h4 {
+      color: #ffffff;
+      line-height: 1.3;
+      font-weight: 700;
+    }
+    
+    h1, h2 {
+      text-transform: uppercase;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    
+    dialog::backdrop {
+      background: rgba(0,0,0,.7);
+    }
+    
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(220, 38, 38, 0.2);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+    
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
+    
+    /* WhatsApp float */
+    .whatsapp-float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 20px;
+      right: 20px;
+      background: #25d366;
+      color: #fff;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 0 0 15px rgba(37,211,102,0.35);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    .glow-box {
+      box-shadow: 0 0 15px rgba(255,0,0,0.25);
+    } 
+    
+    .glow-red:hover {
+      box-shadow: 0 0 20px rgba(255,0,0,0.6);
+    }
 
     /* Offer timer */
-    .offer-timer {background: linear-gradient(90deg, #ff0000, #ff5e00, #ff0000); background-size: 200% 200%; animation: gradientShift 3s ease infinite; border: 2px solid #fff; box-shadow: 0 0 20px rgba(255, 0, 0, 0.35);} 
-    @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-    .timer-digit { background: rgba(0, 0, 0, 0.65); border-radius: 8px; padding: 8px; min-width: 48px; text-align: center; font-variant-numeric: tabular-nums; }
-    .original-price { text-decoration: line-through; opacity: 0.7; font-size: 0.9em; margin-right: 5px; }
+    .offer-timer {
+      background: linear-gradient(90deg, #ff0000, #ff5e00, #ff0000); 
+      background-size: 200% 200%; 
+      animation: gradientShift 3s ease infinite; 
+      border: 2px solid #fff; 
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.35);
+    } 
+    
+    @keyframes gradientShift { 
+      0% { background-position: 0% 50%; } 
+      50% { background-position: 100% 50%; } 
+      100% { background-position: 0% 50%; } 
+    }
+    
+    .timer-digit { 
+      background: rgba(0, 0, 0, 0.65); 
+      border-radius: 8px; 
+      padding: 8px; 
+      min-width: 48px; 
+      text-align: center; 
+      font-variant-numeric: tabular-nums; 
+    }
+    
+    .original-price { 
+      text-decoration: line-through; 
+      opacity: 0.7; 
+      font-size: 0.9em; 
+      margin-right: 5px; 
+    }
 
     /* Navbar */
-    .nav-link { color: #fff; }
-    .nav-link:hover { color: #ff5555; }
+    .nav-link { 
+      color: #fff; 
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-link:hover { 
+      color: #ff5555; 
+    }
 
     /* Mobile menu */
-    #mobile-menu { display: none; }
-    @media (max-width: 767px){
-      nav.desktop { display: none; }
-      #mobile-menu.active { display: block; }
+    #mobile-menu { 
+      display: none; 
+    }
+    
+    @media (max-width: 767px) {
+      nav.desktop { 
+        display: none; 
+      }
+      
+      #mobile-menu.active { 
+        display: block; 
+      }
     }
 
     /* Content helpers */
-    .content-section { margin-bottom: 3rem; }
-    .trust-badge { background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1rem; text-align: center; transition: all 0.3s ease; }
-    .trust-badge:hover { transform: translateY(-5px); background: rgba(255,255,255,0.1); }
-    .testimonial-card { background: linear-gradient(145deg, #1a1a1a, #2a2a2a); border-left: 4px solid #ff0000; padding: 1.5rem; border-radius: 8px; }
-    .faq-item { border-bottom: 1px solid #333; padding: 1rem 0; }
-    .faq-question { cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .section {
+      padding: 4rem 0;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    
+    .section-subtitle {
+      text-align: center;
+      color: #ccc;
+      margin-bottom: 3rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .trust-badge { 
+      background: rgba(255,255,255,0.05); 
+      border-radius: 12px; 
+      padding: 1.5rem; 
+      text-align: center; 
+      transition: all 0.3s ease; 
+    }
+    
+    .trust-badge:hover { 
+      transform: translateY(-5px); 
+      background: rgba(255,255,255,0.1); 
+    }
+    
+    .testimonial-card { 
+      background: linear-gradient(145deg, #1a1a1a, #2a2a2a); 
+      border-left: 4px solid #ff0000; 
+      padding: 1.5rem; 
+      border-radius: 8px; 
+      height: 100%;
+    }
+    
+    .faq-item { 
+      border-bottom: 1px solid #333; 
+      padding: 1rem 0; 
+    }
+    
+    .faq-question { 
+      cursor: pointer; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+    }
+    
+    /* Blog cards */
+    .blog-card {
+      background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      height: 100%;
+    }
+    
+    .blog-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .blog-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .blog-card-content {
+      padding: 1.5rem;
+    }
+    
+    /* Loading animation */
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
   </style>
 </head>
 <body class="min-h-screen bg-black text-white">
 
   <!-- Navbar -->
   <header class="sticky top-0 z-40 bg-black/90 backdrop-blur border-b border-red-600">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-      <a href="#home" class="font-extrabold text-xl text-white">GROWZIO</a>
+    <div class="container py-3 flex items-center justify-between">
+      <a href="#home" class="font-extrabold text-xl text-white flex items-center">
+        <span class="text-red-600 mr-1">🔥</span> GROWZIO
+      </a>
 
       <!-- Desktop Nav -->
       <nav class="desktop hidden md:flex gap-6 text-sm font-medium">
@@ -90,8 +348,8 @@
         <a href="#vpns" class="nav-link hover:text-red-500">Premium VPNs</a>
         <a href="#iptv" class="nav-link hover:text-red-500">IPTV</a>
         <a href="#games" class="nav-link hover:text-red-500">Games</a>
+        <a href="#blog" class="nav-link hover:text-red-500">Blog</a>
         <a href="#contact" class="nav-link hover:text-red-500">Contact</a>
-        <a href="#privacy" class="nav-link hover:text-red-500">Privacy</a>
       </nav>
 
       <!-- Mobile Buttons -->
@@ -125,15 +383,15 @@
         <a href="#vpns" class="py-2 nav-link">Premium VPNs</a>
         <a href="#iptv" class="py-2 nav-link">IPTV</a>
         <a href="#games" class="py-2 nav-link">Games</a>
+        <a href="#blog" class="py-2 nav-link">Blog</a>
         <a href="#contact" class="py-2 nav-link">Contact</a>
-        <a href="#privacy" class="py-2 nav-link">Privacy</a>
       </div>
     </div>
   </header>
 
   <!-- Offer Timer Banner -->
   <div class="offer-timer text-white text-center py-3 px-4">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-3">
+    <div class="container flex flex-col md:flex-row items-center justify-center gap-3">
       <span class="font-bold text-lg animate-pulse">🔥 30% OFF ON ALL SERVICES - ENDING SOON!</span>
       <div class="flex items-center gap-2">
         <span>Ends in:</span>
@@ -179,13 +437,13 @@
   </dialog>
 
   <!-- Hero -->
-  <section id="home" class="relative bg-gradient-to-br from-black to-gray-900 text-white">
+  <section id="home" class="section relative bg-gradient-to-br from-black to-gray-900 text-white">
     <div class="absolute inset-0">
       <img src="https://images.unsplash.com/photo-1553484771-898ed465e931?auto=format&fit=crop&w=1920&q=80" alt="Digital services background" class="w-full h-full object-cover opacity-10">
     </div>
-    <div class="relative max-w-5xl mx-auto px-4 py-24 text-center">
-      <h1 class="text-4xl md:text-5xl font-extrabold mb-6 text-white">Premium Apps & VPNs in Pakistan at Lowest Prices</h1>
-      <p class="text-lg opacity-90 mb-8">Get 100% genuine Netflix Premium, Spotify, Canva Pro, ExpressVPN, IPTV subscriptions and gaming top-ups. Pay easily via JazzCash, Easypaisa & Binance with instant delivery.</p>
+    <div class="container text-center">
+      <h1 class="section-title">Premium Apps & VPNs in Pakistan at Lowest Prices</h1>
+      <p class="section-subtitle">Get 100% genuine Netflix Premium, Spotify, Canva Pro, ExpressVPN, IPTV subscriptions and gaming top-ups. Pay easily via JazzCash, Easypaisa & Binance with instant delivery.</p>
 
       <!-- Trust badges -->
       <div class="flex flex-wrap justify-center gap-4 mb-8">
@@ -201,152 +459,336 @@
           <i class="fa-solid fa-headset text-red-500 text-2xl mb-2"></i>
           <p class="text-sm">24/7 Support</p>
         </div>
+        <div class="trust-badge">
+          <i class="fa-solid fa-lock text-red-500 text-2xl mb-2"></i>
+          <p class="text-sm">Secure Payment</p>
+        </div>
       </div>
 
       <div class="mb-6 bg-red-600/20 border border-red-500 rounded-lg p-3 inline-block">
         <span class="font-bold text-red-300">🔥 Special Limited Offer: 30% OFF on all services!</span>
       </div>
       <br>
-      <a href="#apps" class="bg-red-600 text-white font-semibold px-6 py-3 rounded-xl shadow hover:bg-red-700 glow-red transition">Browse All Products</a>
+      <a href="#apps" class="btn">Browse All Products</a>
+      <a href="#about" class="btn btn-outline ml-3">Learn More</a>
     </div>
   </section>
 
   <!-- About -->
-  <section id="about" class="max-w-6xl mx-auto px-4 py-16 content-section text-center">
-    <h2 class="text-3xl font-bold mb-6">ABOUT GROWZIO</h2>
-    <p class="text-lg text-gray-300 leading-relaxed">GROWZIO is your trusted digital store for <strong>premium apps, VPNs, IPTV, and gaming services</strong>. We provide 100% genuine subscriptions like <em>Netflix, Spotify, Canva Pro, ExpressVPN, NordVPN</em>, and more – at affordable rates in Pakistan. With secure payments via <strong>JazzCash, Easypaisa, and Binance</strong>, we make it simple and safe to upgrade your digital experience.</p>
+  <section id="about" class="section bg-gray-900">
+    <div class="container text-center">
+      <h2 class="section-title">ABOUT GROWZIO</h2>
+      <p class="section-subtitle">GROWZIO is your trusted digital store for <strong>premium apps, VPNs, IPTV, and gaming services</strong>. We provide 100% genuine subscriptions like <em>Netflix, Spotify, Canva Pro, ExpressVPN, NordVPN</em>, and more – at affordable rates in Pakistan. With secure payments via <strong>JazzCash, Easypaisa, and Binance</strong>, we make it simple and safe to upgrade your digital experience.</p>
+      
+      <div class="mt-10 grid md:grid-cols-2 gap-8 items-center">
+        <div class="text-left">
+          <h3 class="text-2xl font-bold mb-4">Why Choose Us?</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start"><i class="fa-solid fa-check text-red-500 mt-1 mr-2"></i> <span>100% genuine subscriptions with warranty</span></li>
+            <li class="flex items-start"><i class="fa-solid fa-check text-red-500 mt-1 mr-2"></i> <span>Instant delivery after payment confirmation</span></li>
+            <li class="flex items-start"><i class="fa-solid fa-check text-red-500 mt-1 mr-2"></i> <span>Secure payment methods (JazzCash, Easypaisa, Binance)</span></li>
+            <li class="flex items-start"><i class="fa-solid fa-check text-red-500 mt-1 mr-2"></i> <span>24/7 customer support via WhatsApp</span></li>
+            <li class="flex items-start"><i class="fa-solid fa-check text-red-500 mt-1 mr-2"></i> <span>Competitive prices with regular discounts</span></li>
+          </ul>
+        </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=600&q=80" alt="GROWZIO digital services" class="rounded-lg shadow-lg">
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- How It Works -->
-  <section class="max-w-6xl mx-auto px-4 py-16 bg-gray-900 rounded-xl content-section">
-    <h2 class="text-3xl font-bold mb-10 text-center">How It Works</h2>
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="text-center">
-        <div class="bg-red-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-white font-bold text-xl">1</span></div>
-        <h3 class="font-bold mb-2">Select Product</h3>
-        <p class="text-gray-400">Choose from our wide range of premium apps, VPNs, IPTV & gaming services</p>
-      </div>
-      <div class="text-center">
-        <div class="bg-red-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-white font-bold text-xl">2</span></div>
-        <h3 class="font-bold mb-2">Make Payment</h3>
-        <p class="text-gray-400">Pay easily via JazzCash, Easypaisa, or Binance</p>
-      </div>
-      <div class="text-center">
-        <div class="bg-red-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-white font-bold text-xl">3</span></div>
-        <h3 class="font-bold mb-2">Receive Instantly</h3>
-        <p class="text-gray-400">Get your product credentials instantly via WhatsApp</p>
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">How It Works</h2>
+      <p class="section-subtitle">Getting your premium digital services is quick and easy with our simple process</p>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="bg-red-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-white font-bold text-xl">1</span></div>
+          <h3 class="font-bold mb-2 text-xl">Select Product</h3>
+          <p class="text-gray-400">Choose from our wide range of premium apps, VPNs, IPTV & gaming services</p>
+        </div>
+        <div class="text-center">
+          <div class="bg-red-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-white font-bold text-xl">2</span></div>
+          <h3 class="font-bold mb-2 text-xl">Make Payment</h3>
+          <p class="text-gray-400">Pay easily via JazzCash, Easypaisa, or Binance with secure transaction</p>
+        </div>
+        <div class="text-center">
+          <div class="bg-red-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-white font-bold text-xl">3</span></div>
+          <h3 class="font-bold mb-2 text-xl">Receive Instantly</h3>
+          <p class="text-gray-400">Get your product credentials instantly via WhatsApp after payment verification</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Products -->
-  <section id="apps" class="max-w-7xl mx-auto px-4 py-16 content-section">
-    <h2 class="text-3xl font-bold text-center mb-4">PREMIUM APPS SUBSCRIPTIONS</h2>
-    <p class="text-center text-gray-400 mb-12">Get premium app subscriptions at the lowest prices in Pakistan with instant delivery</p>
-    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="apps-list"></div>
+  <section id="apps" class="section bg-gray-900">
+    <div class="container">
+      <h2 class="section-title">PREMIUM APPS SUBSCRIPTIONS</h2>
+      <p class="section-subtitle">Get premium app subscriptions at the lowest prices in Pakistan with instant delivery</p>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="apps-list"></div>
+    </div>
   </section>
 
-  <section id="vpns" class="max-w-7xl mx-auto px-4 py-16 content-section">
-    <h2 class="text-3xl font-bold text-center mb-4">PREMIUM VPNS</h2>
-    <p class="text-center text-gray-400 mb-12">Fast, secure & unlimited bandwidth VPNs</p>
-    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="vpns-list"></div>
+  <section id="vpns" class="section">
+    <div class="container">
+      <h2 class="section-title">PREMIUM VPNS</h2>
+      <p class="section-subtitle">Fast, secure & unlimited bandwidth VPNs for browsing, streaming and privacy</p>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="vpns-list"></div>
+    </div>
   </section>
 
-  <section id="iptv" class="max-w-7xl mx-auto px-4 py-16 content-section">
-    <h2 class="text-3xl font-bold text-center mb-4">IPTV SERVICES</h2>
-    <p class="text-center text-gray-400 mb-12">10,000+ channels & VOD with up to 4K support</p>
-    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="iptv-list"></div>
+  <section id="iptv" class="section bg-gray-900">
+    <div class="container">
+      <h2 class="section-title">IPTV SERVICES</h2>
+      <p class="section-subtitle">10,000+ channels & VOD with up to 4K support for all your entertainment needs</p>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="iptv-list"></div>
+    </div>
   </section>
 
-  <section id="games" class="max-w-7xl mx-auto px-4 py-16 content-section">
-    <h2 class="text-3xl font-bold text-center mb-4">GAMES SERVICES</h2>
-    <p class="text-center text-gray-400 mb-12">Instant game top-ups & currency</p>
-    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="games-list"></div>
+  <section id="games" class="section">
+    <div class="container">
+      <h2 class="section-title">GAMES SERVICES</h2>
+      <p class="section-subtitle">Instant game top-ups & currency for your favorite mobile games</p>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="games-list"></div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section id="blog" class="section bg-gray-900">
+    <div class="container">
+      <h2 class="section-title">LATEST BLOG POSTS</h2>
+      <p class="section-subtitle">Helpful guides and information about digital services, VPNs, and entertainment</p>
+      
+      <div class="grid md:grid-cols-3 gap-6">
+        <article class="blog-card">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80" alt="Benefits of using VPN">
+          <div class="blog-card-content">
+            <h3 class="text-xl font-bold mb-2">5 Benefits of Using a VPN in Pakistan</h3>
+            <p class="text-gray-400 mb-4">Discover why using a VPN is essential for privacy, security, and accessing global content from Pakistan.</p>
+            <a href="#" class="text-red-500 font-semibold">Read More →</a>
+          </div>
+        </article>
+        
+        <article class="blog-card">
+          <img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=500&q=80" alt="Netflix premium guide">
+          <div class="blog-card-content">
+            <h3 class="text-xl font-bold mb-2">How to Get Netflix Premium at Lowest Cost</h3>
+            <p class="text-gray-400 mb-4">Learn how to enjoy Netflix Premium with 4K streaming at the most affordable prices in Pakistan.</p>
+            <a href="#" class="text-red-500 font-semibold">Read More →</a>
+          </div>
+        </article>
+        
+        <article class="blog-card">
+          <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&w=500&q=80" alt="IPTV explained">
+          <div class="blog-card-content">
+            <h3 class="text-xl font-bold mb-2">What is IPTV and How Does It Work?</h3>
+            <p class="text-gray-400 mb-4">A complete guide to understanding IPTV services, their benefits, and how to choose the right one.</p>
+            <a href="#" class="text-red-500 font-semibold">Read More →</a>
+          </div>
+        </article>
+      </div>
+      
+      <div class="text-center mt-10">
+        <a href="#" class="btn">View All Blog Posts</a>
+      </div>
+    </div>
   </section>
 
   <!-- Testimonials -->
-  <section class="max-w-6xl mx-auto px-4 py-16 content-section">
-    <h2 class="text-3xl font-bold text-center mb-12">What Our Customers Say</h2>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="testimonial-card">
-        <div class="flex items-center mb-4 text-yellow-400">
-          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">What Our Customers Say</h2>
+      <p class="section-subtitle">Read genuine feedback from our satisfied customers across Pakistan</p>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="testimonial-card">
+          <div class="flex items-center mb-4 text-yellow-400">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-gray-300 mb-4">"Got my Netflix premium account within minutes of payment. Genuine service at best price! Will definitely buy again."</p>
+          <p class="text-white font-medium">- Ali R., Karachi</p>
         </div>
-        <p class="text-gray-300 mb-4">"Got my Netflix premium account within minutes of payment. Genuine service at best price!"</p>
-        <p class="text-white font-medium">- Ali R.</p>
-      </div>
-      <div class="testimonial-card">
-        <div class="flex items-center mb-4 text-yellow-400">
-          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        <div class="testimonial-card">
+          <div class="flex items-center mb-4 text-yellow-400">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-gray-300 mb-4">"Best place to buy PUBG UC in Pakistan. Instant delivery and great support. Highly recommended for gamers!"</p>
+          <p class="text-white font-medium">- Ahmed K., Lahore</p>
         </div>
-        <p class="text-gray-300 mb-4">"Best place to buy PUBG UC in Pakistan. Instant delivery and great support."</p>
-        <p class="text-white font-medium">- Ahmed K.</p>
-      </div>
-      <div class="testimonial-card">
-        <div class="flex items-center mb-4 text-yellow-400">
-          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        <div class="testimonial-card">
+          <div class="flex items-center mb-4 text-yellow-400">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-gray-300 mb-4">"Purchased ExpressVPN for year. Working perfectly and much cheaper than official website. Great service!"</p>
+          <p class="text-white font-medium">- Fatima S., Islamabad</p>
         </div>
-        <p class="text-gray-300 mb-4">"Purchased ExpressVPN for year. Working perfectly and much cheaper than official website."</p>
-        <p class="text-white font-medium">- Fatima S.</p>
       </div>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section class="max-w-4xl mx-auto px-4 py-16 content-section">
-    <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
-    <div class="faq-list">
-      <div class="faq-item">
-        <div class="faq-question">
-          <h3 class="font-medium">How quickly will I receive my product after payment?</h3>
-          <i class="fa-solid fa-chevron-down text-red-500"></i>
+  <section class="section bg-gray-900">
+    <div class="container">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-subtitle">Find answers to common questions about our products and services</p>
+      
+      <div class="max-w-3xl mx-auto">
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3 class="font-medium text-lg">How quickly will I receive my product after payment?</h3>
+            <i class="fa-solid fa-chevron-down text-red-500"></i>
+          </div>
+          <div class="faq-answer mt-2 text-gray-400">
+            <p>We provide instant delivery! You'll receive your product credentials within minutes after successful payment verification. In most cases, delivery takes less than 5 minutes during business hours.</p>
+          </div>
         </div>
-        <div class="faq-answer mt-2 text-gray-400">
-          <p>We provide instant delivery! You'll receive your product credentials within minutes after successful payment verification.</p>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3 class="font-medium text-lg">Are these subscriptions genuine?</h3>
+            <i class="fa-solid fa-chevron-down text-red-500"></i>
+          </div>
+          <div class="faq-answer mt-2 text-gray-400">
+            <p>Yes, all our subscriptions are 100% genuine and come with warranty. We source our products directly from official partners and authorized resellers.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3 class="font-medium text-lg">What payment methods do you accept?</h3>
+            <i class="fa-solid fa-chevron-down text-red-500"></i>
+          </div>
+          <div class="faq-answer mt-2 text-gray-400">
+            <p>We accept JazzCash, Easypaisa, and Binance payments for customer convenience. All payments are secure and verified.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3 class="font-medium text-lg">Do you offer refunds?</h3>
+            <i class="fa-solid fa-chevron-down text-red-500"></i>
+          </div>
+          <div class="faq-answer mt-2 text-gray-400">
+            <p>We offer refunds in case of service failure or if the product doesn't work as described. Please contact our support within 24 hours of purchase for refund requests.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3 class="font-medium text-lg">How can I contact customer support?</h3>
+            <i class="fa-solid fa-chevron-down text-red-500"></i>
+          </div>
+          <div class="faq-answer mt-2 text-gray-400">
+            <p>Our customer support is available 24/7 on WhatsApp at +92 319 5179084. You can also message us on our social media channels for assistance.</p>
+          </div>
         </div>
       </div>
-      <div class="faq-item">
-        <div class="faq-question">
-          <h3 class="font-medium">Are these subscriptions genuine?</h3>
-          <i class="fa-solid fa-chevron-down text-red-500"></i>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="container text-center">
+      <h2 class="section-title">CONTACT US</h2>
+      <p class="section-subtitle">Reach out to us for orders, support, or any questions</p>
+      
+      <div class="max-w-md mx-auto bg-gray-900 p-6 rounded-lg">
+        <div class="mb-6">
+          <h3 class="text-xl font-bold mb-4">Business Hours</h3>
+          <p class="text-gray-300">24/7 Support Available</p>
         </div>
-        <div class="faq-answer mt-2 text-gray-400">
-          <p>Yes, all our subscriptions are 100% genuine and come with warranty.</p>
+        
+        <div class="mb-6">
+          <h3 class="text-xl font-bold mb-4">Contact Information</h3>
+          <p class="text-gray-300 mb-2"><i class="fa-brands fa-whatsapp text-green-500 mr-2"></i> WhatsApp: <strong>+92 319 5179084</strong></p>
+          <p class="text-gray-300"><i class="fa-solid fa-envelope text-red-500 mr-2"></i> Email: <strong>info@growzio.com</strong></p>
         </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">
-          <h3 class="font-medium">What payment methods do you accept?</h3>
-          <i class="fa-solid fa-chevron-down text-red-500"></i>
-        </div>
-        <div class="faq-answer mt-2 text-gray-400">
-          <p>We accept JazzCash, Easypaisa, and Binance payments for customer convenience.</p>
+        
+        <div>
+          <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+          <div class="flex justify-center gap-6 text-2xl">
+            <a href="https://wa.me/923195179084" target="_blank" class="text-green-500 hover:scale-110 transition"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://whatsapp.com/channel/0029VbAuTTnFSAsxVXWEIK22" target="_blank" class="text-red-500 hover:scale-110 transition"><i class="fa-solid fa-bullhorn"></i></a>
+            <a href="https://www.tiktok.com/@its_hannni?_t=ZT-8yvAKY2JQp3&_r=1" target="_blank" class="text-pink-500 hover:scale-110 transition"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#" class="text-blue-400 hover:scale-110 transition"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" class="text-blue-500 hover:scale-110 transition"><i class="fa-brands fa-twitter"></i></a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Privacy -->
-  <section id="privacy" class="bg-gray-900 py-16 px-6 text-center">
-    <h2 class="text-3xl font-bold mb-6">PRIVACY POLICY</h2>
-    <p class="max-w-3xl mx-auto text-gray-300">At GROWZIO, your privacy and trust are our top priorities. We do not store sensitive financial data on our website. Payments are processed securely via JazzCash, Easypaisa, or Binance. Your order details are only used for processing and delivering your purchased digital services. We never share your information with third parties.</p>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="max-w-6xl mx-auto px-4 py-16 text-center">
-    <h2 class="text-3xl font-bold mb-6">CONTACT US</h2>
-    <p class="mb-6">For orders & support, reach us anytime:</p>
-    <div class="flex justify-center gap-6 text-2xl">
-      <a href="https://wa.me/923195179084" target="_blank" class="text-green-500 hover:scale-110 transition"><i class="fa-brands fa-whatsapp"></i></a>
-      <a href="https://whatsapp.com/channel/0029VbAuTTnFSAsxVXWEIK22" target="_blank" class="text-red-500 hover:scale-110 transition"><i class="fa-solid fa-bullhorn"></i></a>
-      <a href="https://www.tiktok.com/@its_hannni?_t=ZT-8yvAKY2JQp3&_r=1" target="_blank" class="text-pink-500 hover:scale-110 transition"><i class="fa-brands fa-tiktok"></i></a>
+  <section id="privacy" class="section bg-gray-900">
+    <div class="container text-center">
+      <h2 class="section-title">PRIVACY POLICY</h2>
+      <p class="section-subtitle">We value your privacy and security</p>
+      
+      <div class="max-w-3xl mx-auto text-left bg-black p-6 rounded-lg">
+        <p class="text-gray-300 mb-4">At GROWZIO, your privacy and trust are our top priorities. We do not store sensitive financial data on our website. Payments are processed securely via JazzCash, Easypaisa, or Binance.</p>
+        
+        <p class="text-gray-300 mb-4">Your order details are only used for processing and delivering your purchased digital services. We never share your information with third parties without your consent, except as required to provide the services you've purchased.</p>
+        
+        <p class="text-gray-300">We use secure encryption protocols to protect your data and ensure that your shopping experience is safe and secure. If you have any questions about our privacy practices, please contact us via WhatsApp.</p>
+        
+        <div class="mt-6">
+          <a href="#" class="text-red-500 font-semibold">Read Full Privacy Policy →</a>
+        </div>
+      </div>
     </div>
-    <p class="mt-4 text-gray-300">WhatsApp: <strong class="text-white">+92 319 5179084</strong></p>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-950 text-gray-400 text-center py-6 mt-16 border-t border-red-600">
-    <p>© 2025 GROWZIO. All rights reserved.</p>
+  <footer class="bg-gray-950 text-gray-400 py-12 mt-16 border-t border-red-600">
+    <div class="container">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-white text-lg font-bold mb-4">GROWZIO</h3>
+          <p class="mb-4">Your trusted source for premium digital services in Pakistan at affordable prices.</p>
+          <div class="flex gap-4">
+            <a href="#" class="text-gray-400 hover:text-red-500"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="text-gray-400 hover:text-red-500"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="text-gray-400 hover:text-red-500"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="text-gray-400 hover:text-red-500"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-white text-lg font-bold mb-4">QUICK LINKS</h3>
+          <ul class="space-y-2">
+            <li><a href="#home" class="text-gray-400 hover:text-red-500">Home</a></li>
+            <li><a href="#apps" class="text-gray-400 hover:text-red-500">Premium Apps</a></li>
+            <li><a href="#vpns" class="text-gray-400 hover:text-red-500">VPN Services</a></li>
+            <li><a href="#iptv" class="text-gray-400 hover:text-red-500">IPTV</a></li>
+            <li><a href="#games" class="text-gray-400 hover:text-red-500">Gaming</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-white text-lg font-bold mb-4">SUPPORT</h3>
+          <ul class="space-y-2">
+            <li><a href="#contact" class="text-gray-400 hover:text-red-500">Contact Us</a></li>
+            <li><a href="#faq" class="text-gray-400 hover:text-red-500">FAQ</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-red-500">Terms of Service</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-red-500">Refund Policy</a></li>
+            <li><a href="#privacy" class="text-gray-400 hover:text-red-500">Privacy Policy</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-white text-lg font-bold mb-4">NEWSLETTER</h3>
+          <p class="mb-4">Subscribe to get special offers and service updates</p>
+          <form class="flex flex-col gap-2">
+            <input type="email" placeholder="Your email" class="px-4 py-2 rounded bg-gray-800 border border-gray-700 text-white">
+            <button type="submit" class="btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+        <p>© 2025 GROWZIO. All rights reserved.</p>
+      </div>
+    </div>
   </footer>
 
   <!-- WhatsApp Floating -->
@@ -359,40 +801,42 @@
    Product Data
    ------------------------- */
 const apps=[
-  {name:"CapCut Pro",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs2VpcYMsT90SfvKG6V-63wtYnSboBdUapag&s"},
-  {name:"Canva Pro",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpqagKqMEAYfajhHl67Xt_NITxxvJmhUjCtg&s"},
-  {name:"YouTube Pro",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW6i55JlZERhJXLCzwqezFIbdEkGyM3HUA0A&s"},
-  {name:"Spotify Pro",img:"https://spotiffyapk.com/wp-content/uploads/2025/05/Spotify-Premium-APK-Logo.webp"},
-  {name:"Netflix Pro",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV8x8Smbp4lIacRS7RpkTo-3ODdoS98kFyUw&s"},
-  {name:"Prime Video Pro",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjEAHgv7k8XfGZHznPKMu9-YQ3djUn1-Da1Q&s"},
-  {name:"Apple Music",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCILiYSmQG4bavERxrdjOyAfH2CdF3ipqazw&s"},
-  {name:"Grammarly",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8y6wi5Tg40IDq9eMNJuPOKcuw8FGNKloTiw&s"},
+  {name:"CapCut Pro",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs2VpcYMsT90SfvKG6V-63wtYnSboBdUapag&s", desc: "Professional video editing with premium features and no watermark"},
+  {name:"Canva Pro",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpqagKqMEAYfajhHl67Xt_NITxxvJmhUjCtg&s", desc: "Access to premium templates, stock photos, and design tools"},
+  {name:"YouTube Premium",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW6i55JlZERhJXLCzwqezFIbdEkGyM3HUA0A&s", desc: "Ad-free videos, background play, and YouTube Music included"},
+  {name:"Spotify Premium",img:"https://spotiffyapk.com/wp-content/uploads/2025/05/Spotify-Premium-APK-Logo.webp", desc: "Ad-free music listening, offline downloads, and high quality audio"},
+  {name:"Netflix Premium",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV8x8Smbp4lIacRS7RpkTo-3ODdoS98kFyUw&s", desc: "4K streaming on up to 4 devices simultaneously with full access"},
+  {name:"Prime Video",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjEAHgv7k8XfGZHznPKMu9-YQ3djUn1-Da1Q&s", desc: "Access to Amazon Originals, movies, and TV shows with premium features"},
+  {name:"Apple Music",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCILiYSmQG4bavERxrdjOyAfH2CdF3ipqazw&s", desc: "Over 100 million songs ad-free with offline listening"},
+  {name:"Grammarly Premium",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8y6wi5Tg40IDq9eMNJuPOKcuw8FGNKloTiw&s", desc: "Advanced grammar checking, plagiarism detection, and writing suggestions"},
 ];
 
 const vpns=[
-  {name:"ExpressVPN",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqhbWyQYlMqtyBpforqHJtCKefrJQo2yMm0g&s"},
-  {name:"NordVPN",img:"https://play-lh.googleusercontent.com/zJ3ysMhOnrgMgkxWibuHu_MlzfnpM96mriUfm8f898BMnDFmXa9peQvIaClA3KuBeZk"},
-  {name:"ProtonVPN",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMux1dIqipWRrhPHD9W_WpEcIOHn6GWnRSkg&s"},
-  {name:"CyberGhost",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7OVKexwiii2foQ25ww-rdU9PRHZbJ2dPPqw&s"},
-  {name:"Surfshark",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjcfR2uO4YmKI6kZaEatRJiWwRCNdM5vTDxw&s"},
+  {name:"ExpressVPN",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqhbWyQYlMqtyBpforqHJtCKefrJQo2yMm0g&s", desc: "High-speed VPN with 3000+ servers in 94 countries"},
+  {name:"NordVPN",img:"https://play-lh.googleusercontent.com/zJ3ysMhOnrgMgkxWibuHu_MlzfnpM96mriUfm8f898BMnDFmXa9peQvIaClA3KuBeZk", desc: "Advanced security with double VPN and onion over VPN"},
+  {name:"ProtonVPN",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMux1dIqipWRrhPHD9W_WpEcIOHn6GWnRSkg&s", desc: "Secure core architecture and high-speed Swiss VPN"},
+  {name:"CyberGhost",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7OVKexwiii2foQ25ww-rdU9PRHZbJ2dPPqw&s", desc: "User-friendly VPN with optimized servers for streaming"},
+  {name:"Surfshark",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjcfR2uO4YmKI6kZaEatRJiWwRCNdM5vTDxw&s", desc: "Unlimited device connections with cleanweb ad blocking"},
 ];
 
 const iptv=[
-  {name:"Rolex TV",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWEZxCa3sQW4EbdE43u5hhtruFjHbwp56NhA&s"},
-  {name:"Bos TV",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFZLxeIvqokbc2mWPZ8mSzBnfCIOTB_TaBfQ&s"},
-  {name:"Zain TV",img:"https://play-lh.googleusercontent.com/9Y-E2Gp6MWVRgphLKTATGdYC497ufpPgq2rU77DyVtobIn6dOxYrbJ4OzkakLoX5NRc=s150-rw"},
+  {name:"Rolex TV",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWEZxCa3sQW4EbdE43u5hhtruFjHbwp56NhA&s", desc: "10,000+ channels with 4K support and VOD library"},
+  {name:"Bos TV",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFZLxeIvqokbc2mWPZ8mSzBnfCIOTB_TaBfQ&s", desc: "Premium IPTV with all sports channels and PPV events"},
+  {name:"Zain TV",img:"https://play-lh.googleusercontent.com/9Y-E2Gp6MWVRgphLKTATGdYC497ufpPgq2rU77DyVtobIn6dOxYrbJ4OzkakLoX5NRc=s150-rw", desc: "Stable IPTV service with catch-up and recording features"},
 ];
 
 const games=[
-  {name:"PUBG Mobile UC",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmGVfy-sv6kc3QPaS_ar3tkbon-oQZ9VPOEFAeYo61qsrDpknyoBhObBfkZVuA4W3F95U&usqp=CAU"},
-  {name:"Free Fire Diamonds",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1rHrliVMCAZ2oQHj42l1MNHUOp09UiWDgyw&s"},
-  {name:"8 Ball Pool Coins",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrVTvFJBh3TrFEpXwIZuOMZC36JfJhsHDemw&s"},
+  {name:"PUBG Mobile UC",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmGVfy-sv6kc3QPaS_ar3tkbon-oQZ9VPOEFAeYo61qsrDpknyoBhObBfkZVuA4W3F95U&usqp=CAU", desc: "Get UC for PUBG Mobile at best rates for skins and crates"},
+  {name:"Free Fire Diamonds",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1rHrliVMCAZ2oQHj42l1MNHUOp09UiWDgyw&s", desc: "Buy diamonds for Garena Free Fire to get characters and weapons"},
+  {name:"8 Ball Pool Coins",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrVTvFJBh3TrFEpXwIZuOMZC36JfJhsHDemw&s", desc: "Get coins for 8 Ball Pool to play in higher stake games"},
 ];
 
 /* -------------------------
    Utility & Rendering
    ------------------------- */
-function getDiscountedPrice(originalPrice) { return Math.round(originalPrice * 0.7); }
+function getDiscountedPrice(originalPrice) { 
+  return Math.round(originalPrice * 0.7); 
+}
 
 function productDescription(category){
   if(category==='apps') return 'Premium subscription with full features access';
@@ -403,6 +847,7 @@ function productDescription(category){
 
 function renderProducts(list,containerId,category){
   const container=document.getElementById(containerId);
+  container.innerHTML = '';
   list.forEach((item,i)=>{
     const originalPrice=500+i*100;
     const discountedPrice=getDiscountedPrice(originalPrice);
@@ -411,7 +856,7 @@ function renderProducts(list,containerId,category){
     card.innerHTML=`
       <img src='${item.img}' alt='${item.name} subscription Pakistan' class='rounded mb-3 h-32 w-full object-contain bg-black p-2'>
       <h3 class='font-bold mb-2 line-clamp-2 text-white'>${item.name}</h3>
-      <p class='text-gray-400 text-sm mb-3 flex-grow'>${productDescription(category)}</p>
+      <p class='text-gray-400 text-sm mb-3 flex-grow'>${item.desc}</p>
       <div class='flex items-center justify-between mt-auto'>
         <div>
           <span class='original-price'>${originalPrice} PKR</span>
@@ -423,10 +868,13 @@ function renderProducts(list,containerId,category){
   });
 }
 
-renderProducts(apps,'apps-list','apps');
-renderProducts(vpns,'vpns-list','vpns');
-renderProducts(iptv,'iptv-list','iptv');
-renderProducts(games,'games-list','games');
+// Render all products when page loads
+document.addEventListener('DOMContentLoaded', function() {
+  renderProducts(apps,'apps-list','apps');
+  renderProducts(vpns,'vpns-list','vpns');
+  renderProducts(iptv,'iptv-list','iptv');
+  renderProducts(games,'games-list','games');
+});
 
 /* -------------------------
    Cart Logic
@@ -441,12 +889,19 @@ function updateCartDisplays(){
 }
 
 // Add to cart
-addEventListener('click', e=>{
+document.addEventListener('click', e=>{
   if(e.target.matches('.add-to-cart') || e.target.closest('.add-to-cart')){
     const btn=e.target.closest('.add-to-cart');
-    const name=btn.dataset.name; const price=parseInt(btn.dataset.price);
+    const name=btn.dataset.name; 
+    const price=parseInt(btn.dataset.price);
     cart.push({name,price});
     updateCartDisplays();
+    
+    // Show added feedback
+    btn.innerHTML = '<span class="loading"></span> Added';
+    setTimeout(() => {
+      btn.textContent = 'Add to Cart';
+    }, 1500);
   }
 });
 
@@ -455,27 +910,72 @@ function openCartModal(){
   const modal=document.getElementById('cart-modal');
   const items=document.getElementById('cart-items');
   const total=document.getElementById('cart-total');
-  items.innerHTML=''; let sum=0;
-  cart.forEach((c,idx)=>{ sum+=c.price; items.innerHTML+=`<p>${idx+1}. ${c.name} – ${c.price} PKR</p>`; });
+  items.innerHTML=''; 
+  let sum=0;
+  
+  if(cart.length === 0) {
+    items.innerHTML = '<p class="text-center text-gray-400 py-4">Your cart is empty</p>';
+  } else {
+    cart.forEach((c,idx)=>{ 
+      sum+=c.price; 
+      items.innerHTML+=`
+        <div class="flex justify-between items-center border-b border-gray-700 pb-2">
+          <p>${idx+1}. ${c.name}</p>
+          <div class="flex items-center">
+            <span>${c.price} PKR</span>
+            <button class="ml-2 text-red-500 remove-item" data-index="${idx}">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </div>
+        </div>
+      `; 
+    });
+  }
+  
   total.textContent=sum;
-  try{ modal.showModal(); }catch(err){ console.warn(err); }
+  try{ 
+    modal.showModal(); 
+  } catch(err){ 
+    console.warn(err); 
+  }
+  
+  // Add event listeners to remove buttons
+  document.querySelectorAll('.remove-item').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const index = parseInt(this.dataset.index);
+      cart.splice(index, 1);
+      openCartModal();
+      updateCartDisplays();
+    });
+  });
 }
 
 document.getElementById('btn-open-cart')?.addEventListener('click', openCartModal);
 document.getElementById('btn-open-cart-mobile')?.addEventListener('click', openCartModal);
 
 // Confirm order (WhatsApp)
-document.getElementById('confirm-order').onclick=()=>{
-  if(cart.length===0){ alert('Cart is empty!'); return; }
+document.getElementById('confirm-order').addEventListener('click', function(){
+  if(cart.length===0){ 
+    alert('Your cart is empty!'); 
+    return; 
+  }
   const method=document.querySelector("input[name='payment']:checked").value;
-  let text='🛒 *New Order*%0A';
-  cart.forEach(c=>{ text+=`- ${c.name} (${c.price} PKR)%0A`; });
+  let text='🛒 *New Order from GROWZIO*%0A%0A';
+  cart.forEach(c=>{ 
+    text+=`- ${c.name} (${c.price} PKR)%0A`; 
+  });
   const total=document.getElementById('cart-total').textContent;
-  text+=`%0A💰 Total: ${total} PKR`;
-  text+=`%0A📲 Payment Method: ${method}`;
+  text+=`%0A💰 *Total: ${total} PKR*`;
+  text+=`%0A📲 *Payment Method: ${method}*`;
+  text+=`%0A%0APlease process this order.`;
   const waNumber='923195179084';
-  window.open(`https://wa.me/${waNumber}?text=${text}`,'_blank');
-};
+  window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`,'_blank');
+  
+  // Close modal and clear cart
+  document.getElementById('cart-modal').close();
+  cart = [];
+  updateCartDisplays();
+});
 
 /* -------------------------
    Offer Timer Logic (24 hours from page load)
@@ -483,9 +983,11 @@ document.getElementById('confirm-order').onclick=()=>{
 const OFFER_DURATION_MS=24*60*60*1000; // 24h
 const endTime=new Date(Date.now()+OFFER_DURATION_MS);
 function updateTimer(){
-  const now=new Date(); const timeLeft=endTime-now;
+  const now=new Date(); 
+  const timeLeft=endTime-now;
   if(timeLeft<=0){
     ['hours','minutes','seconds'].forEach(id=>document.getElementById(id).textContent='00');
+    document.querySelector('.offer-timer').innerHTML = '<div class="container py-2"><span class="font-bold">🔥 Offer has ended! New deals coming soon.</span></div>';
     return;
   }
   const hours=Math.floor(timeLeft/(1000*60*60));
@@ -495,7 +997,8 @@ function updateTimer(){
   document.getElementById('minutes').textContent=minutes.toString().padStart(2,'0');
   document.getElementById('seconds').textContent=seconds.toString().padStart(2,'0');
 }
-updateTimer(); setInterval(updateTimer,1000);
+updateTimer(); 
+setInterval(updateTimer,1000);
 
 /* -------------------------
    Mobile menu toggle
@@ -507,8 +1010,23 @@ if(mobileToggle){
     const expanded=mobileToggle.getAttribute('aria-expanded')==='true';
     mobileToggle.setAttribute('aria-expanded', String(!expanded));
     mobileMenu.classList.toggle('active');
+    
+    // Update icon
+    const icon = mobileToggle.querySelector('i');
+    if(icon.classList.contains('fa-bars')) {
+      icon.classList.remove('fa-bars');
+      icon.classList.add('fa-times');
+    } else {
+      icon.classList.remove('fa-times');
+      icon.classList.add('fa-bars');
+    }
   });
-  mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mobileMenu.classList.remove('active')));
+  mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    mobileMenu.classList.remove('active');
+    mobileToggle.setAttribute('aria-expanded', 'false');
+    mobileToggle.querySelector('i').classList.remove('fa-times');
+    mobileToggle.querySelector('i').classList.add('fa-bars');
+  }));
 }
 
 /* -------------------------
@@ -516,8 +1034,17 @@ if(mobileToggle){
    ------------------------- */
 document.querySelectorAll("a[href^='#']").forEach(a=>{
   a.addEventListener('click',function(e){
-    const target=document.querySelector(this.getAttribute('href'));
-    if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth', block:'start'}); }
+    const href = this.getAttribute('href');
+    if(href === '#') return;
+    
+    const target=document.querySelector(href);
+    if(target){ 
+      e.preventDefault(); 
+      target.scrollIntoView({
+        behavior: 'smooth', 
+        block: 'start'
+      }); 
+    }
   });
 });
 
@@ -525,19 +1052,43 @@ document.querySelectorAll("a[href^='#']").forEach(a=>{
    ScrollReveal (subtle)
    ------------------------- */
 try{
-  const sr=ScrollReveal({distance:'20px', duration:700, easing:'ease', origin:'bottom', interval:80});
-  sr.reveal('#apps .grid > div');
-  sr.reveal('#vpns .grid > div');
-  sr.reveal('#iptv .grid > div');
-  sr.reveal('#games .grid > div');
-}catch(err){ console.warn('ScrollReveal not loaded:', err); }
+  const sr=ScrollReveal({
+    distance: '20px', 
+    duration: 1000, 
+    easing: 'ease', 
+    origin: 'bottom', 
+    interval: 100,
+    reset: true
+  });
+  
+  sr.reveal('.trust-badge', { interval: 100 });
+  sr.reveal('#apps .grid > div, #vpns .grid > div, #iptv .grid > div, #games .grid > div', { interval: 100 });
+  sr.reveal('.testimonial-card', { interval: 100 });
+  sr.reveal('.blog-card', { interval: 100 });
+  sr.reveal('.faq-item', { interval: 100 });
+} catch(err){ 
+  console.warn('ScrollReveal not loaded:', err); 
+}
 
 /* -------------------------
    FAQ Toggle
    ------------------------- */
 document.querySelectorAll('.faq-question').forEach(q=>{
   q.addEventListener('click',()=>{
-    const answer=q.nextElementSibling; const icon=q.querySelector('i');
+    const answer = q.nextElementSibling;
+    const icon = q.querySelector('i');
+    
+    // Close other open FAQs
+    document.querySelectorAll('.faq-answer').forEach(ans => {
+      if (ans !== answer && !ans.classList.contains('hidden')) {
+        ans.classList.add('hidden');
+        const otherIcon = ans.previousElementSibling.querySelector('i');
+        otherIcon.classList.remove('fa-chevron-up');
+        otherIcon.classList.add('fa-chevron-down');
+      }
+    });
+    
+    // Toggle current FAQ
     answer.classList.toggle('hidden');
     icon.classList.toggle('fa-chevron-down');
     icon.classList.toggle('fa-chevron-up');
