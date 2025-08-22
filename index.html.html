@@ -1,60 +1,78 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <!-- Meta & SEO -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GROWZIO – Premium Apps, VPNs, IPTV & Gaming Services</title>
   <meta name="description" content="GROWZIO – Buy cheap premium apps, VPNs, IPTV, gaming top-ups, and subscriptions like Netflix, Canva Pro, CapCut Pro, Spotify, ExpressVPN. Pay via Easypaisa, JazzCash, or Binance." />
   <meta name="keywords" content="GROWZIO, premium apps, buy Netflix cheap, Canva Pro, CapCut Pro, Spotify Premium, YouTube Pro, Prime Video, VPN service Pakistan, ExpressVPN, NordVPN, IPTV Pakistan, PUBG UC, Free Fire Diamonds, buy apps cheap" />
+  <meta name="geo.region" content="PK" />
+  <meta name="geo.placename" content="Pakistan" />
+
+  <!-- Preconnects -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Libraries -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/scrollreveal"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <style>
-    /* Heading style: white and uppercase for all major headings */
-    h1, h2 { color: #ffffff !important; text-transform: uppercase !important; }
 
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "GROWZIO",
+    "description": "Premium digital services and subscriptions at affordable prices in Pakistan",
+    "url": "https://yourdomain.com",
+    "telephone": "+92-319-5179084",
+    "address": {"@type": "PostalAddress", "addressCountry": "PK"},
+    "openingHours": "Mo-Su 00:00-23:59",
+    "priceRange": "$$",
+    "sameAs": [
+      "https://wa.me/923195179084",
+      "https://www.tiktok.com/@its_hannni"
+    ]
+  }
+  </script>
+
+  <style>
+    /* Global */
+    body { scroll-behavior: smooth; }
+    img { loading: lazy; }
+    h1, h2 { color: #ffffff !important; text-transform: uppercase !important; }
     .line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
     dialog::backdrop{background:rgba(0,0,0,.7)}
     .whatsapp-float{position:fixed;width:60px;height:60px;bottom:20px;right:20px;background:#25d366;color:#fff;border-radius:50px;text-align:center;font-size:30px;box-shadow:0 0 15px rgba(37,211,102,0.35);z-index:1000;display:flex;align-items:center;justify-content:center}
-    .glow-box{box-shadow:0 0 15px rgba(255,0,0,0.25);}
-    .glow-red:hover{box-shadow:0 0 20px rgba(255,0,0,0.6);}
-    .offer-timer {
-      background: linear-gradient(90deg, #ff0000, #ff5e00, #ff0000);
-      background-size: 200% 200%;
-      animation: gradientShift 3s ease infinite;
-      border: 2px solid #fff;
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.35);
-    }
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    .timer-digit {
-      background: rgba(0, 0, 0, 0.65);
-      border-radius: 8px;
-      padding: 8px;
-      min-width: 48px;
-      text-align: center;
-      font-variant-numeric: tabular-nums;
-    }
-    .original-price {
-      text-decoration: line-through;
-      opacity: 0.7;
-      font-size: 0.9em;
-      margin-right: 5px;
-    }
+    .glow-box{box-shadow:0 0 15px rgba(255,0,0,0.25);} 
+    .glow-red:hover{box-shadow:0 0 20px rgba(255,0,0,0.6);} 
 
-    /* navbar link overrides */
+    /* Offer timer */
+    .offer-timer {background: linear-gradient(90deg, #ff0000, #ff5e00, #ff0000); background-size: 200% 200%; animation: gradientShift 3s ease infinite; border: 2px solid #fff; box-shadow: 0 0 20px rgba(255, 0, 0, 0.35);} 
+    @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    .timer-digit { background: rgba(0, 0, 0, 0.65); border-radius: 8px; padding: 8px; min-width: 48px; text-align: center; font-variant-numeric: tabular-nums; }
+    .original-price { text-decoration: line-through; opacity: 0.7; font-size: 0.9em; margin-right: 5px; }
+
+    /* Navbar */
     .nav-link { color: #fff; }
     .nav-link:hover { color: #ff5555; }
 
-    /* mobile menu - FIXED: Initially hidden */
+    /* Mobile menu */
     #mobile-menu { display: none; }
     @media (max-width: 767px){
       nav.desktop { display: none; }
       #mobile-menu.active { display: block; }
     }
+
+    /* Content helpers */
+    .content-section { margin-bottom: 3rem; }
+    .trust-badge { background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1rem; text-align: center; transition: all 0.3s ease; }
+    .trust-badge:hover { transform: translateY(-5px); background: rgba(255,255,255,0.1); }
+    .testimonial-card { background: linear-gradient(145deg, #1a1a1a, #2a2a2a); border-left: 4px solid #ff0000; padding: 1.5rem; border-radius: 8px; }
+    .faq-item { border-bottom: 1px solid #333; padding: 1rem 0; }
+    .faq-question { cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
   </style>
 </head>
 <body class="min-h-screen bg-black text-white">
@@ -68,15 +86,15 @@
       <nav class="desktop hidden md:flex gap-6 text-sm font-medium">
         <a href="#home" class="nav-link hover:text-red-500">Home</a>
         <a href="#about" class="nav-link hover:text-red-500">About</a>
-        <a href="#contact" class="nav-link hover:text-red-500">Contact</a>
-        <a href="#privacy" class="nav-link hover:text-red-500">Privacy Policy</a>
         <a href="#apps" class="nav-link hover:text-red-500">Premium Apps</a>
         <a href="#vpns" class="nav-link hover:text-red-500">Premium VPNs</a>
         <a href="#iptv" class="nav-link hover:text-red-500">IPTV</a>
         <a href="#games" class="nav-link hover:text-red-500">Games</a>
+        <a href="#contact" class="nav-link hover:text-red-500">Contact</a>
+        <a href="#privacy" class="nav-link hover:text-red-500">Privacy</a>
       </nav>
 
-      <!-- Mobile Menu Button -->
+      <!-- Mobile Buttons -->
       <div class="md:hidden flex items-center gap-2">
         <button id="btn-open-cart-mobile" class="relative rounded-xl px-3 py-2 border border-red-600 hover:shadow-sm transition flex items-center gap-2 text-red-500 hover:bg-red-600 hover:text-black">
           <i class="fa-solid fa-cart-shopping"></i>
@@ -98,7 +116,7 @@
       </div>
     </div>
 
-    <!-- Mobile menu - FIXED: Initially hidden -->
+    <!-- Mobile menu -->
     <div id="mobile-menu" class="bg-gray-900 border-t border-red-700 md:hidden">
       <div class="px-4 py-3 flex flex-col gap-2">
         <a href="#home" class="py-2 nav-link">Home</a>
@@ -108,7 +126,7 @@
         <a href="#iptv" class="py-2 nav-link">IPTV</a>
         <a href="#games" class="py-2 nav-link">Games</a>
         <a href="#contact" class="py-2 nav-link">Contact</a>
-        <a href="#privacy" class="py-2 nav-link">Privacy Policy</a>
+        <a href="#privacy" class="py-2 nav-link">Privacy</a>
       </div>
     </div>
   </header>
@@ -116,7 +134,7 @@
   <!-- Offer Timer Banner -->
   <div class="offer-timer text-white text-center py-3 px-4">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-3">
-      <span class="font-bold text-lg animate-pulse">🔥 30% OFF ON ALL SERVICES - LIMITED TIME OFFER!</span>
+      <span class="font-bold text-lg animate-pulse">🔥 30% OFF ON ALL SERVICES - ENDING SOON!</span>
       <div class="flex items-center gap-2">
         <span>Ends in:</span>
         <div class="flex gap-2 items-center">
@@ -136,6 +154,7 @@
           </div>
         </div>
       </div>
+      <a href="#apps" class="ml-4 bg-red-600 hover:bg-red-700 px-3 py-1 rounded text-sm font-medium transition">SHOP NOW</a>
     </div>
   </div>
 
@@ -165,41 +184,146 @@
       <img src="https://images.unsplash.com/photo-1553484771-898ed465e931?auto=format&fit=crop&w=1920&q=80" alt="Digital services background" class="w-full h-full object-cover opacity-10">
     </div>
     <div class="relative max-w-5xl mx-auto px-4 py-24 text-center">
-      <h1 class="text-5xl font-extrabold mb-6 text-white">GROWZIO – PREMIUM APPS & VPNS AT LOWEST PRICE</h1>
-      <p class="text-lg opacity-90 mb-8">Get Netflix Premium, CapCut Pro, Canva Pro, Spotify, ExpressVPN, NordVPN, IPTV, PUBG UC & more. Pay easily via JazzCash, Easypaisa & Binance.</p>
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-6 text-white">Premium Apps & VPNs in Pakistan at Lowest Prices</h1>
+      <p class="text-lg opacity-90 mb-8">Get 100% genuine Netflix Premium, Spotify, Canva Pro, ExpressVPN, IPTV subscriptions and gaming top-ups. Pay easily via JazzCash, Easypaisa & Binance with instant delivery.</p>
+
+      <!-- Trust badges -->
+      <div class="flex flex-wrap justify-center gap-4 mb-8">
+        <div class="trust-badge">
+          <i class="fa-solid fa-bolt text-red-500 text-2xl mb-2"></i>
+          <p class="text-sm">Instant Delivery</p>
+        </div>
+        <div class="trust-badge">
+          <i class="fa-solid fa-shield-halved text-red-500 text-2xl mb-2"></i>
+          <p class="text-sm">100% Genuine</p>
+        </div>
+        <div class="trust-badge">
+          <i class="fa-solid fa-headset text-red-500 text-2xl mb-2"></i>
+          <p class="text-sm">24/7 Support</p>
+        </div>
+      </div>
+
       <div class="mb-6 bg-red-600/20 border border-red-500 rounded-lg p-3 inline-block">
-        <span class="font-bold text-red-300">🔥 Special Offer: 30% OFF on all services!</span>
+        <span class="font-bold text-red-300">🔥 Special Limited Offer: 30% OFF on all services!</span>
       </div>
       <br>
-      <a href="#apps" class="bg-red-600 text-white font-semibold px-6 py-3 rounded-xl shadow hover:bg-red-700 glow-red transition">Start Shopping</a>
+      <a href="#apps" class="bg-red-600 text-white font-semibold px-6 py-3 rounded-xl shadow hover:bg-red-700 glow-red transition">Browse All Products</a>
     </div>
   </section>
 
   <!-- About -->
-  <section id="about" class="max-w-6xl mx-auto px-4 py-16 text-center">
+  <section id="about" class="max-w-6xl mx-auto px-4 py-16 content-section text-center">
     <h2 class="text-3xl font-bold mb-6">ABOUT GROWZIO</h2>
     <p class="text-lg text-gray-300 leading-relaxed">GROWZIO is your trusted digital store for <strong>premium apps, VPNs, IPTV, and gaming services</strong>. We provide 100% genuine subscriptions like <em>Netflix, Spotify, Canva Pro, ExpressVPN, NordVPN</em>, and more – at affordable rates in Pakistan. With secure payments via <strong>JazzCash, Easypaisa, and Binance</strong>, we make it simple and safe to upgrade your digital experience.</p>
   </section>
 
-  <!-- Product Sections -->
-  <section id="apps" class="max-w-7xl mx-auto px-4 py-16">
-    <h2 class="text-3xl font-bold text-center mb-12">PREMIUM APPS</h2>
+  <!-- How It Works -->
+  <section class="max-w-6xl mx-auto px-4 py-16 bg-gray-900 rounded-xl content-section">
+    <h2 class="text-3xl font-bold mb-10 text-center">How It Works</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="text-center">
+        <div class="bg-red-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-white font-bold text-xl">1</span></div>
+        <h3 class="font-bold mb-2">Select Product</h3>
+        <p class="text-gray-400">Choose from our wide range of premium apps, VPNs, IPTV & gaming services</p>
+      </div>
+      <div class="text-center">
+        <div class="bg-red-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-white font-bold text-xl">2</span></div>
+        <h3 class="font-bold mb-2">Make Payment</h3>
+        <p class="text-gray-400">Pay easily via JazzCash, Easypaisa, or Binance</p>
+      </div>
+      <div class="text-center">
+        <div class="bg-red-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-white font-bold text-xl">3</span></div>
+        <h3 class="font-bold mb-2">Receive Instantly</h3>
+        <p class="text-gray-400">Get your product credentials instantly via WhatsApp</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section id="apps" class="max-w-7xl mx-auto px-4 py-16 content-section">
+    <h2 class="text-3xl font-bold text-center mb-4">PREMIUM APPS SUBSCRIPTIONS</h2>
+    <p class="text-center text-gray-400 mb-12">Get premium app subscriptions at the lowest prices in Pakistan with instant delivery</p>
     <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="apps-list"></div>
   </section>
 
-  <section id="vpns" class="max-w-7xl mx-auto px-4 py-16">
-    <h2 class="text-3xl font-bold text-center mb-12">PREMIUM VPNS</h2>
+  <section id="vpns" class="max-w-7xl mx-auto px-4 py-16 content-section">
+    <h2 class="text-3xl font-bold text-center mb-4">PREMIUM VPNS</h2>
+    <p class="text-center text-gray-400 mb-12">Fast, secure & unlimited bandwidth VPNs</p>
     <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="vpns-list"></div>
   </section>
 
-  <section id="iptv" class="max-w-7xl mx-auto px-4 py-16">
-    <h2 class="text-3xl font-bold text-center mb-12">IPTV SERVICES</h2>
+  <section id="iptv" class="max-w-7xl mx-auto px-4 py-16 content-section">
+    <h2 class="text-3xl font-bold text-center mb-4">IPTV SERVICES</h2>
+    <p class="text-center text-gray-400 mb-12">10,000+ channels & VOD with up to 4K support</p>
     <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="iptv-list"></div>
   </section>
 
-  <section id="games" class="max-w-7xl mx-auto px-4 py-16">
-    <h2 class="text-3xl font-bold text-center mb-12">GAMES SERVICES</h2>
+  <section id="games" class="max-w-7xl mx-auto px-4 py-16 content-section">
+    <h2 class="text-3xl font-bold text-center mb-4">GAMES SERVICES</h2>
+    <p class="text-center text-gray-400 mb-12">Instant game top-ups & currency</p>
     <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="games-list"></div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="max-w-6xl mx-auto px-4 py-16 content-section">
+    <h2 class="text-3xl font-bold text-center mb-12">What Our Customers Say</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="testimonial-card">
+        <div class="flex items-center mb-4 text-yellow-400">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="text-gray-300 mb-4">"Got my Netflix premium account within minutes of payment. Genuine service at best price!"</p>
+        <p class="text-white font-medium">- Ali R.</p>
+      </div>
+      <div class="testimonial-card">
+        <div class="flex items-center mb-4 text-yellow-400">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="text-gray-300 mb-4">"Best place to buy PUBG UC in Pakistan. Instant delivery and great support."</p>
+        <p class="text-white font-medium">- Ahmed K.</p>
+      </div>
+      <div class="testimonial-card">
+        <div class="flex items-center mb-4 text-yellow-400">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="text-gray-300 mb-4">"Purchased ExpressVPN for year. Working perfectly and much cheaper than official website."</p>
+        <p class="text-white font-medium">- Fatima S.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="max-w-4xl mx-auto px-4 py-16 content-section">
+    <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3 class="font-medium">How quickly will I receive my product after payment?</h3>
+          <i class="fa-solid fa-chevron-down text-red-500"></i>
+        </div>
+        <div class="faq-answer mt-2 text-gray-400">
+          <p>We provide instant delivery! You'll receive your product credentials within minutes after successful payment verification.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3 class="font-medium">Are these subscriptions genuine?</h3>
+          <i class="fa-solid fa-chevron-down text-red-500"></i>
+        </div>
+        <div class="faq-answer mt-2 text-gray-400">
+          <p>Yes, all our subscriptions are 100% genuine and come with warranty.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3 class="font-medium">What payment methods do you accept?</h3>
+          <i class="fa-solid fa-chevron-down text-red-500"></i>
+        </div>
+        <div class="faq-answer mt-2 text-gray-400">
+          <p>We accept JazzCash, Easypaisa, and Binance payments for customer convenience.</p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Privacy -->
@@ -268,153 +392,159 @@ const games=[
 /* -------------------------
    Utility & Rendering
    ------------------------- */
-function getDiscountedPrice(originalPrice) {
-  return Math.round(originalPrice * 0.7);
+function getDiscountedPrice(originalPrice) { return Math.round(originalPrice * 0.7); }
+
+function productDescription(category){
+  if(category==='apps') return 'Premium subscription with full features access';
+  if(category==='vpns') return 'High-speed VPN with unlimited bandwidth';
+  if(category==='iptv') return '10,000+ channels & VOD with 4K support';
+  return 'Instant delivery with secure transaction';
 }
 
-function renderProducts(list,containerId){
+function renderProducts(list,containerId,category){
   const container=document.getElementById(containerId);
   list.forEach((item,i)=>{
     const originalPrice=500+i*100;
-    const discountedPrice = getDiscountedPrice(originalPrice);
-    const card=document.createElement("div");
-    card.className="bg-gray-950 rounded-xl border border-red-600 glow-box p-4 transition transform hover:-translate-y-1 hover:glow-red";
+    const discountedPrice=getDiscountedPrice(originalPrice);
+    const card=document.createElement('div');
+    card.className='bg-gray-950 rounded-xl border border-red-600 glow-box p-4 transition transform hover:-translate-y-1 hover:glow-red h-full flex flex-col';
     card.innerHTML=`
-      <img src='${item.img}' alt='${item.name}' class='rounded mb-3 h-32 w-full object-contain bg-black p-2'>
+      <img src='${item.img}' alt='${item.name} subscription Pakistan' class='rounded mb-3 h-32 w-full object-contain bg-black p-2'>
       <h3 class='font-bold mb-2 line-clamp-2 text-white'>${item.name}</h3>
-      <div class='flex items-center justify-between'>
+      <p class='text-gray-400 text-sm mb-3 flex-grow'>${productDescription(category)}</p>
+      <div class='flex items-center justify-between mt-auto'>
         <div>
           <span class='original-price'>${originalPrice} PKR</span>
           <span class='font-semibold text-white'>${discountedPrice} PKR</span>
         </div>
-        <button class='add-to-cart bg-red-600 text-white text-sm px-3 py-1 rounded-lg hover:bg-red-700 transition' 
-          data-name='${item.name}' data-price='${discountedPrice}'>Add to Cart</button>
+        <button class='add-to-cart bg-red-600 text-white text-sm px-3 py-1 rounded-lg hover:bg-red-700 transition' data-name='${item.name}' data-price='${discountedPrice}'>Add to Cart</button>
       </div>`;
     container.appendChild(card);
   });
 }
 
-renderProducts(apps,"apps-list");
-renderProducts(vpns,"vpns-list");
-renderProducts(iptv,"iptv-list");
-renderProducts(games,"games-list");
+renderProducts(apps,'apps-list','apps');
+renderProducts(vpns,'vpns-list','vpns');
+renderProducts(iptv,'iptv-list','iptv');
+renderProducts(games,'games-list','games');
 
 /* -------------------------
    Cart Logic
    ------------------------- */
 let cart=[];
 function updateCartDisplays(){
-  const count = cart.length;
-  document.getElementById("cart-count").textContent = count;
-  const mobileCount = document.getElementById("cart-count-mobile");
-  if(mobileCount) mobileCount.textContent = count;
+  const count=cart.length;
+  const cartCount=document.getElementById('cart-count');
+  if(cartCount) cartCount.textContent=count;
+  const mobileCount=document.getElementById('cart-count-mobile');
+  if(mobileCount) mobileCount.textContent=count;
 }
 
-document.addEventListener("click", e=>{
-  // Add to cart
-  if(e.target.matches(".add-to-cart") || e.target.closest(".add-to-cart")){
-    const btn = e.target.closest(".add-to-cart");
-    const name = btn.dataset.name;
-    const price = parseInt(btn.dataset.price);
-    cart.push({name, price});
+// Add to cart
+addEventListener('click', e=>{
+  if(e.target.matches('.add-to-cart') || e.target.closest('.add-to-cart')){
+    const btn=e.target.closest('.add-to-cart');
+    const name=btn.dataset.name; const price=parseInt(btn.dataset.price);
+    cart.push({name,price});
     updateCartDisplays();
   }
 });
 
-document.getElementById("btn-open-cart").onclick = openCartModal;
-document.getElementById("btn-open-cart-mobile")?.addEventListener("click", openCartModal);
-
+// Open cart modal
 function openCartModal(){
-  const modal=document.getElementById("cart-modal");
-  const items=document.getElementById("cart-items");
-  const total=document.getElementById("cart-total");
-  items.innerHTML="";
-  let sum=0;
-  cart.forEach((c, idx)=>{
-    sum+=c.price;
-    items.innerHTML+=`<p>${idx+1}. ${c.name} – ${c.price} PKR</p>`;
-  });
+  const modal=document.getElementById('cart-modal');
+  const items=document.getElementById('cart-items');
+  const total=document.getElementById('cart-total');
+  items.innerHTML=''; let sum=0;
+  cart.forEach((c,idx)=>{ sum+=c.price; items.innerHTML+=`<p>${idx+1}. ${c.name} – ${c.price} PKR</p>`; });
   total.textContent=sum;
-  try { modal.showModal(); } catch(err){ console.warn(err); }
+  try{ modal.showModal(); }catch(err){ console.warn(err); }
 }
 
-/* Confirm order -> open whatsapp with filled message */
-document.getElementById("confirm-order").onclick=()=>{
-  if(cart.length===0){ alert("Cart is empty!"); return; }
-  const method = document.querySelector("input[name='payment']:checked").value;
-  let text = "🛒 *New Order*%0A";
-  cart.forEach(c => { text += `- ${c.name} (${c.price} PKR)%0A`; });
-  const total = document.getElementById("cart-total").textContent;
-  text += `%0A💰 Total: ${total} PKR`;
-  text += `%0A📲 Payment Method: ${method}`;
-  // open whatsapp with user (autofill)
-  const waNumber = "923195179084";
-  window.open(`https://wa.me/${waNumber}?text=${text}`, "_blank");
+document.getElementById('btn-open-cart')?.addEventListener('click', openCartModal);
+document.getElementById('btn-open-cart-mobile')?.addEventListener('click', openCartModal);
+
+// Confirm order (WhatsApp)
+document.getElementById('confirm-order').onclick=()=>{
+  if(cart.length===0){ alert('Cart is empty!'); return; }
+  const method=document.querySelector("input[name='payment']:checked").value;
+  let text='🛒 *New Order*%0A';
+  cart.forEach(c=>{ text+=`- ${c.name} (${c.price} PKR)%0A`; });
+  const total=document.getElementById('cart-total').textContent;
+  text+=`%0A💰 Total: ${total} PKR`;
+  text+=`%0A📲 Payment Method: ${method}`;
+  const waNumber='923195179084';
+  window.open(`https://wa.me/${waNumber}?text=${text}`,'_blank');
 };
 
 /* -------------------------
    Offer Timer Logic (24 hours from page load)
    ------------------------- */
-const OFFER_DURATION_MS = 24 * 60 * 60 * 1000; // 24h
-const endTime = new Date(Date.now() + OFFER_DURATION_MS);
-
-function updateTimer() {
-  const now = new Date();
-  const timeLeft = endTime - now;
-
-  if (timeLeft <= 0) {
-    document.getElementById('hours').textContent = '00';
-    document.getElementById('minutes').textContent = '00';
-    document.getElementById('seconds').textContent = '00';
-    // optionally hide banner:
-    // document.querySelector('.offer-timer').style.display='none';
+const OFFER_DURATION_MS=24*60*60*1000; // 24h
+const endTime=new Date(Date.now()+OFFER_DURATION_MS);
+function updateTimer(){
+  const now=new Date(); const timeLeft=endTime-now;
+  if(timeLeft<=0){
+    ['hours','minutes','seconds'].forEach(id=>document.getElementById(id).textContent='00');
     return;
   }
-
-  const hours = Math.floor(timeLeft / (1000 * 60 * 60));
-  const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-  document.getElementById('hours').textContent = hours.toString().padStart(2,'0');
-  document.getElementById('minutes').textContent = minutes.toString().padStart(2,'0');
-  document.getElementById('seconds').textContent = seconds.toString().padStart(2,'0');
+  const hours=Math.floor(timeLeft/(1000*60*60));
+  const minutes=Math.floor((timeLeft%(1000*60*60))/(1000*60));
+  const seconds=Math.floor((timeLeft%(1000*60))/1000);
+  document.getElementById('hours').textContent=hours.toString().padStart(2,'0');
+  document.getElementById('minutes').textContent=minutes.toString().padStart(2,'0');
+  document.getElementById('seconds').textContent=seconds.toString().padStart(2,'0');
 }
-updateTimer();
-setInterval(updateTimer, 1000);
+updateTimer(); setInterval(updateTimer,1000);
 
 /* -------------------------
-   Mobile menu toggle - FIXED
+   Mobile menu toggle
    ------------------------- */
-const mobileToggle = document.getElementById('mobile-toggle');
-const mobileMenu = document.getElementById('mobile-menu');
+const mobileToggle=document.getElementById('mobile-toggle');
+const mobileMenu=document.getElementById('mobile-menu');
 if(mobileToggle){
-  mobileToggle.addEventListener('click', ()=>{
-    const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+  mobileToggle.addEventListener('click',()=>{
+    const expanded=mobileToggle.getAttribute('aria-expanded')==='true';
     mobileToggle.setAttribute('aria-expanded', String(!expanded));
     mobileMenu.classList.toggle('active');
   });
-  // close menu when clicking a link (smooth)
-  mobileMenu.querySelectorAll('a').forEach(a=>{
-    a.addEventListener('click', ()=> mobileMenu.classList.remove('active'));
-  });
+  mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mobileMenu.classList.remove('active')));
 }
 
 /* -------------------------
-   Smooth scroll for anchor links
+   Smooth anchor scroll
    ------------------------- */
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click', function(e){
-    const target = document.querySelector(this.getAttribute('href'));
-    if(target){
-      e.preventDefault();
-      target.scrollIntoView({behavior:'smooth', block:'start'});
-    }
+document.querySelectorAll("a[href^='#']").forEach(a=>{
+  a.addEventListener('click',function(e){
+    const target=document.querySelector(this.getAttribute('href'));
+    if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth', block:'start'}); }
   });
 });
 
 /* -------------------------
-   Initialize cart UI count
+   ScrollReveal (subtle)
    ------------------------- */
+try{
+  const sr=ScrollReveal({distance:'20px', duration:700, easing:'ease', origin:'bottom', interval:80});
+  sr.reveal('#apps .grid > div');
+  sr.reveal('#vpns .grid > div');
+  sr.reveal('#iptv .grid > div');
+  sr.reveal('#games .grid > div');
+}catch(err){ console.warn('ScrollReveal not loaded:', err); }
+
+/* -------------------------
+   FAQ Toggle
+   ------------------------- */
+document.querySelectorAll('.faq-question').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const answer=q.nextElementSibling; const icon=q.querySelector('i');
+    answer.classList.toggle('hidden');
+    icon.classList.toggle('fa-chevron-down');
+    icon.classList.toggle('fa-chevron-up');
+  });
+});
+
+/* Init cart badge */
 updateCartDisplays();
 </script>
 </body>
