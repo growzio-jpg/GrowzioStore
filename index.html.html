@@ -1,2913 +1,2525 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creative Designs | Graphic Design Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Global Styles */
-        :root {
-            --primary-color: #6c63ff;
-            --secondary-color: #4d44db;
-            --accent-color: #ff6584;
-            --dark-color: #2d2d2d;
-            --light-color: #f8f9fa;
-            --gray-color: #6c757d;
-            --light-gray: #e9ecef;
-            --transition: all 0.3s ease;
-            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            --border-radius: 8px;
-            --neon-glow: 0 0 10px rgba(108, 99, 255, 0.8), 0 0 20px rgba(108, 99, 255, 0.6), 0 0 30px rgba(108, 99, 255, 0.4);
-            --card-bg: #ffffff;
-            --text-color: #2d2d2d;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: var(--dark-color);
-            background-color: #fff;
-            overflow-x: hidden;
-            /* Prevent text selection */
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-
-        /* Removed security warning popup styles */
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        section {
-            padding: 80px 0;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 15px;
-        }
-
-        p {
-            margin-bottom: 15px;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            /* Prevent image dragging */
-            -webkit-user-drag: none;
-            -khtml-user-drag: none;
-            -moz-user-drag: none;
-            -o-user-drag: none;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--primary-color));
-            background-size: 200% 200%;
-            z-index: -1;
-            transition: var(--transition);
-            opacity: 0;
-        }
-
-        .btn:hover::before {
-            opacity: 1;
-            animation: gradientBG 3s ease infinite;
-        }
-
-        @keyframes gradientBG {
-            0% {background-position: 0% 50%;}
-            50% {background-position: 100% 50%;}
-            100% {background-position: 0% 50%;}
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--box-shadow), var(--neon-glow);
-        }
-
-        .btn.secondary {
-            background-color: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-            margin-left: 15px;
-        }
-
-        .btn.secondary:hover {
-            background-color: var(--primary-color);
-            color: white;
-            box-shadow: var(--neon-glow);
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 15px;
-            position: relative;
-        }
-
-        .section-title span {
-            color: var(--primary-color);
-            text-shadow: 0 0 5px rgba(108, 99, 255, 0.3);
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--gray-color);
-            margin-bottom: 50px;
-            font-size: 1.1rem;
-        }
-
-        /* Header Styles */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-        }
-
-        header.scrolled {
-            background-color: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            padding: 10px 0;
-        }
-
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--dark-color);
-            position: relative;
-        }
-
-        .logo::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.5s ease;
-            z-index: -1;
-        }
-
-        .logo:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-
-        .logo span {
-            color: var(--primary-color);
-            text-shadow: 0 0 5px rgba(108, 99, 255, 0.3);
-        }
-
-        nav ul {
-            display: flex;
-        }
-
-        nav ul li {
-            margin-left: 30px;
-        }
-
-        nav ul li a {
-            font-weight: 500;
-            position: relative;
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary-color);
-            transition: var(--transition);
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--primary-color);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 180px 0 100px;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(108, 99, 255, 0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
-            background-size: cover;
-            z-index: 0;
-        }
-
-        .hero .container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-content {
-            flex: 1;
-            padding-right: 50px;
-            color: white;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero-content h1 span {
-            color: #fff;
-            position: relative;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-
-        .hero-content h1 span::after {
-            content: '';
-            position: absolute;
-            bottom: 5px;
-            left: 0;
-            width: 100%;
-            height: 10px;
-            background-color: rgba(108, 99, 255, 0.5);
-            z-index: -1;
-            border-radius: 5px;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .hero-image {
-            flex: 1;
-            position: relative;
-            perspective: 1000px;
-        }
-
-        .hero-image .image-main {
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            position: relative;
-            z-index: 1;
-            max-height: 500px;
-            object-fit: cover;
-            transform: rotateY(-10deg) rotateX(5deg);
-            transition: var(--transition);
-            border: 5px solid white;
-        }
-
-        .hero-image:hover .image-main {
-            transform: rotateY(0deg) rotateX(0deg);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), var(--neon-glow);
-        }
-
-        .hero-image .image-decoration {
-            position: absolute;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            z-index: 2;
-            bottom: -30px;
-            right: -30px;
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            border: 5px solid white;
-            transform: rotate(10deg);
-            transition: var(--transition);
-        }
-
-        .hero-image:hover .image-decoration {
-            transform: rotate(0deg) scale(1.05);
-        }
-
-        /* Services Section */
-        .services {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .services::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(108, 99, 255, 0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
-            background-size: cover;
-            z-index: -1;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .service-card {
-            background-color: white;
-            padding: 30px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            transition: var(--transition);
-            transform: scaleX(0);
-            transform-origin: left;
-        }
-
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), var(--neon-glow);
-        }
-
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            background-color: rgba(108, 99, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 2rem;
-            color: var(--primary-color);
-            transition: var(--transition);
-            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.2);
-        }
-
-        .service-card:hover .service-icon {
-            background-color: var(--primary-color);
-            color: white;
-            transform: rotateY(180deg);
-            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.4);
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .service-card h3::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary-color);
-            transition: var(--transition);
-        }
-
-        .service-card:hover h3::after {
-            width: 100%;
-        }
-
-        /* Portfolio Section */
-        .portfolio {
-            background-color: var(--light-color);
-            position: relative;
-        }
-
-        .portfolio::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(108, 99, 255, 0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
-            background-size: cover;
-            z-index: 0;
-        }
-
-        .portfolio-filter {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 40px;
-        }
-
-        .filter-btn {
-            padding: 8px 20px;
-            background-color: transparent;
-            border: 1px solid var(--light-gray);
-            border-radius: 30px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 500;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .filter-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            z-index: -1;
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.3s ease;
-        }
-
-        .filter-btn:hover, .filter-btn.active {
-            color: white;
-            border-color: var(--primary-color);
-        }
-
-        .filter-btn:hover::before, .filter-btn.active::before {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .portfolio-item {
-            position: relative;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-            height: 250px;
-            transition: var(--transition);
-        }
-
-        .portfolio-item:hover {
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), var(--neon-glow);
-        }
-
-        .portfolio-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .portfolio-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(108, 99, 255, 0.8), rgba(77, 68, 219, 0.9));
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 20px;
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-
-        .portfolio-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .portfolio-overlay h3 {
-            font-size: 1.5rem;
-            margin-bottom: 5px;
-        }
-
-        .portfolio-overlay p {
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-            opacity: 0.9;
-        }
-
-        .view-btn {
-            align-self: flex-start;
-            padding: 8px 20px;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
-
-        .view-btn:hover {
-            background-color: var(--dark-color);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .portfolio-cta {
-            text-align: center;
-            margin-top: 50px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .portfolio-cta p {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
-
-        /* About Section */
-        .about {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(108, 99, 255, 0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
-            background-size: cover;
-            z-index: -1;
-        }
-
-        .about .container {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-
-        .about-image {
-            flex: 1;
-            position: relative;
-        }
-
-        .about-image::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            width: 100%;
-            height: 100%;
-            border: 3px solid var(--primary-color);
-            border-radius: var(--border-radius);
-            z-index: -1;
-            transition: var(--transition);
-        }
-
-        .about-image:hover::before {
-            top: 0;
-            left: 0;
-            box-shadow: var(--neon-glow);
-        }
-
-        .about-image img {
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            width: 100%;
-            max-height: 600px;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .about-image:hover img {
-            transform: translate(-10px, -10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .about-content {
-            flex: 1;
-        }
-
-        .about-content p {
-            margin-bottom: 20px;
-        }
-
-        .skills {
-            margin-top: 30px;
-        }
-
-        .skill-bars {
-            margin-top: 20px;
-        }
-
-        .skill {
-            margin-bottom: 20px;
-        }
-
-        .skill p {
-            margin-bottom: 5px;
-            font-weight: 500;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .skill-bar {
-            width: 100%;
-            height: 8px;
-            background-color: var(--light-gray);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .skill-level {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            border-radius: 4px;
-            position: relative;
-            box-shadow: 0 0 5px rgba(108, 99, 255, 0.5);
-        }
-
-        /* Resume Section */
-        .resume {
-            background-color: var(--light-color);
-            position: relative;
-        }
-
-        .resume::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(108, 99, 255, 0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
-            background-size: cover;
-            z-index: -1;
-        }
-
-        .resume-container {
-            display: flex;
-            gap: 50px;
-            margin-top: 50px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .resume-content {
-            flex: 1;
-            background-color: white;
-            padding: 40px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-        }
-
-        .resume-content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), var(--neon-glow);
-        }
-
-        .resume-image {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .resume-image img {
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            max-width: 100%;
-            margin-bottom: 30px;
-            transition: var(--transition);
-        }
-
-        .resume-image img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 15px 30px;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
-        }
-
-        .download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(108, 99, 255, 0.5);
-        }
-
-        .download-btn i {
-            margin-right: 10px;
-            font-size: 1.2rem;
-            transition: var(--transition);
-        }
-
-        .download-btn:hover i {
-            animation: bounce 0.5s ease infinite alternate;
-        }
-
-        .download-btn::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            z-index: -1;
-            transition: var(--transition);
-            opacity: 0;
-        }
-
-        .download-btn:hover::after {
-            opacity: 1;
-            animation: gradientBG 3s ease infinite;
-        }
-
-        @keyframes bounce {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-5px); }
-        }
-
-        /* Website Design Projects Section */
-        .website-projects {
-            background: linear-gradient(135deg, #0f0c29, #302b63);
-            color: white;
-        }
-
-        .website-projects .section-title {
-            color: white;
-        }
-
-        .website-projects .section-subtitle {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .website-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .website-card {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            transition: var(--transition);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .website-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), var(--neon-glow);
-        }
-
-        .website-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .website-card-content {
-            padding: 20px;
-        }
-
-        .website-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: white;
-        }
-
-        .website-card p {
-            margin-bottom: 15px;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        /* Testimonials Section */
-        .testimonials {
-            background-color: var(--light-color);
-            position: relative;
-        }
-
-        .testimonials::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(108, 99, 255, 0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
-            background-size: cover;
-            z-index: 0;
-        }
-
-        .testimonial-slider {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .testimonial-slide {
-            display: none;
-            animation: fade 0.5s ease;
-        }
-
-        .testimonial-slide.active {
-            display: block;
-        }
-
-        .testimonial-content {
-            background-color: white;
-            padding: 40px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            text-align: center;
-            position: relative;
-            transition: var(--transition);
-        }
-
-        .testimonial-content:hover {
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), var(--neon-glow);
-        }
-
-        .testimonial-content p {
-            font-size: 1.1rem;
-            font-style: italic;
-            margin-bottom: 30px;
-            position: relative;
-        }
-
-        .testimonial-content p::before,
-        .testimonial-content p::after {
-            content: '"';
-            font-size: 2rem;
-            color: var(--primary-color);
-            opacity: 0.3;
-        }
-
-        .testimonial-content p::before {
-            margin-right: 5px;
-        }
-
-        .testimonial-content p::after {
-            margin-left: 5px;
-        }
-
-        .client-info {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .client-info img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--primary-color);
-            box-shadow: 0 0 10px rgba(108, 99, 255, 0.3);
-        }
-
-        .client-info h4 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .client-info p {
-            font-size: 0.9rem;
-            color: var(--gray-color);
-            margin-bottom: 0;
-            font-style: normal;
-            position: relative;
-            z-index: 2;
-        }
-
-        .slider-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 30px;
-            gap: 20px;
-        }
-
-        .slider-prev, .slider-next {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--gray-color);
-            cursor: pointer;
-            transition: var(--transition);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .slider-prev:hover, .slider-next:hover {
-            color: var(--primary-color);
-            background-color: rgba(108, 99, 255, 0.1);
-            box-shadow: 0 0 10px rgba(108, 99, 255, 0.2);
-        }
-
-        .slider-dots {
-            display: flex;
-            gap: 10px;
-        }
-
-        .slider-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: var(--light-gray);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .slider-dot.active {
-            background-color: var(--primary-color);
-            box-shadow: 0 0 5px rgba(108, 99, 255, 0.5);
-        }
-
-        @keyframes fade {
-            from {opacity: 0.4;}
-            to {opacity: 1;}
-        }
-
-        /* Contact Section */
-        .contact {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(108, 99, 255, 0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
-            background-size: cover;
-            z-index: 0;
-        }
-
-        .contact-container {
-            display: flex;
-            gap: 50px;
-            margin-top: 50px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .contact-info {
-            flex: 1;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-        }
-
-        .contact-method {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            background-color: white;
-            padding: 20px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-        }
-
-        .contact-method:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), var(--neon-glow);
-        }
-
-        .contact-method i {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-top: 5px;
-        }
-
-        .contact-method h3 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: var(--light-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            transition: var(--transition);
-            color: var(--dark-color);
-        }
-
-        .social-links a:hover {
-            background-color: var(--primary-color);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
-        }
-
-        .social-links a.whatsapp:hover {
-            background-color: #25D366;
-            color: white;
-        }
-
-        .social-links a.instagram:hover {
-            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
-            color: white;
-        }
-
-        .contact-form {
-            flex: 1;
-            background-color: white;
-            padding: 40px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-        }
-
-        .contact-form:hover {
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), var(--neon-glow);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid var(--light-gray);
-            border-radius: var(--border-radius);
-            font-family: inherit;
-            transition: var(--transition);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
-        }
-
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 80px 0 0;
-            position: relative;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(108, 99, 255, 0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
-            background-size: cover;
-            z-index: 0;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer-about .logo {
-            color: white;
-            display: block;
-            margin-bottom: 20px;
-        }
-
-        .footer-about p {
-            opacity: 0.8;
-        }
-
-        .footer-links h3,
-        .footer-services h3,
-        .footer-newsletter h3 {
-            color: white;
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-links h3::after,
-        .footer-services h3::after,
-        .footer-newsletter h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background-color: var(--primary-color);
-        }
-
-        .footer-links ul li,
-        .footer-services ul li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links ul li a:hover,
-        .footer-services ul li a:hover {
-            color: var(--primary-color);
-            padding-left: 5px;
-        }
-
-        .footer-newsletter p {
-            opacity: 0.8;
-            margin-bottom: 20px;
-        }
-
-        .footer-newsletter form {
-            display: flex;
-        }
-
-        .footer-newsletter input {
-            flex: 1;
-            padding: 12px 15px;
-            border: none;
-            border-radius: var(--border-radius) 0 0 var(--border-radius);
-            font-family: inherit;
-        }
-
-        .footer-newsletter button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 0 20px;
-            border-radius: 0 var(--border-radius) var(--border-radius) 0;
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-            z-index: 2;
-        }
-
-        .footer-newsletter button:hover {
-            background-color: var(--secondary-color);
-            box-shadow: var(--neon-glow);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer-bottom p {
-            opacity: 0.8;
-            margin-bottom: 0;
-        }
-
-        .footer-terms {
-            display: flex;
-            gap: 20px;
-        }
-
-        .footer-terms a:hover {
-            color: var(--primary-color);
-        }
-
-        /* Neon Elements */
-        .neon-border {
-            position: relative;
-        }
-
-        .neon-border::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border: 2px solid transparent;
-            border-radius: var(--border-radius);
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)) border-box;
-            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: destination-out;
-            mask-composite: exclude;
-            pointer-events: none;
-            animation: neonPulse 2s infinite alternate;
-        }
-
-        @keyframes neonPulse {
-            0% {box-shadow: 0 0 5px rgba(108, 99, 255, 0.5);}
-            100% {box-shadow: 0 0 20px rgba(108, 99, 255, 0.8);}
-        }
-
-        /* Chatbot Styles */
-        .chatbot-container {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 9999;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .chatbot-toggle {
-            width: 60px;
-            height: 60px;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .chatbot-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .chatbot-toggle i {
-            font-size: 1.5rem;
-        }
-
-        .chatbot-window {
-            width: 350px;
-            height: 500px;
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            display: none;
-            flex-direction: column;
-            transform: translateY(20px);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-
-        .chatbot-window.active {
-            display: flex;
-            transform: translateY(0);
-            opacity: 1;
-            position: relative;
-            z-index: 10000;
-        }
-
-        .chatbot-header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .chatbot-header h3 {
-            margin: 0;
-            font-size: 1.2rem;
-        }
-
-        .chatbot-close {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-        }
-
-        .chatbot-messages {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .message {
-            max-width: 80%;
-            padding: 10px 15px;
-            border-radius: 18px;
-            font-size: 0.9rem;
-            line-height: 1.4;
-        }
-
-        .bot-message {
-            background-color: var(--light-gray);
-            color: var(--text-color);
-            align-self: flex-start;
-            border-bottom-left-radius: 5px;
-        }
-
-        .user-message {
-            background-color: var(--primary-color);
-            color: white;
-            align-self: flex-end;
-            border-bottom-right-radius: 5px;
-        }
-
-        .quick-replies {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 10px;
-        }
-
-        .quick-reply {
-            background-color: rgba(108, 99, 255, 0.1);
-            color: var(--primary-color);
-            border: 1px solid var(--primary-color);
-            border-radius: 20px;
-            padding: 5px 12px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .quick-reply:hover {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .chatbot-input {
-            display: flex;
-            padding: 10px;
-            border-top: 1px solid var(--light-gray);
-            background-color: var(--card-bg);
-        }
-
-        .chatbot-input input {
-            flex: 1;
-            padding: 10px 15px;
-            border: 1px solid var(--light-gray);
-            border-radius: 30px;
-            outline: none;
-            font-family: inherit;
-            background-color: var(--card-bg);
-            color: var(--text-color);
-        }
-
-        .chatbot-input button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            margin-left: 10px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .chatbot-input button:hover {
-            background-color: var(--secondary-color);
-        }
-
-        /* Security overlay */
-        .security-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            z-index: 999999;
-            display: none;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .hero .container,
-            .about .container,
-            .resume-container {
-                flex-direction: column;
-            }
-            
-            .hero-content,
-            .about-content,
-            .resume-content {
-                padding-right: 0;
-                margin-bottom: 50px;
-                text-align: center;
-            }
-            
-            .hero-content h1 {
-                font-size: 2.8rem;
-            }
-            
-            .contact-container {
-                flex-direction: column;
-            }
-
-            .hero-image .image-decoration {
-                width: 150px;
-                height: 150px;
-                bottom: -20px;
-                right: -20px;
-            }
-
-            .resume-image {
-                order: -1;
-                margin-bottom: 30px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            section {
-                padding: 60px 0;
-            }
-            
-            .menu-toggle {
-                display: block;
-            }
-            
-            nav ul {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background-color: white;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                transition: var(--transition);
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            }
-            
-            nav ul.active {
-                left: 0;
-            }
-            
-            nav ul li {
-                margin: 15px 0;
-            }
-            
-            .hero {
-                padding: 150px 0 80px;
-            }
-            
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .portfolio-grid,
-            .website-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .btn.secondary {
-                margin-left: 0;
-                margin-top: 15px;
-            }
-
-            .hero-image .image-decoration {
-                width: 100px;
-                height: 100px;
-                bottom: -10px;
-                right: -10px;
-            }
-
-            .chatbot-window {
-                width: 300px;
-                height: 450px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .testimonial-content {
-                padding: 30px 20px;
-            }
-            
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .footer-terms {
-                justify-content: center;
-            }
-
-            .hero-image .image-decoration {
-                width: 80px;
-                height: 80px;
-                bottom: -5px;
-                right: -5px;
-            }
-
-            .chatbot-container {
-                bottom: 20px;
-                right: 20px;
-            }
-
-            .chatbot-window {
-                width: 280px;
-                height: 400px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Security overlay for protection -->
-    <div class="security-overlay" id="securityOverlay"></div>
+  <!-- Meta & SEO -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GROWZIO – Premium Apps, VPNs, IPTV & Gaming Services in Pakistan</title>
+  <meta name="description" content="Buy genuine premium apps, VPNs, IPTV & gaming services in Pakistan. Netflix, Spotify, Canva Pro, ExpressVPN, PUBG UC at lowest prices. Pay via JazzCash, Easypaisa, Binance." />
+  <meta name="keywords" content="premium apps Pakistan, buy Netflix cheap, VPN Pakistan, IPTV subscription, PUBG UC topup, Free Fire diamonds, Canva Pro Pakistan, Spotify Premium" />
+  <meta name="author" content="GROWZIO">
+  <meta name="geo.region" content="PK" />
+  <meta name="geo.placename" content="Pakistan" />
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://growzio.com/" />
+  
+  <!-- Preconnects -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>">
+
+  <!-- Libraries -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#CC5500',
+            secondary: '#005F73',
+            dark: '#0a0a0a',
+            lightbg: '#F8F9FA'
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "GROWZIO",
+    "description": "Premium digital services and subscriptions at affordable prices in Pakistan",
+    "url": "https://growzio.com",
+    "telephone": "+92-319-5179084",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "PK"
+    },
+    "openingHours": "Mo-Su 00:00-23:59",
+    "priceRange": "$$",
+    "sameAs": [
+      "https://wa.me/923195179084",
+      "https://www.tiktok.com/@its_hannni"
+    ]
+  }
+  </script>
+
+  <style>
+    /* Global */
+    :root {
+      --primary: #CC5500;       /* Burnt Orange for interactive elements */
+      --primary-dark: #A04300;  /* Darker shade for hover states */
+      --secondary: #005F73;     /* Deep Teal for headers, footers */
+      --secondary-dark: #004953; /* Darker teal */
+      --dark: #0a0a0a;          /* Keeping dark for text */
+      --light-bg: #F8F9FA;      /* Light off-white for backgrounds */
+      --light-text: #FFFFFF;    /* White for text on dark backgrounds */
+    }
     
-    <!-- Header/Navbar -->
-    <header>
-        <div class="container">
-            <a href="#" class="logo">Hanni<span>Coditz</span></a>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#resume">Resume</a></li>
-                    <li><a href="#websites">Websites</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div class="menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body { 
+      scroll-behavior: smooth; 
+      background-color: var(--light-bg);
+      color: #333;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+    }
+    
+    img { 
+      max-width: 100%;
+      height: auto;
+      loading: lazy; 
+    }
+    
+    h1, h2, h3, h4 {
+      color: var(--secondary);
+      line-height: 1.3;
+      font-weight: 700;
+    }
+    
+    h1, h2 {
+      text-transform: uppercase;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-ramp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    
+    dialog::backdrop {
+      background: rgba(0,0,0,.7);
+    }
+    
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(204, 85, 0, 0.2);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+    
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
+    
+    /* Code Protection Styles */
+    .no-select {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    
+    .no-context {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    
+    /* WhatsApp float */
+    .whatsapp-float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 20px;
+      right: 20px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 0 0 15px rgba(204, 85, 0, 0.35);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    .glow-box {
+      box-shadow: 0 0 15px rgba(204, 85, 0, 0.25);
+    } 
+    
+    .glow-orange:hover {
+      box-shadow: 0 0 20px rgba(204, 85, 0, 0.6);
+    }
+
+    /* Offer timer */
+    .offer-timer {
+      background: linear-gradient(90deg, var(--primary), #FF7F40, var(--primary)); 
+      background-size: 200% 200%; 
+      animation: gradientShift 3s ease infinite; 
+      border: 2px solid #fff; 
+      box-shadow: 0 0 20px rgba(204, 85, 0, 0.35);
+    } 
+    
+    @keyframes gradientShift { 
+      0% { background-position: 0% 50%; } 
+      50% { background-position: 100% 50%; } 
+      100% { background-position: 0% 50%; } 
+    }
+    
+    .timer-digit { 
+      background: rgba(0, 0, 0, 0.65); 
+      border-radius: 8px; 
+      padding: 8px; 
+      min-width: 48px; 
+      text-align: center; 
+      font-variant-numeric: tabular-nums; 
+    }
+    
+    .original-price { 
+      text-decoration: line-through; 
+      opacity: 0.7; 
+      font-size: 0.9em; 
+      margin-right: 5px; 
+    }
+
+    /* Navbar */
+    .nav-link { 
+      color: var(--light-text); 
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-link:hover { 
+      color: var(--primary); 
+    }
+
+    /* Mobile menu */
+    #mobile-menu { 
+      display: none; 
+    }
+    
+    @media (max-width: 767px) {
+      nav.desktop { 
+        display: none; 
+      }
+      
+      #mobile-menu.active { 
+        display: block; 
+      }
+    }
+
+    /* Content helpers */
+    .section {
+      padding: 4rem 0;
+    }
+    
+    .section:nth-child(even) {
+      background-color: #FFFFFF;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+    
+    .section-subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 3rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .trust-badge { 
+      background: rgba(0, 95, 115, 0.1); 
+      border-radius: 12px; 
+      padding: 1.5rem; 
+      text-align: center; 
+      transition: all 0.3s ease; 
+    }
+    
+    .trust-badge:hover { 
+      transform: translateY(-5px); 
+      background: rgba(0, 95, 115, 0.15); 
+    }
+    
+    .testimonial-card { 
+      background: linear-gradient(145deg, #f5f5f5, #e6e6e6); 
+      border-left: 4px solid var(--primary); 
+      padding: 1.5rem; 
+      border-radius: 8px; 
+      height: 100%;
+      color: #333;
+    }
+    
+    .faq-item { 
+      border-bottom: 1px solid #ddd; 
+      padding: 1rem 0; 
+    }
+    
+    .faq-question { 
+      cursor: pointer; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+    }
+    
+    /* Blog cards */
+    .blog-card {
+      background: linear-gradient(145deg, #f5f5f5, #e6e6e6);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      height: 100%;
+    }
+    
+    .blog-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .blog-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .blog-card-content {
+      padding: 1.5rem;
+    }
+    
+    /* Loading animation */
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(0,0,0,.3);
+      border-radius: 50%;
+      border-top-color: #333;
+      animation: spin 1s ease-in-out infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    /* Cart Modal Positioning - Increased size */
+    #cart-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+      width: 90%;
+      max-width: 800px;
+      max-height: 90vh;
+      overflow-y: auto;
+      background: var(--light-bg);
+      color: #333;
+    }
+    
+    /* Added to Cart Modal */
+    #added-to-cart-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+      max-width: 450px;
+      width: 90%;
+      background: var(--light-bg);
+      color: #333;
+    }
+    
+    /* New Animations */
+    .float-animation {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0% { transform: translatey(0px); }
+      50% { transform: translatey(-20px); }
+      100% { transform: translatey(0px); }
+    }
+    
+    .typewriter {
+      overflow: hidden;
+      border-right: .15em solid var(--primary);
+      white-space: nowrap;
+      margin: 0 auto;
+      letter-spacing: .15em;
+      animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+    }
+    
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: var(--primary); }
+    }
+    
+    .gradient-text {
+      background: linear-gradient(to right, var(--primary), #FF7F40);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 300% 300%;
+      animation: gradient 3s ease infinite;
+    }
+    
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .parallax {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    
+    .shine {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .shine::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: rgba(255,255,255,0.1);
+      transform: rotate(45deg);
+      animation: shine 3s infinite;
+    }
+    
+    @keyframes shine {
+      0% { transform: translateX(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) rotate(45deg); }
+    }
+    
+    /* Payment page styles */
+    .payment-container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+      flex-grow: 1;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .payment-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .payment-option {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid #ddd;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+    
+    .payment-option:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(204, 85, 0, 0.2);
+      border-color: var(--primary);
+    }
+    
+    .payment-logo {
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    
+    .payment-logo img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+    }
+    
+    .payment-details {
+      margin: 1rem 0;
+      padding: 1rem;
+      background: rgba(0,0,0,0.03);
+      border-radius: 8px;
+    }
+    
+    .payment-detail-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .payment-detail-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    
+    .payment-instruction {
+      background: rgba(204, 85, 0, 0.1);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      border-left: 4px solid var(--primary);
+    }
+    
+    .confirm-payment-btn {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 2rem;
+    }
+    
+    .confirm-payment-btn:hover {
+      background: var(--primary-dark);
+    }
+    
+    .order-summary {
+      background: #f9f9f9;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .order-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .order-total {
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 2px solid var(--primary);
+    }
+    
+    /* Bundles Section Styles */
+    .bundles-header {
+      text-align: center;
+      margin-bottom: 50px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .bundles-title {
+      font-size: 3.5rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+      letter-spacing: 2px;
+    }
+    
+    .bundles-subtitle {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 30px;
+    }
+    
+    .bundles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .bundle-card {
+      background: linear-gradient(145deg, #E6F4F7, #C4E8F0);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s, box-shadow 0.4s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+    }
+    
+    .bundle-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(204, 85, 0, 0.3);
+    }
+    
+    .bundle-product-container {
+      width: 100%;
+      height: 320px;
+      perspective: 1200px;
+      margin-bottom: 20px;
+    }
+    
+    .bundle-product {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      border-radius: 12px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+    
+    .bundle-product-front, .bundle-product-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background: #fff;
+    }
+    
+    .bundle-product-back {
+      transform: rotateY(180deg);
+      background: linear-gradient(45deg, var(--secondary), #0080A0);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px;
+      text-align: left;
+      color: white;
+    }
+    
+    .bundle-product-back h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: #fff;
+      text-align: center;
+    }
+    
+    .bundle-product-back ul {
+      padding-left: 20px;
+      margin-bottom: 15px;
+    }
+    
+    .bundle-product-back li {
+      font-size: 0.9rem;
+      color: #e2e2e2;
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    
+    .bundle-product-back p {
+      font-size: 1rem;
+      color: #e2e2e2;
+      line-height: 1.5;
+      text-align: center;
+    }
+    
+    .bundle-product img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    
+    .bundle-card h2 {
+      font-size: 1.6rem;
+      margin: 15px 0;
+      color: var(--secondary);
+    }
+    
+    .bundle-price-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px 0;
+    }
+    
+    .bundle-original-price {
+      font-size: 1.1rem;
+      color: #777;
+      text-decoration: line-through;
+    }
+    
+    .bundle-sale-price {
+      font-size: 1.4rem;
+      color: var(--primary);
+      font-weight: bold;
+    }
+    
+    .bundle-btn {
+      display: inline-block;
+      padding: 14px 30px;
+      margin-top: 15px;
+      background: linear-gradient(45deg, var(--primary), #E3712A);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s;
+      box-shadow: 0 5px 15px rgba(204, 85, 0, 0.4);
+    }
+    
+    .bundle-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(204, 85, 0, 0.6);
+      background: linear-gradient(45deg, #E3712A, var(--primary));
+    }
+    
+    .bundle-card.active .bundle-product {
+      animation: rotate3d 15s linear infinite;
+    }
+    
+    @keyframes rotate3d {
+      0% {
+        transform: rotateY(0deg);
+      }
+      25% {
+        transform: rotateY(90deg);
+      }
+      50% {
+        transform: rotateY(180deg);
+      }
+      75% {
+        transform: rotateY(270deg);
+      }
+      100% {
+        transform: rotateY(360deg);
+      }
+    }
+    
+    /* Books Section Styles */
+    .books-header {
+      text-align: center;
+      margin-bottom: 50px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .books-title {
+      font-size: 3.5rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+      letter-spacing: 2px;
+    }
+    
+    .books-subtitle {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 30px;
+    }
+    
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .book-card {
+      background: linear-gradient(145deg, #F5E6F7, #E8C4F0);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s, box-shadow 0.4s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+    }
+    
+    .book-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(204, 85, 0, 0.3);
+    }
+    
+    .book-product-container {
+      width: 100%;
+      height: 320px;
+      perspective: 1200px;
+      margin-bottom: 20px;
+    }
+    
+    .book-product {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      border-radius: 12px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+    
+    .book-product-front, .book-product-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background: #fff;
+    }
+    
+    .book-product-back {
+      transform: rotateY(180deg);
+      background: linear-gradient(45deg, var(--secondary), #0080A0);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px;
+      text-align: left;
+      color: white;
+    }
+    
+    .book-product-back h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: #fff;
+      text-align: center;
+    }
+    
+    .book-product-back ul {
+      padding-left: 20px;
+      margin-bottom: 15px;
+    }
+    
+    .book-product-back li {
+      font-size: 0.9rem;
+      color: #e2e2e2;
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    
+    .book-product-back p {
+      font-size: 1rem;
+      color: #e2e2e2;
+      line-height: 1.5;
+      text-align: center;
+    }
+    
+    .book-product img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    
+    .book-card h2 {
+      font-size: 1.6rem;
+      margin: 15px 0;
+      color: var(--secondary);
+    }
+    
+    .book-price-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px 0;
+    }
+    
+    .book-original-price {
+      font-size: 1.1rem;
+      color: #777;
+      text-decoration: line-through;
+    }
+    
+    .book-sale-price {
+      font-size: 1.4rem;
+      color: var(--primary);
+      font-weight: bold;
+    }
+    
+    .book-btn {
+      display: inline-block;
+      padding: 14px 30px;
+      margin-top: 15px;
+      background: linear-gradient(45deg, var(--primary), #E3712A);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s;
+      box-shadow: 0 5px 15px rgba(204, 85, 0, 0.4);
+    }
+    
+    .book-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(204, 85, 0, 0.6);
+      background: linear-gradient(45deg, #E3712A, var(--primary));
+    }
+    
+    .book-card.active .book-product {
+      animation: rotate3d 15s linear infinite;
+    }
+    
+    /* Dropdown styling */
+    select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 1em;
+    }
+    
+    select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(204, 85, 0, 0.2);
+    }
+
+    /* Chatbot Styles - Removed as requested */
+    .chatbot-container {
+      display: none;
+    }
+    
+    .chatbot-toggle {
+      display: none;
+    }
+    
+    @media (max-width: 768px) {
+      .bundles-grid,
+      .books-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+      }
+      
+      .bundles-title,
+      .books-title {
+        font-size: 2.5rem;
+      }
+      
+      .bundle-product-container,
+      .book-product-container {
+        height: 280px;
+      }
+      
+      .payment-options {
+        grid-template-columns: 1fr;
+      }
+      
+      .payment-container {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+      
+      #cart-modal,
+      #added-to-cart-modal {
+        width: 95%;
+        max-width: none;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .typewriter {
+        animation: none;
+        border-right: none;
+        white-space: normal;
+      }
+    }
+
+    /* Review Section Styles */
+    .review-form-container {
+      padding: 1.5rem;
+      background: white;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    .reviews-container {
+      padding: 1.5rem;
+      background: white;
+      border-radius: 8px;
+      max-height: 500px;
+      overflow-y: auto;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background-color: white;
+      color: #333;
+      font-size: 1rem;
+    }
+
+    select.form-control {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 15px center;
+      background-size: 16px;
+    }
+
+    .success-message {
+      background: rgba(0, 200, 0, 0.2);
+      color: #4CAF50;
+      padding: 12px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      text-align: center;
+      border: 1px solid #4CAF50;
+    }
+
+    .review-item {
+      padding: 15px;
+      border-bottom: 1px solid #eee;
+      margin-bottom: 15px;
+      background: #f9f9f9;
+      border-radius: 8px;
+    }
+
+    .review-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      align-items: center;
+    }
+
+    .username {
+      font-weight: 600;
+      color: var(--secondary);
+    }
+
+    .rating {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .review-text {
+      color: #444;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .product {
+      color: #666;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    .review-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      color: #777;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-lightbg text-dark no-context" oncontextmenu="return false">
+
+  <!-- Navbar -->
+  <header class="sticky top-0 z-40 bg-secondary backdrop-blur border-b border-primary">
+    <div class="container py-3 flex items-center justify-between">
+      <a href="#home" class="font-extrabold text-xl text-white flex items-center no-select">
+        <span class="text-primary mr-1">🔥</span> GROWZIO
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="desktop hidden md:flex gap-6 text-sm font-medium">
+        <a href="#home" class="nav-link hover:text-primary no-select">Home</a>
+        <a href="#about" class="nav-link hover:text-primary no-select">About</a>
+        <a href="#apps" class="nav-link hover:text-primary no-select">Premium Apps</a>
+        <a href="#iptv" class="nav-link hover:text-primary no-select">IPTV</a>
+        <a href="#games" class="nav-link hover:text-primary no-select">Games</a>
+        <a href="#bundles" class="nav-link hover:text-primary no-select">Bundles</a>
+        <a href="#books" class="nav-link hover:text-primary no-select">Books</a>
+        <a href="#contact" class="nav-link hover:text-primary no-select">Contact</a>
+      </nav>
+
+      <!-- Mobile Buttons -->
+      <div class="md:hidden flex items-center gap-2">
+        <button id="btn-open-cart-mobile" class="relative rounded-xl px-3 py-2 border border-primary hover:shadow-sm transition flex items-center gap-2 text-primary hover:bg-primary hover:text-white">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="sr-only">Cart</span>
+          <span id="cart-count-mobile" class="ml-1 text-xs bg-primary text-white rounded-full px-2 py-0.5">0</span>
+        </button>
+        <button id="mobile-toggle" aria-expanded="false" aria-controls="mobile-menu" class="p-2 rounded-md border border-primary text-primary">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+      <!-- Cart Button (desktop) -->
+      <div class="hidden md:flex items-center gap-2">
+        <button id="btn-open-cart" class="relative rounded-xl px-3 py-2 border border-primary hover:shadow-sm transition flex items-center gap-2 text-primary hover:bg-primary hover:text-white">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="sr-only">Cart</span>
+          <span id="cart-count" class="ml-1 text-xs bg-primary text-white rounded-full px-2 py-0.5">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="bg-secondary-dark border-t border-primary md:hidden">
+      <div class="px-4 py-3 flex flex-col gap-2">
+        <a href="#home" class="py-2 nav-link no-select">Home</a>
+        <a href="#about" class="py-2 nav-link no-select">About</a>
+        <a href="#apps" class="py-2 nav-link no-select">Premium Apps</a>
+        <a href="#iptv" class="py-2 nav-link no-select">IPTV</a>
+        <a href="#games" class="py-2 nav-link no-select">Games</a>
+        <a href="#bundles" class="py-2 nav-link no-select">Bundles</a>
+        <a href="#books" class="py-2 nav-link no-select">Books</a>
+        <a href="#contact" class="py-2 nav-link no-select">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Offer Timer Banner -->
+  <div class="offer-timer text-white text-center py-3 px-4">
+    <div class="container flex flex-col md:flex-row items-center justify-center gap-3">
+      <span class="font-bold text-lg animate-pulse">30% OFF ON ALL SERVICES - ENDING SOON!</span>
+      <div class="flex items-center gap-2">
+        <span>Ends in:</span>
+        <div class="flex gap-2 items-center">
+          <div class="timer-digit">
+            <span id="hours">23</span>
+            <span class="text-xs block">HRS</span>
+          </div>
+          <span>:</span>
+          <div class="timer-digit">
+            <span id="minutes">59</span>
+            <span class="text-xs block">MIN</span>
+          </div>
+          <span>:</span>
+          <div class="timer-digit">
+            <span id="seconds">59</span>
+            <span class="text-xs block">SEC</span>
+          </div>
         </div>
+      </div>
+      <a href="#apps" class="ml-4 bg-primary hover:bg-primary-dark px-3 py-1 rounded text-sm font-medium transition">SHOP NOW</a>
+    </div>
+  </div>
+
+  <!-- Cart Modal - Increased size -->
+  <dialog id="cart-modal" class="rounded-xl p-6 bg-white text-dark max-w-3xl w-full shadow-xl">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-2xl font-bold">YOUR CART</h2>
+      <button onclick="document.getElementById('cart-modal').close()" class="text-gray-500 hover:text-dark">
+        <i class="fa-solid fa-times text-xl"></i>
+      </button>
+    </div>
+    
+    <div id="cart-items" class="space-y-3 mb-4 max-h-96 overflow-y-auto p-2"></div>
+    
+    <div class="border-t border-gray-300 pt-4 mb-4">
+      <p class="font-bold text-xl">Total: <span id="cart-total">0</span> PKR</p>
+    </div>
+
+    <!-- Payment Method Dropdown -->
+    <div class="mb-4">
+      <label for="payment-method" class="block mb-2 font-medium">Select Payment Method:</label>
+      <select id="payment-method" class="w-full p-3 rounded bg-white border border-gray-300 text-dark">
+        <option value="">-- Select Payment Method --</option>
+        <option value="jazzcash">JazzCash</option>
+        <option value="easypaisa">Easypaisa</option>
+        <option value="binance">Binance</option>
+      </select>
+    </div>
+
+    <div class="flex justify-between gap-4">
+      <button onclick="document.getElementById('cart-modal').close()" class="px-6 py-3 rounded bg-gray-200 hover:bg-gray-300 transition flex-1">Continue Shopping</button>
+      <button id="proceed-to-payment" class="px-6 py-3 rounded bg-primary hover:bg-primary-dark text-white transition flex-1">Proceed to Checkout</button>
+    </div>
+  </dialog>
+
+  <!-- Added to Cart Modal -->
+  <dialog id="added-to-cart-modal" class="rounded-xl p-6 bg-white text-dark max-w-md w-full shadow-xl">
+    <div class="text-center">
+      <i class="fa-solid fa-check-circle text-green-500 text-5xl mb-4"></i>
+      <h2 class="text-xl font-bold mb-2">Item Added to Cart!</h2>
+      <p class="text-gray-600 mb-6" id="added-item-name">Your item has been successfully added to your cart.</p>
+      
+      <div class="flex justify-center gap-4">
+        <button id="continue-shopping" class="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300">OK</button>
+        <button id="view-cart" class="px-4 py-2 rounded bg-primary hover:bg-primary-dark text-white">View Cart</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Payment Page (initially hidden) -->
+  <div id="payment-page" class="hidden">
+    <!-- Header -->
+    <header class="header bg-secondary">
+      <div class="container mx-auto px-4 flex items-center justify-between py-3">
+        <a href="#" class="font-extrabold text-xl text-white flex items-center">
+          <span class="text-primary mr-1">🔥</span> GROWZIO
+        </a>
+        
+        <div class="flex items-center gap-4">
+          <a href="https://wa.me/923195179084" target="_blank" class="text-white hover:text-primary">
+            <i class="fa-brands fa-whatsapp text-2xl"></i>
+          </a>
+        </div>
+      </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Transform Your Brand With <span>Stunning</span> Designs</h1>
-                <p>Professional graphic design services for thumbnails, social media, merchandise, and branding that captivate your audience.</p>
-                <a href="#portfolio" class="btn">View Portfolio</a>
-                <a href="#contact" class="btn secondary">Get a Quote</a>
-            </div>
-            <div class="hero-image">
-                <img src="https://i.postimg.cc/NFZRCKx2/aifaceswap-683b18cacf679742e54afc4f4b2b3115-removebg-preview.png" alt="Designer working on computer" class="image-main">
-                <img src="https://i.postimg.cc/NFZRCKx2/aifaceswap-683b18cacf679742e54afc4f4b2b3115-removebg-preview.png" alt="Sample design" class="image-decoration">
-            </div>
+    <!-- Payment Container -->
+    <div class="payment-container">
+      <div class="text-center mb-6">
+        <h1 class="text-3xl font-bold mb-2">Complete Your Payment</h1>
+        <p class="text-gray-600">Select your preferred payment method</p>
+      </div>
+      
+      <!-- Order Summary -->
+      <div class="order-summary">
+        <h2 class="text-xl font-bold mb-4">Order Summary</h2>
+        <div id="payment-order-items"></div>
+        <div class="order-total">
+          <span>Total:</span>
+          <span id="payment-total">0 PKR</span>
         </div>
+      </div>
+      
+      <!-- Payment Options -->
+      <div class="payment-options">
+        <!-- JazzCash Option -->
+        <div class="payment-option">
+          <div class="payment-logo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRV5FPCt1eX4NPeEhoEEI_XIugL1Rf82_VV5w&s" alt="JazzCash">
+          </div>
+          <h3 class="font-bold text-lg mb-3 text-center">JazzCash</h3>
+          
+          <div class="payment-details">
+            <div class="payment-detail-item">
+              <span>Name:</span>
+              <span class="font-medium">Khairunisa</span>
+            </div>
+            <div class="payment-detail-item">
+              <span>Number:</span>
+              <span class="font-medium">03295478732</span>
+            </div>
+          </div>
+          
+          <div class="payment-instruction">
+            <p class="text-sm">After making the payment, please send the screenshot to our WhatsApp for verification.</p>
+          </div>
+        </div>
+        
+        <!-- Easypaisa Option -->
+        <div class="payment-option">
+          <div class="payment-logo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyo6DN_GfIK50Hp-q01KOFS1gYt1KQFt2p4-e9jb4k-w&s" alt="Easypaisa">
+          </div>
+          <h3 class="font-bold text-lg mb-3 text-center">Easypaisa</h3>
+          
+          <div class="payment-details">
+            <div class="payment-detail-item">
+              <span>Name:</span>
+              <span class="font-medium">Khairunisa</span>
+            </div>
+            <div class="payment-detail-item">
+              <span>Number:</span>
+              <span class="font-medium">03325982480</span>
+            </div>
+          </div>
+          
+          <div class="payment-instruction">
+            <p class="text-sm">After making the payment, please send the screenshot to our WhatsApp for verification.</p>
+          </div>
+        </div>
+        
+        <!-- Binance Option -->
+        <div class="payment-option">
+          <div class="payment-logo">
+            <img src="https://public.bnbstatic.com/image/cms/blog/20190218/62cb8eb1-77bd-4b71-9519-f2f216d90b28.png" alt="Binance">
+          </div>
+          <h3 class="font-bold text-lg mb-3 text-center">Binance (Crypto)</h3>
+          
+          <div class="payment-details">
+            <div class="payment-detail-item">
+              <span>Pay ID/UID:</span>
+              <span class="font-medium">14245485</span>
+            </div>
+            <div class="payment-detail-item">
+              <span>Name:</span>
+              <span class="font-medium">Khairunisa</span>
+            </div>
+          </div>
+          
+          <div class="payment-instruction">
+            <p class="text-sm">After making the payment, please send the transaction details to our WhatsApp for verification.</p>
+          </div>
+        </div>
+      </div>
+      
+      <button class="confirm-payment-btn" onclick="confirmPayment()">I've Made the Payment</button>
+      
+      <div class="mt-4 text-center">
+        <button onclick="goBackToShopping()" class="text-primary hover:underline">
+          <i class="fa-solid fa-arrow-left mr-2"></i> Back to Shopping
+        </button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer bg-secondary text-white py-6">
+      <div class="container mx-auto px-4 text-center">
+        <p>© 2025 GROWZIO. All rights reserved.</p>
+        <p class="text-gray-300 mt-2">WhatsApp: +92 319 5179084</p>
+      </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/923195179084" target="_blank" class="whatsapp-float">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <!-- Main Website Content (initially visible) -->
+  <div id="main-content">
+    <!-- Hero -->
+    <section id="home" class="section relative bg-gradient-to-br from-secondary to-secondary-dark text-white">
+      <div class="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1553484771-898ed465e931?auto=format&fit=crop&w=1920&q=80" alt="Digital services background" class="w-full h-full object-cover opacity-10">
+      </div>
+      <div class="container text-center">
+        <h1 class="section-title mb-4 text-white" data-aos="fade-down" data-aos-duration="1000">
+          <span class="gradient-text">Premium Apps & Services</span> in Pakistan at Lowest Prices
+        </h1>
+        <p class="section-subtitle text-gray-200" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">Get 100% genuine Netflix Premium, Canva Pro, IPTV subscriptions and gaming top-ups. Pay easily via JazzCash, Easypaisa & Binance with instant delivery.</p>
+
+        <!-- Trust badges -->
+        <div class="flex flex-wrap justify-center gap-4 mb-8" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+          <div class="trust-badge float-animation">
+            <i class="fa-solid fa-bolt text-primary text-2xl mb-2"></i>
+            <p class="text-sm">Instant Delivery</p>
+          </div>
+          <div class="trust-badge float-animation" style="animation-delay: 0.5s;">
+            <i class="fa-solid fa-shield-halved text-primary text-2xl mb-2"></i>
+            <p class="text-sm">100% Genuine</p>
+          </div>
+          <div class="trust-badge float-animation" style="animation-delay: 1s;">
+            <i class="fa-solid fa-headset text-primary text-2xl mb-2"></i>
+            <p class="text-sm">24/7 Support</p>
+          </div>
+          <div class="trust-badge float-animation" style="animation-delay: 1.5s;">
+            <i class="fa-solid fa-lock text-primary text-2xl mb-2"></i>
+            <p class="text-sm">Secure Payment</p>
+          </div>
+        </div>
+
+        <div class="mb-6 bg-primary/20 border border-primary rounded-lg p-3 inline-block" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="600">
+          <span class="font-bold text-primary">Special Limited Offer: 30% OFF on all services!</span>
+        </div>
+        <br>
+        <div class="flex flex-col sm:flex-row justify-center gap-3" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
+          <a href="#apps" class="btn shine mb-3 sm:mb-0">Browse All Products</a>
+          <a href="#about" class="btn btn-outline text-white border-white hover:text-dark">Learn More</a>
+        </div>
+      </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <div class="container">
-            <h2 class="section-title">My <span>Services</span></h2>
-            <p class="section-subtitle">High-quality design solutions tailored to your needs</p>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-play-circle"></i>
-                    </div>
-                    <h3>YouTube Thumbnails</h3>
-                    <p>Eye-catching YouTube thumbnails that increase click-through rates and engage your audience.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fab fa-instagram"></i>
-                    </div>
-                    <h3>Instagram Posts</h3>
-                    <p>Scroll-stopping Instagram content that grows your following and boosts engagement.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3>Logo Designs</h3>
-                    <p>Memorable logos that perfectly represent your brand identity and values.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-suitcase"></i>
-                    </div>
-                    <h3>Business Kits</h3>
-                    <p>Complete branding packages including business cards, letterheads, and social media assets.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-tshirt"></i>
-                    </div>
-                    <h3>T-Shirt Designs</h3>
-                    <p>Custom t-shirt designs that stand out and represent your brand or message.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-mug-hot"></i>
-                    </div>
-                    <h3>Cup/Mug Designs</h3>
-                    <p>Beautiful designs for cups and mugs perfect for merchandise or gifts.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fab fa-youtube"></i>
-                    </div>
-                    <h3>YouTube Banners</h3>
-                    <p>Professional YouTube channel art that makes a great first impression.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fab fa-linkedin"></i>
-                    </div>
-                    <h3>LinkedIn Banners</h3>
-                    <p>Standout LinkedIn profile banners that showcase your professional brand.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <h3>Website Designs</h3>
-                    <p>Modern, responsive website designs that convert visitors into customers.</p>
-                </div>
-            </div>
+    <!-- About -->
+    <section id="about" class="section bg-white">
+      <div class="container text-center">
+        <h2 class="section-title" data-aos="fade-up">ABOUT GROWZIO</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">GROWZIO is your trusted digital store for <strong>premium apps, IPTV, and gaming services</strong>. We provide 100% genuine subscriptions like <em>Netflix, Canva Pro</em>, and more – at affordable rates in Pakistan. With secure payments via <strong>JazzCash, Easypaisa, and Binance</strong>, we make it simple and safe to upgrade your digital experience.</p>
+        
+        <div class="mt-10 grid md:grid-cols-2 gap-8 items-center">
+          <div class="text-left" data-aos="fade-right">
+            <h3 class="text-2xl font-bold mb-4">Why Choose Us?</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start"><i class="fa-solid fa-check text-primary mt-1 mr-2"></i> <span>100% genuine subscriptions with warranty</span></li>
+              <li class="flex items-start"><i class="fa-solid fa-check text-primary mt-1 mr-2"></i> <span>Instant delivery after payment confirmation</span></li>
+              <li class="flex items-start"><i class="fa-solid fa-check text-primary mt-1 mr-2"></i> <span>Secure payment methods (JazzCash, Easypaisa, Binance)</span></li>
+              <li class="flex items-start"><i class="fa-solid fa-check text-primary mt-1 mr-2"></i> <span>24/7 customer support via WhatsApp</span></li>
+              <li class="flex items-start"><i class="fa-solid fa-check text-primary mt-1 mr-2"></i> <span>Competitive prices with regular discounts</span></li>
+            </ul>
+          </div>
+          <div data-aos="fade-left">
+            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=600&q=80" alt="GROWZIO digital services" class="rounded-lg shadow-lg">
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section class="portfolio" id="portfolio">
-        <div class="container">
-            <h2 class="section-title">My <span>Portfolio</span></h2>
-            <p class="section-subtitle">A selection of my recent design projects</p>
-            
-            <div class="portfolio-filter">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="thumbnail">Thumbnails</button>
-                <button class="filter-btn" data-filter="instagram">Instagram</button>
-                <button class="filter-btn" data-filter="logo">Logos</button>
-                <button class="filter-btn" data-filter="banner">Banners</button>
-                <button class="filter-btn" data-filter="businesskit">Business Kits</button>
-                <button class="filter-btn" data-filter="tshirt">T-Shirts</button>
-                <button class="filter-btn" data-filter="cup">Cups/Mugs</button>
-            </div>
-            
-            <div class="portfolio-grid">
-                <!-- Thumbnail Designs -->
-                <div class="portfolio-item" data-category="thumbnail">
-                    <img src="https://static.vecteezy.com/system/resources/thumbnails/042/960/123/small_2x/ai-generated-gamepad-in-the-hands-of-a-gamer-on-a-technological-background-neon-lighting-video-games-online-with-friends-winnings-prizes-fun-entertainment-youth-culture-virtual-reality-photo.jpg" alt="YouTube Thumbnail Design">
-                    <div class="portfolio-overlay">
-                        <h3>Gaming Channel Thumbnail</h3>
-                        <p>YouTube • Click-through rate increased by 35%</p>
-                        <a href="https://sites.google.com/view/thumbnailsdemohanni/home" class="view-btn">View Project</a>
-                    </div>
-                </div>
-                
-                <!-- Instagram Designs -->
-                <div class="portfolio-item" data-category="instagram">
-                    <img src="https://fitnesscfgyms.com/wp-content/uploads/2021/10/fitness-center.jpeg" alt="Instagram Post Design">
-                    <div class="portfolio-overlay">
-                        <h3>Fitness Brand Post</h3>
-                        <p>Instagram • 2.5k likes</p>
-                        <a href="https://sites.google.com/view/fitnesspostshanni/home" class="view-btn">View Project</a>
-                    </div>
-                </div>
-                
-                <!-- Logo Designs -->
-                <div class="portfolio-item" data-category="logo">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4YYP5K_Zmnf1B2rU3yhLzYdYw3-cXFF4VIQ&s" alt="Logo Design">
-                    <div class="portfolio-overlay">
-                        <h3>Coffee Shop Logo</h3>
-                        <p>Brand Identity</p>
-                        <a href="https://sites.google.com/view/logodesignshanni/home" class="view-btn">View Project</a>
-                    </div>
-                </div>
-                
-                <!-- Banner Designs -->
-                <div class="portfolio-item" data-category="banner">
-                    <img src="https://graphicsfamily.com/wp-content/uploads/2020/11/Professional-Web-Banner-AD-in-Photoshop-scaled.jpg" alt="YouTube Banner Design">
-                    <div class="portfolio-overlay">
-                        <h3>YouTube Channel Art</h3>
-                        <p>Gaming Channel</p>
-                        <a href="https://sites.google.com/view/hanniproject/home" class="view-btn">View Project</a>
-                    </div>
-                </div>
-                
-                <!-- Business Kit Designs -->
-                <div class="portfolio-item" data-category="businesskit">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq-XbgdkGRRsO-Pkmsjy7FffC0DSYu5WiGzg&s" alt="Business Kit Design">
-                    <div class="portfolio-overlay">
-                        <h3>Corporate Branding Kit</h3>
-                        <p>Business cards, letterhead, and social media templates</p>
-                        <a href="https://sites.google.com/view/brandkithanni/home" class="view-btn">View Project</a>
-                    </div>
-                </div>
-                
-                <!-- T-Shirt Designs -->
-                <div class="portfolio-item" data-category="tshirt">
-                    <img src="https://www.shutterstock.com/image-vector/success-fruit-hard-work-quotes-600nw-2456534321.jpg" alt="T-Shirt Design">
-                    <div class="portfolio-overlay">
-                        <h3>Band Merchandise</h3>
-                        <p>Custom t-shirt design for music band</p>
-                        <a href="https://sites.google.com/view/tshirtdesignshanni/home" class="view-btn">View Project</a>
-                    </div>
-                </div>
-                
-                <!-- Cup/Mug Designs -->
-                <div class="portfolio-item" data-category="cup">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-JdKPN3Opcr0y7tT3XEoI50Z9dB0LguW6Yw&s" alt="Cup Design">
-                    <div class="portfolio-overlay">
-                        <h3>Coffee Mug Design</h3>
-                        <p>Custom illustration for coffee shop merchandise</p>
-                        <a href="https://sites.google.com/view/mugdesignshanni/home" class="view-btn">View Project</a>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item" data-category="thumbnail">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlbE3d_ds-aCpDOXnk6UnsN3O8bxiVNbJpaw&s" alt="YouTube Thumbnail Design">
-                    <div class="portfolio-overlay">
-                        <h3>Cooking Show Thumbnail</h3>
-                        <p>YouTube • 150k views</p>
-                        <a href="https://sites.google.com/view/cookingshowthubnails/home" class="view-btn">View Project</a>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item" data-category="instagram">
-                    <img src="https://img.freepik.com/premium-vector/skincare-beauty-product-social-media-post-carousel-eps-vector-template_984100-543.jpg" alt="Instagram Post Design">
-                    <div class="portfolio-overlay">
-                        <h3>Beauty Product Carousel</h3>
-                        <p>Instagram • 500+ saves</p>
-                        <a href="https://sites.google.com/view/beautyproductshanni/home" class="view-btn">View Project</a>
-                    </div>
-                </div>
-                
-                <!-- Additional Business Kit -->
-                <div class="portfolio-item" data-category="businesskit">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYO5w0ovdGdJCqujObxUVtHu5p55OJP8H8UA&s" alt="Business Kit Design">
-                    <div class="portfolio-overlay">
-                        <h3>Startup Branding Package</h3>
-                        <p>Complete visual identity system</p>
-                        <a href="https://sites.google.com/view/brandingpackageshanni/home" class="view-btn">View Project</a>
-                    </div>
-                </div>
-                
-                <!-- Additional T-Shirt Design -->
-                <div class="portfolio-item" data-category="tshirt">
-                    <img src="https://images.teemill.com/9as738hew4przzndpke1f8jggrzwio0ftgeugdyc5n11zvjw.jpeg.jpg?w=1920&h=768&fy=0.51017791610536&v=2" alt="T-Shirt Design">
-                    <div class="portfolio-overlay">
-                        <h3>Event T-Shirt</h3>
-                        <p>Charity run t-shirt design</p>
-                        <a href="https://sites.google.com/view/eventshirtshanni/home" class="view-btn">View Project</a>
-                    </div>
-                </div>
-                
-                <!-- Additional Cup/Mug Design -->
-                <div class="portfolio-item" data-category="cup">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQf2Oa9d12jg9HTreBnh1mkk7R-mVxKNL7GA&s" alt="Mug Design">
-                    <div class="portfolio-overlay">
-                        <h3>Custom Photo Mug</h3>
-                        <p>Personalized gift mug design</p>
-                        <a href="https://sites.google.com/view/customcuphanni/home" class="view-btn">View Project</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="portfolio-cta">
-                <p>Want to see more of my work?</p>
-                <a href="https://miro.medium.com/v2/resize:fit:800/1*ZtOSzMM75x5QmuWGWf7k7g.jpeg" class="btn">View Full Portfolio</a>
-            </div>
+    <!-- How It Works -->
+    <section class="section bg-lightbg">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">How It Works</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Getting your premium digital services is quick and easy with our simple process</p>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+            <div class="bg-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-white font-bold text-xl">1</span></div>
+            <h3 class="font-bold mb-2 text-xl">Select Product</h3>
+            <p class="text-gray-600">Choose from our wide range of premium apps, IPTV & gaming services</p>
+          </div>
+          <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+            <div class="bg-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-white font-bold text-xl">2</span></div>
+            <h3 class="font-bold mb-2 text-xl">Make Payment</h3>
+            <p class="text-gray-600">Pay easily via JazzCash, Easypaisa, or Binance with secure transaction</p>
+          </div>
+          <div class="text-center" data-aos="fade-up" data-aos-delay="500">
+            <div class="bg-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-white font-bold text-xl">3</span></div>
+            <h3 class="font-bold mb-2 text-xl">Receive Instantly</h3>
+            <p class="text-gray-600">Get your product credentials instantly via WhatsApp after payment verification</p>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Resume Section -->
-    <section class="resume" id="resume">
-        <div class="container">
-            <h2 class="section-title">My <span>Resume</span></h2>
-            <p class="section-subtitle">Download my professional resume</p>
-            
-            <div class="resume-container">
-                <div class="resume-image">
-                    <img src="https://i.postimg.cc/NFZRCKx2/aifaceswap-683b18cacf679742e54afc4f4b2b3115-removebg-preview.png" alt="Resume Preview">
-                    <a href="https://shorturl.at/ESq2A?usp=sharing" class="download-btn" download>
-                        <i class="fas fa-download"></i> Download Resume
-                    </a>
-                </div>
-            </div>
-        </div>
+    <!-- Products -->
+    <section id="apps" class="section bg-white">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">PREMIUM APPS SUBSCRIPTIONS</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Get premium app subscriptions at the lowest prices in Pakistan with instant delivery</p>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="apps-list"></div>
+      </div>
     </section>
 
-    <!-- Website Design Projects Section -->
-    <section class="website-projects" id="websites">
-        <div class="container">
-            <h2 class="section-title">Website <span>Designs</span></h2>
-            <p class="section-subtitle">Modern, responsive websites that drive results</p>
-            
-            <div class="website-grid">
-                <div class="website-card">
-                    <img src="https://i.postimg.cc/50vzGvg3/growzio-store.png" alt="Website Design Project">
-                    <div class="website-card-content">
-                        <h3>E-commerce Website</h3>
-                        <p>A modern online store with seamless shopping experience and mobile responsiveness.</p>
-                        <a href="https://growzio-jpg.github.io/GrowzioStore/index.html" class="view-btn">View Project</a>
-                    </div>
-                </div>
-                
-                <div class="website-card">
-                    <img src="https://i.postimg.cc/RhYzH6rk/portfolioweb321.png" alt="Website Design Project">
-                    <div class="website-card-content">
-                        <h3>Portfolio Website</h3>
-                        <p>Clean, professional portfolio showcasing creative work and services.</p>
-                        <a href="https://hanzlaworkspace.github.io/Hanzlaworkspace/index.html" class="view-btn">View Project</a>
-                    </div>
-                </div>
-                
-                <div class="website-card">
-                    <img src="https://img.freepik.com/free-psd/business-company-landing-page-template_23-2148924994.jpg" alt="Website Design Project">
-                    <div class="website-card-content">
-                        <h3>Business Landing Page</h3>
-                        <p>High-converting landing page designed to generate leads and sales.</p>
-                        <a href="https://hanniproject.github.io/hanniproject/index.html" class="view-btn">View Project</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section id="iptv" class="section bg-lightbg">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">IPTV SERVICES</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">10,000+ channels & VOD with up to 4K support for all your entertainment needs</p>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="iptv-list"></div>
+      </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="about-image">
-                <img src="https://i.postimg.cc/NFZRCKx2/aifaceswap-683b18cacf679742e54afc4f4b2b3115-removebg-preview.png" alt="Designer Profile">
-            </div>
-            <div class="about-content">
-                <h2 class="section-title">About <span>Me</span></h2>
-                <p>Hi, I'm Hanzla, a passionate graphic designer with over 5 years of experience creating visually stunning designs that tell stories and drive engagement.</p>
-                <p>I specialize in creating thumbnails that boost click-through rates, Instagram posts that stop the scroll, logos that make lasting impressions, and merchandise designs that sell. My approach combines creativity with strategy to deliver designs that not only look great but also achieve results.</p>
-                
-                <div class="skills">
-                    <h3>My Skills</h3>
-                    <div class="skill-bars">
-                        <div class="skill">
-                            <p>YouTube Thumbnails <span>95%</span></p>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 95%"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <p>Logo Design <span>90%</span></p>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <p>Instagram Posts <span>88%</span></p>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 88%"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <p>Business Kits <span>87%</span></p>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 87%"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <p>T-Shirt Designs <span>85%</span></p>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <p>Cup/Mug Designs <span>83%</span></p>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 83%"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <p>Website Design <span>85%</span></p>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <p>YouTube Banners <span>82%</span></p>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 82%"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <p>LinkedIn Banners <span>80%</span></p>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 80%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <a href="#contact" class="btn">Let's Work Together</a>
-            </div>
-        </div>
+    <section id="games" class="section bg-white">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">GAMES SERVICES</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Instant game top-ups & currency for your favorite mobile games</p>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="games-list"></div>
+      </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="container">
-            <h2 class="section-title">Client <span>Testimonials</span></h2>
-            <p class="section-subtitle">What my clients say about my work</p>
-            
-            <div class="testimonial-slider">
-                <div class="testimonial-slide active">
-                    <div class="testimonial-content">
-                        <p>"Hanni Coditz created an amazing set of thumbnails for my YouTube channel. My CTR increased by 40% and I've gained thousands of new subscribers since using their designs!"</p>
-                        <div class="client-info">
-                            <img src="https://static.vecteezy.com/system/resources/thumbnails/038/962/461/small/ai-generated-caucasian-successful-confident-young-businesswoman-ceo-boss-bank-employee-worker-manager-with-arms-crossed-in-formal-wear-isolated-in-white-background-photo.jpg" alt="Client Photo">
-                            <div>
-                                <h4>Sarah Johnson</h4>
-                                <p>YouTube Creator</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-slide">
-                    <div class="testimonial-content">
-                        <p>"The logo Hanni Coditz designed for my coffee shop perfectly captured the vibe I wanted. It's been incredibly well received by customers and has become a recognizable part of my brand."</p>
-                        <div class="client-info">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDhs1Z5SSVqH0w_4S8R4lnTj0O7Swn4NA5tA&s" alt="Client Photo">
-                            <div>
-                                <h4>Michael Chen</h4>
-                                <p>Café Owner</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-slide">
-                    <div class="testimonial-content">
-                        <p>"Our Instagram engagement has doubled since we started using Hanni Coditz designs. They understand exactly how to create content that resonates with our audience."</p>
-                        <div class="client-info">
-                            <img src="https://miro.medium.com/v2/resize:fit:1200/1*hATEYt0u5wpq4VqRjsXfhQ.png" alt="Client Photo">
-                            <div>
-                                <h4>Emily Rodriguez</h4>
-                                <p>Marketing Director</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-slide">
-                    <div class="testimonial-content">
-                        <p>"The business kit Hanni Coditz created gave our startup a professional, cohesive look across all our materials. The attention to detail was exceptional."</p>
-                        <div class="client-info">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ1CMZSIT9MBS0iJ2n8M7CGTfPEevPk79tqw&s" alt="Client Photo">
-                            <div>
-                                <h4>David Wilson</h4>
-                                <p>Startup Founder</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-slide">
-                    <div class="testimonial-content">
-                        <p>"Our custom t-shirt designs from Hanni Coditz sold out within days! They perfectly captured our brand's aesthetic and message."</p>
-                        <div class="client-info">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS59DKQq-EX5Y-ljnM27NcDSlq9AEmBgYKbLA&s" alt="Client Photo">
-                            <div>
-                                <h4>Lisa Thompson</h4>
-                                <p>Retail Store Owner</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="slider-controls">
-                    <button class="slider-prev"><i class="fas fa-chevron-left"></i></button>
-                    <div class="slider-dots"></div>
-                    <button class="slider-next"><i class="fas fa-chevron-right"></i></button>
-                </div>
-            </div>
+    <!-- Bundles Section -->
+    <section id="bundles" class="section bg-lightbg">
+      <div class="container">
+        <div class="bundles-header" data-aos="fade-up">
+          <h1 class="bundles-title">OUR BUNDLES</h1>
+          <p class="bundles-subtitle">Premium digital resources at unbeatable prices for creators and developers</p>
         </div>
+        
+        <div class="bundles-grid">
+          <!-- Bundle 1 -->
+          <div class="bundle-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="bundle-product-container">
+              <div class="bundle-product">
+                <div class="bundle-product-front">
+                  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiHo3RerpNFo6SOH_OU_sdloopVzyphMjLkpEOeF0uG5shcm-HXOsSMAbFLsKF7hHX7GL4ICrJCXAS-dP-3m8mAwTUN5h14pwLZzlJGVVa7m2W7SMklHXBeBMORCgAcXxsimEQNjA3qFd4INoLuxTSehzBykwwVc1m2dmqZUQXE6haMRdXPEwyGjA3ZVMk/s320/200GB%20editing%20pack.png" alt="200 GB Editing Pack">
+                </div>
+                <div class="bundle-product-back">
+                  <h3>What's Included</h3>
+                  <ul>
+                    <li>200GB premium video transitions</li>
+                    <li>Special effects packages</li>
+                    <li>Professional sound packs</li>
+                    <li>Color grading presets</li>
+                    <li>Title animations</li>
+                  </ul>
+                  <p>Perfect for professional video editors and content creators!</p>
+                </div>
+              </div>
+            </div>
+            <h2>200 GB Editing Pack</h2>
+            <div class="bundle-price-container">
+              <div class="bundle-original-price">PKR 4000</div>
+              <div class="bundle-sale-price">PKR 300</div>
+            </div>
+            <button class="bundle-btn add-to-cart" data-name="200 GB Editing Pack" data-price="300">Add to Cart</button>
+          </div>
+
+          <!-- Bundle 4 -->
+          <div class="bundle-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="bundle-product-container">
+              <div class="bundle-product">
+                <div class="bundle-product-front">
+                  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEja-X0gDcWcJl12Elb8ijYS-CBRFi6e8mGArM-PJs6fx46vdL5CvQvyCFkPejSfpyHP_M_cllumlgkLkEzSzGde3gNbCW56-zWjXChJlIpPTh5mFlT5_ex4CBanj9jlWaySNyMWZhyD7kjYOw5Tm4cR6Wz2QOnA7iE3HUsn0c_K9drhwIFJSeMFj1q90yM/s320/3k%20plus%20fitness.png" alt="3K Plus Fitness Posts">
+                </div>
+                <div class="bundle-product-back">
+                  <h3>What's Included</h3>
+                  <ul>
+                    <li>3000+ fitness social media posts</li>
+                    <li>Workout ideas with instructions</li>
+                    <li>30-day fitness challenges</li>
+                    <li>Engaging captions & hashtags</li>
+                    <li>Customizable templates</li>
+                  </ul>
+                  <p>Grow your fitness social media with ready-to-post content!</p>
+                </div>
+              </div>
+            </div>
+            <h2>3K+ Fitness Posts</h2>
+            <div class="bundle-price-container">
+              <div class="bundle-original-price">PKR 5300</div>
+              <div class="bundle-sale-price">PKR 300</div>
+            </div>
+            <button class="bundle-btn add-to-cart" data-name="3K+ Fitness Posts" data-price="300">Add to Cart</button>
+          </div>
+
+          <!-- Bundle 6 -->
+          <div class="bundle-card" data-aos="fade-up" data-aos-delay="600">
+            <div class="bundle-product-container">
+              <div class="bundle-product">
+                <div class="bundle-product-front">
+                  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh3oYxjeetK-3SLStW5tuoI0w6ZeJowBNGHBryX0hmZFgXikClQFU-Mx8WpUv8pbK7O73oUfvelUYZHHVnbAaHfMuMF4z7cBeabzzKku8Skq4mP3M4O3ly9O9-yILk_3eGi6g5J-sNrmi3aRYe9vpsJredNsZ3kBZyEKLJlOUlcw_Ge5mfgyjEOGNz1QMc/s320/HQ%20Qoutes.png" alt="HQ Quotes Images">
+                </div>
+                <div class="bundle-product-back">
+                  <h3>What's Included</h3>
+                  <ul>
+                    <li>1000+ high-quality quote images</li>
+                    <li>Inspirational content library</li>
+                    <li>Motivational graphics</li>
+                    <li>Multiple style variations</li>
+                    <li>Social media optimized formats</li>
+                  </ul>
+                  <p>Inspire your audience with beautiful quote graphics!</p>
+                </div>
+              </div>
+            </div>
+            <h2>HQ Quotes Images</h2>
+            <div class="bundle-price-container">
+              <div class="bundle-original-price">PKR 5400</div>
+              <div class="bundle-sale-price">PKR 300</div>
+            </div>
+            <button class="bundle-btn add-to-cart" data-name="HQ Quotes Images" data-price="300">Add to Cart</button>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <h2 class="section-title">Get In <span>Touch</span></h2>
-            <p class="section-subtitle">Ready to bring your vision to life? Let's talk!</p>
-            
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-method">
-                        <i class="fas fa-envelope"></i>
-                        <h3>Email</h3>
-                        <p>hanzlaworkspace@gmail.com</p>
-                    </div>
-                    
-                    <div class="contact-method">
-                        <i class="fas fa-phone"></i>
-                        <h3>Phone</h3>
-                        <p>+923170719070</p>
-                    </div>
-                    
-                    <div class="contact-method">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h3>Location</h3>
-                        <p>Pakistan</p>
-                    </div>
-                    
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/hsmmsupport?igsh=eTJiaGxqcWxmbHVx&utm_source=qr" class="instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.link/18xzgp" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://wa.link/18xzgp"><i class="fab fa-behance"></i></a>
-                        <a href="https://wa.link/18xzgp"><i class="fab fa-dribbble"></i></a>
-                        <a href="https://wa.link/18xzgp"><i class="fab fa-linkedin"></i></a>
-                    </div>
+    <!-- Books Section -->
+    <section id="books" class="section bg-white">
+      <div class="container">
+        <div class="books-header" data-aos="fade-up">
+          <h1 class="books-title">DIGITAL BOOKS</h1>
+          <p class="books-subtitle">Premium eBooks and digital resources for learning and personal development</p>
+        </div>
+        
+        <div class="books-grid">
+          <!-- Book 1 -->
+          <div class="book-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="book-product-container">
+              <div class="book-product">
+                <div class="book-product-front">
+                  <img src="https://m.media-amazon.com/images/I/71QKQ9mwV7L._AC_UF1000,1000_QL80_.jpg" alt="Web Development Mastery">
+                </div>
+                <div class="book-product-back">
+                  <h3>What's Included</h3>
+                  <ul>
+                    <li>Complete web development guide</li>
+                    <li>HTML, CSS, JavaScript fundamentals</li>
+                    <li>Frontend & backend development</li>
+                    <li>Responsive design techniques</li>
+                    <li>Real-world project examples</li>
+                  </ul>
+                  <p>Master web development from beginner to advanced level!</p>
+                </div>
+              </div>
+            </div>
+            <h2>Web Development Mastery</h2>
+            <div class="book-price-container">
+              <div class="book-original-price">PKR 2500</div>
+              <div class="book-sale-price">PKR 500</div>
+            </div>
+            <button class="book-btn add-to-cart" data-name="Web Development Mastery" data-price="500">Add to Cart</button>
+          </div>
+
+          <!-- Book 2 -->
+          <div class="book-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="book-product-container">
+              <div class="book-product">
+                <div class="book-product-front">
+                  <img src="https://m.media-amazon.com/images/I/61t7kc7JQxL._AC_UF1000,1000_QL80_.jpg" alt="Digital Marketing Guide">
+                </div>
+                <div class="book-product-back">
+                  <h3>What's Included</h3>
+                  <ul>
+                    <li>Complete digital marketing strategies</li>
+                    <li>SEO optimization techniques</li>
+                    <li>Social media marketing guide</li>
+                    <li>Email marketing campaigns</li>
+                    <li>Analytics and performance tracking</li>
+                  </ul>
+                  <p>Learn to build effective digital marketing campaigns!</p>
+                </div>
+              </div>
+            </div>
+            <h2>Digital Marketing Guide</h2>
+            <div class="book-price-container">
+              <div class="book-original-price">PKR 3000</div>
+              <div class="book-sale-price">PKR 600</div>
+            </div>
+            <button class="book-btn add-to-cart" data-name="Digital Marketing Guide" data-price="600">Add to Cart</button>
+          </div>
+
+          <!-- Book 3 -->
+          <div class="book-card" data-aos="fade-up" data-aos-delay="500">
+            <div class="book-product-container">
+              <div class="book-product">
+                <div class="book-product-front">
+                  <img src="https://m.media-amazon.com/images/I/71sBtM3Yi5L._AC_UF1000,1000_QL80_.jpg" alt="Python Programming">
+                </div>
+                <div class="book-product-back">
+                  <h3>What's Included</h3>
+                  <ul>
+                    <li>Python programming fundamentals</li>
+                    <li>Data structures and algorithms</li>
+                    <li>Web development with Django/Flask</li>
+                    <li>Data analysis with Pandas</li>
+                    <li>Automation and scripting</li>
+                  </ul>
+                  <p>Become a Python expert with comprehensive guide!</p>
+                </div>
+              </div>
+            </div>
+            <h2>Python Programming</h2>
+            <div class="book-price-container">
+              <div class="book-original-price">PKR 2800</div>
+              <div class="book-sale-price">PKR 550</div>
+            </div>
+            <button class="book-btn add-to-cart" data-name="Python Programming" data-price="550">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Customer Reviews Section -->
+    <section id="reviews" class="section bg-lightbg">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">CUSTOMER REVIEWS</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">See what our customers are saying about our products and services</p>
+        
+        <div class="bg-white rounded-xl p-6 max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="300">
+          <div class="grid md:grid-cols-2 gap-8">
+            <!-- Review Form -->
+            <div class="review-form-container">
+              <h3 class="text-xl font-bold mb-4 text-primary">Submit Your Review</h3>
+              <div class="success-message" id="successMessage" style="display: none;">
+                Thank you for your review!
+              </div>
+              
+              <form id="reviewForm">
+                <div class="form-group">
+                  <label for="username" class="block mb-2 font-medium"><i class="fas fa-user mr-2"></i>Username</label>
+                  <input type="text" id="username" class="form-control" placeholder="Enter your username" required>
                 </div>
                 
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <input type="text" id="name" placeholder="Your Name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <input type="email" id="email" placeholder="Your Email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <input type="text" id="subject" placeholder="Subject">
-                    </div>
-                    
-                    <div class="form-group">
-                        <textarea id="message" placeholder="Your Message" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
+                <div class="form-group">
+                  <label for="product" class="block mb-2 font-medium"><i class="fas fa-box mr-2"></i>Product/Service</label>
+                  <select id="product" class="form-control" required>
+                    <option value="">Select a product/service</option>
+                    <optgroup label="Streaming Services">
+                      <option value="Netflix Premium">Netflix Premium</option>
+                      <option value="Prime Video">Prime Video</option>
+                    </optgroup>
+                    <optgroup label="Creative Tools">
+                      <option value="CapCut Pro">CapCut Pro</option>
+                      <option value="Canva Pro">Canva Pro</option>
+                    </optgroup>
+                    <optgroup label="Content Packs">
+                      <option value="200 GB Editing Pack">200 GB Editing Pack</option>
+                      <option value="3K+ Fitness Posts">3K+ Fitness Posts</option>
+                      <option value="HQ Quotes Images">HQ Quotes Images</option>
+                    </optgroup>
+                    <optgroup label="Books">
+                      <option value="Web Development Mastery">Web Development Mastery</option>
+                      <option value="Digital Marketing Guide">Digital Marketing Guide</option>
+                      <option value="Python Programming">Python Programming</option>
+                    </optgroup>
+                    <optgroup label="TV Services">
+                      <option value="Rolex TV">Rolex TV</option>
+                      <option value="Bos TV">Bos TV</option>
+                      <option value="Zain TV">Zain TV</option>
+                    </optgroup>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="rating" class="block mb-2 font-medium"><i class="fas fa-star mr-2"></i>Rating</label>
+                  <select id="rating" class="form-control" required>
+                    <option value="">Select your rating</option>
+                    <option value="5">★★★★★ - Excellent</option>
+                    <option value="4">★★★★ - Very Good</option>
+                    <option value="3">★★★ - Good</option>
+                    <option value="2">★★ - Fair</option>
+                    <option value="1">★ - Poor</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="reviewText" class="block mb-2 font-medium"><i class="fas fa-comment mr-2"></i>Review (Optional)</label>
+                  <textarea id="reviewText" class="form-control" rows="3" placeholder="Share your experience..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn w-full bg-primary hover:bg-primary-dark"><i class="fas fa-paper-plane mr-2"></i>Submit Review</button>
+              </form>
             </div>
+            
+            <!-- Reviews Display -->
+            <div class="reviews-container">
+              <h3 class="text-xl font-bold mb-4 text-primary">Recent Reviews</h3>
+              <div id="reviewsList" class="space-y-4">
+                <!-- Reviews will be displayed here -->
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section bg-white">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Frequently Asked Questions</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Find answers to common questions about our products and services</p>
+        
+        <div class="max-w-3xl mx-auto">
+          <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+            <div class="faq-question">
+              <h3 class="font-medium text-lg">How quickly will I receive my product after payment?</h3>
+              <i class="fa-solid fa-chevron-down text-primary"></i>
+            </div>
+            <div class="faq-answer mt-2 text-gray-600 hidden">
+              <p>We provide instant delivery! You'll receive your product credentials within minutes after successful payment verification. In most cases, delivery takes less than 5 minutes during business hours.</p>
+            </div>
+          </div>
+          <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+            <div class="faq-question">
+              <h3 class="font-medium text-lg">Are these subscriptions genuine?</h3>
+              <i class="fa-solid fa-chevron-down text-primary"></i>
+            </div>
+            <div class="faq-answer mt-2 text-gray-600 hidden">
+              <p>Yes, all our subscriptions are 100% genuine and come with warranty. We source our products directly from official partners and authorized resellers.</p>
+            </div>
+          </div>
+          <div class="faq-item" data-aos="fade-up" data-aos-delay="500">
+            <div class="faq-question">
+              <h3 class="font-medium text-lg">What payment methods do you accept?</h3>
+              <i class="fa-solid fa-chevron-down text-primary"></i>
+            </div>
+            <div class="faq-answer mt-2 text-gray-600 hidden">
+              <p>We accept JazzCash, Easypaisa, and Binance payments for customer convenience. All payments are secure and verified.</p>
+            </div>
+          </div>
+          <div class="faq-item" data-aos="fade-up" data-aos-delay="600">
+            <div class="faq-question">
+              <h3 class="font-medium text-lg">Do you offer refunds?</h3>
+              <i class="fa-solid fa-chevron-down text-primary"></i>
+            </div>
+            <div class="faq-answer mt-2 text-gray-600 hidden">
+              <p>We offer refunds in case of service failure or if the product doesn't work as described. Please contact our support within 24 hours of purchase for refund requests.</p>
+            </div>
+          </div>
+          <div class="faq-item" data-aos="fade-up" data-aos-delay="700">
+            <div class="faq-question">
+              <h3 class="font-medium text-lg">How can I contact customer support?</h3>
+              <i class="fa-solid fa-chevron-down text-primary"></i>
+            </div>
+            <div class="faq-answer mt-2 text-gray-600 hidden">
+              <p>Our customer support is available 24/7 on WhatsApp at +92 319 5179084. You can also message us on our social media channels for assistance.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section bg-lightbg">
+      <div class="container text-center">
+        <h2 class="section-title" data-aos="fade-up">CONTACT US</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Reach out to us for orders, support, or any questions</p>
+        
+        <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md" data-aos="zoom-in" data-aos-delay="300">
+          <div class="mb-6">
+            <h3 class="text-xl font-bold mb-4">Business Hours</h3>
+            <p class="text-gray-600">24/7 Support Available</p>
+          </div>
+          
+          <div class="mb-6">
+            <h3 class="text-xl font-bold mb-4">Contact Information</h3>
+            <p class="text-gray-600 mb-2"><i class="fa-brands fa-whatsapp text-green-500 mr-2"></i> WhatsApp: <strong>+92 319 5179084</strong></p>
+            <p class="text-gray-600"><i class="fa-solid fa-envelope text-primary mr-2"></i> Email: <strong>info@growzio.com</strong></p>
+          </div>
+          
+          <div>
+            <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+            <div class="flex justify-center gap-6 text-2xl">
+              <a href="https://wa.me/923195179084" target="_blank" class="text-green-500 hover:scale-110 transition"><i class="fa-brands fa-whatsapp"></i></a>
+              <a href="https://whatsapp.com/channel/0029VbAuTTnFSAsxVXWEIK22" target="_blank" class="text-primary hover:scale-110 transition"><i class="fa-solid fa-bullhorn"></i></a>
+              <a href="https://www.tiktok.com/@its_hannni?_t=ZT-8yvAKY2JQp3&_r=1" target="_blank" class="text-pink-500 hover:scale-110 transition"><i class="fa-brands fa-tiktok"></i></a>
+              <a href="#" class="text-blue-400 hover:scale-110 transition"><i class="fa-brands fa-facebook"></i></a>
+              <a href="#" class="text-blue-500 hover:scale-110 transition"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Privacy -->
+    <section id="privacy" class="section bg-white">
+      <div class="container text-center">
+        <h2 class="section-title" data-aos="fade-up">PRIVACY POLICY</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">We value your privacy and security</p>
+        
+        <div class="max-w-3xl mx-auto text-left bg-lightbg p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="300">
+          <p class="text-gray-600 mb-4">At GROWZIO, your privacy and trust are our top priorities. We do not store sensitive financial data on our website. Payments are processed securely via JazzCash, Easypaisa, or Binance.</p>
+          
+          <p class="text-gray-600 mb-4">Your order details are only used for processing and delivering your purchased digital services. We never share your information with third parties without your consent, except as required to provide the services you've purchased.</p>
+          
+          <p class="text-gray-600">We use secure encryption protocols to protect your data and ensure that your shopping experience is safe and secure. If you have any questions about our privacy practices, please contact us via WhatsApp.</p>
+          
+          <div class="mt-6">
+            <a href="#" class="text-primary font-semibold">Read Full Privacy Policy →</a>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-about">
-                    <a href="#" class="logo">Hanni<span>Coditz</span></a>
-                    <p>Creating impactful designs that help brands stand out and connect with their audience.</p>
-                </div>
-                
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#resume">Resume</a></li>
-                        <li><a href="#websites">Websites</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-services">
-                    <h3>Services</h3>
-                    <ul>
-                        <li><a href="#">Thumbnail Design</a></li>
-                        <li><a href="#">Instagram Posts</a></li>
-                        <li><a href="#">Logo Design</a></li>
-                        <li><a href="#">Business Kits</a></li>
-                        <li><a href="#">T-Shirt Designs</a></li>
-                        <li><a href="#">Cup/Mug Designs</a></li>
-                        <li><a href="#">Website Design</a></li>
-                        <li><a href="#">YouTube Banners</a></li>
-                        <li><a href="#">LinkedIn Banners</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-newsletter">
-                    <h3>Newsletter</h3>
-                    <p>Subscribe for design tips and updates</p>
-                    <form>
-                        <input type="email" placeholder="Your Email">
-                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                    </form>
-                </div>
+    <footer class="bg-secondary text-gray-200 py-12 mt-16 border-t border-primary">
+      <div class="container">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-white text-lg font-bold mb-4">GROWZIO</h3>
+            <p class="mb-4">Your trusted source for premium digital services in Pakistan at affordable prices.</p>
+            <div class="flex gap-4">
+              <a href="#" class="text-gray-300 hover:text-primary"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#" class="text-gray-300 hover:text-primary"><i class="fa-brands fa-twitter"></i></a>
+              <a href="#" class="text-gray-300 hover:text-primary"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" class="text-gray-300 hover:text-primary"><i class="fa-brands fa-tiktok"></i></a>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2023 Hannicoditz. All Rights Reserved.</p>
-                <div class="footer-terms">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                </div>
-            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-white text-lg font-bold mb-4">QUICK LINKS</h3>
+            <ul class="space-y-2">
+              <li><a href="#home" class="text-gray-300 hover:text-primary">Home</a></li>
+              <li><a href="#apps" class="text-gray-300 hover:text-primary">Premium Apps</a></li>
+              <li><a href="#iptv" class="text-gray-300 hover:text-primary">IPTV</a></li>
+              <li><a href="#games" class="text-gray-300 hover:text-primary">Gaming</a></li>
+              <li><a href="#bundles" class="text-gray-300 hover:text-primary">Bundles</a></li>
+              <li><a href="#books" class="text-gray-300 hover:text-primary">Books</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="text-white text-lg font-bold mb-4">SUPPORT</h3>
+            <ul class="space-y-2">
+              <li><a href="#contact" class="text-gray-300 hover:text-primary">Contact Us</a></li>
+              <li><a href="#faq" class="text-gray-300 hover:text-primary">FAQ</a></li>
+              <li><a href="#" class="text-gray-300 hover:text-primary">Terms of Service</a></li>
+              <li><a href="#" class="text-gray-300 hover:text-primary">Refund Policy</a></li>
+              <li><a href="#privacy" class="text-gray-300 hover:text-primary">Privacy Policy</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="text-white text-lg font-bold mb-4">NEWSLETTER</h3>
+            <p class="mb-4">Subscribe to get special offers and service updates</p>
+            <form class="flex flex-col gap-2">
+              <input type="email" placeholder="Your email" class="px-4 py-2 rounded bg-secondary-dark border border-gray-600 text-white placeholder-gray-400">
+              <button type="submit" class="btn bg-primary hover:bg-primary-dark">Subscribe</button>
+            </form>
+          </div>
         </div>
+        
+        <div class="border-t border-gray-600 mt-8 pt-8 text-center">
+          <p>© 2025 GROWZIO. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
 
-    <!-- Chatbot Container -->
-    <div class="chatbot-container">
-        <div class="chatbot-window" id="chatbotWindow">
-            <div class="chatbot-header">
-                <h3>Design Assistant</h3>
-                <button class="chatbot-close" id="chatbotClose"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="chatbot-messages" id="chatbotMessages">
-                <!-- Messages will be added here dynamically -->
-            </div>
-            <div class="chatbot-input">
-                <input type="text" id="chatbotInput" placeholder="Type your message...">
-                <button id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
-            </div>
+    <!-- WhatsApp Floating -->
+    <a href="https://wa.me/923195179084" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
+
+<script>
+/* -------------------------
+   Product Data
+   ------------------------- */
+const apps=[
+  {name:"CapCut Pro",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs2VpcYMsT90SfvKG6V-63wtYnSboBdUapag&s", desc: "Professional video editing with premium features and no watermark"},
+  {name:"Canva Pro",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpqagKqMEAYfajhHl67Xt_NITxxvJmhUjCtg&s", desc: "Access to premium templates, stock photos, and design tools"},
+  {name:"Netflix Premium",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV8x8Smbp4lIacRS7RpkTo-3ODdoS98kFyUw&s", desc: "4K streaming on up to 4 devices simultaneously with full access"},
+  {name:"Prime Video",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjEAHgv7k8XfGZHznPKMu9-YQ3djUn1-Da1Q&s", desc: "Access to Amazon Originals, movies, and TV shows with premium features"},
+];
+
+const iptv=[
+  {name:"Rolex TV",img:"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgdgHwfA-ImhNtrrR-Ht1x0c26wePR28V7_Kj5HgWB4SoTlsPHXviObvjBpmk0EEtdo7ZIlhAzLKITFRuTOU7bL-3g6vsG9rVOp3ytLVwRvYLKjREO5bLe4InknRqJi8qswJqr8flYCnLYqstejvtLkgPYZovfzMqbtkKrNZ8dutqm5UPNWKjYQZbAk8Pk/s320/com.Filextv.newapp--9-icon.png", desc: "10,000+ channels with 4K support and VOD library"},
+  {name:"Bos TV",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFZLxeIvqokbc2mWPZ8mSzBnfCIOTB_TaBfQ&s", desc: "Premium IPTV with all sports channels and PPV events"},
+  {name:"Zain TV",img:"https://play-lh.googleusercontent.com/9Y-E2Gp6MWVRgphLKTATGdYC497ufpPgq2rU77DyVtobIn6dOxYrbJ4OzkakLoX5NRc=s150-rw", desc: "Stable IPTV service with catch-up and recording features"},
+];
+
+const games=[
+  {name:"PUBG Mobile UC",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmGVfy-sv6kc3QPaS_ar3tkbon-oQZ9VPOEFAeYo61qsrDpknyoBhObBfkZVuA4W3F95U&usqp=CAU", desc: "Get UC for PUBG Mobile at best rates for skins and crates"},
+  {name:"Free Fire Diamonds",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1rHrliVMCAZ2oQHj42l1MNHUOp09UiWDgyw&s", desc: "Buy diamonds for Garena Free Fire to get characters and weapons"},
+  {name:"8 Ball Pool Coins",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJxiO6RC2BbdxhUYvduticpvOiQ5o-bdMADw&s", desc: "Get coins for 8 Ball Pool to play in higher stake games"},
+];
+
+/* -------------------------
+   Utility & Rendering
+   ------------------------- */
+function getDiscountedPrice(originalPrice) { 
+  return Math.round(originalPrice * 0.7); 
+}
+
+function productDescription(category){
+  if(category==='apps') return 'Premium subscription with full features access';
+  if(category==='iptv') return '10,000+ channels & VOD with 4K support';
+  return 'Instant delivery with secure transaction';
+}
+
+function renderProducts(list,containerId,category){
+  const container=document.getElementById(containerId);
+  container.innerHTML = '';
+  list.forEach((item,i)=>{
+    const originalPrice=500+i*100;
+    const discountedPrice=getDiscountedPrice(originalPrice);
+    const card=document.createElement('div');
+    card.className='bg-white rounded-xl border border-gray-200 glow-box p-4 transition transform hover:-translate-y-1 hover:glow-orange h-full flex flex-col shadow-md';
+    card.setAttribute('data-aos', 'fade-up');
+    card.setAttribute('data-aos-delay', (i % 4) * 100);
+    card.innerHTML=`
+      <img src='${item.img}' alt='${item.name} subscription Pakistan' class='rounded mb-3 h-32 w-full object-contain bg-white p-2 no-select' oncontextmenu="return false">
+      <h3 class='font-bold mb-2 line-clamp-2 text-secondary no-select'>${item.name}</h3>
+      <p class='text-gray-600 text-sm mb-3 flex-grow no-select'>${item.desc}</p>
+      <div class='flex items-center justify-between mt-auto'>
+        <div class='no-select'>
+          <span class='original-price'>${originalPrice} PKR</span>
+          <span class='font-semibold text-dark'>${discountedPrice} PKR</span>
         </div>
-        <div class="chatbot-toggle" id="chatbotToggle">
-            <i class="fas fa-comment-dots"></i>
+        <button class='add-to-cart bg-primary text-white text-sm px-3 py-1 rounded-lg hover:bg-primary-dark transition no-select' data-name='${item.name}' data-price='${discountedPrice}'>Add to Cart</button>
+      </div>`;
+    container.appendChild(card);
+  });
+}
+
+// Render all products when page loads
+document.addEventListener('DOMContentLoaded', function() {
+  renderProducts(apps,'apps-list','apps');
+  renderProducts(iptv,'iptv-list','iptv');
+  renderProducts(games,'games-list','games');
+  
+  // Initialize AOS animations
+  AOS.init({
+    duration: 1000,
+    once: true,
+    offset: 100,
+    delay: 100,
+  });
+});
+
+/* -------------------------
+   Cart Logic
+   ------------------------- */
+let cart=[];
+let lastAddedItem = null;
+
+function updateCartDisplays(){
+  const count=cart.length;
+  const cartCount=document.getElementById('cart-count');
+  if(cartCount) cartCount.textContent=count;
+  const mobileCount=document.getElementById('cart-count-mobile');
+  if(mobileCount) mobileCount.textContent=count;
+}
+
+// Show added to cart modal
+function showAddedToCartModal(itemName) {
+  const modal = document.getElementById('added-to-cart-modal');
+  const itemNameElement = document.getElementById('added-item-name');
+  
+  itemNameElement.textContent = `"${itemName}" has been successfully added to your cart.`;
+  
+  try { 
+    modal.showModal(); 
+  } catch(err) { 
+    console.warn(err); 
+  }
+}
+
+// Add to cart
+document.addEventListener('click', e=>{
+  if(e.target.matches('.add-to-cart') || e.target.closest('.add-to-cart')){
+    const btn=e.target.closest('.add-to-cart');
+    const name=btn.dataset.name; 
+    const price=parseInt(btn.dataset.price);
+    lastAddedItem = {name, price};
+    cart.push({name,price});
+    updateCartDisplays();
+    
+    // Show added feedback on button
+    btn.innerHTML = '<span class="loading"></span> Added';
+    setTimeout(() => {
+      btn.textContent = 'Add to Cart';
+    }, 1500);
+    
+    // Show the added to cart modal
+    showAddedToCartModal(name);
+  }
+});
+
+// Open cart modal
+function openCartModal(){
+  const modal=document.getElementById('cart-modal');
+  const items=document.getElementById('cart-items');
+  const total=document.getElementById('cart-total');
+  items.innerHTML=''; 
+  let sum=0;
+  
+  if(cart.length === 0) {
+    items.innerHTML = '<p class="text-center text-gray-500 py-4">Your cart is empty</p>';
+  } else {
+    cart.forEach((c,idx)=>{ 
+      sum+=c.price; 
+      items.innerHTML+=`
+        <div class="flex justify-between items-center border-b border-gray-300 pb-2">
+          <p class="no-select">${idx+1}. ${c.name}</p>
+          <div class="flex items-center">
+            <span class="no-select">${c.price} PKR</span>
+            <button class="ml-2 text-primary remove-item no-select" data-index="${idx}">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </div>
         </div>
-    </div>
+      `; 
+    });
+  }
+  
+  total.textContent=sum;
+  try{ 
+    modal.showModal(); 
+  } catch(err){ 
+    console.warn(err); 
+  }
+  
+  // Add event listeners to remove buttons
+  document.querySelectorAll('.remove-item').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const index = parseInt(this.dataset.index);
+      cart.splice(index, 1);
+      openCartModal();
+      updateCartDisplays();
+    });
+  });
+}
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // ========== SILENT SECURITY MEASURES ==========
-            
-            // Disable right-click without showing popup
-            document.addEventListener('contextmenu', function(e) {
-                e.preventDefault();
-                return false;
-            });
-            
-            // Disable F12, Ctrl+Shift+I, Ctrl+U, etc. without showing popup
-            document.addEventListener('keydown', function(e) {
-                // Disable F12
-                if (e.key === 'F12') {
-                    e.preventDefault();
-                    return false;
-                }
-                
-                // Disable Ctrl+Shift+I
-                if (e.ctrlKey && e.shiftKey && e.key === 'I') {
-                    e.preventDefault();
-                    return false;
-                }
-                
-                // Disable Ctrl+U
-                if (e.ctrlKey && e.key === 'u') {
-                    e.preventDefault();
-                    return false;
-                }
-                
-                // Disable Ctrl+Shift+C
-                if (e.ctrlKey && e.shiftKey && e.key === 'C') {
-                    e.preventDefault();
-                    return false;
-                }
-                
-                // Disable Ctrl+Shift+J
-                if (e.ctrlKey && e.shiftKey && e.key === 'J') {
-                    e.preventDefault();
-                    return false;
-                }
-                
-                // Disable DevTools on F12, Ctrl+Shift+I, etc.
-                if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && e.keyCode === 73) || (e.ctrlKey && e.shiftKey && e.keyCode === 74) || (e.ctrlKey && e.keyCode === 85)) {
-                    e.preventDefault();
-                    return false;
-                }
-            });
-            
-            // Disable text selection
-            document.addEventListener('selectstart', function(e) {
-                e.preventDefault();
-                return false;
-            });
-            
-            // Disable dragging
-            document.addEventListener('dragstart', function(e) {
-                e.preventDefault();
-                return false;
-            });
-            
-            // Disable image dragging
-            var images = document.getElementsByTagName('img');
-            for (var i = 0; i < images.length; i++) {
-                images[i].setAttribute('draggable', 'false');
-            }
-            
-            // Disable iframe embedding
-            if (window != window.top) {
-                window.top.location = window.location;
-            }
-            
-            // Disable console methods silently
-            var noConsole = function() {};
-            if (typeof console != "undefined") {
-                if (typeof console.log != 'undefined') {
-                    console.log = noConsole;
-                    console.warn = noConsole;
-                    console.error = noConsole;
-                    console.info = noConsole;
-                    console.debug = noConsole;
-                }
-            }
-            
-            // Monitor for debugger attempts silently
-            var checkDebugger = function() {
-                function doCheck() {
-                    if (window.debuggerDetection) {
-                        window.location.reload();
-                    }
-                }
-                
-                try {
-                    doCheck();
-                } catch(err) {
-                    // Silent error handling
-                }
-            };
-            
-            // Run debugger check periodically but silently
-            setInterval(checkDebugger, 4000);
-            
-            // Add a hidden security overlay for additional protection
-            var securityOverlay = document.getElementById('securityOverlay');
-            securityOverlay.addEventListener('contextmenu', function(e) {
-                e.preventDefault();
-                return false;
-            });
-            
-            // ========== END SECURITY MEASURES ==========
-            
-            // Mobile Menu Toggle
-            const menuToggle = document.querySelector('.menu-toggle');
-            const nav = document.querySelector('nav ul');
-            
-            menuToggle.addEventListener('click', function() {
-                nav.classList.toggle('active');
-                menuToggle.classList.toggle('active');
-            });
-            
-            // Close mobile menu when clicking a link
-            const navLinks = document.querySelectorAll('nav ul li a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    nav.classList.remove('active');
-                    menuToggle.classList.remove('active');
-                });
-            });
-            
-            // Header scroll effect
-            window.addEventListener('scroll', function() {
-                const header = document.querySelector('header');
-                header.classList.toggle('scrolled', window.scrollY > 50);
-            });
-            
-            // Portfolio filtering
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const portfolioItems = document.querySelectorAll('.portfolio-item');
-            
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Remove active class from all buttons
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    const filterValue = this.getAttribute('data-filter');
-                    
-                    portfolioItems.forEach(item => {
-                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                            item.style.display = 'block';
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
-                });
-            });
-            
-            // Testimonial slider
-            const testimonialSlides = document.querySelectorAll('.testimonial-slide');
-            const prevBtn = document.querySelector('.slider-prev');
-            const nextBtn = document.querySelector('.slider-next');
-            const dotsContainer = document.querySelector('.slider-dots');
-            let currentSlide = 0;
-            
-            // Create dots
-            testimonialSlides.forEach((_, index) => {
-                const dot = document.createElement('div');
-                dot.classList.add('slider-dot');
-                if (index === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => goToSlide(index));
-                dotsContainer.appendChild(dot);
-            });
-            
-            const dots = document.querySelectorAll('.slider-dot');
-            
-            function showSlide(index) {
-                testimonialSlides.forEach(slide => slide.classList.remove('active'));
-                dots.forEach(dot => dot.classList.remove('active'));
-                
-                testimonialSlides[index].classList.add('active');
-                dots[index].classList.add('active');
-                currentSlide = index;
-            }
-            
-            function nextSlide() {
-                currentSlide = (currentSlide + 1) % testimonialSlides.length;
-                showSlide(currentSlide);
-            }
-            
-            function prevSlide() {
-                currentSlide = (currentSlide - 1 + testimonialSlides.length) % testimonialSlides.length;
-                showSlide(currentSlide);
-            }
-            
-            function goToSlide(index) {
-                showSlide(index);
-            }
-            
-            nextBtn.addEventListener('click', nextSlide);
-            prevBtn.addEventListener('click', prevSlide);
-            
-            // Auto slide change
-            let slideInterval = setInterval(nextSlide, 5000);
-            
-            // Pause on hover
-            const slider = document.querySelector('.testimonial-slider');
-            slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
-            slider.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlide, 5000));
-            
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
-            // Contact form submission
-            const contactForm = document.getElementById('contactForm');
-            
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Get form values
-                    const name = document.getElementById('name').value;
-                    const email = document.getElementById('email').value;
-                    const subject = document.getElementById('subject').value;
-                    const message = document.getElementById('message').value;
-                    
-                    // Here you would typically send the form data to a server
-                    // For this example, we'll just show an alert
-                    alert(`Thank you, ${name}! Your message has been sent. I'll get back to you soon.`);
-                    
-                    // Reset form
-                    contactForm.reset();
-                });
-            }
-            
-            // Animation on scroll
-            function animateOnScroll() {
-                const elements = document.querySelectorAll('.service-card, .portfolio-item, .about-image, .about-content, .contact-info, .contact-form, .website-card, .resume-content, .resume-image');
-                
-                elements.forEach(element => {
-                    const elementPosition = element.getBoundingClientRect().top;
-                    const windowHeight = window.innerHeight;
-                    
-                    if (elementPosition < windowHeight - 100) {
-                        element.style.opacity = '1';
-                        element.style.transform = 'translateY(0)';
-                    }
-                });
-            }
-            
-            // Set initial state for animated elements
-            const animatedElements = document.querySelectorAll('.service-card, .portfolio-item, .about-image, .about-content, .contact-info, .contact-form, .website-card, .resume-content, .resume-image');
-            animatedElements.forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(30px)';
-                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            });
-            
-            // Run once on page load
-            animateOnScroll();
-            
-            // Run on scroll
-            window.addEventListener('scroll', animateOnScroll);
+// Event listeners for the added to cart modal buttons
+document.getElementById('continue-shopping').addEventListener('click', function() {
+  document.getElementById('added-to-cart-modal').close();
+});
 
-            // Chatbot functionality
-            const chatbotToggle = document.getElementById('chatbotToggle');
-            const chatbotClose = document.getElementById('chatbotClose');
-            const chatbotWindow = document.getElementById('chatbotWindow');
-            const chatbotMessages = document.getElementById('chatbotMessages');
-            const chatbotInput = document.getElementById('chatbotInput');
-            const chatbotSend = document.getElementById('chatbotSend');
+document.getElementById('view-cart').addEventListener('click', function() {
+  document.getElementById('added-to-cart-modal').close();
+  openCartModal();
+});
 
-            // Sample questions and answers
-            const chatbotData = {
-                "greetings": {
-                    responses: [
-                        "Hello! I'm your design assistant. How can I help you today?",
-                        "Hi there! What can I tell you about our design services?"
-                    ],
-                    quickReplies: [
-                        "What services do you offer?",
-                        "How much do your designs cost?",
-                        "How can I contact you?"
-                    ]
-                },
-                "services": {
-                    responses: [
-                        "We offer a wide range of design services including:",
-                        "Our services include:"
-                    ],
-                    list: [
-                        "YouTube Thumbnails",
-                        "Instagram Posts",
-                        "Logo Designs",
-                        "Business Kits",
-                        "T-Shirt Designs",
-                        "Cup/Mug Designs",
-                        "YouTube Banners",
-                        "LinkedIn Banners",
-                        "Website Designs"
-                    ],
-                    quickReplies: [
-                        "How much for a logo design?",
-                        "Can I see some portfolio examples?",
-                        "What's your turnaround time?"
-                    ]
-                },
-                "portfolio": {
-                    responses: [
-                        "You can view our portfolio in the portfolio section of our website. Here are some examples:",
-                        "Check out these samples from our portfolio:"
-                    ],
-                    examples: [
-                        "Gaming Channel Thumbnail (CTR increased by 35%)",
-                        "Fitness Brand Instagram Post (2.5k likes)",
-                        "Coffee Shop Logo Design",
-                        "Corporate Branding Kit",
-                        "Band Merchandise T-Shirt Design"
-                    ],
-                    quickReplies: [
-                        "How do I order a design?",
-                        "What's your design process?",
-                        "Do you offer revisions?"
-                    ]
-                },
-                "pricing": {
-                    responses: [
-                        "Our pricing varies depending on the complexity of the project and the type of design. Here are some starting prices:",
-                        "Prices depend on the design type and requirements. Some examples:"
-                    ],
-                    prices: [
-                        "YouTube Thumbnails: Starting at $20",
-                        "Logo Designs: Starting at $50",
-                        "Instagram Posts: Starting at $15 each",
-                        "Business Kits: Starting at $100",
-                        "Website Designs: Starting at $300"
-                    ],
-                    note: "For exact pricing, please contact us with your specific requirements.",
-                    quickReplies: [
-                        "Do you offer discounts?",
-                        "What payment methods do you accept?",
-                        "How long does a design take?"
-                    ]
-                },
-                "contact": {
-                    responses: [
-                        "You can contact us through:",
-                        "Here's how to get in touch:"
-                    ],
-                    methods: [
-                        "Email: hanzlaworkspace@gmail.com",
-                        "Phone: +923170719070",
-                        "WhatsApp: https://wa.link/18xzgp",
-                        "Instagram: @hsmmsupport"
-                    ],
-                    quickReplies: [
-                        "What are your working hours?",
-                        "Do you offer free consultations?",
-                        "Where are you located?"
-                    ]
-                },
-                "resume": {
-                    responses: [
-                        "You can download my resume from the resume section of my website.",
-                        "My professional resume is available for download."
-                    ],
-                    quickReplies: [
-                        "What's your education background?",
-                        "What companies have you worked for?",
-                        "What skills do you have?"
-                    ]
-                },
-                "process": {
-                    responses: [
-                        "Our design process is simple and client-focused:",
-                        "Here's how we work:"
-                    ],
-                    steps: [
-                        "1. You share your requirements and ideas",
-                        "2. We discuss the project details and timeline",
-                        "3. You make a payment to start the project",
-                        "4. We create initial design concepts",
-                        "5. You provide feedback",
-                        "6. We refine the design until you're happy",
-                        "7. We deliver the final files"
-                    ],
-                    quickReplies: [
-                        "How many revisions do you offer?",
-                        "What file formats do you provide?",
-                        "Can I see work in progress?"
-                    ]
-                },
-                "default": {
-                    responses: [
-                        "I'm not sure I understand. Could you rephrase that?",
-                        "I don't have information about that. Here's what I can help with:",
-                        "Sorry, I didn't get that. Try asking about our services, portfolio, or pricing."
-                    ],
-                    quickReplies: [
-                        "What services do you offer?",
-                        "Can I see your portfolio?",
-                        "How much do you charge?"
-                    ]
-                }
-            };
+document.getElementById('btn-open-cart')?.addEventListener('click', openCartModal);
+document.getElementById('btn-open-cart-mobile')?.addEventListener('click', openCartModal);
 
-            // Toggle chatbot window
-            chatbotToggle.addEventListener('click', () => {
-                chatbotWindow.classList.add('active');
-                if (chatbotMessages.children.length === 0) {
-                    addBotMessage(getRandomResponse(chatbotData.greetings));
-                }
-            });
+// Add this function to validate payment method selection
+function validatePaymentMethod() {
+  const paymentMethod = document.getElementById('payment-method').value;
+  if (!paymentMethod) {
+    alert('Please select a payment method before proceeding.');
+    return false;
+  }
+  return true;
+}
 
-            chatbotClose.addEventListener('click', () => {
-                chatbotWindow.classList.remove('active');
-            });
+// Proceed to payment page
+document.getElementById('proceed-to-payment').addEventListener('click', function() {
+  if(cart.length === 0) {
+    alert('Your cart is empty! Please add items before proceeding to payment.');
+    return;
+  }
+  
+  // Validate payment method selection
+  if (!validatePaymentMethod()) {
+    return;
+  }
+  
+  // Get selected payment method
+  const paymentMethod = document.getElementById('payment-method').value;
+  
+  // Hide main content and show payment page
+  document.getElementById('main-content').classList.add('hidden');
+  document.getElementById('payment-page').classList.remove('hidden');
+  
+  // Update payment page with cart items
+  const paymentOrderItems = document.getElementById('payment-order-items');
+  const paymentTotal = document.getElementById('payment-total');
+  let itemsHTML = '';
+  let total = 0;
+  
+  cart.forEach((item, index) => {
+    itemsHTML += `
+      <div class="order-item">
+        <span>${item.name}</span>
+        <span>${item.price} PKR</span>
+      </div>
+    `;
+    total += item.price;
+  });
+  
+  paymentOrderItems.innerHTML = itemsHTML;
+  paymentTotal.textContent = total + ' PKR';
+  
+  // Hide all payment options first
+  document.querySelectorAll('.payment-option').forEach(option => {
+    option.style.display = 'none';
+  });
+  
+  // Show only the selected payment method
+  let selectedOptionIndex = 0;
+  if (paymentMethod === 'jazzcash') {
+    selectedOptionIndex = 0;
+  } else if (paymentMethod === 'easypaisa') {
+    selectedOptionIndex = 1;
+  } else if (paymentMethod === 'binance') {
+    selectedOptionIndex = 2;
+  }
+  
+  document.querySelectorAll('.payment-option')[selectedOptionIndex].style.display = 'block';
+  
+  // Close cart modal
+  document.getElementById('cart-modal').close();
+});
 
-            // Send message function
-            function sendMessage() {
-                const message = chatbotInput.value.trim();
-                if (message) {
-                    addUserMessage(message);
-                    chatbotInput.value = '';
-                    setTimeout(() => {
-                        respondToMessage(message);
-                    }, 500);
-                }
-            }
+// Go back to shopping from payment page
+function goBackToShopping() {
+  document.getElementById('payment-page').classList.add('hidden');
+  document.getElementById('main-content').classList.remove('hidden');
+  window.scrollTo(0, 0);
+}
 
-            // Send message on button click or Enter key
-            chatbotSend.addEventListener('click', sendMessage);
-            chatbotInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    sendMessage();
-                }
-            });
+// Confirm payment function
+function confirmPayment() {
+  if(cart.length === 0) {
+    alert('Your cart is empty!');
+    return;
+  }
+  
+  // Get selected payment method
+  const paymentMethod = document.getElementById('payment-method').value;
+  let paymentMethodText = '';
+  let paymentDetails = '';
+  
+  if (paymentMethod === 'jazzcash') {
+    paymentMethodText = 'JazzCash';
+    paymentDetails = 'Name: Khairunisa, Number: 03295478732';
+  } else if (paymentMethod === 'easypaisa') {
+    paymentMethodText = 'Easypaisa';
+    paymentDetails = 'Name: Khairunisa, Number: 03325982480';
+  } else if (paymentMethod === 'binance') {
+    paymentMethodText = 'Binance';
+    paymentDetails = 'Pay ID/UID: 14245485, Name: Khairunisa';
+  }
+  
+  // Get order details
+  let orderText = '';
+  cart.forEach(item => {
+    orderText += `${item.name} (${item.price} PKR)\n`;
+  });
+  
+  const total = cart.reduce((sum, item) => sum + item.price, 0);
+  
+  // Create WhatsApp message
+  let text = '🛒 Payment Confirmation - GROWZIO\n\n';
+  text += 'Order Details:\n';
+  text += orderText;
+  text += `\nTotal: ${total} PKR`;
+  text += `\n\nPayment Method: ${paymentMethodText}`;
+  text += `\nPayment Details: ${paymentDetails}`;
+  text += '\n\n✅ I have made the payment. Please process my order.';
+  
+  // Encode the message properly for WhatsApp
+  const encodedText = encodeURIComponent(text);
+  
+  // Open WhatsApp
+  const waNumber = '923195179084';
+  window.open(`https://wa.me/${waNumber}?text=${encodedText}`, '_blank');
+  
+  // Clear cart after payment
+  cart = [];
+  updateCartDisplays();
+  
+  // Go back to shopping
+  goBackToShopping();
+}
 
-            // Add message to chat
-            function addMessage(text, isUser = false) {
-                const messageDiv = document.createElement('div');
-                messageDiv.classList.add('message');
-                messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
-                messageDiv.textContent = text;
-                chatbotMessages.appendChild(messageDiv);
-                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-                return messageDiv;
-            }
+/* -------------------------
+   Offer Timer Logic (24 hours from page load)
+   ------------------------- */
+const OFFER_DURATION_MS=24*60*60*1000; // 24h
+const endTime=new Date(Date.now()+OFFER_DURATION_MS);
+function updateTimer(){
+  const now=new Date(); 
+  const timeLeft=endTime-now;
+  if(timeLeft<=0){
+    ['hours','minutes','seconds'].forEach(id=>document.getElementById(id).textContent='00');
+    document.querySelector('.offer-timer').innerHTML = '<div class="container py-2"><span class="font-bold">Offer has ended! New deals coming soon.</span></div>';
+    return;
+  }
+  const hours=Math.floor(timeLeft/(1000*60*60));
+  const minutes=Math.floor((timeLeft%(1000*60*60))/(1000*60));
+  const seconds=Math.floor((timeLeft%(1000*60))/1000);
+  document.getElementById('hours').textContent=hours.toString().padStart(2,'0');
+  document.getElementById('minutes').textContent=minutes.toString().padStart(2,'0');
+  document.getElementById('seconds').textContent=seconds.toString().padStart(2,'0');
+}
+updateTimer(); 
+setInterval(updateTimer,1000);
 
-            function addUserMessage(text) {
-                return addMessage(text, true);
-            }
+/* -------------------------
+   Mobile menu toggle
+   ------------------------- */
+const mobileToggle=document.getElementById('mobile-toggle');
+const mobileMenu=document.getElementById('mobile-menu');
+if(mobileToggle){
+  mobileToggle.addEventListener('click',()=>{
+    const expanded=mobileToggle.getAttribute('aria-expanded')==='true';
+    mobileToggle.setAttribute('aria-expanded', String(!expanded));
+    mobileMenu.classList.toggle('active');
+    
+    // Update icon
+    const icon = mobileToggle.querySelector('i');
+    if(icon.classList.contains('fa-bars')) {
+      icon.classList.remove('fa-bars');
+      icon.classList.add('fa-times');
+    } else {
+      icon.classList.remove('fa-times');
+      icon.classList.add('fa-bars');
+    }
+  });
+  mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    mobileMenu.classList.remove('active');
+    mobileToggle.setAttribute('aria-expanded', 'false');
+    mobileToggle.querySelector('i').classList.remove('fa-times');
+    mobileToggle.querySelector('i').classList.add('fa-bars');
+  }));
+}
 
-            function addBotMessage(text) {
-                return addMessage(text, false);
-            }
+/* -------------------------
+   Smooth anchor scroll
+   ------------------------- */
+document.querySelectorAll("a[href^='#']").forEach(a=>{
+  a.addEventListener('click',function(e){
+    const href = this.getAttribute('href');
+    if(href === '#') return;
+    
+    const target=document.querySelector(href);
+    if(target){ 
+      e.preventDefault(); 
+      target.scrollIntoView({
+        behavior: 'smooth', 
+        block: 'start'
+      }); 
+    }
+  });
+});
 
-            // Add quick replies
-            function addQuickReplies(replies) {
-                const container = document.createElement('div');
-                container.classList.add('quick-replies');
-                
-                replies.forEach(reply => {
-                    const button = document.createElement('div');
-                    button.classList.add('quick-reply');
-                    button.textContent = reply;
-                    button.addEventListener('click', () => {
-                        addUserMessage(reply);
-                        setTimeout(() => {
-                            respondToMessage(reply);
-                        }, 500);
-                    });
-                    container.appendChild(button);
-                });
-                
-                const messageDiv = addBotMessage('');
-                messageDiv.appendChild(container);
-            }
+/* -------------------------
+   FAQ Toggle
+   ------------------------- */
+document.querySelectorAll('.faq-question').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const answer = q.nextElementSibling;
+    const icon = q.querySelector('i');
+    
+    // Close other open FAQs
+    document.querySelectorAll('.faq-answer').forEach(ans => {
+      if (ans !== answer && !ans.classList.contains('hidden')) {
+        ans.classList.add('hidden');
+        const otherIcon = ans.previousElementSibling.querySelector('i');
+        otherIcon.classList.remove('fa-chevron-up');
+        otherIcon.classList.add('fa-chevron-down');
+      }
+    });
+    
+    // Toggle current FAQ
+    answer.classList.toggle('hidden');
+    icon.classList.toggle('fa-chevron-down');
+    icon.classList.toggle('fa-chevron-up');
+  });
+});
 
-            // Get random response from array
-            function getRandomResponse(data) {
-                if (data.responses && data.responses.length) {
-                    return data.responses[Math.floor(Math.random() * data.responses.length)];
-                }
-                return "I'm not sure how to respond to that.";
-            }
+/* -------------------------
+   Bundle Rotation Logic
+   ------------------------- */
+document.addEventListener('DOMContentLoaded', function() {
+  const bundleCards = document.querySelectorAll('.bundle-card');
+  const bookCards = document.querySelectorAll('.book-card');
+  
+  bundleCards.forEach(card => {
+    card.addEventListener('click', function() {
+      // Remove active class from all cards
+      bundleCards.forEach(c => c.classList.remove('active'));
+      
+      // Add active class to clicked card
+      this.classList.add('active');
+    });
+  });
+  
+  bookCards.forEach(card => {
+    card.addEventListener('click', function() {
+      // Remove active class from all cards
+      bookCards.forEach(c => c.classList.remove('active'));
+      
+      // Add active class to clicked card
+      this.classList.add('active');
+    });
+  });
+});
 
-            // Process user message and respond
-            function respondToMessage(message) {
-                message = message.toLowerCase();
-                let responseData = chatbotData.default;
-                let foundMatch = false;
+/* -------------------------
+   Code Protection
+   ------------------------- */
+// Disable right-click
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+  return false;
+});
 
-                // Check for keywords
-                if (message.includes('hello') || message.includes('hi') || message.includes('hey')) {
-                    responseData = chatbotData.greetings;
-                    foundMatch = true;
-                } else if (message.includes('service') || message.includes('offer') || message.includes('do you')) {
-                    responseData = chatbotData.services;
-                    foundMatch = true;
-                } else if (message.includes('portfolio') || message.includes('example') || message.includes('sample') || message.includes('work')) {
-                    responseData = chatbotData.portfolio;
-                    foundMatch = true;
-                } else if (message.includes('price') || message.includes('cost') || message.includes('how much')) {
-                    responseData = chatbotData.pricing;
-                    foundMatch = true;
-                } else if (message.includes('contact') || message.includes('email') || message.includes('phone') || message.includes('whatsapp')) {
-                    responseData = chatbotData.contact;
-                    foundMatch = true;
-                } else if (message.includes('resume') || message.includes('cv') || message.includes('experience') || message.includes('education')) {
-                    responseData = chatbotData.resume;
-                    foundMatch = true;
-                } else if (message.includes('process') || message.includes('work') || message.includes('step') || message.includes('how do you')) {
-                    responseData = chatbotData.process;
-                    foundMatch = true;
-                }
+// Disable text selection
+document.addEventListener('selectstart', function(e) {
+  e.preventDefault();
+  return false;
+});
 
-                // Add main response
-                const responseDiv = addBotMessage(getRandomResponse(responseData));
+// Disable keyboard shortcuts for view source, etc.
+document.addEventListener('keydown', function(e) {
+  // Disable F12, Ctrl+Shift+I, Ctrl+Shift+C, Ctrl+U
+  if (
+    e.key === 'F12' || 
+    (e.ctrlKey && e.shiftKey && e.key === 'I') || 
+    (e.ctrlKey && e.shiftKey && e.key === 'C') || 
+    (e.ctrlKey && e.key === 'u')
+  ) {
+    e.preventDefault();
+    return false;
+  }
+});
 
-                // Add additional information if available
-                if (foundMatch) {
-                    setTimeout(() => {
-                        if (responseData.list) {
-                            const list = document.createElement('ul');
-                            list.style.marginLeft = '20px';
-                            list.style.marginTop = '5px';
-                            responseData.list.forEach(item => {
-                                const li = document.createElement('li');
-                                li.textContent = item;
-                                list.appendChild(li);
-                            });
-                            responseDiv.appendChild(list);
-                        }
+// Disable drag and drop for images
+document.querySelectorAll('img').forEach(img => {
+  img.addEventListener('dragstart', function(e) {
+    e.preventDefault();
+    return false;
+  });
+});
 
-                        if (responseData.examples) {
-                            const examples = document.createElement('div');
-                            examples.style.marginTop = '5px';
-                            responseData.examples.forEach(example => {
-                                const p = document.createElement('p');
-                                p.textContent = `• ${example}`;
-                                p.style.margin = '5px 0';
-                                examples.appendChild(p);
-                            });
-                            responseDiv.appendChild(examples);
-                        }
+/* Review Form Functionality */
+document.addEventListener('DOMContentLoaded', function() {
+  const reviewForm = document.getElementById('reviewForm');
+  const reviewsList = document.getElementById('reviewsList');
+  const successMessage = document.getElementById('successMessage');
+  
+  // Load existing reviews from localStorage
+  loadReviews();
+  
+  // Handle form submission
+  reviewForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const username = document.getElementById('username').value;
+    const product = document.getElementById('product').value;
+    const rating = document.getElementById('rating').value;
+    const reviewText = document.getElementById('reviewText').value;
+    
+    // Create review object
+    const review = {
+      username,
+      product,
+      rating,
+      reviewText,
+      date: new Date().toLocaleDateString(),
+      time: new Date().toLocaleTimeString(),
+      id: Date.now() // Add unique ID for each review
+    };
+    
+    // Add to all reviews list
+    saveReviewToAll(review);
+    
+    // Add review to the page
+    addReviewToPage(review);
+    
+    // Show success message
+    successMessage.style.display = 'block';
+    
+    // Reset form
+    reviewForm.reset();
+    
+    // Hide success message after 3 seconds
+    setTimeout(() => {
+      successMessage.style.display = 'none';
+    }, 3000);
+  });
+  
+  function saveReviewToAll(review) {
+    let reviews = JSON.parse(localStorage.getItem('allReviews')) || [];
+    reviews.push(review);
+    localStorage.setItem('allReviews', JSON.stringify(reviews));
+  }
+  
+  function loadReviews() {
+    const reviews = JSON.parse(localStorage.getItem('allReviews')) || [];
+    
+    if (reviews.length === 0) {
+      reviewsList.innerHTML = '<div class="review-item"><div class="review-text">No reviews yet. Be the first to review!</div></div>';
+      return;
+    }
+    
+    // Show reviews in reverse chronological order
+    reviews.reverse().forEach(review => {
+      addReviewToPage(review);
+    });
+  }
+  
+  function addReviewToPage(review) {
+    const reviewItem = document.createElement('div');
+    reviewItem.classList.add('review-item');
+    
+    // Convert rating to stars
+    const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+    
+    reviewItem.innerHTML = `
+      <div class="review-header">
+        <span class="username"><i class="fas fa-user"></i> ${review.username}</span>
+        <span class="rating">${stars}</span>
+      </div>
+      <div class="product"><i class="fas fa-tag"></i> ${review.product}</div>
+      ${review.reviewText ? `<div class="review-text">${review.reviewText}</div>` : ''}
+      <div class="review-meta">
+        <span><i class="far fa-calendar"></i> ${review.date}</span>
+        <span><i class="far fa-clock"></i> ${review.time}</span>
+      </div>
+    `;
+    
+    reviewsList.prepend(reviewItem);
+  }
+});
 
-                        if (responseData.prices) {
-                            const prices = document.createElement('div');
-                            prices.style.marginTop = '5px';
-                            responseData.prices.forEach(price => {
-                                const p = document.createElement('p');
-                                p.textContent = `• ${price}`;
-                                p.style.margin = '5px 0';
-                                prices.appendChild(p);
-                            });
-                            responseDiv.appendChild(prices);
-                        }
-
-                        if (responseData.note) {
-                            const note = document.createElement('p');
-                            note.textContent = responseData.note;
-                            note.style.marginTop = '10px';
-                            note.style.fontStyle = 'italic';
-                            responseDiv.appendChild(note);
-                        }
-
-                        if (responseData.methods) {
-                            const methods = document.createElement('div');
-                            methods.style.marginTop = '5px';
-                            responseData.methods.forEach(method => {
-                                const p = document.createElement('p');
-                                p.textContent = `• ${method}`;
-                                p.style.margin = '5px 0';
-                                methods.appendChild(p);
-                            });
-                            responseDiv.appendChild(methods);
-                        }
-
-                        if (responseData.steps) {
-                            const steps = document.createElement('div');
-                            steps.style.marginTop = '5px';
-                            responseData.steps.forEach(step => {
-                                const p = document.createElement('p');
-                                p.textContent = step;
-                                p.style.margin = '5px 0';
-                                steps.appendChild(p);
-                            });
-                            responseDiv.appendChild(steps);
-                        }
-
-                        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-                    }, 100);
-                }
-
-                // Add quick replies
-                setTimeout(() => {
-                    if (responseData.quickReplies) {
-                        addQuickReplies(responseData.quickReplies);
-                    }
-                }, 200);
-            }
-
-            // Initialize chatbot with greeting
-            if (chatbotMessages.children.length === 0 && chatbotWindow.classList.contains('active')) {
-                addBotMessage(getRandomResponse(chatbotData.greetings));
-            }
-        });
-    </script>
+/* Init cart badge */
+updateCartDisplays();
+</script>
 </body>
 </html>
