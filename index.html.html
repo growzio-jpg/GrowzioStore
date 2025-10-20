@@ -401,6 +401,24 @@
       color: #333;
     }
     
+    /* Product Detail Modal */
+    #product-detail-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+      width: 90%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      background: var(--light-bg);
+      color: #333;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    
     /* New Animations */
     .float-animation {
       animation: float 6s ease-in-out infinite;
@@ -649,6 +667,7 @@
       height: 320px;
       perspective: 1200px;
       margin-bottom: 20px;
+      cursor: pointer;
     }
     
     .bundle-product {
@@ -658,6 +677,7 @@
       transform-style: preserve-3d;
       border-radius: 12px;
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      transition: transform 0.8s;
     }
     
     .bundle-product-front, .bundle-product-back {
@@ -764,26 +784,8 @@
       background: linear-gradient(45deg, #E3712A, var(--primary));
     }
     
-    .bundle-card.active .bundle-product {
-      animation: rotate3d 15s linear infinite;
-    }
-    
-    @keyframes rotate3d {
-      0% {
-        transform: rotateY(0deg);
-      }
-      25% {
-        transform: rotateY(90deg);
-      }
-      50% {
-        transform: rotateY(180deg);
-      }
-      75% {
-        transform: rotateY(270deg);
-      }
-      100% {
-        transform: rotateY(360deg);
-      }
+    .bundle-card.flipped .bundle-product {
+      transform: rotateY(180deg);
     }
     
     /* Books Section Styles */
@@ -840,6 +842,7 @@
       height: 320px;
       perspective: 1200px;
       margin-bottom: 20px;
+      cursor: pointer;
     }
     
     .book-product {
@@ -849,6 +852,7 @@
       transform-style: preserve-3d;
       border-radius: 12px;
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      transition: transform 0.8s;
     }
     
     .book-product-front, .book-product-back {
@@ -955,8 +959,8 @@
       background: linear-gradient(45deg, #E3712A, var(--primary));
     }
     
-    .book-card.active .book-product {
-      animation: rotate3d 15s linear infinite;
+    .book-card.flipped .book-product {
+      transform: rotateY(180deg);
     }
     
     /* Dropdown styling */
@@ -1012,7 +1016,8 @@
       }
       
       #cart-modal,
-      #added-to-cart-modal {
+      #added-to-cart-modal,
+      #product-detail-modal {
         width: 95%;
         max-width: none;
       }
@@ -1126,6 +1131,50 @@
       margin-top: 10px;
       color: #777;
       font-size: 13px;
+    }
+    
+    /* View Details Button */
+    .view-details-btn {
+      display: inline-block;
+      background: transparent;
+      color: var(--primary);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 1px solid var(--primary);
+      cursor: pointer;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+    
+    .view-details-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+    
+    /* Product Detail Modal Close Button */
+    .modal-close-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #666;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+    
+    .modal-close-btn:hover {
+      background: rgba(0,0,0,0.1);
+      color: #333;
     }
   </style>
 </head>
@@ -1257,6 +1306,16 @@
         <button id="continue-shopping" class="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300">OK</button>
         <button id="view-cart" class="px-4 py-2 rounded bg-primary hover:bg-primary-dark text-white">View Cart</button>
       </div>
+    </div>
+  </dialog>
+
+  <!-- Product Detail Modal -->
+  <dialog id="product-detail-modal" class="rounded-xl p-6 bg-white text-dark max-w-2xl w-full shadow-xl">
+    <button class="modal-close-btn" onclick="document.getElementById('product-detail-modal').close()">
+      <i class="fa-solid fa-times"></i>
+    </button>
+    <div id="product-detail-content" class="mt-4">
+      <!-- Product details will be inserted here -->
     </div>
   </dialog>
 
@@ -1955,24 +2014,24 @@
 
 // PREMIUM APPS - All prices clearly visible and editable
 const apps=[
-  {name:"CapCut Pro",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs2VpcYMsT90SfvKG6V-63wtYnSboBdUapag&s", desc: "Professional video editing with premium features and no watermark", originalPrice: 1500, discountedPrice: 1000},
-  {name:"Canva Pro",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpqagKqMEAYfajhHl67Xt_NITxxvJmhUjCtg&s", desc: "Access to premium templates, stock photos, and design tools", originalPrice: 600, discountedPrice: 350},
-  {name:"Netflix Premium",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV8x8Smbp4lIacRS7RpkTo-3ODdoS98kFyUw&s", desc: "4K streaming on up to 4 devices simultaneously with full access", originalPrice: 700, discountedPrice: 450},
-  {name:"Prime Video",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjEAHgv7k8XfGZHznPKMu9-YQ3djUn1-Da1Q&s", desc: "Access to Amazon Originals, movies, and TV shows with premium features", originalPrice: 800, discountedPrice: 250},
+  {name:"CapCut Pro",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs2VpcYMsT90SfvKG6V-63wtYnSboBdUapag&s", desc: "Professional video editing with premium features and no watermark", originalPrice: 1500, discountedPrice: 1000, details: "CapCut Pro offers advanced video editing tools, premium effects, and removes watermarks from your videos. Perfect for content creators, social media influencers, and professional editors."},
+  {name:"Canva Pro",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpqagKqMEAYfajhHl67Xt_NITxxvJmhUjCtg&s", desc: "Access to premium templates, stock photos, and design tools", originalPrice: 600, discountedPrice: 350, details: "Canva Pro unlocks premium templates, millions of stock photos, advanced design tools, and team collaboration features. Perfect for designers, marketers, and businesses."},
+  {name:"Netflix Premium",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV8x8Smbp4lIacRS7RpkTo-3ODdoS98kFyUw&s", desc: "4K streaming on up to 4 devices simultaneously with full access", originalPrice: 700, discountedPrice: 450, details: "Netflix Premium offers 4K Ultra HD streaming on up to 4 devices simultaneously. Access to all Netflix originals, movies, and TV shows with unlimited viewing."},
+  {name:"Prime Video",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjEAHgv7k8XfGZHznPKMu9-YQ3djUn1-Da1Q&s", desc: "Access to Amazon Originals, movies, and TV shows with premium features", originalPrice: 800, discountedPrice: 250, details: "Prime Video gives you access to thousands of movies, TV shows, and Amazon Originals. Watch anywhere, anytime with offline downloads and multiple device support."},
 ];
 
 // IPTV SERVICES - All prices clearly visible and editable
 const iptv=[
-  {name:"Rolex TV",img:"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgdgHwfA-ImhNtrrR-Ht1x0c26wePR28V7_Kj5HgWB4SoTlsPHXviObvjBpmk0EEtdo7ZIlhAzLKITFRuTOU7bL-3g6vsG9rVOp3ytLVwRvYLKjREO5bLe4InknRqJi8qswJqr8flYCnLYqstejvtLkgPYZovfzMqbtkKrNZ8dutqm5UPNWKjYQZbAk8Pk/s320/com.Filextv.newapp--9-icon.png", desc: "10,000+ channels with 4K support and VOD library", originalPrice: 900, discountedPrice: 630},
-  {name:"Bos TV",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFZLxeIvqokbc2mWPZ8mSzBnfCIOTB_TaBfQ&s", desc: "Premium IPTV with all sports channels and PPV events", originalPrice: 1000, discountedPrice: 700},
-  {name:"Zain TV",img:"https://play-lh.googleusercontent.com/9Y-E2Gp6MWVRgphLKTATGdYC497ufpPgq2rU77DyVtobIn6dOxYrbJ4OzkakLoX5NRc=s150-rw", desc: "Stable IPTV service with catch-up and recording features", originalPrice: 1100, discountedPrice: 770},
+  {name:"Rolex TV",img:"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgdgHwfA-ImhNtrrR-Ht1x0c26wePR28V7_Kj5HgWB4SoTlsPHXviObvjBpmk0EEtdo7ZIlhAzLKITFRuTOU7bL-3g6vsG9rVOp3ytLVwRvYLKjREO5bLe4InknRqJi8qswJqr8flYCnLYqstejvtLkgPYZovfzMqbtkKrNZ8dutqm5UPNWKjYQZbAk8Pk/s320/com.Filextv.newapp--9-icon.png", desc: "10,000+ channels with 4K support and VOD library", originalPrice: 900, discountedPrice: 630, details: "Rolex TV offers over 10,000 live TV channels from around the world with 4K support. Includes Video on Demand library with movies and series. Compatible with all devices."},
+  {name:"Bos TV",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFZLxeIvqokbc2mWPZ8mSzBnfCIOTB_TaBfQ&s", desc: "Premium IPTV with all sports channels and PPV events", originalPrice: 1000, discountedPrice: 700, details: "Bos TV is a premium IPTV service with all major sports channels, PPV events, and international content. Stable servers with minimal buffering and 24/7 customer support."},
+  {name:"Zain TV",img:"https://play-lh.googleusercontent.com/9Y-E2Gp6MWVRgphLKTATGdYC497ufpPgq2rU77DyVtobIn6dOxYrbJ4OzkakLoX5NRc=s150-rw", desc: "Stable IPTV service with catch-up and recording features", originalPrice: 1100, discountedPrice: 770, details: "Zain TV provides stable IPTV streaming with catch-up TV and recording features. Access to international channels, movies, and series with excellent customer support."},
 ];
 
 // GAMES SERVICES - All prices clearly visible and editable
 const games=[
-  {name:"PUBG Mobile UC",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmGVfy-sv6kc3QPaS_ar3tkbon-oQZ9VPOEFAeYo61qsrDpknyoBhObBfkZVuA4W3F95U&usqp=CAU", desc: "Get UC for PUBG Mobile at best rates for skins and crates", originalPrice: 1200, discountedPrice: 840},
-  {name:"Free Fire Diamonds",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1rHrliVMCAZ2oQHj42l1MNHUOp09UiWDgyw&s", desc: "Buy diamonds for Garena Free Fire to get characters and weapons", originalPrice: 1300, discountedPrice: 910},
-  {name:"8 Ball Pool Coins",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJxiO6RC2BbdxhUYvduticpvOiQ5o-bdMADw&s", desc: "Get coins for 8 Ball Pool to play in higher stake games", originalPrice: 1400, discountedPrice: 980},
+  {name:"PUBG Mobile UC",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmGVfy-sv6kc3QPaS_ar3tkbon-oQZ9VPOEFAeYo61qsrDpknyoBhObBfkZVuA4W3F95U&usqp=CAU", desc: "Get UC for PUBG Mobile at best rates for skins and crates", originalPrice: 1200, discountedPrice: 840, details: "Purchase PUBG Mobile UC (Unknown Cash) at the best rates. Use UC to buy premium skins, outfits, weapon finishes, and crates to enhance your gaming experience."},
+  {name:"Free Fire Diamonds",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1rHrliVMCAZ2oQHj42l1MNHUOp09UiWDgyw&s", desc: "Buy diamonds for Garena Free Fire to get characters and weapons", originalPrice: 1300, discountedPrice: 910, details: "Get Free Fire Diamonds at competitive prices. Use diamonds to purchase characters, weapons, skins, and other in-game items to dominate the battlefield."},
+  {name:"8 Ball Pool Coins",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJxiO6RC2BbdxhUYvduticpvOiQ5o-bdMADw&s", desc: "Get coins for 8 Ball Pool to play in higher stake games", originalPrice: 1400, discountedPrice: 980, details: "Purchase 8 Ball Pool coins to play in higher stake games, buy premium cues, and unlock exclusive features. Instant delivery after payment confirmation."},
 ];
 
 /* -------------------------
@@ -2010,7 +2069,8 @@ function renderProducts(list,containerId,category){
           <span class='font-semibold text-dark'>${discountedPrice} PKR</span>
         </div>
         <button class='add-to-cart bg-primary text-white text-sm px-3 py-1 rounded-lg hover:bg-primary-dark transition no-select' data-name='${item.name}' data-price='${discountedPrice}'>Add to Cart</button>
-      </div>`;
+      </div>
+      <button class='view-details-btn' data-product='${JSON.stringify(item).replace(/'/g, "\\'")}'>View Details</button>`;
     container.appendChild(card);
   });
 }
@@ -2365,31 +2425,68 @@ document.querySelectorAll('.faq-question').forEach(q=>{
 });
 
 /* -------------------------
-   Bundle Rotation Logic
+   Bundle and Book Flip Logic
    ------------------------- */
 document.addEventListener('DOMContentLoaded', function() {
-  const bundleCards = document.querySelectorAll('.bundle-card');
-  const bookCards = document.querySelectorAll('.book-card');
+  const bundleContainers = document.querySelectorAll('.bundle-product-container');
+  const bookContainers = document.querySelectorAll('.book-product-container');
   
-  bundleCards.forEach(card => {
-    card.addEventListener('click', function() {
-      // Remove active class from all cards
-      bundleCards.forEach(c => c.classList.remove('active'));
-      
-      // Add active class to clicked card
-      this.classList.add('active');
+  // Bundle flip functionality
+  bundleContainers.forEach(container => {
+    container.addEventListener('click', function() {
+      const bundleCard = this.closest('.bundle-card');
+      bundleCard.classList.toggle('flipped');
     });
   });
   
-  bookCards.forEach(card => {
-    card.addEventListener('click', function() {
-      // Remove active class from all cards
-      bookCards.forEach(c => c.classList.remove('active'));
-      
-      // Add active class to clicked card
-      this.classList.add('active');
+  // Book flip functionality
+  bookContainers.forEach(container => {
+    container.addEventListener('click', function() {
+      const bookCard = this.closest('.book-card');
+      bookCard.classList.toggle('flipped');
     });
   });
+});
+
+/* -------------------------
+   Product Detail Modal
+   ------------------------- */
+document.addEventListener('click', function(e) {
+  if (e.target.matches('.view-details-btn') || e.target.closest('.view-details-btn')) {
+    const btn = e.target.closest('.view-details-btn');
+    const productData = JSON.parse(btn.dataset.product);
+    
+    // Populate the modal with product details
+    const modalContent = document.getElementById('product-detail-content');
+    modalContent.innerHTML = `
+      <div class="flex flex-col md:flex-row gap-6">
+        <div class="md:w-1/3">
+          <img src="${productData.img}" alt="${productData.name}" class="w-full rounded-lg shadow-md">
+        </div>
+        <div class="md:w-2/3">
+          <h2 class="text-2xl font-bold mb-2 text-secondary">${productData.name}</h2>
+          <p class="text-gray-600 mb-4">${productData.desc}</p>
+          <div class="mb-4">
+            <span class="original-price">${productData.originalPrice} PKR</span>
+            <span class="font-bold text-xl text-primary">${productData.discountedPrice} PKR</span>
+          </div>
+          <div class="bg-gray-100 p-4 rounded-lg mb-4">
+            <h3 class="font-bold mb-2 text-secondary">Product Details</h3>
+            <p class="text-gray-700">${productData.details}</p>
+          </div>
+          <button class="add-to-cart btn w-full" data-name="${productData.name}" data-price="${productData.discountedPrice}">Add to Cart</button>
+        </div>
+      </div>
+    `;
+    
+    // Show the modal
+    const modal = document.getElementById('product-detail-modal');
+    try { 
+      modal.showModal(); 
+    } catch(err) { 
+      console.warn(err); 
+    }
+  }
 });
 
 /* -------------------------
