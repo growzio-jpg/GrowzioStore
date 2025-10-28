@@ -38,14 +38,6 @@
       }
     }
   </script>
-  
-  <!-- React CDN -->
-  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-  
-  <!-- Babel for JSX transformation -->
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  
   <script src="https://unpkg.com/scrollreveal"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -187,12 +179,12 @@
       height: 60px;
       bottom: 20px;
       right: 20px;
-      background: var(--primary);
+      background: #25D366; /* Changed to green */
       color: #fff;
       border-radius: 50px;
       text-align: center;
       font-size: 30px;
-      box-shadow: 0 0 15px rgba(204, 85, 0, 0.35);
+      box-shadow: 0 0 15px rgba(37, 211, 102, 0.35);
       z-index: 1000;
       display: flex;
       align-items: center;
@@ -381,19 +373,23 @@
       to { transform: rotate(360deg); }
     }
     
-    /* Cart Modal Positioning - Increased size */
+    /* Cart Modal Positioning - Full Screen */
     #cart-modal {
       position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       margin: 0;
-      width: 90%;
-      max-width: 800px;
-      max-height: 90vh;
+      max-width: 100%;
+      max-height: 100%;
       overflow-y: auto;
       background: var(--light-bg);
       color: #333;
+      border-radius: 0;
+      padding: 2rem;
+      box-shadow: none;
+      z-index: 1001;
     }
     
     /* Added to Cart Modal */
@@ -412,12 +408,31 @@
     /* Product Detail Modal */
     #product-detail-modal {
       position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      max-width: 100%;
+      max-height: 100%;
+      overflow-y: auto;
+      background: var(--light-bg);
+      color: #333;
+      border-radius: 0;
+      padding: 2rem;
+      box-shadow: none;
+      z-index: 1001;
+    }
+    
+    /* Privacy Policy Modal */
+    #privacy-policy-modal {
+      position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       margin: 0;
       width: 90%;
-      max-width: 600px;
+      max-width: 800px;
       max-height: 90vh;
       overflow-y: auto;
       background: var(--light-bg);
@@ -425,6 +440,7 @@
       border-radius: 12px;
       padding: 2rem;
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      z-index: 1001;
     }
     
     /* New Animations */
@@ -997,6 +1013,127 @@
       display: none;
     }
     
+    /* Quantity Controls */
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .quantity-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.2s ease;
+    }
+    
+    .quantity-btn:hover {
+      background: var(--primary-dark);
+      transform: scale(1.1);
+    }
+    
+    .quantity-input {
+      width: 40px;
+      text-align: center;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 5px;
+      font-weight: bold;
+    }
+    
+    /* Cart Item Styles */
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .cart-item-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    
+    .cart-item-name {
+      font-weight: 600;
+      color: var(--secondary);
+    }
+    
+    .cart-item-price {
+      color: var(--primary);
+      font-weight: 600;
+    }
+    
+    .cart-item-total {
+      font-weight: 600;
+      color: var(--secondary);
+    }
+    
+    .cart-item-controls {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .cart-remove-btn {
+      background: none;
+      border: none;
+      color: #ff4444;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: all 0.2s ease;
+    }
+    
+    .cart-remove-btn:hover {
+      color: #cc0000;
+      transform: scale(1.1);
+    }
+    
+    /* Cart Modal Close Button */
+    .cart-modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #666;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      z-index: 1002;
+    }
+    
+    .cart-modal-close:hover {
+      background: rgba(0,0,0,0.1);
+      color: #333;
+    }
+    
+    /* Cart Modal Header */
+    .cart-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #eee;
+    }
+    
     @media (max-width: 768px) {
       .bundles-grid,
       .books-grid {
@@ -1026,8 +1163,9 @@
       #cart-modal,
       #added-to-cart-modal,
       #product-detail-modal {
-        width: 95%;
+        width: 100%;
         max-width: none;
+        padding: 1rem;
       }
       
       .section-title {
@@ -1038,6 +1176,17 @@
         animation: none;
         border-right: none;
         white-space: normal;
+      }
+      
+      .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      
+      .cart-item-controls {
+        width: 100%;
+        justify-content: space-between;
       }
     }
 
@@ -1184,1207 +1333,1743 @@
       background: rgba(0,0,0,0.1);
       color: #333;
     }
+    
+    /* Scroll to Top and Bottom Buttons */
+    .scroll-to-top {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 999;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
+    }
+    
+    .scroll-to-bottom {
+      position: fixed;
+      bottom: 150px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 999;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
+    }
+    
+    .scroll-to-top.show,
+    .scroll-to-bottom.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .scroll-to-top:hover,
+    .scroll-to-bottom:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+    }
   </style>
 </head>
 <body class="min-h-screen bg-lightbg text-dark no-context" oncontextmenu="return false">
-  <div id="root"></div>
 
-  <!-- React Components will be rendered here -->
-  <script type="text/babel">
-    // Product Data
-    const PRODUCT_DATA = {
-      apps: [
-        {name:"CapCut Pro",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs2VpcYMsT90SfvKG6V-63wtYnSboBdUapag&s", desc: "Professional video editing with premium features and no watermark", originalPrice: 1500, discountedPrice: 1000, details: "CapCut Pro offers advanced video editing tools, premium effects, and removes watermarks from your videos. Perfect for content creators, social media influencers, and professional editors."},
-        {name:"Canva Pro",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpqagKqMEAYfajhHl67Xt_NITxxvJmhUjCtg&s", desc: "Access to premium templates, stock photos, and design tools", originalPrice: 600, discountedPrice: 350, details: "Canva Pro unlocks premium templates, millions of stock photos, advanced design tools, and team collaboration features. Perfect for designers, marketers, and businesses."},
-        {name:"Netflix Premium",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV8x8Smbp4lIacRS7RpkTo-3ODdoS98kFyUw&s", desc: "4K streaming on up to 4 devices simultaneously with full access", originalPrice: 700, discountedPrice: 450, details: "Netflix Premium offers 4K Ultra HD streaming on up to 4 devices simultaneously. Access to all Netflix originals, movies, and TV shows with unlimited viewing."},
-        {name:"Prime Video",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjEAHgv7k8XfGZHznPKMu9-YQ3djUn1-Da1Q&s", desc: "Access to Amazon Originals, movies, and TV shows with premium features", originalPrice: 800, discountedPrice: 250, details: "Prime Video gives you access to thousands of movies, TV shows, and Amazon Originals. Watch anywhere, anytime with offline downloads and multiple device support."},
-      ],
-      iptv: [
-        {name:"Rolex TV",img:"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgdgHwfA-ImhNtrrR-Ht1x0c26wePR28V7_Kj5HgWB4SoTlsPHXviObvjBpmk0EEtdo7ZIlhAzLKITFRuTOU7bL-3g6vsG9rVOp3ytLVwRvYLKjREO5bLe4InknRqJi8qswJqr8flYCnLYqstejvtLkgPYZovfzMqbtkKrNZ8dutqm5UPNWKjYQZbAk8Pk/s320/com.Filextv.newapp--9-icon.png", desc: "10,000+ channels with 4K support and VOD library", originalPrice: 900, discountedPrice: 630, details: "Rolex TV offers over 10,000 live TV channels from around the world with 4K support. Includes Video on Demand library with movies and series. Compatible with all devices."},
-        {name:"Bos TV",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFZLxeIvqokbc2mWPZ8mSzBnfCIOTB_TaBfQ&s", desc: "Premium IPTV with all sports channels and PPV events", originalPrice: 1000, discountedPrice: 700, details: "Bos TV is a premium IPTV service with all major sports channels, PPV events, and international content. Stable servers with minimal buffering and 24/7 customer support."},
-        {name:"Zain TV",img:"https://play-lh.googleusercontent.com/9Y-E2Gp6MWVRgphLKTATGdYC497ufpPgq2rU77DyVtobIn6dOxYrbJ4OzkakLoX5NRc=s150-rw", desc: "Stable IPTV service with catch-up and recording features", originalPrice: 1100, discountedPrice: 770, details: "Zain TV provides stable IPTV streaming with catch-up TV and recording features. Access to international channels, movies, and series with excellent customer support."},
-      ],
-      games: [
-        {name:"PUBG Mobile UC",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmGVfy-sv6kc3QPaS_ar3tkbon-oQZ9VPOEFAeYo61qsrDpknyoBhObBfkZVuA4W3F95U&usqp=CAU", desc: "Get UC for PUBG Mobile at best rates for skins and crates", originalPrice: 1200, discountedPrice: 840, details: "Purchase PUBG Mobile UC (Unknown Cash) at the best rates. Use UC to buy premium skins, outfits, weapon finishes, and crates to enhance your gaming experience."},
-        {name:"Free Fire Diamonds",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1rHrliVMCAZ2oQHj42l1MNHUOp09UiWDgyw&s", desc: "Buy diamonds for Garena Free Fire to get characters and weapons", originalPrice: 1300, discountedPrice: 910, details: "Get Free Fire Diamonds at competitive prices. Use diamonds to purchase characters, weapons, skins, and other in-game items to dominate the battlefield."},
-        {name:"8 Ball Pool Coins",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJxiO6RC2BbdxhUYvduticpvOiQ5o-bdMADw&s", desc: "Get coins for 8 Ball Pool to play in higher stake games", originalPrice: 1400, discountedPrice: 980, details: "Purchase 8 Ball Pool coins to play in higher stake games, buy premium cues, and unlock exclusive features. Instant delivery after payment confirmation."},
-      ],
-      bundles: [
-        {name:"300 GB Editing Pack", img:"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg8cGuy7EJ90UO5nT9Wt_KrBuRv1QLX7zJUnjKZmq3MWeDelxDBEEMzoPkJerxGN3-wB0gMmMMYg0Q-KqRse0Wf7lOt5Se1-pMnNye6Tr0a7ej3przWQ6baGZdoFyIyDEP8WywGgIKwMRJWedNE4gAwocc0dTHcb1r3Xlq8G1yAh6P6JuSj5pwNkPV0rCI/s320/video%20editng.PNG", originalPrice: 4000, discountedPrice: 500, details: "Perfect for professional video editors and content creators!", backContent: {title: "What's Included", items: ["Video Editing Material", "Special effects packages", "Professional sound packs", "Color grading presets", "Title animations"]}},
-        {name:"Thumbnail Mega Pack", img:"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDanUpbz4TD3JwPFSPCnaLGIkZSO8_cjpoxskOU7eteFQgW_VAl8LLskHNq483vAzk9ttS56jwXI37tS2TwQnR7CDULOFM_2pSSOWG08OlizkQcP1IwX2l5kyLAk3eN5fasOI6KwQpkhyphenhyphenCwpKaFHjf9I1T-mwc7EN25RFtBiDmDtSQmyql4TBVvUvKDBM/s320/thumbnailpack.PNG", originalPrice: 5300, discountedPrice: 500, details: "Improve your designs to next level!", backContent: {title: "What's Included", items: ["Thumbnail Mega Pack", "All Thumbnail Material High Quality", "Backgrounds Fonts Glowing Icons", "High Quality Characters Pngs"]}},
-        {name:"Ai Images Generation Prompts", img:"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_Cm83xzQpINfADGAPSxZUd3zfTq2WFflEwP29JKd7LGJOueeH8kNOrChR_7PFJ4ggMpdxD_k6XXdUihldhUbaRJUReCRJ9dUIgX1tY7MOThhg75_SZaFGgXwG_ws1PB2WbE-hct2THlBKpsFsreS1Kq_RM8-cBDqced2sY6bZYI09Hgt4S9jK9O1higA/s320/images%20prompt.PNG", originalPrice: 5400, discountedPrice: 500, details: "Inspire your audience!", backContent: {title: "What's Included", items: ["Ai Images Generation Prompts", "All Types of Images Generation Prompts"]}}
-      ],
-      books: [
-        {name:"Web Development Mastery", img:"https://m.media-amazon.com/images/I/71QKQ9mwV7L._AC_UF1000,1000_QL80_.jpg", originalPrice: 2500, discountedPrice: 500, details: "Master web development from beginner to advanced level!", backContent: {title: "What's Included", items: ["Complete web development guide", "HTML, CSS, JavaScript fundamentals", "Frontend & backend development", "Responsive design techniques", "Real-world project examples"]}},
-        {name:"Digital Marketing Guide", img:"https://m.media-amazon.com/images/I/61t7kc7JQxL._AC_UF1000,1000_QL80_.jpg", originalPrice: 3000, discountedPrice: 600, details: "Learn to build effective digital marketing campaigns!", backContent: {title: "What's Included", items: ["Complete digital marketing strategies", "SEO optimization techniques", "Social media marketing guide", "Email marketing campaigns", "Analytics and performance tracking"]}},
-        {name:"Python Programming", img:"https://m.media-amazon.com/images/I/71sBtM3Yi5L._AC_UF1000,1000_QL80_.jpg", originalPrice: 2800, discountedPrice: 550, details: "Become a Python expert with comprehensive guide!", backContent: {title: "What's Included", items: ["Python programming fundamentals", "Data structures and algorithms", "Web development with Django/Flask", "Data analysis with Pandas", "Automation and scripting"]}}
-      ]
-    };
+  <!-- Navbar -->
+  <header class="sticky top-0 z-40 bg-secondary backdrop-blur border-b border-primary">
+    <div class="container py-3 flex items-center justify-between">
+      <a href="#home" class="font-extrabold text-xl text-white flex items-center no-select">
+        <span class="text-primary mr-1">🔥</span> GROWZIO
+      </a>
 
-    // Cart Context
-    const CartContext = React.createContext();
+      <!-- Desktop Nav -->
+      <nav class="desktop hidden md:flex gap-6 text-sm font-medium">
+        <a href="#home" class="nav-link hover:text-primary no-select">Home</a>
+        <a href="#about" class="nav-link hover:text-primary no-select">About</a>
+        <a href="#apps" class="nav-link hover:text-primary no-select">Premium Apps</a>
+        <a href="#iptv" class="nav-link hover:text-primary no-select">IPTV</a>
+        <a href="#games" class="nav-link hover:text-primary no-select">Games</a>
+        <a href="#bundles" class="nav-link hover:text-primary no-select">Bundles</a>
+        <a href="#books" class="nav-link hover:text-primary no-select">Books</a>
+        <a href="#contact" class="nav-link hover:text-primary no-select">Contact</a>
+      </nav>
 
-    // Cart Provider Component
-    const CartProvider = ({ children }) => {
-      const [cart, setCart] = React.useState([]);
-      const [isCartOpen, setIsCartOpen] = React.useState(false);
-      const [isAddedModalOpen, setIsAddedModalOpen] = React.useState(false);
-      const [lastAddedItem, setLastAddedItem] = React.useState(null);
-      const [isProductDetailOpen, setIsProductDetailOpen] = React.useState(false);
-      const [selectedProduct, setSelectedProduct] = React.useState(null);
+      <!-- Mobile Buttons -->
+      <div class="md:hidden flex items-center gap-2">
+        <button id="btn-open-cart-mobile" class="relative rounded-xl px-3 py-2 border border-primary hover:shadow-sm transition flex items-center gap-2 text-primary hover:bg-primary hover:text-white">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="sr-only">Cart</span>
+          <span id="cart-count-mobile" class="ml-1 text-xs bg-primary text-white rounded-full px-2 py-0.5">0</span>
+        </button>
+        <button id="mobile-toggle" aria-expanded="false" aria-controls="mobile-menu" class="p-2 rounded-md border border-primary text-primary">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
 
-      const addToCart = (product) => {
-        setCart(prev => [...prev, product]);
-        setLastAddedItem(product);
-        setIsAddedModalOpen(true);
-      };
+      <!-- Cart Button (desktop) -->
+      <div class="hidden md:flex items-center gap-2">
+        <button id="btn-open-cart" class="relative rounded-xl px-3 py-2 border border-primary hover:shadow-sm transition flex items-center gap-2 text-primary hover:bg-primary hover:text-white">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="sr-only">Cart</span>
+          <span id="cart-count" class="ml-1 text-xs bg-primary text-white rounded-full px-2 py-0.5">0</span>
+        </button>
+      </div>
+    </div>
 
-      const removeFromCart = (index) => {
-        setCart(prev => prev.filter((_, i) => i !== index));
-      };
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="bg-secondary-dark border-t border-primary md:hidden">
+      <div class="px-4 py-3 flex flex-col gap-2">
+        <a href="#home" class="py-2 nav-link no-select">Home</a>
+        <a href="#about" class="py-2 nav-link no-select">About</a>
+        <a href="#apps" class="py-2 nav-link no-select">Premium Apps</a>
+        <a href="#iptv" class="py-2 nav-link no-select">IPTV</a>
+        <a href="#games" class="py-2 nav-link no-select">Games</a>
+        <a href="#bundles" class="py-2 nav-link no-select">Bundles</a>
+        <a href="#books" class="py-2 nav-link no-select">Books</a>
+        <a href="#contact" class="py-2 nav-link no-select">Contact</a>
+      </div>
+    </div>
+  </header>
 
-      const clearCart = () => {
-        setCart([]);
-      };
+  <!-- Offer Timer Banner -->
+  <div class="offer-timer text-white text-center py-3 px-4">
+    <div class="container flex flex-col md:flex-row items-center justify-center gap-3">
+      <span class="font-bold text-lg animate-pulse">30% OFF ON ALL SERVICES - ENDING SOON!</span>
+      <div class="flex items-center gap-2">
+        <span>Ends in:</span>
+        <div class="flex gap-2 items-center">
+          <div class="timer-digit">
+            <span id="hours">23</span>
+            <span class="text-xs block">HRS</span>
+          </div>
+          <span>:</span>
+          <div class="timer-digit">
+            <span id="minutes">59</span>
+            <span class="text-xs block">MIN</span>
+          </div>
+          <span>:</span>
+          <div class="timer-digit">
+            <span id="seconds">59</span>
+            <span class="text-xs block">SEC</span>
+          </div>
+        </div>
+      </div>
+      <a href="#apps" class="ml-4 bg-primary hover:bg-primary-dark px-3 py-1 rounded text-sm font-medium transition">SHOP NOW</a>
+    </div>
+  </div>
 
-      const openCart = () => setIsCartOpen(true);
-      const closeCart = () => setIsCartOpen(false);
-      const closeAddedModal = () => setIsAddedModalOpen(false);
+  <!-- Cart Modal - Full Screen -->
+  <dialog id="cart-modal" class="p-0 bg-white text-dark w-full h-full shadow-xl">
+    <button class="cart-modal-close" onclick="document.getElementById('cart-modal').close()">
+      <i class="fa-solid fa-times"></i>
+    </button>
+    
+    <div class="container mx-auto py-6 px-4 h-full flex flex-col">
+      <div class="cart-modal-header">
+        <h2 class="text-2xl font-bold text-secondary">YOUR CART</h2>
+        <p class="text-gray-600">Review your items before checkout</p>
+      </div>
+      
+      <div id="cart-items" class="flex-1 overflow-y-auto mb-4"></div>
+      
+      <div class="border-t border-gray-300 pt-4 mb-4">
+        <div class="flex justify-between items-center mb-2">
+          <p class="font-medium">Subtotal:</p>
+          <p class="font-medium" id="cart-subtotal">0 PKR</p>
+        </div>
+        <div class="flex justify-between items-center text-lg">
+          <p class="font-bold">Total:</p>
+          <p class="font-bold text-xl text-primary" id="cart-total">0 PKR</p>
+        </div>
+      </div>
 
-      const openProductDetail = (product) => {
-        setSelectedProduct(product);
-        setIsProductDetailOpen(true);
-      };
+      <!-- Payment Method Dropdown -->
+      <div class="mb-4">
+        <label for="payment-method" class="block mb-2 font-medium">Select Payment Method:</label>
+        <select id="payment-method" class="w-full p-3 rounded bg-white border border-gray-300 text-dark">
+          <option value="">-- Select Payment Method --</option>
+          <option value="jazzcash">JazzCash</option>
+          <option value="easypaisa">Easypaisa</option>
+          <option value="binance">Binance</option>
+        </select>
+      </div>
 
-      const closeProductDetail = () => {
-        setIsProductDetailOpen(false);
-        setSelectedProduct(null);
-      };
+      <div class="flex justify-between gap-4">
+        <button onclick="document.getElementById('cart-modal').close()" class="px-6 py-3 rounded bg-gray-200 hover:bg-gray-300 transition flex-1">Continue Shopping</button>
+        <button id="proceed-to-payment" class="px-6 py-3 rounded bg-primary hover:bg-primary-dark text-white transition flex-1">Proceed to Checkout</button>
+      </div>
+    </div>
+  </dialog>
 
-      const value = {
-        cart,
-        addToCart,
-        removeFromCart,
-        clearCart,
-        isCartOpen,
-        openCart,
-        closeCart,
-        isAddedModalOpen,
-        closeAddedModal,
-        lastAddedItem,
-        isProductDetailOpen,
-        openProductDetail,
-        closeProductDetail,
-        selectedProduct
-      };
+  <!-- Added to Cart Modal -->
+  <dialog id="added-to-cart-modal" class="rounded-xl p-6 bg-white text-dark max-w-md w-full shadow-xl">
+    <div class="text-center">
+      <i class="fa-solid fa-check-circle text-green-500 text-5xl mb-4"></i>
+      <h2 class="text-xl font-bold mb-2">Item Added to Cart!</h2>
+      <p class="text-gray-600 mb-6" id="added-item-name">Your item has been successfully added to your cart.</p>
+      
+      <div class="flex justify-center gap-4">
+        <button id="continue-shopping" class="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300">OK</button>
+        <button id="view-cart" class="px-4 py-2 rounded bg-primary hover:bg-primary-dark text-white">View Cart</button>
+      </div>
+    </div>
+  </dialog>
 
-      return React.createElement(CartContext.Provider, { value }, children);
-    };
+  <!-- Product Detail Modal -->
+  <dialog id="product-detail-modal" class="rounded-xl p-6 bg-white text-dark w-full shadow-xl">
+    <button class="modal-close-btn" onclick="document.getElementById('product-detail-modal').close()">
+      <i class="fa-solid fa-times"></i>
+    </button>
+    <div id="product-detail-content" class="mt-4">
+      <!-- Product details will be inserted here -->
+    </div>
+  </dialog>
 
-    // Custom Hook for Cart
-    const useCart = () => {
-      const context = React.useContext(CartContext);
-      if (!context) {
-        throw new Error('useCart must be used within a CartProvider');
-      }
-      return context;
-    };
-
-    // Product Card Component
-    const ProductCard = ({ product, category }) => {
-      const { addToCart, openProductDetail } = useCart();
-
-      return React.createElement('div', {
-        className: 'bg-white rounded-xl border border-gray-200 glow-box p-4 transition transform hover:-translate-y-1 hover:glow-orange h-full flex flex-col shadow-md',
-        'data-aos': 'fade-up'
-      }, [
-        React.createElement('img', {
-          key: 'img',
-          src: product.img,
-          alt: `${product.name} subscription Pakistan`,
-          className: 'rounded mb-3 h-32 w-full object-contain bg-white p-2 no-select',
-          onContextMenu: (e) => e.preventDefault()
-        }),
-        React.createElement('h3', {
-          key: 'title',
-          className: 'font-bold mb-2 line-clamp-2 text-secondary no-select'
-        }, product.name),
-        React.createElement('p', {
-          key: 'desc',
-          className: 'text-gray-600 text-sm mb-3 flex-grow no-select'
-        }, product.desc),
-        React.createElement('div', {
-          key: 'price-row',
-          className: 'flex items-center justify-between mt-auto'
-        }, [
-          React.createElement('div', {
-            key: 'price',
-            className: 'no-select'
-          }, [
-            React.createElement('span', {
-              key: 'original',
-              className: 'original-price'
-            }, `${product.originalPrice} PKR`),
-            React.createElement('span', {
-              key: 'discounted',
-              className: 'font-semibold text-dark'
-            }, `${product.discountedPrice} PKR`)
-          ]),
-          React.createElement('button', {
-            key: 'add-cart',
-            className: 'add-to-cart bg-primary text-white text-sm px-3 py-1 rounded-lg hover:bg-primary-dark transition no-select',
-            onClick: () => addToCart({ name: product.name, price: product.discountedPrice })
-          }, 'Add to Cart')
-        ]),
-        React.createElement('button', {
-          key: 'view-details',
-          className: 'view-details-btn',
-          onClick: () => openProductDetail(product)
-        }, 'View Details')
-      ]);
-    };
-
-    // Bundle Card Component
-    const BundleCard = ({ bundle }) => {
-      const { addToCart } = useCart();
-      const [isFlipped, setIsFlipped] = React.useState(false);
-
-      const handleFlip = () => {
-        setIsFlipped(!isFlipped);
-      };
-
-      return React.createElement('div', {
-        className: `bundle-card ${isFlipped ? 'flipped' : ''}`,
-        'data-aos': 'fade-up'
-      }, [
-        React.createElement('div', {
-          key: 'container',
-          className: 'bundle-product-container',
-          onClick: handleFlip
-        }, 
-          React.createElement('div', {
-            className: 'bundle-product'
-          }, [
-            React.createElement('div', {
-              key: 'front',
-              className: 'bundle-product-front'
-            }, 
-              React.createElement('img', {
-                src: bundle.img,
-                alt: bundle.name,
-                className: 'no-select'
-              })
-            ),
-            React.createElement('div', {
-              key: 'back',
-              className: 'bundle-product-back'
-            }, [
-              React.createElement('h3', { key: 'title' }, bundle.backContent.title),
-              React.createElement('ul', { key: 'list' }, 
-                bundle.backContent.items.map((item, index) => 
-                  React.createElement('li', { key: index }, item)
-                )
-              ),
-              React.createElement('p', { key: 'desc' }, bundle.details)
-            ])
-          ])
-        ),
-        React.createElement('h2', { key: 'name' }, bundle.name),
-        React.createElement('div', {
-          key: 'price',
-          className: 'bundle-price-container'
-        }, [
-          React.createElement('div', {
-            key: 'original',
-            className: 'bundle-original-price'
-          }, `PKR ${bundle.originalPrice}`),
-          React.createElement('div', {
-            key: 'discounted',
-            className: 'bundle-sale-price'
-          }, `PKR ${bundle.discountedPrice}`)
-        ]),
-        React.createElement('button', {
-          key: 'button',
-          className: 'bundle-btn add-to-cart',
-          onClick: () => addToCart({ name: bundle.name, price: bundle.discountedPrice })
-        }, 'Add to Cart')
-      ]);
-    };
-
-    // Book Card Component
-    const BookCard = ({ book }) => {
-      const { addToCart } = useCart();
-      const [isFlipped, setIsFlipped] = React.useState(false);
-
-      const handleFlip = () => {
-        setIsFlipped(!isFlipped);
-      };
-
-      return React.createElement('div', {
-        className: `book-card ${isFlipped ? 'flipped' : ''}`,
-        'data-aos': 'fade-up'
-      }, [
-        React.createElement('div', {
-          key: 'container',
-          className: 'book-product-container',
-          onClick: handleFlip
-        }, 
-          React.createElement('div', {
-            className: 'book-product'
-          }, [
-            React.createElement('div', {
-              key: 'front',
-              className: 'book-product-front'
-            }, 
-              React.createElement('img', {
-                src: book.img,
-                alt: book.name,
-                className: 'no-select'
-              })
-            ),
-            React.createElement('div', {
-              key: 'back',
-              className: 'book-product-back'
-            }, [
-              React.createElement('h3', { key: 'title' }, book.backContent.title),
-              React.createElement('ul', { key: 'list' }, 
-                book.backContent.items.map((item, index) => 
-                  React.createElement('li', { key: index }, item)
-                )
-              ),
-              React.createElement('p', { key: 'desc' }, book.details)
-            ])
-          ])
-        ),
-        React.createElement('h2', { key: 'name' }, book.name),
-        React.createElement('div', {
-          key: 'price',
-          className: 'book-price-container'
-        }, [
-          React.createElement('div', {
-            key: 'original',
-            className: 'book-original-price'
-          }, `PKR ${book.originalPrice}`),
-          React.createElement('div', {
-            key: 'discounted',
-            className: 'book-sale-price'
-          }, `PKR ${book.discountedPrice}`)
-        ]),
-        React.createElement('button', {
-          key: 'button',
-          className: 'book-btn add-to-cart',
-          onClick: () => addToCart({ name: book.name, price: book.discountedPrice })
-        }, 'Add to Cart')
-      ]);
-    };
-
-    // Cart Modal Component
-    const CartModal = () => {
-      const { cart, removeFromCart, isCartOpen, closeCart } = useCart();
-      const [paymentMethod, setPaymentMethod] = React.useState('');
-
-      const total = cart.reduce((sum, item) => sum + item.price, 0);
-
-      if (!isCartOpen) return null;
-
-      return React.createElement('dialog', {
-        id: 'cart-modal',
-        className: 'rounded-xl p-6 bg-white text-dark max-w-3xl w-full shadow-xl',
-        open: isCartOpen
-      }, [
-        React.createElement('div', {
-          key: 'header',
-          className: 'flex justify-between items-center mb-4'
-        }, [
-          React.createElement('h2', {
-            key: 'title',
-            className: 'text-2xl font-bold'
-          }, 'YOUR CART'),
-          React.createElement('button', {
-            key: 'close',
-            onClick: closeCart,
-            className: 'text-gray-500 hover:text-dark'
-          }, React.createElement('i', { className: 'fa-solid fa-times text-xl' }))
-        ]),
-        React.createElement('div', {
-          key: 'items',
-          id: 'cart-items',
-          className: 'space-y-3 mb-4 max-h-96 overflow-y-auto p-2'
-        }, 
-          cart.length === 0 
-            ? React.createElement('p', {
-                key: 'empty',
-                className: 'text-center text-gray-500 py-4'
-              }, 'Your cart is empty')
-            : cart.map((item, idx) => 
-                React.createElement('div', {
-                  key: idx,
-                  className: 'flex justify-between items-center border-b border-gray-300 pb-2'
-                }, [
-                  React.createElement('p', {
-                    key: 'name',
-                    className: 'no-select'
-                  }, `${idx+1}. ${item.name}`),
-                  React.createElement('div', {
-                    key: 'actions',
-                    className: 'flex items-center'
-                  }, [
-                    React.createElement('span', {
-                      key: 'price',
-                      className: 'no-select'
-                    }, `${item.price} PKR`),
-                    React.createElement('button', {
-                      key: 'remove',
-                      className: 'ml-2 text-primary remove-item no-select',
-                      onClick: () => removeFromCart(idx)
-                    }, React.createElement('i', { className: 'fa-solid fa-trash' }))
-                  ])
-                ])
-              )
-        ),
-        React.createElement('div', {
-          key: 'total',
-          className: 'border-t border-gray-300 pt-4 mb-4'
-        }, 
-          React.createElement('p', {
-            className: 'font-bold text-xl'
-          }, `Total: ${total} PKR`)
-        ),
-        React.createElement('div', {
-          key: 'payment',
-          className: 'mb-4'
-        }, [
-          React.createElement('label', {
-            key: 'label',
-            htmlFor: 'payment-method',
-            className: 'block mb-2 font-medium'
-          }, 'Select Payment Method:'),
-          React.createElement('select', {
-            key: 'select',
-            id: 'payment-method',
-            className: 'w-full p-3 rounded bg-white border border-gray-300 text-dark',
-            value: paymentMethod,
-            onChange: (e) => setPaymentMethod(e.target.value)
-          }, [
-            React.createElement('option', { key: 'default', value: '' }, '-- Select Payment Method --'),
-            React.createElement('option', { key: 'jazzcash', value: 'jazzcash' }, 'JazzCash'),
-            React.createElement('option', { key: 'easypaisa', value: 'easypaisa' }, 'Easypaisa'),
-            React.createElement('option', { key: 'binance', value: 'binance' }, 'Binance')
-          ])
-        ]),
-        React.createElement('div', {
-          key: 'actions',
-          className: 'flex justify-between gap-4'
-        }, [
-          React.createElement('button', {
-            key: 'continue',
-            onClick: closeCart,
-            className: 'px-6 py-3 rounded bg-gray-200 hover:bg-gray-300 transition flex-1'
-          }, 'Continue Shopping'),
-          React.createElement('button', {
-            key: 'checkout',
-            id: 'proceed-to-payment',
-            className: 'px-6 py-3 rounded bg-primary hover:bg-primary-dark text-white transition flex-1',
-            onClick: () => {
-              if (cart.length === 0) {
-                alert('Your cart is empty! Please add items before proceeding to payment.');
-                return;
-              }
-              if (!paymentMethod) {
-                alert('Please select a payment method before proceeding.');
-                return;
-              }
-              // Payment logic would go here
-              alert('Proceeding to payment...');
-            }
-          }, 'Proceed to Checkout')
-        ])
-      ]);
-    };
-
-    // Added to Cart Modal Component
-    const AddedToCartModal = () => {
-      const { isAddedModalOpen, closeAddedModal, lastAddedItem, openCart } = useCart();
-
-      if (!isAddedModalOpen) return null;
-
-      return React.createElement('dialog', {
-        id: 'added-to-cart-modal',
-        className: 'rounded-xl p-6 bg-white text-dark max-w-md w-full shadow-xl',
-        open: isAddedModalOpen
-      }, 
-        React.createElement('div', {
-          className: 'text-center'
-        }, [
-          React.createElement('i', {
-            key: 'icon',
-            className: 'fa-solid fa-check-circle text-green-500 text-5xl mb-4'
-          }),
-          React.createElement('h2', {
-            key: 'title',
-            className: 'text-xl font-bold mb-2'
-          }, 'Item Added to Cart!'),
-          React.createElement('p', {
-            key: 'message',
-            className: 'text-gray-600 mb-6',
-            id: 'added-item-name'
-          }, `"${lastAddedItem?.name}" has been successfully added to your cart.`),
-          React.createElement('div', {
-            key: 'buttons',
-            className: 'flex justify-center gap-4'
-          }, [
-            React.createElement('button', {
-              key: 'continue',
-              id: 'continue-shopping',
-              onClick: closeAddedModal,
-              className: 'px-4 py-2 rounded bg-gray-200 hover:bg-gray-300'
-            }, 'OK'),
-            React.createElement('button', {
-              key: 'view',
-              id: 'view-cart',
-              onClick: () => {
-                closeAddedModal();
-                openCart();
-              },
-              className: 'px-4 py-2 rounded bg-primary hover:bg-primary-dark text-white'
-            }, 'View Cart')
-          ])
-        ])
-      );
-    };
-
-    // Product Detail Modal Component
-    const ProductDetailModal = () => {
-      const { isProductDetailOpen, closeProductDetail, selectedProduct, addToCart } = useCart();
-
-      if (!isProductDetailOpen || !selectedProduct) return null;
-
-      return React.createElement('dialog', {
-        id: 'product-detail-modal',
-        className: 'rounded-xl p-6 bg-white text-dark max-w-2xl w-full shadow-xl',
-        open: isProductDetailOpen
-      }, [
-        React.createElement('button', {
-          key: 'close',
-          className: 'modal-close-btn',
-          onClick: closeProductDetail
-        }, React.createElement('i', { className: 'fa-solid fa-times' })),
-        React.createElement('div', {
-          key: 'content',
-          id: 'product-detail-content',
-          className: 'mt-4'
-        }, 
-          React.createElement('div', {
-            className: 'flex flex-col md:flex-row gap-6'
-          }, [
-            React.createElement('div', {
-              key: 'image',
-              className: 'md:w-1/3'
-            }, 
-              React.createElement('img', {
-                src: selectedProduct.img,
-                alt: selectedProduct.name,
-                className: 'w-full rounded-lg shadow-md'
-              })
-            ),
-            React.createElement('div', {
-              key: 'details',
-              className: 'md:w-2/3'
-            }, [
-              React.createElement('h2', {
-                key: 'title',
-                className: 'text-2xl font-bold mb-2 text-secondary'
-              }, selectedProduct.name),
-              React.createElement('p', {
-                key: 'desc',
-                className: 'text-gray-600 mb-4'
-              }, selectedProduct.desc),
-              React.createElement('div', {
-                key: 'price',
-                className: 'mb-4'
-              }, [
-                React.createElement('span', {
-                  key: 'original',
-                  className: 'original-price'
-                }, `${selectedProduct.originalPrice} PKR`),
-                React.createElement('span', {
-                  key: 'discounted',
-                  className: 'font-bold text-xl text-primary'
-                }, `${selectedProduct.discountedPrice} PKR`)
-              ]),
-              React.createElement('div', {
-                key: 'full-desc',
-                className: 'bg-gray-100 p-4 rounded-lg mb-4'
-              }, [
-                React.createElement('h3', {
-                  key: 'subtitle',
-                  className: 'font-bold mb-2 text-secondary'
-                }, 'Product Details'),
-                React.createElement('p', {
-                  key: 'details-text',
-                  className: 'text-gray-700'
-                }, selectedProduct.details)
-              ]),
-              React.createElement('button', {
-                key: 'add-cart',
-                className: 'add-to-cart btn w-full',
-                onClick: () => {
-                  addToCart({ name: selectedProduct.name, price: selectedProduct.discountedPrice });
-                  closeProductDetail();
-                }
-              }, 'Add to Cart')
-            ])
-          ])
-        )
-      ]);
-    };
-
-    // Navbar Component
-    const Navbar = () => {
-      const { cart, openCart } = useCart();
-      const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
-
-      const toggleMobileMenu = () => {
-        setIsMobileMenuOpen(!isMobileMenuOpen);
-      };
-
-      return React.createElement('header', {
-        className: 'sticky top-0 z-40 bg-secondary backdrop-blur border-b border-primary'
-      }, [
-        React.createElement('div', {
-          key: 'container',
-          className: 'container py-3 flex items-center justify-between'
-        }, [
-          React.createElement('a', {
-            key: 'logo',
-            href: '#home',
-            className: 'font-extrabold text-xl text-white flex items-center no-select'
-          }, [
-            React.createElement('span', {
-              key: 'icon',
-              className: 'text-primary mr-1'
-            }, '🔥'),
-            'GROWZIO'
-          ]),
-          React.createElement('nav', {
-            key: 'desktop-nav',
-            className: 'desktop hidden md:flex gap-6 text-sm font-medium'
-          }, [
-            ['Home', 'About', 'Premium Apps', 'IPTV', 'Games', 'Bundles', 'Books', 'Contact'].map(item =>
-              React.createElement('a', {
-                key: item,
-                href: `#${item.toLowerCase().replace(' ', '')}`,
-                className: 'nav-link hover:text-primary no-select'
-              }, item)
-            )
-          ]),
-          React.createElement('div', {
-            key: 'mobile-buttons',
-            className: 'md:hidden flex items-center gap-2'
-          }, [
-            React.createElement('button', {
-              key: 'cart-mobile',
-              id: 'btn-open-cart-mobile',
-              className: 'relative rounded-xl px-3 py-2 border border-primary hover:shadow-sm transition flex items-center gap-2 text-primary hover:bg-primary hover:text-white',
-              onClick: openCart
-            }, [
-              React.createElement('i', { key: 'icon', className: 'fa-solid fa-cart-shopping' }),
-              React.createElement('span', { key: 'sr', className: 'sr-only' }, 'Cart'),
-              React.createElement('span', {
-                key: 'count',
-                id: 'cart-count-mobile',
-                className: 'ml-1 text-xs bg-primary text-white rounded-full px-2 py-0.5'
-              }, cart.length)
-            ]),
-            React.createElement('button', {
-              key: 'mobile-toggle',
-              id: 'mobile-toggle',
-              'aria-expanded': isMobileMenuOpen,
-              'aria-controls': 'mobile-menu',
-              className: 'p-2 rounded-md border border-primary text-primary',
-              onClick: toggleMobileMenu
-            }, React.createElement('i', {
-              className: isMobileMenuOpen ? 'fa-solid fa-times' : 'fa-solid fa-bars'
-            }))
-          ]),
-          React.createElement('div', {
-            key: 'desktop-cart',
-            className: 'hidden md:flex items-center gap-2'
-          }, 
-            React.createElement('button', {
-              id: 'btn-open-cart',
-              className: 'relative rounded-xl px-3 py-2 border border-primary hover:shadow-sm transition flex items-center gap-2 text-primary hover:bg-primary hover:text-white',
-              onClick: openCart
-            }, [
-              React.createElement('i', { key: 'icon', className: 'fa-solid fa-cart-shopping' }),
-              React.createElement('span', { key: 'sr', className: 'sr-only' }, 'Cart'),
-              React.createElement('span', {
-                key: 'count',
-                id: 'cart-count',
-                className: 'ml-1 text-xs bg-primary text-white rounded-full px-2 py-0.5'
-              }, cart.length)
-            ])
-          )
-        ]),
-        React.createElement('div', {
-          key: 'mobile-menu',
-          id: 'mobile-menu',
-          className: `bg-secondary-dark border-t border-primary md:hidden ${isMobileMenuOpen ? 'active' : ''}`
-        }, 
-          React.createElement('div', {
-            className: 'px-4 py-3 flex flex-col gap-2'
-          }, 
-            ['Home', 'About', 'Premium Apps', 'IPTV', 'Games', 'Bundles', 'Books', 'Contact'].map(item =>
-              React.createElement('a', {
-                key: item,
-                href: `#${item.toLowerCase().replace(' ', '')}`,
-                className: 'py-2 nav-link no-select',
-                onClick: () => setIsMobileMenuOpen(false)
-              }, item)
-            )
-          )
-        )
-      ]);
-    };
-
-    // Hero Section Component
-    const HeroSection = () => {
-      return React.createElement('section', {
-        id: 'home',
-        className: 'section relative bg-gradient-to-br from-secondary to-secondary-dark text-white'
-      }, [
-        React.createElement('div', {
-          key: 'bg',
-          className: 'absolute inset-0'
-        }, 
-          React.createElement('img', {
-            src: 'https://images.unsplash.com/photo-1553484771-898ed465e931?auto=format&fit=crop&w=1920&q=80',
-            alt: 'Digital services background',
-            className: 'w-full h-full object-cover opacity-10'
-          })
-        ),
-        React.createElement('div', {
-          key: 'content',
-          className: 'container text-center'
-        }, [
-          React.createElement('h1', {
-            key: 'title',
-            className: 'section-title mb-4 text-white',
-            'data-aos': 'fade-down',
-            'data-aos-duration': '1000'
-          }, [
-            React.createElement('span', {
-              className: 'gradient-text'
-            }, 'Premium Apps & Services'),
-            ' in Pakistan at Lowest Prices'
-          ]),
-          React.createElement('p', {
-            key: 'subtitle',
-            className: 'section-subtitle text-gray-200',
-            'data-aos': 'fade-up',
-            'data-aos-duration': '1000',
-            'data-aos-delay': '200'
-          }, 'Get 100% genuine Netflix Premium, Canva Pro, IPTV subscriptions and gaming top-ups. Pay easily via JazzCash, Easypaisa & Binance with instant delivery.'),
-          React.createElement('div', {
-            key: 'trust-badges',
-            className: 'flex flex-wrap justify-center gap-4 mb-8',
-            'data-aos': 'fade-up',
-            'data-aos-duration': '1000',
-            'data-aos-delay': '400'
-          }, 
-            [
-              { icon: 'fa-bolt', text: 'Instant Delivery' },
-              { icon: 'fa-shield-halved', text: '100% Genuine' },
-              { icon: 'fa-headset', text: '24/7 Support' },
-              { icon: 'fa-lock', text: 'Secure Payment' }
-            ].map((badge, index) =>
-              React.createElement('div', {
-                key: index,
-                className: 'trust-badge float-animation',
-                style: { animationDelay: `${index * 0.5}s` }
-              }, [
-                React.createElement('i', {
-                  key: 'icon',
-                  className: `fa-solid ${badge.icon} text-primary text-2xl mb-2`
-                }),
-                React.createElement('p', {
-                  key: 'text',
-                  className: 'text-sm'
-                }, badge.text)
-              ])
-            )
-          ),
-          React.createElement('div', {
-            key: 'offer',
-            className: 'mb-6 bg-primary/20 border border-primary rounded-lg p-3 inline-block',
-            'data-aos': 'zoom-in',
-            'data-aos-duration': '1000',
-            'data-aos-delay': '600'
-          }, 
-            React.createElement('span', {
-              className: 'font-bold text-primary'
-            }, 'Special Limited Offer: 30% OFF on all services!')
-          ),
-          React.createElement('br', { key: 'break' }),
-          React.createElement('div', {
-            key: 'buttons',
-            className: 'flex flex-col sm:flex-row justify-center gap-3',
-            'data-aos': 'fade-up',
-            'data-aos-duration': '1000',
-            'data-aos-delay': '800'
-          }, [
-            React.createElement('a', {
-              key: 'browse',
-              href: '#apps',
-              className: 'btn shine mb-3 sm:mb-0'
-            }, 'Browse All Products'),
-            React.createElement('a', {
-              key: 'learn',
-              href: '#about',
-              className: 'btn btn-outline text-white border-white hover:text-dark'
-            }, 'Learn More')
-          ])
-        ])
-      ]);
-    };
-
-    // Products Section Component
-    const ProductsSection = ({ title, subtitle, products, category, id }) => {
-      return React.createElement('section', {
-        id: id,
-        className: `section ${id === 'apps' || id === 'games' ? 'bg-white' : 'bg-lightbg'}`
-      }, 
-        React.createElement('div', {
-          className: 'container'
-        }, [
-          React.createElement('h2', {
-            key: 'title',
-            className: 'section-title',
-            'data-aos': 'fade-up'
-          }, title),
-          React.createElement('p', {
-            key: 'subtitle',
-            className: 'section-subtitle',
-            'data-aos': 'fade-up',
-            'data-aos-delay': '200'
-          }, subtitle),
-          React.createElement('div', {
-            key: 'grid',
-            className: 'grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6',
-            id: `${id}-list`
-          }, 
-            products.map((product, index) =>
-              React.createElement(ProductCard, {
-                key: index,
-                product: product,
-                category: category
-              })
-            )
-          )
-        ])
-      );
-    };
-
-    // Bundles Section Component
-    const BundlesSection = () => {
-      return React.createElement('section', {
-        id: 'bundles',
-        className: 'section bg-lightbg'
-      }, 
-        React.createElement('div', {
-          className: 'container'
-        }, [
-          React.createElement('div', {
-            key: 'header',
-            className: 'bundles-header',
-            'data-aos': 'fade-up'
-          }, [
-            React.createElement('h1', {
-              key: 'title',
-              className: 'bundles-title'
-            }, 'OUR BUNDLES'),
-            React.createElement('p', {
-              key: 'subtitle',
-              className: 'bundles-subtitle'
-            }, 'Premium digital resources at unbeatable prices for creators and developers')
-          ]),
-          React.createElement('div', {
-            key: 'grid',
-            className: 'bundles-grid'
-          }, 
-            PRODUCT_DATA.bundles.map((bundle, index) =>
-              React.createElement(BundleCard, {
-                key: index,
-                bundle: bundle,
-                'data-aos': 'fade-up',
-                'data-aos-delay': (index + 1) * 100
-              })
-            )
-          )
-        ])
-      );
-    };
-
-    // Books Section Component
-    const BooksSection = () => {
-      return React.createElement('section', {
-        id: 'books',
-        className: 'section bg-white'
-      }, 
-        React.createElement('div', {
-          className: 'container'
-        }, [
-          React.createElement('div', {
-            key: 'header',
-            className: 'books-header',
-            'data-aos': 'fade-up'
-          }, [
-            React.createElement('h1', {
-              key: 'title',
-              className: 'books-title'
-            }, 'DIGITAL BOOKS'),
-            React.createElement('p', {
-              key: 'subtitle',
-              className: 'books-subtitle'
-            }, 'Premium eBooks and digital resources for learning and personal development')
-          ]),
-          React.createElement('div', {
-            key: 'grid',
-            className: 'books-grid'
-          }, 
-            PRODUCT_DATA.books.map((book, index) =>
-              React.createElement(BookCard, {
-                key: index,
-                book: book,
-                'data-aos': 'fade-up',
-                'data-aos-delay': (index + 1) * 100
-              })
-            )
-          )
-        ])
-      );
-    };
-
-    // Main App Component
-    const App = () => {
-      React.useEffect(() => {
-        // Initialize AOS animations
-        if (window.AOS) {
-          AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100,
-            delay: 100,
-          });
-        }
-
-        // Code protection
-        document.addEventListener('contextmenu', (e) => e.preventDefault());
-        document.addEventListener('selectstart', (e) => e.preventDefault());
-        document.addEventListener('keydown', (e) => {
-          if (
-            e.key === 'F12' || 
-            (e.ctrlKey && e.shiftKey && e.key === 'I') || 
-            (e.ctrlKey && e.shiftKey && e.key === 'C') || 
-            (e.ctrlKey && e.key === 'u')
-          ) {
-            e.preventDefault();
-          }
-        });
-
-        document.querySelectorAll('img').forEach(img => {
-          img.addEventListener('dragstart', (e) => e.preventDefault());
-        });
-      }, []);
-
-      return React.createElement(CartProvider, {}, [
-        React.createElement(Navbar, { key: 'navbar' }),
-        React.createElement(HeroSection, { key: 'hero' }),
+  <!-- Privacy Policy Modal -->
+  <dialog id="privacy-policy-modal" class="rounded-xl p-6 bg-white text-dark max-w-3xl w-full shadow-xl">
+    <button class="modal-close-btn" onclick="document.getElementById('privacy-policy-modal').close()">
+      <i class="fa-solid fa-times"></i>
+    </button>
+    <div class="mt-4">
+      <h2 class="text-2xl font-bold mb-4 text-secondary">Privacy Policy</h2>
+      <div class="space-y-4 max-h-96 overflow-y-auto">
+        <p>At GROWZIO, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you use our services.</p>
         
-        // About Section
-        React.createElement('section', {
-          key: 'about',
-          id: 'about',
-          className: 'section bg-white'
-        }, 
-          React.createElement('div', {
-            className: 'container text-center'
-          }, [
-            React.createElement('h2', {
-              key: 'title',
-              className: 'section-title',
-              'data-aos': 'fade-up'
-            }, 'ABOUT GROWZIO'),
-            React.createElement('p', {
-              key: 'subtitle',
-              className: 'section-subtitle',
-              'data-aos': 'fade-up',
-              'data-aos-delay': '200'
-            }, 'GROWZIO is your trusted digital store for premium apps, IPTV, and gaming services. We provide 100% genuine subscriptions like Netflix, Canva Pro, and more – at affordable rates in Pakistan. With secure payments via JazzCash, Easypaisa, and Binance, we make it simple and safe to upgrade your digital experience.'),
-            React.createElement('div', {
-              key: 'content',
-              className: 'mt-10 grid md:grid-cols-2 gap-8 items-center'
-            }, [
-              React.createElement('div', {
-                key: 'text',
-                className: 'text-left',
-                'data-aos': 'fade-right'
-              }, [
-                React.createElement('h3', {
-                  key: 'subtitle',
-                  className: 'text-2xl font-bold mb-4'
-                }, 'Why Choose Us?'),
-                React.createElement('ul', {
-                  key: 'list',
-                  className: 'space-y-3'
-                }, 
-                  [
-                    '100% genuine subscriptions with warranty',
-                    'Instant delivery after payment confirmation',
-                    'Secure payment methods (JazzCash, Easypaisa, Binance)',
-                    '24/7 customer support via WhatsApp',
-                    'Competitive prices with regular discounts'
-                  ].map((item, index) =>
-                    React.createElement('li', {
-                      key: index,
-                      className: 'flex items-start'
-                    }, [
-                      React.createElement('i', {
-                        key: 'icon',
-                        className: 'fa-solid fa-check text-primary mt-1 mr-2'
-                      }),
-                      React.createElement('span', { key: 'text' }, item)
-                    ])
-                  )
-                )
-              ]),
-              React.createElement('div', {
-                key: 'image',
-                'data-aos': 'fade-left'
-              }, 
-                React.createElement('img', {
-                  src: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=600&q=80',
-                  alt: 'GROWZIO digital services',
-                  className: 'rounded-lg shadow-lg'
-                })
-              )
-            ])
-          ])
-        ),
+        <h3 class="text-xl font-bold mt-6 mb-2">Information We Collect</h3>
+        <p>We may collect the following types of information:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Personal identification information (name, email address, phone number)</li>
+          <li>Payment information (processed securely through third-party providers)</li>
+          <li>Account credentials for the services you purchase</li>
+          <li>Communication records when you contact our support team</li>
+        </ul>
+        
+        <h3 class="text-xl font-bold mt-6 mb-2">How We Use Your Information</h3>
+        <p>We use the information we collect to:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Process your orders and deliver purchased services</li>
+          <li>Provide customer support and respond to inquiries</li>
+          <li>Improve our services and user experience</li>
+          <li>Send important updates about your account or our services</li>
+        </ul>
+        
+        <h3 class="text-xl font-bold mt-6 mb-2">Data Security</h3>
+        <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure.</p>
+        
+        <h3 class="text-xl font-bold mt-6 mb-2">Third-Party Services</h3>
+        <p>We use third-party payment processors (JazzCash, Easypaisa, Binance) to handle financial transactions. These providers have their own privacy policies governing the use of your information.</p>
+        
+        <h3 class="text-xl font-bold mt-6 mb-2">Your Rights</h3>
+        <p>You have the right to:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Access the personal information we hold about you</li>
+          <li>Request correction of inaccurate information</li>
+          <li>Request deletion of your personal information</li>
+          <li>Object to processing of your personal information</li>
+        </ul>
+        
+        <h3 class="text-xl font-bold mt-6 mb-2">Contact Us</h3>
+        <p>If you have any questions about this Privacy Policy or our data practices, please contact us at:</p>
+        <p>Email: privacy@growzio.com<br>
+        WhatsApp: +92 319 5179084</p>
+        
+        <p class="mt-6 text-sm text-gray-600">Last updated: January 2025</p>
+      </div>
+    </div>
+  </dialog>
 
-        // How It Works Section
-        React.createElement('section', {
-          key: 'how-it-works',
-          className: 'section bg-lightbg'
-        }, 
-          React.createElement('div', {
-            className: 'container'
-          }, [
-            React.createElement('h2', {
-              key: 'title',
-              className: 'section-title',
-              'data-aos': 'fade-up'
-            }, 'How It Works'),
-            React.createElement('p', {
-              key: 'subtitle',
-              className: 'section-subtitle',
-              'data-aos': 'fade-up',
-              'data-aos-delay': '200'
-            }, 'Getting your premium digital services is quick and easy with our simple process'),
-            React.createElement('div', {
-              key: 'steps',
-              className: 'grid md:grid-cols-3 gap-8'
-            }, 
-              [
-                { number: '1', title: 'Select Product', desc: 'Choose from our wide range of premium apps, IPTV & gaming services' },
-                { number: '2', title: 'Make Payment', desc: 'Pay easily via JazzCash, Easypaisa, or Binance with secure transaction' },
-                { number: '3', title: 'Receive Instantly', desc: 'Get your product credentials instantly via WhatsApp after payment verification' }
-              ].map((step, index) =>
-                React.createElement('div', {
-                  key: index,
-                  className: 'text-center',
-                  'data-aos': 'fade-up',
-                  'data-aos-delay': (index + 3) * 100
-                }, [
-                  React.createElement('div', {
-                    key: 'number',
-                    className: 'bg-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4'
-                  }, 
-                    React.createElement('span', {
-                      className: 'text-white font-bold text-xl'
-                    }, step.number)
-                  ),
-                  React.createElement('h3', {
-                    key: 'title',
-                    className: 'font-bold mb-2 text-xl'
-                  }, step.title),
-                  React.createElement('p', {
-                    key: 'desc',
-                    className: 'text-gray-600'
-                  }, step.desc)
-                ])
-              )
-            )
-          ])
-        ),
+  <!-- Payment Page (initially hidden) -->
+  <div id="payment-page" class="hidden">
+    <!-- Header -->
+    <header class="header bg-secondary">
+      <div class="container mx-auto px-4 flex items-center justify-between py-3">
+        <a href="#" class="font-extrabold text-xl text-white flex items-center">
+          <span class="text-primary mr-1">🔥</span> GROWZIO
+        </a>
+        
+        <div class="flex items-center gap-4">
+          <a href="https://wa.me/923195179084" target="_blank" class="text-white hover:text-primary">
+            <i class="fa-brands fa-whatsapp text-2xl"></i>
+          </a>
+        </div>
+      </div>
+    </header>
 
-        // Products Sections
-        React.createElement(ProductsSection, {
-          key: 'apps',
-          title: 'PREMIUM APPS SUBSCRIPTIONS',
-          subtitle: 'Get premium app subscriptions at the lowest prices in Pakistan with instant delivery',
-          products: PRODUCT_DATA.apps,
-          category: 'apps',
-          id: 'apps'
-        }),
+    <!-- Payment Container -->
+    <div class="payment-container">
+      <div class="text-center mb-6">
+        <h1 class="text-3xl font-bold mb-2">Complete Your Payment</h1>
+        <p class="text-gray-600">Select your preferred payment method</p>
+      </div>
+      
+      <!-- Order Summary -->
+      <div class="order-summary">
+        <h2 class="text-xl font-bold mb-4">Order Summary</h2>
+        <div id="payment-order-items"></div>
+        <div class="order-total">
+          <span>Total:</span>
+          <span id="payment-total">0 PKR</span>
+        </div>
+      </div>
+      
+      <!-- Payment Options -->
+      <div class="payment-options">
+        <!-- JazzCash Option -->
+        <div class="payment-option">
+          <div class="payment-logo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRV5FPCt1eX4NPeEhoEEI_XIugL1Rf82_VV5w&s" alt="JazzCash">
+          </div>
+          <h3 class="font-bold text-lg mb-3 text-center">JazzCash</h3>
+          
+          <div class="payment-details">
+            <div class="payment-detail-item">
+              <span>Name:</span>
+              <span class="font-medium">Khairunisa</span>
+            </div>
+            <div class="payment-detail-item">
+              <span>Number:</span>
+              <span class="font-medium">03295478732</span>
+            </div>
+          </div>
+          
+          <div class="payment-instruction">
+            <p class="text-sm">After making the payment, please send the screenshot to our WhatsApp for verification.</p>
+          </div>
+        </div>
+        
+        <!-- Easypaisa Option -->
+        <div class="payment-option">
+          <div class="payment-logo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyo6DN_GfIK50Hp-q01KOFS1gYt1KQFt2p4-e9jb4k-w&s" alt="Easypaisa">
+          </div>
+          <h3 class="font-bold text-lg mb-3 text-center">Easypaisa</h3>
+          
+          <div class="payment-details">
+            <div class="payment-detail-item">
+              <span>Name:</span>
+              <span class="font-medium">Khairunisa</span>
+            </div>
+            <div class="payment-detail-item">
+              <span>Number:</span>
+              <span class="font-medium">03325982480</span>
+            </div>
+          </div>
+          
+          <div class="payment-instruction">
+            <p class="text-sm">After making the payment, please send the screenshot to our WhatsApp for verification.</p>
+          </div>
+        </div>
+        
+        <!-- Binance Option -->
+        <div class="payment-option">
+          <div class="payment-logo">
+            <img src="https://public.bnbstatic.com/image/cms/blog/20190218/62cb8eb1-77bd-4b71-9519-f2f216d90b28.png" alt="Binance">
+          </div>
+          <h3 class="font-bold text-lg mb-3 text-center">Binance (Crypto)</h3>
+          
+          <div class="payment-details">
+            <div class="payment-detail-item">
+              <span>Pay ID/UID:</span>
+              <span class="font-medium">14245485</span>
+            </div>
+            <div class="payment-detail-item">
+              <span>Name:</span>
+              <span class="font-medium">Khairunisa</span>
+            </div>
+          </div>
+          
+          <div class="payment-instruction">
+            <p class="text-sm">After making the payment, please send the transaction details to our WhatsApp for verification.</p>
+          </div>
+        </div>
+      </div>
+      
+      <button class="confirm-payment-btn" onclick="confirmPayment()">I've Made the Payment</button>
+      
+      <div class="mt-4 text-center">
+        <button onclick="goBackToShopping()" class="text-primary hover:underline">
+          <i class="fa-solid fa-arrow-left mr-2"></i> Back to Shopping
+        </button>
+      </div>
+    </div>
 
-        React.createElement(ProductsSection, {
-          key: 'iptv',
-          title: 'IPTV SERVICES',
-          subtitle: '10,000+ channels & VOD with up to 4K support for all your entertainment needs',
-          products: PRODUCT_DATA.iptv,
-          category: 'iptv',
-          id: 'iptv'
-        }),
+    <!-- Footer -->
+    <footer class="footer bg-secondary text-white py-6">
+      <div class="container mx-auto px-4 text-center">
+        <p>© 2025 GROWZIO. All rights reserved.</p>
+        <p class="text-gray-300 mt-2">WhatsApp: +92 319 5179084</p>
+      </div>
+    </footer>
 
-        React.createElement(ProductsSection, {
-          key: 'games',
-          title: 'GAMES SERVICES',
-          subtitle: 'Instant game top-ups & currency for your favorite mobile games',
-          products: PRODUCT_DATA.games,
-          category: 'games',
-          id: 'games'
-        }),
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/923195179084" target="_blank" class="whatsapp-float">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
 
-        React.createElement(BundlesSection, { key: 'bundles' }),
-        React.createElement(BooksSection, { key: 'books' }),
+  <!-- Main Website Content (initially visible) -->
+  <div id="main-content">
+    <!-- Hero -->
+    <section id="home" class="section relative bg-gradient-to-br from-secondary to-secondary-dark text-white">
+      <div class="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1553484771-898ed465e931?auto=format&fit=crop&w=1920&q=80" alt="Digital services background" class="w-full h-full object-cover opacity-10">
+      </div>
+      <div class="container text-center">
+        <h1 class="section-title mb-4 text-white" data-aos="fade-down" data-aos-duration="1000">
+          <span class="gradient-text">Premium Apps & Services</span> in Pakistan at Lowest Prices
+        </h1>
+        <p class="section-subtitle text-gray-200" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">Get 100% genuine Netflix Premium, Canva Pro, IPTV subscriptions and gaming top-ups. Pay easily via JazzCash, Easypaisa & Binance with instant delivery.</p>
 
-        // Footer
-        React.createElement('footer', {
-          key: 'footer',
-          className: 'bg-secondary text-gray-200 py-12 mt-16 border-t border-primary'
-        }, 
-          React.createElement('div', {
-            className: 'container'
-          }, [
-            React.createElement('div', {
-              key: 'content',
-              className: 'grid md:grid-cols-4 gap-8'
-            }, [
-              React.createElement('div', { key: 'about' }, [
-                React.createElement('h3', {
-                  key: 'title',
-                  className: 'text-white text-lg font-bold mb-4'
-                }, 'GROWZIO'),
-                React.createElement('p', {
-                  key: 'desc',
-                  className: 'mb-4'
-                }, 'Your trusted source for premium digital services in Pakistan at affordable prices.'),
-                React.createElement('div', {
-                  key: 'social',
-                  className: 'flex gap-4'
-                }, 
-                  ['fa-facebook-f', 'fa-twitter', 'fa-instagram', 'fa-tiktok'].map(icon =>
-                    React.createElement('a', {
-                      key: icon,
-                      href: '#',
-                      className: 'text-gray-300 hover:text-primary'
-                    }, React.createElement('i', { className: `fa-brands ${icon}` }))
-                  )
-                )
-              ]),
-              React.createElement('div', { key: 'links' }, [
-                React.createElement('h3', {
-                  key: 'title',
-                  className: 'text-white text-lg font-bold mb-4'
-                }, 'QUICK LINKS'),
-                React.createElement('ul', {
-                  key: 'list',
-                  className: 'space-y-2'
-                }, 
-                  ['Home', 'Premium Apps', 'IPTV', 'Gaming', 'Bundles', 'Books'].map(item =>
-                    React.createElement('li', { key: item }, 
-                      React.createElement('a', {
-                        href: `#${item.toLowerCase().replace(' ', '')}`,
-                        className: 'text-gray-300 hover:text-primary'
-                      }, item)
-                    )
-                  )
-                )
-              ]),
-              React.createElement('div', { key: 'support' }, [
-                React.createElement('h3', {
-                  key: 'title',
-                  className: 'text-white text-lg font-bold mb-4'
-                }, 'SUPPORT'),
-                React.createElement('ul', {
-                  key: 'list',
-                  className: 'space-y-2'
-                }, 
-                  ['Contact Us', 'FAQ', 'Terms of Service', 'Refund Policy', 'Privacy Policy'].map(item =>
-                    React.createElement('li', { key: item }, 
-                      React.createElement('a', {
-                        href: `#${item.toLowerCase().replace(' ', '')}`,
-                        className: 'text-gray-300 hover:text-primary'
-                      }, item)
-                    )
-                  )
-                )
-              ]),
-              React.createElement('div', { key: 'newsletter' }, [
-                React.createElement('h3', {
-                  key: 'title',
-                  className: 'text-white text-lg font-bold mb-4'
-                }, 'NEWSLETTER'),
-                React.createElement('p', {
-                  key: 'desc',
-                  className: 'mb-4'
-                }, 'Subscribe to get special offers and service updates'),
-                React.createElement('form', {
-                  key: 'form',
-                  className: 'flex flex-col gap-2'
-                }, [
-                  React.createElement('input', {
-                    key: 'email',
-                    type: 'email',
-                    placeholder: 'Your email',
-                    className: 'px-4 py-2 rounded bg-secondary-dark border border-gray-600 text-white placeholder-gray-400'
-                  }),
-                  React.createElement('button', {
-                    key: 'submit',
-                    type: 'submit',
-                    className: 'btn bg-primary hover:bg-primary-dark'
-                  }, 'Subscribe')
-                ])
-              ])
-            ]),
-            React.createElement('div', {
-              key: 'copyright',
-              className: 'border-t border-gray-600 mt-8 pt-8 text-center'
-            }, 
-              React.createElement('p', {}, '© 2025 GROWZIO. All rights reserved.')
-            )
-          ])
-        ),
+        <!-- Trust badges -->
+        <div class="flex flex-wrap justify-center gap-4 mb-8" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+          <div class="trust-badge float-animation">
+            <i class="fa-solid fa-bolt text-primary text-2xl mb-2"></i>
+            <p class="text-sm">Instant Delivery</p>
+          </div>
+          <div class="trust-badge float-animation" style="animation-delay: 0.5s;">
+            <i class="fa-solid fa-shield-halved text-primary text-2xl mb-2"></i>
+            <p class="text-sm">100% Genuine</p>
+          </div>
+          <div class="trust-badge float-animation" style="animation-delay: 1s;">
+            <i class="fa-solid fa-headset text-primary text-2xl mb-2"></i>
+            <p class="text-sm">24/7 Support</p>
+          </div>
+          <div class="trust-badge float-animation" style="animation-delay: 1.5s;">
+            <i class="fa-solid fa-lock text-primary text-2xl mb-2"></i>
+            <p class="text-sm">Secure Payment</p>
+          </div>
+        </div>
 
-        // WhatsApp Float
-        React.createElement('a', {
-          key: 'whatsapp',
-          href: 'https://wa.me/923195179084',
-          target: '_blank',
-          className: 'whatsapp-float',
-          'aria-label': 'Chat on WhatsApp'
-        }, React.createElement('i', { className: 'fa-brands fa-whatsapp' })),
+        <div class="mb-6 bg-primary/20 border border-primary rounded-lg p-3 inline-block" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="600">
+          <span class="font-bold text-primary">Special Limited Offer: 30% OFF on all services!</span>
+        </div>
+        <br>
+        <div class="flex flex-col sm:flex-row justify-center gap-3" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
+          <a href="#apps" class="btn shine mb-3 sm:mb-0">Browse All Products</a>
+          <a href="#about" class="btn btn-outline text-white border-white hover:text-dark">Learn More</a>
+        </div>
+      </div>
+    </section>
 
-        // Modals
-        React.createElement(CartModal, { key: 'cart-modal' }),
-        React.createElement(AddedToCartModal, { key: 'added-modal' }),
-        React.createElement(ProductDetailModal, { key: 'product-modal' })
-      ]);
+    <!-- About -->
+    <section id="about" class="section bg-white">
+      <div class="container text-center">
+        <h2 class="section-title" data-aos="fade-up">ABOUT GROWZIO</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">GROWZIO is your trusted digital store for <strong>premium apps, IPTV, and gaming services</strong>. We provide 100% genuine subscriptions like <em>Netflix, Canva Pro</em>, and more – at affordable rates in Pakistan. With secure payments via <strong>JazzCash, Easypaisa, and Binance</strong>, we make it simple and safe to upgrade your digital experience.</p>
+        
+        <div class="mt-10 grid md:grid-cols-2 gap-8 items-center">
+          <div class="text-left" data-aos="fade-right">
+            <h3 class="text-2xl font-bold mb-4">Why Choose Us?</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start"><i class="fa-solid fa-check text-primary mt-1 mr-2"></i> <span>100% genuine subscriptions with warranty</span></li>
+              <li class="flex items-start"><i class="fa-solid fa-check text-primary mt-1 mr-2"></i> <span>Instant delivery after payment confirmation</span></li>
+              <li class="flex items-start"><i class="fa-solid fa-check text-primary mt-1 mr-2"></i> <span>Secure payment methods (JazzCash, Easypaisa, Binance)</span></li>
+              <li class="flex items-start"><i class="fa-solid fa-check text-primary mt-1 mr-2"></i> <span>24/7 customer support via WhatsApp</span></li>
+              <li class="flex items-start"><i class="fa-solid fa-check text-primary mt-1 mr-2"></i> <span>Competitive prices with regular discounts</span></li>
+            </ul>
+          </div>
+          <div data-aos="fade-left">
+            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=600&q=80" alt="GROWZIO digital services" class="rounded-lg shadow-lg">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section bg-lightbg">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">How It Works</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Getting your premium digital services is quick and easy with our simple process</p>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+            <div class="bg-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-white font-bold text-xl">1</span></div>
+            <h3 class="font-bold mb-2 text-xl">Select Product</h3>
+            <p class="text-gray-600">Choose from our wide range of premium apps, IPTV & gaming services</p>
+          </div>
+          <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+            <div class="bg-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-white font-bold text-xl">2</span></div>
+            <h3 class="font-bold mb-2 text-xl">Make Payment</h3>
+            <p class="text-gray-600">Pay easily via JazzCash, Easypaisa, or Binance with secure transaction</p>
+          </div>
+          <div class="text-center" data-aos="fade-up" data-aos-delay="500">
+            <div class="bg-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"><span class="text-white font-bold text-xl">3</span></div>
+            <h3 class="font-bold mb-2 text-xl">Receive Instantly</h3>
+            <p class="text-gray-600">Get your product credentials instantly via WhatsApp after payment verification</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products -->
+    <section id="apps" class="section bg-white">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">PREMIUM APPS SUBSCRIPTIONS</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Get premium app subscriptions at the lowest prices in Pakistan with instant delivery</p>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="apps-list"></div>
+      </div>
+    </section>
+
+    <section id="iptv" class="section bg-lightbg">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">IPTV SERVICES</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">10,000+ channels & VOD with up to 4K support for all your entertainment needs</p>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="iptv-list"></div>
+      </div>
+    </section>
+
+    <section id="games" class="section bg-white">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">GAMES SERVICES</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Instant game top-ups & currency for your favorite mobile games</p>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="games-list"></div>
+      </div>
+    </section>
+
+    <!-- Bundles Section -->
+    <section id="bundles" class="section bg-lightbg">
+      <div class="container">
+        <div class="bundles-header" data-aos="fade-up">
+          <h1 class="bundles-title">OUR BUNDLES</h1>
+          <p class="bundles-subtitle">Premium digital resources at unbeatable prices for creators and developers</p>
+        </div>
+        
+        <div class="bundles-grid">
+          <!-- Bundle 1 -->
+          <div class="bundle-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="bundle-product-container">
+              <div class="bundle-product">
+                <div class="bundle-product-front">
+                  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg8cGuy7EJ90UO5nT9Wt_KrBuRv1QLX7zJUnjKZmq3MWeDelxDBEEMzoPkJerxGN3-wB0gMmMMYg0Q-KqRse0Wf7lOt5Se1-pMnNye6Tr0a7ej3przWQ6baGZdoFyIyDEP8WywGgIKwMRJWedNE4gAwocc0dTHcb1r3Xlq8G1yAh6P6JuSj5pwNkPV0rCI/s320/video%20editng.PNG" alt="200 GB Editing Pack">
+                </div>
+                <div class="bundle-product-back">
+                  <h3>What's Included</h3>
+                  <ul>
+                    <li>Video Editing Material</li>
+                    <li>Special effects packages</li>
+                    <li>Professional sound packs</li>
+                    <li>Color grading presets</li>
+                    <li>Title animations</li>
+                  </ul>
+                  <p>Perfect for professional video editors and content creators!</p>
+                </div>
+              </div>
+            </div>
+            <h2>300 GB Editing Pack</h2>
+            <div class="bundle-price-container">
+              <div class="bundle-original-price">PKR 4000</div>
+              <div class="bundle-sale-price">PKR 500</div>
+            </div>
+            <button class="bundle-btn add-to-cart" data-name="300 GB Editing Pack" data-price="500">Add to Cart</button>
+          </div>
+
+          <!-- Bundle 4 -->
+          <div class="bundle-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="bundle-product-container">
+              <div class="bundle-product">
+                <div class="bundle-product-front">
+                  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDanUpbz4TD3JwPFSPCnaLGIkZSO8_cjpoxskOU7eteFQgW_VAl8LLskHNq483vAzk9ttS56jwXI37tS2TwQnR7CDULOFM_2pSSOWG08OlizkQcP1IwX2l5kyLAk3eN5fasOI6KwQpkhyphenhyphenCwpKaFHjf9I1T-mwc7EN25RFtBiDmDtSQmyql4TBVvUvKDBM/s320/thumbnailpack.PNG" alt="3K Plus Fitness Posts">
+                </div>
+                <div class="bundle-product-back">
+                  <h3>What's Included</h3>
+                  <ul>
+                    <li>Thumbnail Mega Pack</li>
+                    <li>All Thumbnail Material High Quality</li>
+                    <li>Backgrounds Fonts Glowing Icons</li>
+                    <li>High Quality Characters Pngs</li>
+                  </ul>
+                  <p>Improve your designs to next level!</p>
+                </div>
+              </div>
+            </div>
+            <h2>Thumbnail Mega Pack</h2>
+            <div class="bundle-price-container">
+              <div class="bundle-original-price">PKR 5300</div>
+              <div class="bundle-sale-price">PKR 500</div>
+            </div>
+            <button class="bundle-btn add-to-cart" data-name="Thumbnail Mega Pack" data-price="500">Add to Cart</button>
+          </div>
+
+          <!-- Bundle 6 -->
+          <div class="bundle-card" data-aos="fade-up" data-aos-delay="600">
+            <div class="bundle-product-container">
+              <div class="bundle-product">
+                <div class="bundle-product-front">
+                  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_Cm83xzQpINfADGAPSxZUd3zfTq2WFflEwP29JKd7LGJOueeH8kNOrChR_7PFJ4ggMpdxD_k6XXdUihldhUbaRJUReCRJ9dUIgX1tY7MOThhg75_SZaFGgXwG_ws1PB2WbE-hct2THlBKpsFsreS1Kq_RM8-cBDqced2sY6bZYI09Hgt4S9jK9O1higA/s320/images%20prompt.PNG" alt="HQ Quotes Images">
+                </div>
+                <div class="bundle-product-back">
+                  <h3>What's Included</h3>
+                  <ul>
+                    <li>Ai Images Generation Prompts</li>
+                    <li>All Types of Images Generation Prompts</li>
+                  </ul>
+                  <p>Inspire your audience!</p>
+                </div>
+              </div>
+            </div>
+            <h2>Ai Images Generation Prompts</h2>
+            <div class="bundle-price-container">
+              <div class="bundle-original-price">PKR 5400</div>
+              <div class="bundle-sale-price">PKR 500</div>
+            </div>
+            <button class="bundle-btn add-to-cart" data-name="Images Generation Prompts" data-price="500">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Books Section -->
+    <section id="books" class="section bg-white">
+      <div class="container">
+        <div class="books-header" data-aos="fade-up">
+          <h1 class="books-title">DIGITAL BOOKS</h1>
+          <p class="books-subtitle">Premium eBooks and digital resources for learning and personal development</p>
+        </div>
+        
+        <div class="books-grid">
+          <!-- Book 1 -->
+          <div class="book-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="book-product-container">
+              <div class="book-product">
+                <div class="book-product-front">
+                  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhVjNr2rObY-KP2doF_7UQ5aU_KAoRRO027Npg_IVg1BRlDIB7MLWGAPznaVhlKv1GTlKcRbSqjFTpkJDBfsRkm-D8niYg9YQEcIddOyGnl6_Ori7A6B7T-ldOtcHSc7frX20ew7JoirHatqK7ZgEMVTJZSo91gZyaZ_vV1x6dNTXABeyGtwofHhZGfJYs/w243-h320/ChatGPT%20Image%20Oct%202025,%2005_28_39%20AM.png" alt="Web Development Mastery">
+                </div>
+                <div class="book-product-back">
+                  <h3>What's Included</h3>
+                  <ul>
+                    <li>Complete web development guide</li>
+                    <li>HTML, CSS, JavaScript fundamentals</li>
+                    <li>Frontend & backend development</li>
+                    <li>Responsive design techniques</li>
+                    <li>Real-world project examples</li>
+                  </ul>
+                  <p>Master web development from beginner to advanced level Roadmap!</p>
+                </div>
+              </div>
+            </div>
+            <h2>Web Development Mastery</h2>
+            <div class="book-price-container">
+              <div class="book-original-price">PKR 2500</div>
+              <div class="book-sale-price">PKR 500</div>
+            </div>
+            <button class="book-btn add-to-cart" data-name="Web Development Mastery" data-price="500">Add to Cart</button>
+          </div>
+
+          <!-- Book 2 -->
+          <div class="book-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="book-product-container">
+              <div class="book-product">
+                <div class="book-product-front">
+                  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEioLOtx1eiRvFaUA0LkZbanK19h6HgWVb1iwJsbhVJK20c5w1YFlrkAlBYtBo-o71aS6W79s4NGJ6OxpuAu2Q5TyTVTHoK5vf0cLQvq6lQHGNpOFvhwDRkxYt28IbP-6GTE-PTL8m3DN-AkdFS0dUDLtT5V6hyphenhyphenBLHtd2ccTFrRLP4JvxBmA1AppoTGtQpE/s320/roadmapstyle.PNG" alt="Digital Marketing Guide">
+                </div>
+                <div class="book-product-back">
+                  <h3>What's Included</h3>
+                  <ul>
+                    <li>Complete digital marketing strategies</li>
+                    <li>SEO optimization techniques</li>
+                    <li>Social media marketing guide</li>
+                    <li>Email marketing campaigns</li>
+                    <li>Analytics and performance tracking</li>
+                  </ul>
+                  <p>Learn to build effective digital marketing campaigns!</p>
+                </div>
+              </div>
+            </div>
+            <h2>Digital Marketing Guide</h2>
+            <div class="book-price-container">
+              <div class="book-original-price">PKR 3000</div>
+              <div class="book-sale-price">PKR 600</div>
+            </div>
+            <button class="book-btn add-to-cart" data-name="Digital Marketing Guide" data-price="600">Add to Cart</button>
+          </div>
+
+          <!-- Book 3 -->
+          <div class="book-card" data-aos="fade-up" data-aos-delay="500">
+            <div class="book-product-container">
+              <div class="book-product">
+                <div class="book-product-front">
+                  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitdN2vpyPrQYD8R3MIRoKcP7Uu8YBwvAo0F_fT1m9aWJLo0bv07b8SCVQuC_FkW1UakpiHWfN8fgRsDchVtHGoykfaGEcNeasjJWmAFR6tecCEGroAVgMnA1Xmn-X2VyB4SlfXPxW9kR6F55q9kilPsx5ema43ZPSAcm37wtjtJouaq4gwTzmLKwA1FK8/s320/cybersecurity.PNG" alt="Python Programming">
+                </div>
+                <div class="book-product-back">
+                  <h3>What's Included</h3>
+                  <ul>
+                    <li>Python programming fundamentals</li>
+                    <li>Data structures and algorithms</li>
+                    <li>Web development with Django/Flask</li>
+                    <li>Data analysis with Pandas</li>
+                    <li>Automation and scripting</li>
+                  </ul>
+                  <p>Become a Python expert with comprehensive guide!</p>
+                </div>
+              </div>
+            </div>
+            <h2>Python Programming</h2>
+            <div class="book-price-container">
+              <div class="book-original-price">PKR 2800</div>
+              <div class="book-sale-price">PKR 550</div>
+            </div>
+            <button class="book-btn add-to-cart" data-name="Python Programming" data-price="550">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Customer Reviews Section -->
+    <section id="reviews" class="section bg-lightbg">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">CUSTOMER REVIEWS</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">See what our customers are saying about our products and services</p>
+        
+        <div class="bg-white rounded-xl p-6 max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="300">
+          <div class="grid md:grid-cols-2 gap-8">
+            <!-- Review Form -->
+            <div class="review-form-container">
+              <h3 class="text-xl font-bold mb-4 text-primary">Submit Your Review</h3>
+              <div class="success-message" id="successMessage" style="display: none;">
+                Thank you for your review!
+              </div>
+              
+              <form id="reviewForm">
+                <div class="form-group">
+                  <label for="username" class="block mb-2 font-medium"><i class="fas fa-user mr-2"></i>Username</label>
+                  <input type="text" id="username" class="form-control" placeholder="Enter your username" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="product" class="block mb-2 font-medium"><i class="fas fa-box mr-2"></i>Product/Service</label>
+                  <select id="product" class="form-control" required>
+                    <option value="">Select a product/service</option>
+                    <optgroup label="Streaming Services">
+                      <option value="Netflix Premium">Netflix Premium</option>
+                      <option value="Prime Video">Prime Video</option>
+                    </optgroup>
+                    <optgroup label="Creative Tools">
+                      <option value="CapCut Pro">CapCut Pro</option>
+                      <option value="Canva Pro">Canva Pro</option>
+                    </optgroup>
+                    <optgroup label="Content Packs">
+                      <option value="200 GB Editing Pack">200 GB Editing Pack</option>
+                      <option value="3K+ Fitness Posts">3K+ Fitness Posts</option>
+                      <option value="HQ Quotes Images">HQ Quotes Images</option>
+                    </optgroup>
+                    <optgroup label="Books">
+                      <option value="Web Development Mastery">Web Development Mastery</option>
+                      <option value="Digital Marketing Guide">Digital Marketing Guide</option>
+                      <option value="Python Programming">Python Programming</option>
+                    </optgroup>
+                    <optgroup label="TV Services">
+                      <option value="Rolex TV">Rolex TV</option>
+                      <option value="Bos TV">Bos TV</option>
+                      <option value="Zain TV">Zain TV</option>
+                    </optgroup>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="rating" class="block mb-2 font-medium"><i class="fas fa-star mr-2"></i>Rating</label>
+                  <select id="rating" class="form-control" required>
+                    <option value="">Select your rating</option>
+                    <option value="5">★★★★★ - Excellent</option>
+                    <option value="4">★★★★ - Very Good</option>
+                    <option value="3">★★★ - Good</option>
+                    <option value="2">★★ - Fair</option>
+                    <option value="1">★ - Poor</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="reviewText" class="block mb-2 font-medium"><i class="fas fa-comment mr-2"></i>Review (Optional)</label>
+                  <textarea id="reviewText" class="form-control" rows="3" placeholder="Share your experience..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn w-full bg-primary hover:bg-primary-dark"><i class="fas fa-paper-plane mr-2"></i>Submit Review</button>
+              </form>
+            </div>
+            
+            <!-- Reviews Display -->
+            <div class="reviews-container">
+              <h3 class="text-xl font-bold mb-4 text-primary">Recent Reviews</h3>
+              <div id="reviewsList" class="space-y-4">
+                <!-- Reviews will be displayed here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section bg-white">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Frequently Asked Questions</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Find answers to common questions about our products and services</p>
+        
+        <div class="max-w-3xl mx-auto">
+          <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+            <div class="faq-question">
+              <h3 class="font-medium text-lg">How quickly will I receive my product after payment?</h3>
+              <i class="fa-solid fa-chevron-down text-primary"></i>
+            </div>
+            <div class="faq-answer mt-2 text-gray-600 hidden">
+              <p>We provide instant delivery! You'll receive your product credentials within minutes after successful payment verification. In most cases, delivery takes less than 5 minutes during business hours.</p>
+            </div>
+          </div>
+          <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+            <div class="faq-question">
+              <h3 class="font-medium text-lg">Are these subscriptions genuine?</h3>
+              <i class="fa-solid fa-chevron-down text-primary"></i>
+            </div>
+            <div class="faq-answer mt-2 text-gray-600 hidden">
+              <p>Yes, all our subscriptions are 100% genuine and come with warranty. We source our products directly from official partners and authorized resellers.</p>
+            </div>
+          </div>
+          <div class="faq-item" data-aos="fade-up" data-aos-delay="500">
+            <div class="faq-question">
+              <h3 class="font-medium text-lg">What payment methods do you accept?</h3>
+              <i class="fa-solid fa-chevron-down text-primary"></i>
+            </div>
+            <div class="faq-answer mt-2 text-gray-600 hidden">
+              <p>We accept JazzCash, Easypaisa, and Binance payments for customer convenience. All payments are secure and verified.</p>
+            </div>
+          </div>
+          <div class="faq-item" data-aos="fade-up" data-aos-delay="600">
+            <div class="faq-question">
+              <h3 class="font-medium text-lg">Do you offer refunds?</h3>
+              <i class="fa-solid fa-chevron-down text-primary"></i>
+            </div>
+            <div class="faq-answer mt-2 text-gray-600 hidden">
+              <p>We offer refunds in case of service failure or if the product doesn't work as described. Please contact our support within 24 hours of purchase for refund requests.</p>
+            </div>
+          </div>
+          <div class="faq-item" data-aos="fade-up" data-aos-delay="700">
+            <div class="faq-question">
+              <h3 class="font-medium text-lg">How can I contact customer support?</h3>
+              <i class="fa-solid fa-chevron-down text-primary"></i>
+            </div>
+            <div class="faq-answer mt-2 text-gray-600 hidden">
+              <p>Our customer support is available 24/7 on WhatsApp at +92 319 5179084. You can also message us on our social media channels for assistance.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section bg-lightbg">
+      <div class="container text-center">
+        <h2 class="section-title" data-aos="fade-up">CONTACT US</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Reach out to us for orders, support, or any questions</p>
+        
+        <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md" data-aos="zoom-in" data-aos-delay="300">
+          <div class="mb-6">
+            <h3 class="text-xl font-bold mb-4">Business Hours</h3>
+            <p class="text-gray-600">24/7 Support Available</p>
+          </div>
+          
+          <div class="mb-6">
+            <h3 class="text-xl font-bold mb-4">Contact Information</h3>
+            <p class="text-gray-600 mb-2"><i class="fa-brands fa-whatsapp text-green-500 mr-2"></i> WhatsApp: <strong>+92 319 5179084</strong></p>
+            <p class="text-gray-600"><i class="fa-solid fa-envelope text-primary mr-2"></i> Email: <strong>info@growzio.com</strong></p>
+          </div>
+          
+          <div>
+            <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+            <div class="flex justify-center gap-6 text-2xl">
+              <a href="https://wa.me/923195179084" target="_blank" class="text-green-500 hover:scale-110 transition"><i class="fa-brands fa-whatsapp"></i></a>
+              <a href="https://whatsapp.com/channel/0029VbAuTTnFSAsxVXWEIK22" target="_blank" class="text-primary hover:scale-110 transition"><i class="fa-solid fa-bullhorn"></i></a>
+              <a href="https://www.tiktok.com/@its_hannni?_t=ZT-8yvAKY2JQp3&_r=1" target="_blank" class="text-pink-500 hover:scale-110 transition"><i class="fa-brands fa-tiktok"></i></a>
+              <a href="https://www.instagram.com" target="_blank" class="text-pink-600 hover:scale-110 transition"><i class="fa-brands fa-instagram"></i></a>
+              <a href="https://www.instagram.com" target="_blank" class="text-blue-500 hover:scale-110 transition"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Privacy -->
+    <section id="privacy" class="section bg-white">
+      <div class="container text-center">
+        <h2 class="section-title" data-aos="fade-up">PRIVACY POLICY</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">We value your privacy and security</p>
+        
+        <div class="max-w-3xl mx-auto text-left bg-lightbg p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="300">
+          <p class="text-gray-600 mb-4">At GROWZIO, your privacy and trust are our top priorities. We do not store sensitive financial data on our website. Payments are processed securely via JazzCash, Easypaisa, or Binance.</p>
+          
+          <p class="text-gray-600 mb-4">Your order details are only used for processing and delivering your purchased digital services. We never share your information with third parties without your consent, except as required to provide the services you've purchased.</p>
+          
+          <p class="text-gray-600">We use secure encryption protocols to protect your data and ensure that your shopping experience is safe and secure. If you have any questions about our privacy practices, please contact us via WhatsApp.</p>
+          
+          <div class="mt-6">
+            <button id="read-privacy-policy" class="text-primary font-semibold hover:underline">Read Full Privacy Policy →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-gray-200 py-12 mt-16 border-t border-primary">
+      <div class="container">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-white text-lg font-bold mb-4">GROWZIO</h3>
+            <p class="mb-4">Your trusted source for premium digital services in Pakistan at affordable prices.</p>
+            <div class="flex gap-4">
+              <a href="https://www.instagram.com" target="_blank" class="text-gray-300 hover:text-primary"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="https://www.instagram.com" target="_blank" class="text-gray-300 hover:text-primary"><i class="fa-brands fa-twitter"></i></a>
+              <a href="https://www.instagram.com" target="_blank" class="text-gray-300 hover:text-primary"><i class="fa-brands fa-instagram"></i></a>
+              <a href="https://www.instagram.com" target="_blank" class="text-gray-300 hover:text-primary"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-white text-lg font-bold mb-4">QUICK LINKS</h3>
+            <ul class="space-y-2">
+              <li><a href="#home" class="text-gray-300 hover:text-primary">Home</a></li>
+              <li><a href="#apps" class="text-gray-300 hover:text-primary">Premium Apps</a></li>
+              <li><a href="#iptv" class="text-gray-300 hover:text-primary">IPTV</a></li>
+              <li><a href="#games" class="text-gray-300 hover:text-primary">Gaming</a></li>
+              <li><a href="#bundles" class="text-gray-300 hover:text-primary">Bundles</a></li>
+              <li><a href="#books" class="text-gray-300 hover:text-primary">Books</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="text-white text-lg font-bold mb-4">SUPPORT</h3>
+            <ul class="space-y-2">
+              <li><a href="#contact" class="text-gray-300 hover:text-primary">Contact Us</a></li>
+              <li><a href="#faq" class="text-gray-300 hover:text-primary">FAQ</a></li>
+              <li><a href="#" class="text-gray-300 hover:text-primary">Terms of Service</a></li>
+              <li><a href="#" class="text-gray-300 hover:text-primary">Refund Policy</a></li>
+              <li><a href="#privacy" class="text-gray-300 hover:text-primary">Privacy Policy</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="text-white text-lg font-bold mb-4">NEWSLETTER</h3>
+            <p class="mb-4">Subscribe to get special offers and service updates</p>
+            <form class="flex flex-col gap-2">
+              <input type="email" placeholder="Your email" class="px-4 py-2 rounded bg-secondary-dark border border-gray-600 text-white placeholder-gray-400">
+              <button type="submit" class="btn bg-primary hover:bg-primary-dark">Subscribe</button>
+            </form>
+          </div>
+        </div>
+        
+        <div class="border-t border-gray-600 mt-8 pt-8 text-center">
+          <p>© 2025 GROWZIO. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- WhatsApp Floating -->
+    <a href="https://wa.me/923195179084" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top" id="scrollToTop">
+      <i class="fa-solid fa-chevron-up"></i>
+    </div>
+
+    <!-- Scroll to Bottom Button -->
+    <div class="scroll-to-bottom" id="scrollToBottom">
+      <i class="fa-solid fa-chevron-down"></i>
+    </div>
+  </div>
+
+<script>
+/* -------------------------
+   Product Data - CLEARLY VISIBLE PRICES
+   ------------------------- */
+
+// PREMIUM APPS - All prices clearly visible and editable
+const apps=[
+  {name:"CapCut Pro",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs2VpcYMsT90SfvKG6V-63wtYnSboBdUapag&s", desc: "Professional video editing with premium features and no watermark", originalPrice: 1500, discountedPrice: 1000, details: "CapCut Pro offers advanced video editing tools, premium effects, and removes watermarks from your videos. Perfect for content creators, social media influencers, and professional editors."},
+  {name:"Canva Pro",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpqagKqMEAYfajhHl67Xt_NITxxvJmhUjCtg&s", desc: "Access to premium templates, stock photos, and design tools", originalPrice: 600, discountedPrice: 350, details: "Canva Pro unlocks premium templates, millions of stock photos, advanced design tools, and team collaboration features. Perfect for designers, marketers, and businesses."},
+  {name:"Netflix Premium",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV8x8Smbp4lIacRS7RpkTo-3ODdoS98kFyUw&s", desc: "4K streaming on up to 4 devices simultaneously with full access", originalPrice: 700, discountedPrice: 450, details: "Netflix Premium offers 4K Ultra HD streaming on up to 4 devices simultaneously. Access to all Netflix originals, movies, and TV shows with unlimited viewing."},
+  {name:"Prime Video",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjEAHgv7k8XfGZHznPKMu9-YQ3djUn1-Da1Q&s", desc: "Access to Amazon Originals, movies, and TV shows with premium features", originalPrice: 800, discountedPrice: 250, details: "Prime Video gives you access to thousands of movies, TV shows, and Amazon Originals. Watch anywhere, anytime with offline downloads and multiple device support."},
+];
+
+// IPTV SERVICES - All prices clearly visible and editable
+const iptv=[
+  {name:"Rolex TV",img:"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgdgHwfA-ImhNtrrR-Ht1x0c26wePR28V7_Kj5HgWB4SoTlsPHXviObvjBpmk0EEtdo7ZIlhAzLKITFRuTOU7bL-3g6vsG9rVOp3ytLVwRvYLKjREO5bLe4InknRqJi8qswJqr8flYCnLYqstejvtLkgPYZovfzMqbtkKrNZ8dutqm5UPNWKjYQZbAk8Pk/s320/com.Filextv.newapp--9-icon.png", desc: "10,000+ channels with 4K support and VOD library", originalPrice: 900, discountedPrice: 630, details: "Rolex TV offers over 10,000 live TV channels from around the world with 4K support. Includes Video on Demand library with movies and series. Compatible with all devices."},
+  {name:"Bos TV",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFZLxeIvqokbc2mWPZ8mSzBnfCIOTB_TaBfQ&s", desc: "Premium IPTV with all sports channels and PPV events", originalPrice: 1000, discountedPrice: 700, details: "Bos TV is a premium IPTV service with all major sports channels, PPV events, and international content. Stable servers with minimal buffering and 24/7 customer support."},
+  {name:"Zain TV",img:"https://play-lh.googleusercontent.com/9Y-E2Gp6MWVRgphLKTATGdYC497ufpPgq2rU77DyVtobIn6dOxYrbJ4OzkakLoX5NRc=s150-rw", desc: "Stable IPTV service with catch-up and recording features", originalPrice: 1100, discountedPrice: 770, details: "Zain TV provides stable IPTV streaming with catch-up TV and recording features. Access to international channels, movies, and series with excellent customer support."},
+];
+
+// GAMES SERVICES - All prices clearly visible and editable
+const games=[
+  {name:"PUBG Mobile UC",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmGVfy-sv6kc3QPaS_ar3tkbon-oQZ9VPOEFAeYo61qsrDpknyoBhObBfkZVuA4W3F95U&usqp=CAU", desc: "Get UC for PUBG Mobile at best rates for skins and crates", originalPrice: 1200, discountedPrice: 840, details: "Purchase PUBG Mobile UC (Unknown Cash) at the best rates. Use UC to buy premium skins, outfits, weapon finishes, and crates to enhance your gaming experience."},
+  {name:"Free Fire Diamonds",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1rHrliVMCAZ2oQHj42l1MNHUOp09UiWDgyw&s", desc: "Buy diamonds for Garena Free Fire to get characters and weapons", originalPrice: 1300, discountedPrice: 910, details: "Get Free Fire Diamonds at competitive prices. Use diamonds to purchase characters, weapons, skins, and other in-game items to dominate the battlefield."},
+  {name:"8 Ball Pool Coins",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJxiO6RC2BbdxhUYvduticpvOiQ5o-bdMADw&s", desc: "Get coins for 8 Ball Pool to play in higher stake games", originalPrice: 1400, discountedPrice: 980, details: "Purchase 8 Ball Pool coins to play in higher stake games, buy premium cues, and unlock exclusive features. Instant delivery after payment confirmation."},
+];
+
+/* -------------------------
+   Utility & Rendering
+   ------------------------- */
+function getDiscountedPrice(originalPrice) { 
+  return Math.round(originalPrice * 0.7); 
+}
+
+function productDescription(category){
+  if(category==='apps') return 'Premium subscription with full features access';
+  if(category==='iptv') return '10,000+ channels & VOD with 4K support';
+  return 'Instant delivery with secure transaction';
+}
+
+function renderProducts(list,containerId,category){
+  const container=document.getElementById(containerId);
+  container.innerHTML = '';
+  list.forEach((item,i)=>{
+    // Use explicit prices from the product data
+    const originalPrice = item.originalPrice;
+    const discountedPrice = item.discountedPrice;
+    
+    const card=document.createElement('div');
+    card.className='bg-white rounded-xl border border-gray-200 glow-box p-4 transition transform hover:-translate-y-1 hover:glow-orange h-full flex flex-col shadow-md';
+    card.setAttribute('data-aos', 'fade-up');
+    card.setAttribute('data-aos-delay', (i % 4) * 100);
+    card.innerHTML=`
+      <img src='${item.img}' alt='${item.name} subscription Pakistan' class='rounded mb-3 h-32 w-full object-contain bg-white p-2 no-select' oncontextmenu="return false">
+      <h3 class='font-bold mb-2 line-clamp-2 text-secondary no-select'>${item.name}</h3>
+      <p class='text-gray-600 text-sm mb-3 flex-grow no-select'>${item.desc}</p>
+      <div class='flex items-center justify-between mt-auto'>
+        <div class='no-select'>
+          <span class='original-price'>${originalPrice} PKR</span>
+          <span class='font-semibold text-dark'>${discountedPrice} PKR</span>
+        </div>
+        <button class='add-to-cart bg-primary text-white text-sm px-3 py-1 rounded-lg hover:bg-primary-dark transition no-select' data-name='${item.name}' data-price='${discountedPrice}'>Add to Cart</button>
+      </div>
+      <button class='view-details-btn' data-product='${JSON.stringify(item).replace(/'/g, "\\'")}'>View Details</button>`;
+    container.appendChild(card);
+  });
+}
+
+// Render all products when page loads
+document.addEventListener('DOMContentLoaded', function() {
+  renderProducts(apps,'apps-list','apps');
+  renderProducts(iptv,'iptv-list','iptv');
+  renderProducts(games,'games-list','games');
+  
+  // Initialize AOS animations
+  AOS.init({
+    duration: 1000,
+    once: true,
+    offset: 100,
+    delay: 100,
+  });
+});
+
+/* -------------------------
+   Cart Logic with Quantity
+   ------------------------- */
+let cart = [];
+
+function updateCartDisplays(){
+  const count = cart.reduce((total, item) => total + item.quantity, 0);
+  const cartCount = document.getElementById('cart-count');
+  if(cartCount) cartCount.textContent = count;
+  const mobileCount = document.getElementById('cart-count-mobile');
+  if(mobileCount) mobileCount.textContent = count;
+}
+
+// Show added to cart modal
+function showAddedToCartModal(itemName) {
+  const modal = document.getElementById('added-to-cart-modal');
+  const itemNameElement = document.getElementById('added-item-name');
+  
+  itemNameElement.textContent = `"${itemName}" has been successfully added to your cart.`;
+  
+  try { 
+    modal.showModal(); 
+  } catch(err) { 
+    console.warn(err); 
+  }
+}
+
+// Add to cart
+document.addEventListener('click', e => {
+  if(e.target.matches('.add-to-cart') || e.target.closest('.add-to-cart')){
+    const btn = e.target.closest('.add-to-cart');
+    const name = btn.dataset.name; 
+    const price = parseInt(btn.dataset.price);
+    
+    // Check if item already exists in cart
+    const existingItem = cart.find(item => item.name === name);
+    
+    if(existingItem) {
+      // If item exists, increase quantity
+      existingItem.quantity += 1;
+    } else {
+      // If item doesn't exist, add it with quantity 1
+      cart.push({name, price, quantity: 1});
+    }
+    
+    updateCartDisplays();
+    
+    // Show added feedback on button
+    btn.innerHTML = '<span class="loading"></span> Added';
+    setTimeout(() => {
+      btn.textContent = 'Add to Cart';
+    }, 1500);
+    
+    // Show the added to cart modal
+    showAddedToCartModal(name);
+  }
+});
+
+// Open cart modal
+function openCartModal(){
+  const modal = document.getElementById('cart-modal');
+  const items = document.getElementById('cart-items');
+  const subtotal = document.getElementById('cart-subtotal');
+  const total = document.getElementById('cart-total');
+  
+  items.innerHTML = ''; 
+  let sum = 0;
+  let itemCount = 0;
+  
+  if(cart.length === 0) {
+    items.innerHTML = '<div class="text-center py-10"><i class="fa-solid fa-cart-shopping text-gray-300 text-5xl mb-4"></i><p class="text-gray-500">Your cart is empty</p></div>';
+  } else {
+    cart.forEach((item, idx) => { 
+      const itemTotal = item.price * item.quantity;
+      sum += itemTotal;
+      itemCount += item.quantity;
+      
+      items.innerHTML += `
+        <div class="cart-item">
+          <div class="cart-item-info">
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-price">${item.price} PKR each</div>
+          </div>
+          <div class="cart-item-controls">
+            <div class="quantity-controls">
+              <button class="quantity-btn decrease-quantity" data-index="${idx}">-</button>
+              <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-index="${idx}">
+              <button class="quantity-btn increase-quantity" data-index="${idx}">+</button>
+            </div>
+            <div class="cart-item-total">${itemTotal} PKR</div>
+            <button class="cart-remove-btn remove-item" data-index="${idx}">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </div>
+        </div>
+      `; 
+    });
+  }
+  
+  subtotal.textContent = sum + ' PKR';
+  total.textContent = sum + ' PKR';
+  
+  try { 
+    modal.showModal(); 
+  } catch(err) { 
+    console.warn(err); 
+  }
+  
+  // Add event listeners to quantity controls
+  document.querySelectorAll('.decrease-quantity').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const index = parseInt(this.dataset.index);
+      if(cart[index].quantity > 1) {
+        cart[index].quantity -= 1;
+        openCartModal();
+        updateCartDisplays();
+      }
+    });
+  });
+  
+  document.querySelectorAll('.increase-quantity').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const index = parseInt(this.dataset.index);
+      cart[index].quantity += 1;
+      openCartModal();
+      updateCartDisplays();
+    });
+  });
+  
+  document.querySelectorAll('.quantity-input').forEach(input => {
+    input.addEventListener('change', function() {
+      const index = parseInt(this.dataset.index);
+      const newQuantity = parseInt(this.value);
+      if(newQuantity > 0) {
+        cart[index].quantity = newQuantity;
+        openCartModal();
+        updateCartDisplays();
+      } else {
+        this.value = cart[index].quantity;
+      }
+    });
+  });
+  
+  document.querySelectorAll('.remove-item').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const index = parseInt(this.dataset.index);
+      cart.splice(index, 1);
+      openCartModal();
+      updateCartDisplays();
+    });
+  });
+}
+
+// Event listeners for the added to cart modal buttons
+document.getElementById('continue-shopping').addEventListener('click', function() {
+  document.getElementById('added-to-cart-modal').close();
+});
+
+document.getElementById('view-cart').addEventListener('click', function() {
+  document.getElementById('added-to-cart-modal').close();
+  openCartModal();
+});
+
+document.getElementById('btn-open-cart')?.addEventListener('click', openCartModal);
+document.getElementById('btn-open-cart-mobile')?.addEventListener('click', openCartModal);
+
+// Add this function to validate payment method selection
+function validatePaymentMethod() {
+  const paymentMethod = document.getElementById('payment-method').value;
+  if (!paymentMethod) {
+    alert('Please select a payment method before proceeding.');
+    return false;
+  }
+  return true;
+}
+
+// Proceed to payment page
+document.getElementById('proceed-to-payment').addEventListener('click', function() {
+  if(cart.length === 0) {
+    alert('Your cart is empty! Please add items before proceeding to payment.');
+    return;
+  }
+  
+  // Validate payment method selection
+  if (!validatePaymentMethod()) {
+    return;
+  }
+  
+  // Get selected payment method
+  const paymentMethod = document.getElementById('payment-method').value;
+  
+  // Hide main content and show payment page
+  document.getElementById('main-content').classList.add('hidden');
+  document.getElementById('payment-page').classList.remove('hidden');
+  
+  // Update payment page with cart items
+  const paymentOrderItems = document.getElementById('payment-order-items');
+  const paymentTotal = document.getElementById('payment-total');
+  let itemsHTML = '';
+  let total = 0;
+  
+  cart.forEach((item, index) => {
+    const itemTotal = item.price * item.quantity;
+    itemsHTML += `
+      <div class="order-item">
+        <span>${item.name} (Qty: ${item.quantity})</span>
+        <span>${itemTotal} PKR</span>
+      </div>
+    `;
+    total += itemTotal;
+  });
+  
+  paymentOrderItems.innerHTML = itemsHTML;
+  paymentTotal.textContent = total + ' PKR';
+  
+  // Hide all payment options first
+  document.querySelectorAll('.payment-option').forEach(option => {
+    option.style.display = 'none';
+  });
+  
+  // Show only the selected payment method
+  let selectedOptionIndex = 0;
+  if (paymentMethod === 'jazzcash') {
+    selectedOptionIndex = 0;
+  } else if (paymentMethod === 'easypaisa') {
+    selectedOptionIndex = 1;
+  } else if (paymentMethod === 'binance') {
+    selectedOptionIndex = 2;
+  }
+  
+  document.querySelectorAll('.payment-option')[selectedOptionIndex].style.display = 'block';
+  
+  // Close cart modal
+  document.getElementById('cart-modal').close();
+});
+
+// Go back to shopping from payment page
+function goBackToShopping() {
+  document.getElementById('payment-page').classList.add('hidden');
+  document.getElementById('main-content').classList.remove('hidden');
+  window.scrollTo(0, 0);
+}
+
+// Confirm payment function
+function confirmPayment() {
+  if(cart.length === 0) {
+    alert('Your cart is empty!');
+    return;
+  }
+  
+  // Get selected payment method
+  const paymentMethod = document.getElementById('payment-method').value;
+  let paymentMethodText = '';
+  let paymentDetails = '';
+  
+  if (paymentMethod === 'jazzcash') {
+    paymentMethodText = 'JazzCash';
+    paymentDetails = 'Name: Khairunisa, Number: 03295478732';
+  } else if (paymentMethod === 'easypaisa') {
+    paymentMethodText = 'Easypaisa';
+    paymentDetails = 'Name: Khairunisa, Number: 03325982480';
+  } else if (paymentMethod === 'binance') {
+    paymentMethodText = 'Binance';
+    paymentDetails = 'Pay ID/UID: 14245485, Name: Khairunisa';
+  }
+  
+  // Get order details with quantities
+  let orderText = '';
+  cart.forEach(item => {
+    const itemTotal = item.price * item.quantity;
+    orderText += `${item.name} (Qty: ${item.quantity}) - ${itemTotal} PKR\n`;
+  });
+  
+  const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  
+  // Create WhatsApp message with quantities
+  let text = '🛒 Payment Confirmation - GROWZIO\n\n';
+  text += 'Order Details:\n';
+  text += orderText;
+  text += `\nTotal: ${total} PKR`;
+  text += `\n\nPayment Method: ${paymentMethodText}`;
+  text += `\nPayment Details: ${paymentDetails}`;
+  text += '\n\n✅ I have made the payment. Please process my order.';
+  
+  // Encode the message properly for WhatsApp
+  const encodedText = encodeURIComponent(text);
+  
+  // Open WhatsApp
+  const waNumber = '923195179084';
+  window.open(`https://wa.me/${waNumber}?text=${encodedText}`, '_blank');
+  
+  // Clear cart after payment
+  cart = [];
+  updateCartDisplays();
+  
+  // Go back to shopping
+  goBackToShopping();
+}
+
+/* -------------------------
+   Offer Timer Logic (24 hours from page load)
+   ------------------------- */
+const OFFER_DURATION_MS = 24 * 60 * 60 * 1000; // 24h
+const endTime = new Date(Date.now() + OFFER_DURATION_MS);
+function updateTimer(){
+  const now = new Date(); 
+  const timeLeft = endTime - now;
+  if(timeLeft <= 0){
+    ['hours','minutes','seconds'].forEach(id => document.getElementById(id).textContent = '00');
+    document.querySelector('.offer-timer').innerHTML = '<div class="container py-2"><span class="font-bold">Offer has ended! New deals coming soon.</span></div>';
+    return;
+  }
+  const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+  const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+  document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+  document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+  document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+}
+updateTimer(); 
+setInterval(updateTimer, 1000);
+
+/* -------------------------
+   Mobile menu toggle
+   ------------------------- */
+const mobileToggle = document.getElementById('mobile-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+if(mobileToggle){
+  mobileToggle.addEventListener('click', () => {
+    const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+    mobileToggle.setAttribute('aria-expanded', String(!expanded));
+    mobileMenu.classList.toggle('active');
+    
+    // Update icon
+    const icon = mobileToggle.querySelector('i');
+    if(icon.classList.contains('fa-bars')) {
+      icon.classList.remove('fa-bars');
+      icon.classList.add('fa-times');
+    } else {
+      icon.classList.remove('fa-times');
+      icon.classList.add('fa-bars');
+    }
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.remove('active');
+    mobileToggle.setAttribute('aria-expanded', 'false');
+    mobileToggle.querySelector('i').classList.remove('fa-times');
+    mobileToggle.querySelector('i').classList.add('fa-bars');
+  }));
+}
+
+/* -------------------------
+   Smooth anchor scroll
+   ------------------------- */
+document.querySelectorAll("a[href^='#']").forEach(a => {
+  a.addEventListener('click', function(e){
+    const href = this.getAttribute('href');
+    if(href === '#') return;
+    
+    const target = document.querySelector(href);
+    if(target){ 
+      e.preventDefault(); 
+      target.scrollIntoView({
+        behavior: 'smooth', 
+        block: 'start'
+      }); 
+    }
+  });
+});
+
+/* -------------------------
+   FAQ Toggle
+   ------------------------- */
+document.querySelectorAll('.faq-question').forEach(q => {
+  q.addEventListener('click', () => {
+    const answer = q.nextElementSibling;
+    const icon = q.querySelector('i');
+    
+    // Close other open FAQs
+    document.querySelectorAll('.faq-answer').forEach(ans => {
+      if (ans !== answer && !ans.classList.contains('hidden')) {
+        ans.classList.add('hidden');
+        const otherIcon = ans.previousElementSibling.querySelector('i');
+        otherIcon.classList.remove('fa-chevron-up');
+        otherIcon.classList.add('fa-chevron-down');
+      }
+    });
+    
+    // Toggle current FAQ
+    answer.classList.toggle('hidden');
+    icon.classList.toggle('fa-chevron-down');
+    icon.classList.toggle('fa-chevron-up');
+  });
+});
+
+/* -------------------------
+   Bundle and Book Flip Logic
+   ------------------------- */
+document.addEventListener('DOMContentLoaded', function() {
+  const bundleContainers = document.querySelectorAll('.bundle-product-container');
+  const bookContainers = document.querySelectorAll('.book-product-container');
+  
+  // Bundle flip functionality
+  bundleContainers.forEach(container => {
+    container.addEventListener('click', function() {
+      const bundleCard = this.closest('.bundle-card');
+      bundleCard.classList.toggle('flipped');
+    });
+  });
+  
+  // Book flip functionality
+  bookContainers.forEach(container => {
+    container.addEventListener('click', function() {
+      const bookCard = this.closest('.book-card');
+      bookCard.classList.toggle('flipped');
+    });
+  });
+});
+
+/* -------------------------
+   Product Detail Modal
+   ------------------------- */
+document.addEventListener('click', function(e) {
+  if (e.target.matches('.view-details-btn') || e.target.closest('.view-details-btn')) {
+    const btn = e.target.closest('.view-details-btn');
+    const productData = JSON.parse(btn.dataset.product);
+    
+    // Populate the modal with product details
+    const modalContent = document.getElementById('product-detail-content');
+    modalContent.innerHTML = `
+      <div class="flex flex-col md:flex-row gap-6">
+        <div class="md:w-1/3">
+          <img src="${productData.img}" alt="${productData.name}" class="w-full rounded-lg shadow-md">
+        </div>
+        <div class="md:w-2/3">
+          <h2 class="text-2xl font-bold mb-2 text-secondary">${productData.name}</h2>
+          <p class="text-gray-600 mb-4">${productData.desc}</p>
+          <div class="mb-4">
+            <span class="original-price">${productData.originalPrice} PKR</span>
+            <span class="font-bold text-xl text-primary">${productData.discountedPrice} PKR</span>
+          </div>
+          <div class="bg-gray-100 p-4 rounded-lg mb-4">
+            <h3 class="font-bold mb-2 text-secondary">Product Details</h3>
+            <p class="text-gray-700">${productData.details}</p>
+          </div>
+          <button class="add-to-cart btn w-full" data-name="${productData.name}" data-price="${productData.discountedPrice}">Add to Cart</button>
+        </div>
+      </div>
+    `;
+    
+    // Show the modal
+    const modal = document.getElementById('product-detail-modal');
+    try { 
+      modal.showModal(); 
+    } catch(err) { 
+      console.warn(err); 
+    }
+  }
+});
+
+/* -------------------------
+   Privacy Policy Modal
+   ------------------------- */
+document.getElementById('read-privacy-policy').addEventListener('click', function() {
+  const modal = document.getElementById('privacy-policy-modal');
+  try { 
+    modal.showModal(); 
+  } catch(err) { 
+    console.warn(err); 
+  }
+});
+
+/* -------------------------
+   Scroll to Top and Bottom Buttons
+   ------------------------- */
+const scrollToTopBtn = document.getElementById('scrollToTop');
+const scrollToBottomBtn = document.getElementById('scrollToBottom');
+
+// Show/hide the buttons based on scroll position
+window.addEventListener('scroll', function() {
+  // Show up arrow when scrolled down
+  if (window.pageYOffset > 300) {
+    scrollToTopBtn.classList.add('show');
+  } else {
+    scrollToTopBtn.classList.remove('show');
+  }
+  
+  // Show down arrow when at the top of the page
+  if (window.pageYOffset < 100) {
+    scrollToBottomBtn.classList.add('show');
+  } else {
+    scrollToBottomBtn.classList.remove('show');
+  }
+});
+
+// Scroll to top when button is clicked
+scrollToTopBtn.addEventListener('click', function() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+
+// Scroll to bottom when button is clicked
+scrollToBottomBtn.addEventListener('click', function() {
+  window.scrollTo({
+    top: document.body.scrollHeight,
+    behavior: 'smooth'
+  });
+});
+
+/* -------------------------
+   Code Protection
+   ------------------------- */
+// Disable right-click
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+  return false;
+});
+
+// Disable text selection
+document.addEventListener('selectstart', function(e) {
+  e.preventDefault();
+  return false;
+});
+
+// Disable keyboard shortcuts for view source, etc.
+document.addEventListener('keydown', function(e) {
+  // Disable F12, Ctrl+Shift+I, Ctrl+Shift+C, Ctrl+U
+  if (
+    e.key === 'F12' || 
+    (e.ctrlKey && e.shiftKey && e.key === 'I') || 
+    (e.ctrlKey && e.shiftKey && e.key === 'C') || 
+    (e.ctrlKey && e.key === 'u')
+  ) {
+    e.preventDefault();
+    return false;
+  }
+});
+
+// Disable drag and drop for images
+document.querySelectorAll('img').forEach(img => {
+  img.addEventListener('dragstart', function(e) {
+    e.preventDefault();
+    return false;
+  });
+});
+
+/* Review Form Functionality */
+document.addEventListener('DOMContentLoaded', function() {
+  const reviewForm = document.getElementById('reviewForm');
+  const reviewsList = document.getElementById('reviewsList');
+  const successMessage = document.getElementById('successMessage');
+  
+  // Load existing reviews from localStorage
+  loadReviews();
+  
+  // Handle form submission
+  reviewForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const username = document.getElementById('username').value;
+    const product = document.getElementById('product').value;
+    const rating = document.getElementById('rating').value;
+    const reviewText = document.getElementById('reviewText').value;
+    
+    // Create review object
+    const review = {
+      username,
+      product,
+      rating,
+      reviewText,
+      date: new Date().toLocaleDateString(),
+      time: new Date().toLocaleTimeString(),
+      id: Date.now() // Add unique ID for each review
     };
+    
+    // Add to all reviews list
+    saveReviewToAll(review);
+    
+    // Add review to the page
+    addReviewToPage(review);
+    
+    // Show success message
+    successMessage.style.display = 'block';
+    
+    // Reset form
+    reviewForm.reset();
+    
+    // Hide success message after 3 seconds
+    setTimeout(() => {
+      successMessage.style.display = 'none';
+    }, 3000);
+  });
+  
+  function saveReviewToAll(review) {
+    let reviews = JSON.parse(localStorage.getItem('allReviews')) || [];
+    reviews.push(review);
+    localStorage.setItem('allReviews', JSON.stringify(reviews));
+  }
+  
+  function loadReviews() {
+    let reviews = JSON.parse(localStorage.getItem('allReviews')) || [];
+    
+    // If no reviews exist, create 5 random custom reviews
+    if (reviews.length === 0) {
+      reviews = createRandomReviews();
+      localStorage.setItem('allReviews', JSON.stringify(reviews));
+    }
+    
+    // Show reviews in reverse chronological order
+    reviews.reverse().forEach(review => {
+      addReviewToPage(review);
+    });
+  }
+  
+  function createRandomReviews() {
+    const randomReviews = [
+      {
+        username: "Ali Khan",
+        product: "Netflix Premium",
+        rating: "5",
+        reviewText: "Amazing service! Got my Netflix account within minutes of payment. Working perfectly without any issues. Highly recommended!",
+        date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toLocaleDateString(),
+        time: "14:30",
+        id: Date.now() - 1000
+      },
+      {
+        username: "Sara Ahmed",
+        product: "Canva Pro",
+        rating: "5",
+        reviewText: "Best decision ever! Canva Pro has transformed my design workflow. The team delivered instantly and provided excellent support.",
+        date: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toLocaleDateString(),
+        time: "10:15",
+        id: Date.now() - 2000
+      },
+      {
+        username: "Bilal Raza",
+        product: "300 GB Editing Pack",
+        rating: "4",
+        reviewText: "Great value for money! The editing pack has everything I need for my YouTube channel. Some files took time to download but overall satisfied.",
+        date: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toLocaleDateString(),
+        time: "16:45",
+        id: Date.now() - 3000
+      },
+      {
+        username: "Fatima Noor",
+        product: "Rolex TV",
+        rating: "5",
+        reviewText: "IPTV service is outstanding! Crystal clear quality with thousands of channels. Customer support helped me set it up quickly.",
+        date: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toLocaleDateString(),
+        time: "20:20",
+        id: Date.now() - 4000
+      },
+      {
+        username: "Usman Malik",
+        product: "PUBG Mobile UC",
+        rating: "5",
+        reviewText: "Fast and reliable UC delivery! Bought 2000 UC and received it instantly. Will definitely purchase again for my gaming needs.",
+        date: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toLocaleDateString(),
+        time: "11:05",
+        id: Date.now() - 5000
+      }
+    ];
+    
+    return randomReviews;
+  }
+  
+  function addReviewToPage(review) {
+    const reviewItem = document.createElement('div');
+    reviewItem.classList.add('review-item');
+    
+    // Convert rating to stars
+    const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+    
+    reviewItem.innerHTML = `
+      <div class="review-header">
+        <span class="username"><i class="fas fa-user"></i> ${review.username}</span>
+        <span class="rating">${stars}</span>
+      </div>
+      <div class="product"><i class="fas fa-tag"></i> ${review.product}</div>
+      ${review.reviewText ? `<div class="review-text">${review.reviewText}</div>` : ''}
+      <div class="review-meta">
+        <span><i class="far fa-calendar"></i> ${review.date}</span>
+        <span><i class="far fa-clock"></i> ${review.time}</span>
+      </div>
+    `;
+    
+    reviewsList.prepend(reviewItem);
+  }
+});
 
-    // Render the App
-    ReactDOM.render(React.createElement(App), document.getElementById('root'));
-  </script>
+/* Init cart badge */
+updateCartDisplays();
+</script>
 </body>
 </html>
