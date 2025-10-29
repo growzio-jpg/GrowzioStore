@@ -424,22 +424,24 @@
       z-index: 1001;
     }
     
-    /* Privacy Policy Modal */
-    #privacy-policy-modal {
+    /* Privacy Policy, Terms of Service and Refund Policy Modals */
+    #privacy-policy-modal,
+    #terms-modal,
+    #refund-policy-modal {
       position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       margin: 0;
-      width: 90%;
-      max-width: 800px;
-      max-height: 90vh;
+      max-width: 100%;
+      max-height: 100%;
       overflow-y: auto;
       background: var(--light-bg);
       color: #333;
-      border-radius: 12px;
+      border-radius: 0;
       padding: 2rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      box-shadow: none;
       z-index: 1001;
     }
     
@@ -1543,54 +1545,287 @@
   </dialog>
 
   <!-- Privacy Policy Modal -->
-  <dialog id="privacy-policy-modal" class="rounded-xl p-6 bg-white text-dark max-w-3xl w-full shadow-xl">
-    <button class="modal-close-btn" onclick="document.getElementById('privacy-policy-modal').close()">
+  <dialog id="privacy-policy-modal" class="p-0 bg-white text-dark w-full h-full shadow-xl">
+    <button class="cart-modal-close" onclick="document.getElementById('privacy-policy-modal').close()">
       <i class="fa-solid fa-times"></i>
     </button>
-    <div class="mt-4">
-      <h2 class="text-2xl font-bold mb-4 text-secondary">Privacy Policy</h2>
-      <div class="space-y-4 max-h-96 overflow-y-auto">
-        <p>At GROWZIO, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you use our services.</p>
+    
+    <div class="container mx-auto py-6 px-4 h-full overflow-y-auto">
+      <h1 class="section-title mb-4">Privacy Policy</h1>
+      <p class="text-center text-gray-600 mb-10">Last updated: January 2025</p>
+      
+      <div class="bg-lightbg rounded-xl p-8 shadow-md">
+        <div class="space-y-8">
+          <div>
+            <h2 class="text-2xl font-bold mb-4 text-secondary">1. Information We Collect</h2>
+            <p class="text-gray-700">We may collect the following types of information:</p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-700">
+              <li>Personal identification information (name, email address, phone number)</li>
+              <li>Payment information (processed securely through third-party providers)</li>
+              <li>Account credentials for the services you purchase</li>
+              <li>Communication records when you contact our support team</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h2 class="text-2xl font-bold mb-4 text-secondary">2. How We Use Your Information</h2>
+            <p class="text-gray-700">We use the information we collect to:</p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-700">
+              <li>Process your orders and deliver purchased services</li>
+              <li>Provide customer support and respond to inquiries</li>
+              <li>Improve our services and user experience</li>
+              <li>Send important updates about your account or our services</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h2 class="text-2xl font-bold mb-4 text-secondary">3. Data Security</h2>
+            <p class="text-gray-700">We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure.</p>
+          </div>
+          
+          <div>
+            <h2 class="text-2xl font-bold mb-4 text-secondary">4. Third-Party Services</h2>
+            <p class="text-gray-700">We use third-party payment processors (JazzCash, Easypaisa, Binance) to handle financial transactions. These providers have their own privacy policies governing the use of your information.</p>
+          </div>
+          
+          <div>
+            <h2 class="text-2xl font-bold mb-4 text-secondary">5. Your Rights</h2>
+            <p class="text-gray-700">You have the right to:</p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-700">
+              <li>Access the personal information we hold about you</li>
+              <li>Request correction of inaccurate information</li>
+              <li>Request deletion of your personal information</li>
+              <li>Object to processing of your personal information</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h2 class="text-2xl font-bold mb-4 text-secondary">6. Contact Us</h2>
+            <p class="text-gray-700">If you have any questions about this Privacy Policy or our data practices, please contact us at:</p>
+            <div class="mt-4 p-4 bg-white rounded-lg border border-gray-200">
+              <p class="text-gray-700"><strong>Email:</strong> privacy@growzio.com</p>
+              <p class="text-gray-700"><strong>WhatsApp:</strong> +92 319 5179084</p>
+              <p class="text-gray-700"><strong>Business Hours:</strong> 24/7 Support Available</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Terms of Service Modal -->
+  <dialog id="terms-modal" class="p-0 bg-white text-dark w-full h-full shadow-xl">
+    <button class="cart-modal-close" onclick="document.getElementById('terms-modal').close()">
+      <i class="fa-solid fa-times"></i>
+    </button>
+    
+    <div class="container mx-auto py-6 px-4 h-full overflow-y-auto">
+      <h1 class="section-title mb-4">Terms of Service</h1>
+      <p class="text-center text-gray-600 mb-10">Last updated: January 2025</p>
+      
+      <div class="bg-lightbg rounded-xl p-8 shadow-md">
+        <div class="space-y-8">
+          <div>
+            <h2 class="text-2xl font-bold mb-4 text-secondary">1. Acceptance of Terms</h2>
+            <p class="text-gray-700">By accessing or using GROWZIO's services, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using our services.</p>
+          </div>
+          
+          <div>
+            <h2 class="text-2xl font-bold mb-4 text-secondary">2. Services Description</h2>
+            <p class="text-gray-700">GROWZIO provides digital services including premium app subscriptions, IPTV services, gaming top-ups, digital bundles, and eBooks. All services are delivered electronically after successful payment verification.</p>
+          </div>
+          
+          <div>
+            <h2 class="text-2xl font-bold mb-4 text-secondary">3. Account Registration</h2>
+            <p class="text-gray-700">Some services may require account registration. You agree to provide accurate and complete information during registration and to keep this information updated.</p>
+          </div>
+          
+          <div>
+            <h2 class="text-2xl font-bold mb-4 text-secondary">4. Payment Terms</h2>
+            <p class="text-gray-700 mb-3">All payments are processed through secure third-party payment processors. By making a purchase, you agree to:</p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-700">
+              <li>Provide accurate payment information</li>
+              <li>Pay all charges incurred by your account</li>
+              <li>Authorize GROWZIO to charge your chosen payment method</li>
+              <li>Understand that all sales are final unless otherwise stated in our Refund Policy</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h2 class="text-2xl font-bold mb-4 text-secondary">5. Service Delivery</h2>
+            <p class="text-gray-700">Digital services are typically delivered instantly after payment verification. In some cases, delivery may take up to 24 hours. You will receive your service credentials via WhatsApp or email.</p>
+          </div>
+          
+          <div>
+            <h2 class="text-2xl font-bold mb-4 text-secondary">6. User Responsibilities</h2>
+            <p class="text-gray-700 mb-3">You agree to:</p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-700">
+              <li>Use services only for lawful purposes</li>
+              <li>Not share account credentials with unauthorized users</li>
+              <li>Not attempt to circumvent any security measures</li>
+              <li>Not use services to infringe on intellectual property rights</li>
+              <li>Comply with all applicable laws and regulations</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h2 class="text-2xl font-bold mb-4 text-secondary">7. Intellectual Property</h2>
+            <p class="text-gray-700">All content, trademarks, and data on this website, including software, databases, text, graphics, icons, hyperlinks, and designs are the property of GROWZIO or licensed to GROWZIO.</p>
+          </div>
+          
+          <div>
+            <h2 class="text-2xl font-bold mb-4 text-secondary">8. Limitation of Liability</h2>
+            <p class="text-gray-700">GROWZIO shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use or inability to use our services.</p>
+          </div>
+          
+          <div>
+            <h2 class="text-2xl font-bold mb-4 text-secondary">9. Service Modifications</h2>
+            <p class="text-gray-700">GROWZIO reserves the right to modify or discontinue any service with or without notice. We shall not be liable to you or any third party for any modification, suspension, or discontinuance of service.</p>
+          </div>
+          
+          <div>
+            <h2 class="text-2xl font-bold mb-4 text-secondary">10. Termination</h2>
+            <p class="text-gray-700">We may terminate or suspend your access to our services immediately, without prior notice, for conduct that we believe violates these Terms of Service or is harmful to other users, us, or third parties, or for any other reason.</p>
+          </div>
+          
+          <div>
+            <h2 class="text-2xl font-bold mb-4 text-secondary">11. Governing Law</h2>
+            <p class="text-gray-700">These Terms shall be governed by and construed in accordance with the laws of Pakistan, without regard to its conflict of law provisions.</p>
+          </div>
+          
+          <div>
+            <h2 class="text-2xl font-bold mb-4 text-secondary">12. Changes to Terms</h2>
+            <p class="text-gray-700">We reserve the right to modify these terms at any time. We will notify users of any changes by updating the "Last updated" date of these Terms of Service.</p>
+          </div>
+          
+          <div>
+            <h2 class="text-2xl font-bold mb-4 text-secondary">13. Contact Information</h2>
+            <p class="text-gray-700">For any questions about these Terms of Service, please contact us:</p>
+            <div class="mt-4 p-4 bg-white rounded-lg border border-gray-200">
+              <p class="text-gray-700"><strong>Email:</strong> legal@growzio.com</p>
+              <p class="text-gray-700"><strong>WhatsApp:</strong> +92 319 5179084</p>
+              <p class="text-gray-700"><strong>Business Hours:</strong> 24/7 Support Available</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Refund Policy Modal -->
+  <dialog id="refund-policy-modal" class="p-0 bg-white text-dark w-full h-full shadow-xl">
+    <button class="cart-modal-close" onclick="document.getElementById('refund-policy-modal').close()">
+      <i class="fa-solid fa-times"></i>
+    </button>
+    
+    <div class="container mx-auto py-6 px-4 h-full overflow-y-auto">
+      <h1 class="section-title mb-4">Refund Policy</h1>
+      <p class="text-center text-gray-600 mb-10">Last updated: January 2025</p>
+      
+      <div class="mb-8 bg-primary/10 border border-primary rounded-lg p-4 text-center">
+        <p class="text-primary font-semibold"><i class="fas fa-info-circle mr-2"></i>Please read this policy carefully before making a purchase</p>
+      </div>
+      
+      <div class="space-y-6">
+        <div class="policy-card">
+          <h2 class="text-2xl font-bold mb-3 text-secondary">1. Digital Products Refund Policy</h2>
+          <p class="text-gray-700">Due to the nature of digital products, all sales are typically final. However, we understand that sometimes issues may occur, and we have established the following refund guidelines:</p>
+        </div>
         
-        <h3 class="text-xl font-bold mt-6 mb-2">Information We Collect</h3>
-        <p>We may collect the following types of information:</p>
-        <ul class="list-disc pl-6 space-y-2">
-          <li>Personal identification information (name, email address, phone number)</li>
-          <li>Payment information (processed securely through third-party providers)</li>
-          <li>Account credentials for the services you purchase</li>
-          <li>Communication records when you contact our support team</li>
-        </ul>
+        <div class="policy-card">
+          <h2 class="text-2xl font-bold mb-3 text-secondary">2. Eligibility for Refund</h2>
+          <p class="text-gray-700 mb-3">Refunds may be considered under the following circumstances:</p>
+          <ul class="list-disc pl-6 space-y-2 text-gray-700">
+            <li><strong>Service Failure:</strong> If the purchased service does not work as described</li>
+            <li><strong>Non-Delivery:</strong> If you do not receive the service within 24 hours of payment</li>
+            <li><strong>Duplicate Payment:</strong> If you were charged multiple times for the same order</li>
+            <li><strong>Technical Issues:</strong> If there are technical problems from our side preventing service delivery</li>
+          </ul>
+        </div>
         
-        <h3 class="text-xl font-bold mt-6 mb-2">How We Use Your Information</h3>
-        <p>We use the information we collect to:</p>
-        <ul class="list-disc pl-6 space-y-2">
-          <li>Process your orders and deliver purchased services</li>
-          <li>Provide customer support and respond to inquiries</li>
-          <li>Improve our services and user experience</li>
-          <li>Send important updates about your account or our services</li>
-        </ul>
+        <div class="policy-card">
+          <h2 class="text-2xl font-bold mb-3 text-secondary">3. Non-Refundable Situations</h2>
+          <p class="text-gray-700 mb-3">Refunds will not be provided in the following cases:</p>
+          <ul class="list-disc pl-6 space-y-2 text-gray-700">
+            <li>Change of mind after purchase</li>
+            <li>Failure to meet system requirements for the service</li>
+            <li>Issues with third-party services beyond our control</li>
+            <li>Violation of terms of service</li>
+            <li>Incorrect ordering or user error</li>
+            <li>Expired subscriptions or time-limited services</li>
+          </ul>
+        </div>
         
-        <h3 class="text-xl font-bold mt-6 mb-2">Data Security</h3>
-        <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure.</p>
+        <div class="policy-card">
+          <h2 class="text-2xl font-bold mb-3 text-secondary">4. Refund Timeframe</h2>
+          <p class="text-gray-700">Refund requests must be submitted within 7 days of purchase. After this period, refund requests will not be considered.</p>
+        </div>
         
-        <h3 class="text-xl font-bold mt-6 mb-2">Third-Party Services</h3>
-        <p>We use third-party payment processors (JazzCash, Easypaisa, Binance) to handle financial transactions. These providers have their own privacy policies governing the use of your information.</p>
+        <div class="policy-card">
+          <h2 class="text-2xl font-bold mb-3 text-secondary">5. How to Request a Refund</h2>
+          <p class="text-gray-700 mb-3">To request a refund, please contact our support team with the following information:</p>
+          <ul class="list-disc pl-6 space-y-2 text-gray-700">
+            <li>Your order details (product name, purchase date)</li>
+            <li>Payment transaction ID</li>
+            <li>Reason for refund request</li>
+            <li>Screenshots or evidence supporting your claim</li>
+          </ul>
+          <div class="mt-4 p-4 bg-gray-50 rounded-lg">
+            <p class="text-gray-700"><strong>Contact Support:</strong> WhatsApp +92 319 5179084</p>
+          </div>
+        </div>
         
-        <h3 class="text-xl font-bold mt-6 mb-2">Your Rights</h3>
-        <p>You have the right to:</p>
-        <ul class="list-disc pl-6 space-y-2">
-          <li>Access the personal information we hold about you</li>
-          <li>Request correction of inaccurate information</li>
-          <li>Request deletion of your personal information</li>
-          <li>Object to processing of your personal information</li>
-        </ul>
+        <div class="policy-card">
+          <h2 class="text-2xl font-bold mb-3 text-secondary">6. Refund Processing</h2>
+          <p class="text-gray-700 mb-3">Approved refunds will be processed within 5-7 business days. The refund will be issued to the original payment method used for the purchase.</p>
+          <ul class="list-disc pl-6 space-y-2 text-gray-700">
+            <li><strong>JazzCash/Easypaisa:</strong> Refunds processed within 24-48 hours</li>
+            <li><strong>Binance:</strong> Crypto refunds processed within 3-5 business days</li>
+            <li><strong>Bank Transfer:</strong> May take 5-7 business days</li>
+          </ul>
+        </div>
         
-        <h3 class="text-xl font-bold mt-6 mb-2">Contact Us</h3>
-        <p>If you have any questions about this Privacy Policy or our data practices, please contact us at:</p>
-        <p>Email: privacy@growzio.com<br>
-        WhatsApp: +92 319 5179084</p>
+        <div class="policy-card">
+          <h2 class="text-2xl font-bold mb-3 text-secondary">7. Service-Specific Policies</h2>
+          <div class="space-y-4">
+            <div>
+              <h3 class="text-xl font-semibold mb-2 text-primary">Premium App Subscriptions</h3>
+              <p class="text-gray-700">Refunds are only provided if the service is completely non-functional and our support team cannot resolve the issue.</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-2 text-primary">IPTV Services</h3>
+              <p class="text-gray-700">Refunds may be considered if the service experiences prolonged downtime (more than 48 hours) that is not due to user-side issues.</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-2 text-primary">Gaming Top-ups</h3>
+              <p class="text-gray-700">No refunds once the top-up has been processed and delivered to your gaming account.</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-2 text-primary">Digital Bundles & eBooks</h3>
+              <p class="text-gray-700">No refunds once the download link has been provided or the content has been accessed.</p>
+            </div>
+          </div>
+        </div>
         
-        <p class="mt-6 text-sm text-gray-600">Last updated: January 2025</p>
+        <div class="policy-card">
+          <h2 class="text-2xl font-bold mb-3 text-secondary">8. Dispute Resolution</h2>
+          <p class="text-gray-700">Before filing a dispute with your payment provider, please contact our support team to resolve the issue. We're committed to finding a fair solution for all parties involved.</p>
+        </div>
+        
+        <div class="policy-card">
+          <h2 class="text-2xl font-bold mb-3 text-secondary">9. Policy Changes</h2>
+          <p class="text-gray-700">We reserve the right to modify this refund policy at any time. Changes will be effective immediately upon posting to the website.</p>
+        </div>
+        
+        <div class="policy-card">
+          <h2 class="text-2xl font-bold mb-3 text-secondary">10. Contact Information</h2>
+          <p class="text-gray-700">For refund requests or questions about this policy, please contact us:</p>
+          <div class="mt-4 p-4 bg-white rounded-lg border border-gray-200">
+            <p class="text-gray-700"><strong>WhatsApp Support:</strong> +92 319 5179084</p>
+            <p class="text-gray-700"><strong>Email:</strong> support@growzio.com</p>
+            <p class="text-gray-700"><strong>Response Time:</strong> Typically within 1-2 hours during business hours</p>
+          </div>
+        </div>
       </div>
     </div>
   </dialog>
@@ -1949,7 +2184,7 @@
             <div class="book-product-container">
               <div class="book-product">
                 <div class="book-product-front">
-                  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhVjNr2rObY-KP2doF_7UQ5aU_KAoRRO027Npg_IVg1BRlDIB7MLWGAPznaVhlKv1GTlKcRbSqjFTpkJDBfsRkm-D8niYg9YQEcIddOyGnl6_Ori7A6B7T-ldOtcHSc7frX20ew7JoirHatqK7ZgEMVTJZSo91gZyaZ_vV1x6dNTXABeyGtwofHhZGfJYs/w243-h320/ChatGPT%20Image%20Oct%202025,%2005_28_39%20AM.png" alt="Web Development Mastery">
+                  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhVjNr2rObY-KP2doF_7UQ5aU_KAoRRO027Npg_IVg1BRlDIB7MLWGAPznaVhlKv1GTlKcRbSqjFTpkJDBfsRkm-D8niYg9YQEcIddOyGnl6_Ori7A6B7T-ldOtcHSc7frX20ew7JoirHatqK7ZgEMVTJZSo91gZyaZ_vV1x6dNTXABeyGtwofHhZGfJYs/w243-h320/ChatGPT%20Image%20Oct%202525,%2005_28_39%20AM.png" alt="Web Development Mastery">
                 </div>
                 <div class="book-product-back">
                   <h3>What's Included</h3>
@@ -2116,7 +2351,7 @@
     </section>
 
     <!-- FAQ -->
-    <section class="section bg-white">
+    <section id="faq" class="section bg-white">
       <div class="container">
         <h2 class="section-title" data-aos="fade-up">Frequently Asked Questions</h2>
         <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Find answers to common questions about our products and services</p>
@@ -2203,26 +2438,6 @@
       </div>
     </section>
 
-    <!-- Privacy -->
-    <section id="privacy" class="section bg-white">
-      <div class="container text-center">
-        <h2 class="section-title" data-aos="fade-up">PRIVACY POLICY</h2>
-        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">We value your privacy and security</p>
-        
-        <div class="max-w-3xl mx-auto text-left bg-lightbg p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="300">
-          <p class="text-gray-600 mb-4">At GROWZIO, your privacy and trust are our top priorities. We do not store sensitive financial data on our website. Payments are processed securely via JazzCash, Easypaisa, or Binance.</p>
-          
-          <p class="text-gray-600 mb-4">Your order details are only used for processing and delivering your purchased digital services. We never share your information with third parties without your consent, except as required to provide the services you've purchased.</p>
-          
-          <p class="text-gray-600">We use secure encryption protocols to protect your data and ensure that your shopping experience is safe and secure. If you have any questions about our privacy practices, please contact us via WhatsApp.</p>
-          
-          <div class="mt-6">
-            <button id="read-privacy-policy" class="text-primary font-semibold hover:underline">Read Full Privacy Policy →</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Footer -->
     <footer class="bg-secondary text-gray-200 py-12 mt-16 border-t border-primary">
       <div class="container">
@@ -2255,9 +2470,9 @@
             <ul class="space-y-2">
               <li><a href="#contact" class="text-gray-300 hover:text-primary">Contact Us</a></li>
               <li><a href="#faq" class="text-gray-300 hover:text-primary">FAQ</a></li>
-              <li><a href="#" class="text-gray-300 hover:text-primary">Terms of Service</a></li>
-              <li><a href="#" class="text-gray-300 hover:text-primary">Refund Policy</a></li>
-              <li><a href="#privacy" class="text-gray-300 hover:text-primary">Privacy Policy</a></li>
+              <li><a href="#" class="text-gray-300 hover:text-primary" id="terms-link">Terms of Service</a></li>
+              <li><a href="#" class="text-gray-300 hover:text-primary" id="refund-policy-link">Refund Policy</a></li>
+              <li><a href="#" class="text-gray-300 hover:text-primary" id="privacy-policy-link">Privacy Policy</a></li>
             </ul>
           </div>
           
@@ -2837,10 +3052,31 @@ document.addEventListener('click', function(e) {
 });
 
 /* -------------------------
-   Privacy Policy Modal
+   Privacy Policy, Terms of Service and Refund Policy Modals
    ------------------------- */
-document.getElementById('read-privacy-policy').addEventListener('click', function() {
+document.getElementById('privacy-policy-link').addEventListener('click', function(e) {
+  e.preventDefault();
   const modal = document.getElementById('privacy-policy-modal');
+  try { 
+    modal.showModal(); 
+  } catch(err) { 
+    console.warn(err); 
+  }
+});
+
+document.getElementById('terms-link').addEventListener('click', function(e) {
+  e.preventDefault();
+  const modal = document.getElementById('terms-modal');
+  try { 
+    modal.showModal(); 
+  } catch(err) { 
+    console.warn(err); 
+  }
+});
+
+document.getElementById('refund-policy-link').addEventListener('click', function(e) {
+  e.preventDefault();
+  const modal = document.getElementById('refund-policy-modal');
   try { 
     modal.showModal(); 
   } catch(err) { 
