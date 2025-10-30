@@ -1136,6 +1136,265 @@
       border-bottom: 2px solid #eee;
     }
     
+    /* View More Button Styles */
+    .view-more-container {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #eee;
+    }
+    
+    .view-more-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--secondary);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 95, 115, 0.3);
+    }
+    
+    .view-more-btn:hover {
+      background: var(--secondary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 95, 115, 0.4);
+    }
+    
+    /* Full Screen Modal Styles for View More Sections */
+    .fullscreen-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      overflow-y: auto;
+    }
+
+    .fullscreen-modal-content {
+      background-color: var(--light-bg);
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+      position: relative;
+      overflow-y: auto;
+    }
+
+    .close-fullscreen-modal {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1.5rem;
+      color: var(--gray);
+      cursor: pointer;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.9);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.3s;
+    }
+
+    .close-fullscreen-modal:hover {
+      color: var(--primary);
+      background: rgba(255, 255, 255, 1);
+      transform: scale(1.1);
+    }
+
+    .fullscreen-modal-body {
+      padding: 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .fullscreen-modal-header {
+      display: flex;
+      gap: 3rem;
+      margin-bottom: 2rem;
+      align-items: center;
+    }
+
+    .fullscreen-modal-img {
+      flex: 0 0 300px;
+      height: 200px;
+      background-color: var(--light);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .fullscreen-modal-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .fullscreen-modal-info {
+      flex: 1;
+    }
+
+    .fullscreen-modal-title {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .fullscreen-modal-category {
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .fullscreen-modal-price {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .fullscreen-modal-description {
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+
+    .fullscreen-modal-features {
+      margin-bottom: 2rem;
+    }
+
+    .fullscreen-modal-features h4 {
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .fullscreen-modal-features ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+    }
+
+    .fullscreen-modal-features li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    /* Categories & Products Section Styles */
+    .categories {
+      padding: 3rem 0;
+    }
+
+    .category-filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .category-btn {
+      background-color: var(--white);
+      border: 1px solid var(--gray);
+      padding: 0.5rem 1.5rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .category-btn.active, .category-btn:hover {
+      background-color: var(--primary);
+      color: var(--light-text);
+      border-color: var(--primary);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+      padding: 2rem 0;
+    }
+
+    .product-card {
+      background-color: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-img {
+      height: 180px;
+      background-color: var(--light);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 1.5rem;
+    }
+
+    .product-category {
+      color: var(--primary);
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-title {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-price {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .product-actions {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-outline:hover {
+      background-color: var(--primary);
+      color: var(--light-text);
+    }
+
+    /* Responsive Styles */
     @media (max-width: 768px) {
       .bundles-grid,
       .books-grid {
@@ -1189,6 +1448,16 @@
       .cart-item-controls {
         width: 100%;
         justify-content: space-between;
+      }
+      
+      .fullscreen-modal-header {
+        flex-direction: column;
+      }
+
+      .fullscreen-modal-img {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
       }
     }
 
@@ -1390,6 +1659,39 @@
       background: var(--primary-dark);
       transform: translateY(-3px);
     }
+
+    /* Dual Currency Styles */
+    .dual-currency {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    
+    .price-pkr {
+      font-weight: 600;
+      color: var(--primary);
+    }
+    
+    .price-usd {
+      font-size: 0.85rem;
+      color: #666;
+    }
+    
+    .dual-price-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px 0;
+    }
+    
+    .dual-price-container .price-pkr {
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+    
+    .dual-price-container .price-usd {
+      font-size: 1rem;
+    }
   </style>
 </head>
 <body class="min-h-screen bg-lightbg text-dark no-context" oncontextmenu="return false">
@@ -1543,6 +1845,37 @@
       <!-- Product details will be inserted here -->
     </div>
   </dialog>
+
+  <!-- Full Screen Modals for View More Sections -->
+  <!-- Premium Apps Full Screen Modal -->
+  <div id="premium-apps-modal" class="fullscreen-modal">
+    <div class="fullscreen-modal-content">
+      <span class="close-fullscreen-modal" id="close-premium-apps-modal">&times;</span>
+      <div class="fullscreen-modal-body">
+        <!-- Premium Apps content will be dynamically loaded here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Bundles Full Screen Modal -->
+  <div id="bundles-modal" class="fullscreen-modal">
+    <div class="fullscreen-modal-content">
+      <span class="close-fullscreen-modal" id="close-bundles-modal">&times;</span>
+      <div class="fullscreen-modal-body">
+        <!-- Bundles content will be dynamically loaded here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Books Full Screen Modal -->
+  <div id="books-modal" class="fullscreen-modal">
+    <div class="fullscreen-modal-content">
+      <span class="close-fullscreen-modal" id="close-books-modal">&times;</span>
+      <div class="fullscreen-modal-body">
+        <!-- Books content will be dynamically loaded here -->
+      </div>
+    </div>
+  </div>
 
   <!-- Privacy Policy Modal -->
   <dialog id="privacy-policy-modal" class="p-0 bg-white text-dark w-full h-full shadow-xl">
@@ -2059,6 +2392,14 @@
         <h2 class="section-title" data-aos="fade-up">PREMIUM APPS SUBSCRIPTIONS</h2>
         <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Get premium app subscriptions at the lowest prices in Pakistan with instant delivery</p>
         <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="apps-list"></div>
+        
+        <!-- View More Apps Button -->
+        <div class="view-more-container" data-aos="fade-up">
+          <button id="view-more-apps" class="view-more-btn">
+            <span>View More Apps</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
       </div>
     </section>
 
@@ -2108,9 +2449,12 @@
               </div>
             </div>
             <h2>300 GB Editing Pack</h2>
-            <div class="bundle-price-container">
+            <div class="dual-price-container">
               <div class="bundle-original-price">PKR 4000</div>
-              <div class="bundle-sale-price">PKR 500</div>
+              <div class="bundle-sale-price">
+                <div class="price-pkr">PKR 500</div>
+                <div class="price-usd">(~$1.75 USD)</div>
+              </div>
             </div>
             <button class="bundle-btn add-to-cart" data-name="300 GB Editing Pack" data-price="500">Add to Cart</button>
           </div>
@@ -2135,9 +2479,12 @@
               </div>
             </div>
             <h2>Thumbnail Mega Pack</h2>
-            <div class="bundle-price-container">
+            <div class="dual-price-container">
               <div class="bundle-original-price">PKR 5300</div>
-              <div class="bundle-sale-price">PKR 500</div>
+              <div class="bundle-sale-price">
+                <div class="price-pkr">PKR 500</div>
+                <div class="price-usd">(~$1.75 USD)</div>
+              </div>
             </div>
             <button class="bundle-btn add-to-cart" data-name="Thumbnail Mega Pack" data-price="500">Add to Cart</button>
           </div>
@@ -2160,12 +2507,23 @@
               </div>
             </div>
             <h2>Ai Images Generation Prompts</h2>
-            <div class="bundle-price-container">
+            <div class="dual-price-container">
               <div class="bundle-original-price">PKR 5400</div>
-              <div class="bundle-sale-price">PKR 500</div>
+              <div class="bundle-sale-price">
+                <div class="price-pkr">PKR 500</div>
+                <div class="price-usd">(~$1.75 USD)</div>
+              </div>
             </div>
             <button class="bundle-btn add-to-cart" data-name="Images Generation Prompts" data-price="500">Add to Cart</button>
           </div>
+        </div>
+        
+        <!-- View More Bundles Button -->
+        <div class="view-more-container" data-aos="fade-up">
+          <button id="view-more-bundles" class="view-more-btn">
+            <span>View More Bundles</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
         </div>
       </div>
     </section>
@@ -2200,9 +2558,12 @@
               </div>
             </div>
             <h2>Web Development Mastery</h2>
-            <div class="book-price-container">
+            <div class="dual-price-container">
               <div class="book-original-price">PKR 2500</div>
-              <div class="book-sale-price">PKR 500</div>
+              <div class="book-sale-price">
+                <div class="price-pkr">PKR 500</div>
+                <div class="price-usd">(~$1.75 USD)</div>
+              </div>
             </div>
             <button class="book-btn add-to-cart" data-name="Web Development Mastery" data-price="500">Add to Cart</button>
           </div>
@@ -2228,9 +2589,12 @@
               </div>
             </div>
             <h2>Digital Marketing Guide</h2>
-            <div class="book-price-container">
+            <div class="dual-price-container">
               <div class="book-original-price">PKR 3000</div>
-              <div class="book-sale-price">PKR 600</div>
+              <div class="book-sale-price">
+                <div class="price-pkr">PKR 600</div>
+                <div class="price-usd">(~$2.10 USD)</div>
+              </div>
             </div>
             <button class="book-btn add-to-cart" data-name="Digital Marketing Guide" data-price="600">Add to Cart</button>
           </div>
@@ -2256,12 +2620,23 @@
               </div>
             </div>
             <h2>Python Programming</h2>
-            <div class="book-price-container">
+            <div class="dual-price-container">
               <div class="book-original-price">PKR 2800</div>
-              <div class="book-sale-price">PKR 550</div>
+              <div class="book-sale-price">
+                <div class="price-pkr">PKR 550</div>
+                <div class="price-usd">(~$1.93 USD)</div>
+              </div>
             </div>
             <button class="book-btn add-to-cart" data-name="Python Programming" data-price="550">Add to Cart</button>
           </div>
+        </div>
+        
+        <!-- View More Books Button -->
+        <div class="view-more-container" data-aos="fade-up">
+          <button id="view-more-books" class="view-more-btn">
+            <span>View More Books</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
         </div>
       </div>
     </section>
@@ -2510,10 +2885,18 @@
 
 <script>
 /* -------------------------
-   Product Data - CLEARLY VISIBLE PRICES
+   Product Data - DUAL CURRENCY (PKR & USD)
    ------------------------- */
 
-// PREMIUM APPS - All prices clearly visible and editable
+// Exchange rate for conversion (approximate)
+const EXCHANGE_RATE = 285; // 1 USD = 285 PKR
+
+// Function to convert PKR to USD
+function pkrToUsd(pkr) {
+  return (pkr / EXCHANGE_RATE).toFixed(2);
+}
+
+// PREMIUM APPS - All prices in both PKR and USD
 const apps=[
   {name:"CapCut Pro",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs2VpcYMsT90SfvKG6V-63wtYnSboBdUapag&s", desc: "Professional video editing with premium features and no watermark", originalPrice: 1500, discountedPrice: 1000, details: "CapCut Pro offers advanced video editing tools, premium effects, and removes watermarks from your videos. Perfect for content creators, social media influencers, and professional editors."},
   {name:"Canva Pro",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpqagKqMEAYfajhHl67Xt_NITxxvJmhUjCtg&s", desc: "Access to premium templates, stock photos, and design tools", originalPrice: 600, discountedPrice: 350, details: "Canva Pro unlocks premium templates, millions of stock photos, advanced design tools, and team collaboration features. Perfect for designers, marketers, and businesses."},
@@ -2521,18 +2904,237 @@ const apps=[
   {name:"Prime Video",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjEAHgv7k8XfGZHznPKMu9-YQ3djUn1-Da1Q&s", desc: "Access to Amazon Originals, movies, and TV shows with premium features", originalPrice: 800, discountedPrice: 250, details: "Prime Video gives you access to thousands of movies, TV shows, and Amazon Originals. Watch anywhere, anytime with offline downloads and multiple device support."},
 ];
 
-// IPTV SERVICES - All prices clearly visible and editable
+// IPTV SERVICES - All prices in both PKR and USD
 const iptv=[
   {name:"Rolex TV",img:"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgdgHwfA-ImhNtrrR-Ht1x0c26wePR28V7_Kj5HgWB4SoTlsPHXviObvjBpmk0EEtdo7ZIlhAzLKITFRuTOU7bL-3g6vsG9rVOp3ytLVwRvYLKjREO5bLe4InknRqJi8qswJqr8flYCnLYqstejvtLkgPYZovfzMqbtkKrNZ8dutqm5UPNWKjYQZbAk8Pk/s320/com.Filextv.newapp--9-icon.png", desc: "10,000+ channels with 4K support and VOD library", originalPrice: 900, discountedPrice: 630, details: "Rolex TV offers over 10,000 live TV channels from around the world with 4K support. Includes Video on Demand library with movies and series. Compatible with all devices."},
   {name:"Bos TV",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFZLxeIvqokbc2mWPZ8mSzBnfCIOTB_TaBfQ&s", desc: "Premium IPTV with all sports channels and PPV events", originalPrice: 1000, discountedPrice: 700, details: "Bos TV is a premium IPTV service with all major sports channels, PPV events, and international content. Stable servers with minimal buffering and 24/7 customer support."},
   {name:"Zain TV",img:"https://play-lh.googleusercontent.com/9Y-E2Gp6MWVRgphLKTATGdYC497ufpPgq2rU77DyVtobIn6dOxYrbJ4OzkakLoX5NRc=s150-rw", desc: "Stable IPTV service with catch-up and recording features", originalPrice: 1100, discountedPrice: 770, details: "Zain TV provides stable IPTV streaming with catch-up TV and recording features. Access to international channels, movies, and series with excellent customer support."},
 ];
 
-// GAMES SERVICES - All prices clearly visible and editable
+// GAMES SERVICES - All prices in both PKR and USD
 const games=[
   {name:"PUBG Mobile UC",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmGVfy-sv6kc3QPaS_ar3tkbon-oQZ9VPOEFAeYo61qsrDpknyoBhObBfkZVuA4W3F95U&usqp=CAU", desc: "Get UC for PUBG Mobile at best rates for skins and crates", originalPrice: 1200, discountedPrice: 840, details: "Purchase PUBG Mobile UC (Unknown Cash) at the best rates. Use UC to buy premium skins, outfits, weapon finishes, and crates to enhance your gaming experience."},
   {name:"Free Fire Diamonds",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1rHrliVMCAZ2oQHj42l1MNHUOp09UiWDgyw&s", desc: "Buy diamonds for Garena Free Fire to get characters and weapons", originalPrice: 1300, discountedPrice: 910, details: "Get Free Fire Diamonds at competitive prices. Use diamonds to purchase characters, weapons, skins, and other in-game items to dominate the battlefield."},
   {name:"8 Ball Pool Coins",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJxiO6RC2BbdxhUYvduticpvOiQ5o-bdMADw&s", desc: "Get coins for 8 Ball Pool to play in higher stake games", originalPrice: 1400, discountedPrice: 980, details: "Purchase 8 Ball Pool coins to play in higher stake games, buy premium cues, and unlock exclusive features. Instant delivery after payment confirmation."},
+];
+
+/* -------------------------
+   Premium Apps Data for Full Screen Modal - DUAL CURRENCY
+   ------------------------- */
+const premiumAppsData = [
+  {
+    id: 1,
+    name: "Canva Pro",
+    category: "design",
+    pricePkr: 350,
+    priceUsd: 1.23,
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXImtZHLJRfmnpPHZwl4zaY3eM1386qB_slg&s",
+    description: "Unlock premium features with Canva Pro. Create stunning designs with access to millions of premium stock images, templates, and advanced design tools.",
+    features: [
+      "Access to 100+ million premium stock images",
+      "Background remover tool",
+      "Magic Resize for multiple formats",
+      "Brand kit to maintain consistency",
+      "100GB of cloud storage"
+    ],
+    deal: false
+  },
+  {
+    id: 2,
+    name: "ChatGPT Plus",
+    category: "productivity",
+    pricePkr: 5700,
+    priceUsd: 20.00,
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiSrpinT9GlM0x9k7PaEWicghDaFrrjUqGsau1t92KkxqBCif0clx3vAyv045ouJC1X7fF_Z-gRI32CgGXahA5OXif8SvPdgGE_v63he3s440J6V7IcSZaYj351Bdw8OxU4ZCfVrY7u0cAUzdr91T8RsEfmdU9XsOvPrkFj7vVmxgbNABUgisFxkp2L0v8/s300/chat%20gpt%20plus.jpeg",
+    description: "Get priority access to ChatGPT even during peak times. Experience faster response times and access to the latest features.",
+    features: [
+      "General access to ChatGPT even during peak times",
+      "Faster response times",
+      "Priority access to new features and improvements",
+      "Available all the time"
+    ],
+    deal: true,
+    originalPricePkr: 7125,
+    originalPriceUsd: 25.00
+  },
+  {
+    id: 3,
+    name: "Google Veo3",
+    category: "video",
+    pricePkr: 7125,
+    priceUsd: 25.00,
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiPlMKxdD432YKq14UlJRqoi-Scdk0Gznudc_rgdwPu9TjPy5ynIi9w-MX9eUjkVYPHnFLrFAa4K3hhOqfsT6B5Vol25IFyJj1v_ywGarU-YDQZvE_zuumDfHlH1TL_dBgrQ3ufYuuFxcpjYjkQI5HX_rBhebPMa9vcIql8R2S3XOR9OYKgDxWKoqsv7TY/s300/google%20veo%203.jpeg",
+    description: "Advanced video editing software with AI-powered features. Create professional videos with ease.",
+    features: [
+      "AI-powered video enhancement",
+      "4K video editing capabilities",
+      "Advanced color grading tools",
+      "Motion tracking and stabilization",
+      "Professional transitions and effects"
+    ],
+    deal: false
+  },
+  {
+    id: 4,
+    name: "Nord VPN",
+    category: "security",
+    pricePkr: 3420,
+    priceUsd: 12.00,
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkPVn6qQN_shG3f7ORJ7pq-YMgOlE8Ct7qxg&s",
+    description: "Secure your online activities with NordVPN. Browse anonymously and access content from anywhere in the world.",
+    features: [
+      "Military-grade encryption",
+      "Strict no-logs policy",
+      "Access to 5500+ servers in 59 countries",
+      "Kill switch feature",
+      "Simultaneous connections on 6 devices"
+    ],
+    deal: true,
+    originalPricePkr: 4275,
+    originalPriceUsd: 15.00
+  },
+  {
+    id: 5,
+    name: "Semrush",
+    category: "productivity",
+    pricePkr: 34200,
+    priceUsd: 120.00,
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiCfWWCTAbTqTXAHsNgekwTKx6If390l7JIxtdjWMpoMFM9okH6QBrphBlq703ctC5ReJ2gkoVre3Fa7ZVUC57vxeVHmQxrIiHrT8hRWKZ3hDr0E4VqB7SwVa_kL_9L2y3iaG5AJGn8xB9WL1IKo8RnkgEnZU_8hzVnQWQxmzGgTNYOXbLtC3_A2KJNWJ4/s300/sermrus.png",
+    description: "All-in-one marketing toolkit for SEO, PPC, content, social media, and competitive research.",
+    features: [
+      "Keyword research and tracking",
+      "Site audit and backlink analysis",
+      "Content marketing toolkit",
+      "Social media management",
+      "Competitive intelligence"
+    ],
+    deal: false
+  },
+  {
+    id: 6,
+    name: "LinkedIn Premium Career",
+    category: "productivity",
+    pricePkr: 8550,
+    priceUsd: 30.00,
+    image: "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/315519176/original/36bc3ff36a73212ea3fb60ee4b4dca0f52c73ce5/activate-your-account-with-the-linkedin-premium-plan.jpg",
+    description: "Get ahead in your career with LinkedIn Premium. See who's viewed your profile, access learning courses, and more.",
+    features: [
+      "See who's viewed your profile",
+      "Access to LinkedIn Learning courses",
+      "InMail messages to contact anyone",
+      "Interview preparation tools",
+      "Salary insights"
+    ],
+    deal: false
+  },
+  {
+    id: 7,
+    name: "Zoom Pro Private",
+    category: "video",
+    pricePkr: 4275,
+    priceUsd: 15.00,
+    image: "https://images.seeklogo.com/logo-png/37/1/zoom-logo-png_seeklogo-373147.png",
+    description: "Host meetings with up to 100 participants for up to 30 hours. Perfect for business meetings and webinars.",
+    features: [
+      "Host up to 100 participants",
+      "30-hour meeting duration",
+      "1GB cloud recording",
+      "Social media streaming",
+      "Custom personal meeting ID"
+    ],
+    deal: true,
+    originalPricePkr: 5700,
+    originalPriceUsd: 20.00
+  },
+  {
+    id: 8,
+    name: "Udemy Premium",
+    category: "learning",
+    pricePkr: 8550,
+    priceUsd: 30.00,
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiKwLLt1KXCazV5Rd2Mbu2IKrey1oxHJkFZ7SVcdvrA3e7MpC5L09h6Zh8xln1AQpIC3kUVTpgdk3XdzGjPXLeOs8tSyJveF-LguPNmi2ogtt9Sc5OeKMDBA7V9AaSf1tjwOkub-O5Wta10EAGw45uOzkWn2NJwCDDuTwkOR_a8rzPu0NHsZwbTvpQg6ag/s259/udemy.png",
+    description: "Unlimited access to thousands of courses across all categories. Learn at your own pace with expert instructors.",
+    features: [
+      "Access to 6,500+ courses",
+      "New courses added monthly",
+      "Offline viewing capability",
+      "Progress tracking",
+      "Certificate of completion"
+    ],
+    deal: false
+  },
+  {
+    id: 9,
+    name: "Storyblocks",
+    category: "design",
+    pricePkr: 5130,
+    priceUsd: 18.00,
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxlZdACRKPP9lV7IQ93sU2kJ5mOegOtJXPFQ&s",
+    description: "Unlimited downloads of stock video, audio, and images. Perfect for content creators and marketers.",
+    features: [
+      "Unlimited downloads of stock assets",
+      "Royalty-free content",
+      "New content added daily",
+      "4K and HD video footage",
+      "Customizable templates"
+    ],
+    deal: false
+  },
+  {
+    id: 10,
+    name: "Leonardo AI",
+    category: "design",
+    pricePkr: 6555,
+    priceUsd: 23.00,
+    image: "https://vetdirectory.velgtraining.com/wp-content/uploads/sites/21/2024/05/LEONARDOAI.png",
+    description: "AI-powered design tool that helps you create stunning visuals, logos, and graphics in minutes.",
+    features: [
+      "AI-powered design generation",
+      "Logo creation tools",
+      "Brand identity kits",
+      "Social media templates",
+      "Export in multiple formats"
+    ],
+    deal: true,
+    originalPricePkr: 8550,
+    originalPriceUsd: 30.00
+  },
+  {
+    id: 11,
+    name: "Grammarly Premium",
+    category: "productivity",
+    pricePkr: 3705,
+    priceUsd: 13.00,
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgTxfblY-_Ns7zm4bzz3wvAG9NwJKZ4aK_PZiQwUj84xplYc7VBychfeo7bDCpHT5BMHdepD2-Kfjdn5eA4y5EXFefKC_H1Y_Iq48awzE1pjsXkw72S8EkdRj12C6qGs1SrRzmZ6BMbi3CnE4SkfdiaR57hfpBSsY3ShIBYkLVtrSRm8FjCoDwGHqbvit8/s318/grammerly.png",
+    description: "Write with confidence across apps and websites. Get advanced grammar checks, vocabulary suggestions, and more.",
+    features: [
+      "Advanced grammar and punctuation checks",
+      "Vocabulary enhancement suggestions",
+      "Genre-specific writing style checks",
+      "Plagiarism detector",
+      "Word choice and fluency improvements"
+    ],
+    deal: false
+  },
+  {
+    id: 12,
+    name: "Netflix 4K Subscription",
+    category: "video",
+    pricePkr: 4560,
+    priceUsd: 16.00,
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgm3mJomTohCFNv63flqI-1PslRn9iLlOPQ6p-QlpbNfiYz9QrCvy3SQj6p7LXLT1t36y_8x05NF1AnJtgG21tyWIr5nDjfVY3XipSfQAMz_MeZHAxeuJLlsoa61zQF1UgGNxnEQpZz-w7hOBXwunPy7tRzpPdSyo8unyszRNL89b2KooF0-dwNKWMGUf4/s275/netflix.jpeg",
+    description: "Enjoy unlimited movies and TV shows in stunning 4K quality. Watch on multiple screens simultaneously.",
+    features: [
+      "4K Ultra HD quality",
+      "Watch on 4 screens at the same time",
+      "Unlimited movies and TV shows",
+      "Download titles to watch offline",
+      "First month free trial"
+    ],
+    deal: true,
+    originalPricePkr: 5700,
+    originalPriceUsd: 20.00
+  }
 ];
 
 /* -------------------------
@@ -2555,6 +3157,7 @@ function renderProducts(list,containerId,category){
     // Use explicit prices from the product data
     const originalPrice = item.originalPrice;
     const discountedPrice = item.discountedPrice;
+    const usdPrice = pkrToUsd(discountedPrice);
     
     const card=document.createElement('div');
     card.className='bg-white rounded-xl border border-gray-200 glow-box p-4 transition transform hover:-translate-y-1 hover:glow-orange h-full flex flex-col shadow-md';
@@ -2565,9 +3168,9 @@ function renderProducts(list,containerId,category){
       <h3 class='font-bold mb-2 line-clamp-2 text-secondary no-select'>${item.name}</h3>
       <p class='text-gray-600 text-sm mb-3 flex-grow no-select'>${item.desc}</p>
       <div class='flex items-center justify-between mt-auto'>
-        <div class='no-select'>
-          <span class='original-price'>${originalPrice} PKR</span>
-          <span class='font-semibold text-dark'>${discountedPrice} PKR</span>
+        <div class='dual-currency no-select'>
+          <div class='price-pkr'>${discountedPrice} PKR</div>
+          <div class='price-usd'>~$${usdPrice} USD</div>
         </div>
         <button class='add-to-cart bg-primary text-white text-sm px-3 py-1 rounded-lg hover:bg-primary-dark transition no-select' data-name='${item.name}' data-price='${discountedPrice}'>Add to Cart</button>
       </div>
@@ -3020,6 +3623,8 @@ document.addEventListener('click', function(e) {
     
     // Populate the modal with product details
     const modalContent = document.getElementById('product-detail-content');
+    const usdPrice = pkrToUsd(productData.discountedPrice);
+    
     modalContent.innerHTML = `
       <div class="flex flex-col md:flex-row gap-6">
         <div class="md:w-1/3">
@@ -3030,7 +3635,10 @@ document.addEventListener('click', function(e) {
           <p class="text-gray-600 mb-4">${productData.desc}</p>
           <div class="mb-4">
             <span class="original-price">${productData.originalPrice} PKR</span>
-            <span class="font-bold text-xl text-primary">${productData.discountedPrice} PKR</span>
+            <div class="dual-currency">
+              <span class="font-bold text-xl text-primary">${productData.discountedPrice} PKR</span>
+              <span class="price-usd">~$${usdPrice} USD</span>
+            </div>
           </div>
           <div class="bg-gray-100 p-4 rounded-lg mb-4">
             <h3 class="font-bold mb-2 text-secondary">Product Details</h3>
@@ -3050,6 +3658,295 @@ document.addEventListener('click', function(e) {
     }
   }
 });
+
+/* -------------------------
+   Full Screen Modal Logic for View More Sections
+   ------------------------- */
+
+// Premium Apps Full Screen Modal
+document.getElementById('view-more-apps').addEventListener('click', function() {
+  openFullScreenModal('premium-apps-modal', premiumAppsData, 'Premium Apps');
+});
+
+// Bundles Full Screen Modal
+document.getElementById('view-more-bundles').addEventListener('click', function() {
+  openFullScreenModal('bundles-modal', [], 'Bundles');
+});
+
+// Books Full Screen Modal
+document.getElementById('view-more-books').addEventListener('click', function() {
+  openFullScreenModal('books-modal', [], 'Books');
+});
+
+// Close modals
+document.getElementById('close-premium-apps-modal').addEventListener('click', function() {
+  document.getElementById('premium-apps-modal').style.display = 'none';
+});
+
+document.getElementById('close-bundles-modal').addEventListener('click', function() {
+  document.getElementById('bundles-modal').style.display = 'none';
+});
+
+document.getElementById('close-books-modal').addEventListener('click', function() {
+  document.getElementById('books-modal').style.display = 'none';
+});
+
+// Close modals when clicking outside
+window.addEventListener('click', function(e) {
+  if (e.target === document.getElementById('premium-apps-modal')) {
+    document.getElementById('premium-apps-modal').style.display = 'none';
+  }
+  if (e.target === document.getElementById('bundles-modal')) {
+    document.getElementById('bundles-modal').style.display = 'none';
+  }
+  if (e.target === document.getElementById('books-modal')) {
+    document.getElementById('books-modal').style.display = 'none';
+  }
+});
+
+// Function to open full screen modal
+function openFullScreenModal(modalId, products, title) {
+  const modal = document.getElementById(modalId);
+  const modalBody = modal.querySelector('.fullscreen-modal-body');
+  
+  // Clear previous content
+  modalBody.innerHTML = '';
+  
+  // Add title
+  modalBody.innerHTML = `
+    <h2 class="section-title mb-6">${title}</h2>
+    <div class="categories">
+      <div class="category-filters">
+        <button class="category-btn active" data-category="all">All</button>
+        <button class="category-btn" data-category="design">Design & Creative</button>
+        <button class="category-btn" data-category="productivity">Productivity</button>
+        <button class="category-btn" data-category="video">Video & Media</button>
+        <button class="category-btn" data-category="security">Security & VPN</button>
+        <button class="category-btn" data-category="learning">Learning</button>
+      </div>
+      <div class="products-grid" id="fullscreen-products-container">
+        <!-- Products will be dynamically loaded here -->
+      </div>
+    </div>
+  `;
+  
+  // Render products
+  if (products.length > 0) {
+    renderFullScreenProducts(products, 'fullscreen-products-container');
+  } else {
+    // For bundles and books, show a placeholder message
+    document.getElementById('fullscreen-products-container').innerHTML = `
+      <div class="text-center py-10 col-span-full">
+        <i class="fas fa-box-open text-5xl text-gray-300 mb-4"></i>
+        <p class="text-gray-500">More ${title.toLowerCase()} coming soon!</p>
+      </div>
+    `;
+  }
+  
+  // Set up category filters
+  setupCategoryFilters(products);
+  
+  // Show the modal
+  modal.style.display = 'block';
+}
+
+// Function to render products in full screen modal
+function renderFullScreenProducts(productsToRender, containerId) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = '';
+  
+  if (productsToRender.length === 0) {
+    container.innerHTML = '<div class="text-center py-10 col-span-full"><p class="text-gray-500">No products found in this category.</p></div>';
+    return;
+  }
+  
+  productsToRender.forEach(product => {
+    const productCard = document.createElement('div');
+    productCard.className = 'product-card';
+    
+    let priceHTML = `
+      <div class="product-price">
+        <div class="price-pkr">PKR ${product.pricePkr}</div>
+        <div class="price-usd">~$${product.priceUsd} USD</div>
+      </div>
+    `;
+    
+    if (product.deal) {
+      priceHTML = `
+        <div class="product-price">
+          <div class="price-pkr">
+            <span style="text-decoration: line-through; color: var(--gray); margin-right: 0.5rem;">PKR ${product.originalPricePkr}</span>
+            PKR ${product.pricePkr}
+          </div>
+          <div class="price-usd">
+            <span style="text-decoration: line-through; color: var(--gray); margin-right: 0.5rem;">$${product.originalPriceUsd} USD</span>
+            ~$${product.priceUsd} USD
+          </div>
+        </div>
+      `;
+    }
+    
+    productCard.innerHTML = `
+      <div class="product-img">
+        <img src="${product.image}" alt="${product.name}">
+      </div>
+      <div class="product-info">
+        <div class="product-category">${getCategoryName(product.category)}</div>
+        <h3 class="product-title">${product.name}</h3>
+        ${priceHTML}
+        <div class="product-actions">
+          <button class="btn-outline view-detail-fullscreen" data-id="${product.id}">View Details</button>
+          <button class="add-to-cart-fullscreen btn" data-name="${product.name}" data-price="${product.pricePkr}">Add to Cart</button>
+        </div>
+      </div>
+    `;
+    container.appendChild(productCard);
+  });
+  
+  // Add event listeners for view detail buttons in full screen modal
+  document.querySelectorAll('.view-detail-fullscreen').forEach(button => {
+    button.addEventListener('click', function() {
+      const productId = parseInt(this.getAttribute('data-id'));
+      openProductDetailFullScreen(productId);
+    });
+  });
+  
+  // Add event listeners for add to cart buttons in full screen modal
+  document.querySelectorAll('.add-to-cart-fullscreen').forEach(button => {
+    button.addEventListener('click', function() {
+      const name = this.getAttribute('data-name');
+      const price = parseFloat(this.getAttribute('data-price'));
+      
+      // Check if item already exists in cart
+      const existingItem = cart.find(item => item.name === name);
+      
+      if(existingItem) {
+        // If item exists, increase quantity
+        existingItem.quantity += 1;
+      } else {
+        // If item doesn't exist, add it with quantity 1
+        cart.push({name, price, quantity: 1});
+      }
+      
+      updateCartDisplays();
+      showAddedToCartModal(name);
+    });
+  });
+}
+
+// Function to set up category filters
+function setupCategoryFilters(products) {
+  const categoryButtons = document.querySelectorAll('.category-btn');
+  
+  categoryButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const category = button.getAttribute('data-category');
+      
+      // Update active button
+      categoryButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+      
+      // Filter products
+      if (category === 'all') {
+        renderFullScreenProducts(products, 'fullscreen-products-container');
+      } else {
+        const filteredProducts = products.filter(product => product.category === category);
+        renderFullScreenProducts(filteredProducts, 'fullscreen-products-container');
+      }
+    });
+  });
+}
+
+// Function to open product detail in full screen modal
+function openProductDetailFullScreen(productId) {
+  const product = premiumAppsData.find(p => p.id === productId);
+  
+  if (product) {
+    const modal = document.getElementById('premium-apps-modal');
+    const modalBody = modal.querySelector('.fullscreen-modal-body');
+    
+    let priceHTML = `
+      <div class="fullscreen-modal-price">
+        <div class="price-pkr">PKR ${product.pricePkr}</div>
+        <div class="price-usd">~$${product.priceUsd} USD</div>
+      </div>
+    `;
+    
+    if (product.deal) {
+      priceHTML = `
+        <div class="fullscreen-modal-price">
+          <div class="price-pkr">
+            <span style="text-decoration: line-through; color: var(--gray); margin-right: 0.5rem;">PKR ${product.originalPricePkr}</span>
+            PKR ${product.pricePkr}
+          </div>
+          <div class="price-usd">
+            <span style="text-decoration: line-through; color: var(--gray); margin-right: 0.5rem;">$${product.originalPriceUsd} USD</span>
+            ~$${product.priceUsd} USD
+          </div>
+        </div>
+      `;
+    }
+    
+    modalBody.innerHTML = `
+      <button class="btn mb-4" id="back-to-products"><i class="fas fa-arrow-left mr-2"></i> Back to Products</button>
+      <div class="fullscreen-modal-header">
+        <div class="fullscreen-modal-img">
+          <img src="${product.image}" alt="${product.name}">
+        </div>
+        <div class="fullscreen-modal-info">
+          <div class="fullscreen-modal-category">${getCategoryName(product.category)}</div>
+          <h2 class="fullscreen-modal-title">${product.name}</h2>
+          ${priceHTML}
+          <p class="fullscreen-modal-description">${product.description}</p>
+          <button class="add-to-cart-fullscreen btn" data-name="${product.name}" data-price="${product.pricePkr}">Add to Cart</button>
+        </div>
+      </div>
+      <div class="fullscreen-modal-features">
+        <h4>Key Features:</h4>
+        <ul>
+          ${product.features.map(feature => `<li>${feature}</li>`).join('')}
+        </ul>
+      </div>
+    `;
+    
+    // Add event listener for back button
+    document.getElementById('back-to-products').addEventListener('click', function() {
+      openFullScreenModal('premium-apps-modal', premiumAppsData, 'Premium Apps');
+    });
+    
+    // Add event listener for add to cart button
+    document.querySelector('.add-to-cart-fullscreen').addEventListener('click', function() {
+      const name = this.getAttribute('data-name');
+      const price = parseFloat(this.getAttribute('data-price'));
+      
+      // Check if item already exists in cart
+      const existingItem = cart.find(item => item.name === name);
+      
+      if(existingItem) {
+        // If item exists, increase quantity
+        existingItem.quantity += 1;
+      } else {
+        // If item doesn't exist, add it with quantity 1
+        cart.push({name, price, quantity: 1});
+      }
+      
+      updateCartDisplays();
+      showAddedToCartModal(name);
+    });
+  }
+}
+
+// Get category display name
+function getCategoryName(category) {
+  const categoryNames = {
+    'design': 'Design & Creative',
+    'productivity': 'Productivity',
+    'video': 'Video & Media',
+    'security': 'Security & VPN',
+    'learning': 'Learning'
+  };
+  return categoryNames[category] || category;
+}
 
 /* -------------------------
    Privacy Policy, Terms of Service and Refund Policy Modals
@@ -3189,119 +4086,119 @@ document.addEventListener('DOMContentLoaded', function() {
       id: Date.now() // Add unique ID for each review
     };
     
-    // Add to all reviews list
-    saveReviewToAll(review);
-    
-    // Add review to the page
-    addReviewToPage(review);
-    
-    // Show success message
-    successMessage.style.display = 'block';
-    
-    // Reset form
-    reviewForm.reset();
-    
-    // Hide success message after 3 seconds
-    setTimeout(() => {
-      successMessage.style.display = 'none';
-    }, 3000);
-  });
+  // Add to all reviews list
+  saveReviewToAll(review);
   
-  function saveReviewToAll(review) {
-    let reviews = JSON.parse(localStorage.getItem('allReviews')) || [];
-    reviews.push(review);
+  // Add review to the page
+  addReviewToPage(review);
+  
+  // Show success message
+  successMessage.style.display = 'block';
+  
+  // Reset form
+  reviewForm.reset();
+  
+  // Hide success message after 3 seconds
+  setTimeout(() => {
+    successMessage.style.display = 'none';
+  }, 3000);
+});
+
+function saveReviewToAll(review) {
+  let reviews = JSON.parse(localStorage.getItem('allReviews')) || [];
+  reviews.push(review);
+  localStorage.setItem('allReviews', JSON.stringify(reviews));
+}
+
+function loadReviews() {
+  let reviews = JSON.parse(localStorage.getItem('allReviews')) || [];
+  
+  // If no reviews exist, create 5 random custom reviews
+  if (reviews.length === 0) {
+    reviews = createRandomReviews();
     localStorage.setItem('allReviews', JSON.stringify(reviews));
   }
   
-  function loadReviews() {
-    let reviews = JSON.parse(localStorage.getItem('allReviews')) || [];
-    
-    // If no reviews exist, create 5 random custom reviews
-    if (reviews.length === 0) {
-      reviews = createRandomReviews();
-      localStorage.setItem('allReviews', JSON.stringify(reviews));
+  // Show reviews in reverse chronological order
+  reviews.reverse().forEach(review => {
+    addReviewToPage(review);
+  });
+}
+
+function createRandomReviews() {
+  const randomReviews = [
+    {
+      username: "Ali Khan",
+      product: "Netflix Premium",
+      rating: "5",
+      reviewText: "Amazing service! Got my Netflix account within minutes of payment. Working perfectly without any issues. Highly recommended!",
+      date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toLocaleDateString(),
+      time: "14:30",
+      id: Date.now() - 1000
+    },
+    {
+      username: "Sara Ahmed",
+      product: "Canva Pro",
+      rating: "5",
+      reviewText: "Best decision ever! Canva Pro has transformed my design workflow. The team delivered instantly and provided excellent support.",
+      date: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toLocaleDateString(),
+      time: "10:15",
+      id: Date.now() - 2000
+    },
+    {
+      username: "Bilal Raza",
+      product: "300 GB Editing Pack",
+      rating: "4",
+      reviewText: "Great value for money! The editing pack has everything I need for my YouTube channel. Some files took time to download but overall satisfied.",
+      date: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toLocaleDateString(),
+      time: "16:45",
+      id: Date.now() - 3000
+    },
+    {
+      username: "Fatima Noor",
+      product: "Rolex TV",
+      rating: "5",
+      reviewText: "IPTV service is outstanding! Crystal clear quality with thousands of channels. Customer support helped me set it up quickly.",
+      date: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toLocaleDateString(),
+      time: "20:20",
+      id: Date.now() - 4000
+    },
+    {
+      username: "Usman Malik",
+      product: "PUBG Mobile UC",
+      rating: "5",
+      reviewText: "Fast and reliable UC delivery! Bought 2000 UC and received it instantly. Will definitely purchase again for my gaming needs.",
+      date: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toLocaleDateString(),
+      time: "11:05",
+      id: Date.now() - 5000
     }
-    
-    // Show reviews in reverse chronological order
-    reviews.reverse().forEach(review => {
-      addReviewToPage(review);
-    });
-  }
+  ];
   
-  function createRandomReviews() {
-    const randomReviews = [
-      {
-        username: "Ali Khan",
-        product: "Netflix Premium",
-        rating: "5",
-        reviewText: "Amazing service! Got my Netflix account within minutes of payment. Working perfectly without any issues. Highly recommended!",
-        date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toLocaleDateString(),
-        time: "14:30",
-        id: Date.now() - 1000
-      },
-      {
-        username: "Sara Ahmed",
-        product: "Canva Pro",
-        rating: "5",
-        reviewText: "Best decision ever! Canva Pro has transformed my design workflow. The team delivered instantly and provided excellent support.",
-        date: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toLocaleDateString(),
-        time: "10:15",
-        id: Date.now() - 2000
-      },
-      {
-        username: "Bilal Raza",
-        product: "300 GB Editing Pack",
-        rating: "4",
-        reviewText: "Great value for money! The editing pack has everything I need for my YouTube channel. Some files took time to download but overall satisfied.",
-        date: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toLocaleDateString(),
-        time: "16:45",
-        id: Date.now() - 3000
-      },
-      {
-        username: "Fatima Noor",
-        product: "Rolex TV",
-        rating: "5",
-        reviewText: "IPTV service is outstanding! Crystal clear quality with thousands of channels. Customer support helped me set it up quickly.",
-        date: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toLocaleDateString(),
-        time: "20:20",
-        id: Date.now() - 4000
-      },
-      {
-        username: "Usman Malik",
-        product: "PUBG Mobile UC",
-        rating: "5",
-        reviewText: "Fast and reliable UC delivery! Bought 2000 UC and received it instantly. Will definitely purchase again for my gaming needs.",
-        date: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toLocaleDateString(),
-        time: "11:05",
-        id: Date.now() - 5000
-      }
-    ];
-    
-    return randomReviews;
-  }
+  return randomReviews;
+}
+
+function addReviewToPage(review) {
+  const reviewItem = document.createElement('div');
+  reviewItem.classList.add('review-item');
   
-  function addReviewToPage(review) {
-    const reviewItem = document.createElement('div');
-    reviewItem.classList.add('review-item');
-    
-    // Convert rating to stars
-    const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
-    
-    reviewItem.innerHTML = `
-      <div class="review-header">
-        <span class="username"><i class="fas fa-user"></i> ${review.username}</span>
-        <span class="rating">${stars}</span>
-      </div>
-      <div class="product"><i class="fas fa-tag"></i> ${review.product}</div>
-      ${review.reviewText ? `<div class="review-text">${review.reviewText}</div>` : ''}
-      <div class="review-meta">
-        <span><i class="far fa-calendar"></i> ${review.date}</span>
-        <span><i class="far fa-clock"></i> ${review.time}</span>
-      </div>
-    `;
-    
-    reviewsList.prepend(reviewItem);
-  }
+  // Convert rating to stars
+  const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+  
+  reviewItem.innerHTML = `
+    <div class="review-header">
+      <span class="username"><i class="fas fa-user"></i> ${review.username}</span>
+      <span class="rating">${stars}</span>
+    </div>
+    <div class="product"><i class="fas fa-tag"></i> ${review.product}</div>
+    ${review.reviewText ? `<div class="review-text">${review.reviewText}</div>` : ''}
+    <div class="review-meta">
+      <span><i class="far fa-calendar"></i> ${review.date}</span>
+      <span><i class="far fa-clock"></i> ${review.time}</span>
+    </div>
+  `;
+  
+  reviewsList.prepend(reviewItem);
+}
 });
 
 /* Init cart badge */
