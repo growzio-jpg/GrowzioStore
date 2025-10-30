@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1323,6 +1324,24 @@
       gap: 2rem;
       padding: 2rem 0;
     }
+    
+    /* MODIFICATION: Specific styles for book cards in modal */
+    .books-view-modal .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+
+    .books-view-modal .product-img {
+        height: 300px;
+        background-color: #f0f0f0;
+    }
+
+    .books-view-modal .product-img img {
+        object-fit: contain;
+        padding: 1rem;
+        height: 100%;
+        width: auto;
+    }
+
 
     .product-card {
       background-color: var(--white);
@@ -3138,6 +3157,318 @@ const premiumAppsData = [
 ];
 
 /* -------------------------
+   Exclusive Bundles Data for Full Screen Modal - DUAL CURRENCY
+   ------------------------- */
+const exclusiveBundlesData = [
+  {
+    id: 1,
+    name: "Ultimate Content Creator Bundle",
+    category: "content",
+    pricePkr: 1500,
+    priceUsd: 5.26,
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg8cGuy7EJ90UO5nT9Wt_KrBuRv1QLX7zJUnjKZmq3MWeDelxDBEEMzoPkJerxGN3-wB0gMmMMYg0Q-KqRse0Wf7lOt5Se1-pMnNye6Tr0a7ej3przWQ6baGZdoFyIyDEP8WywGgIKwMRJWedNE4gAwocc0dTHcb1r3Xlq8G1yAh6P6JuSj5pwNkPV0rCI/s320/video%20editng.PNG",
+    description: "Everything you need to create professional content for social media, YouTube, and more. Perfect for influencers, creators, and marketers.",
+    features: [
+      "300 GB Video Editing Material",
+      "Premium Thumbnail Templates",
+      "Social Media Content Calendar",
+      "Royalty-Free Music Library",
+      "Professional Sound Effects"
+    ],
+    deal: true,
+    originalPricePkr: 3000,
+    originalPriceUsd: 10.53
+  },
+  {
+    id: 2,
+    name: "Digital Marketing Master Bundle",
+    category: "marketing",
+    pricePkr: 2000,
+    priceUsd: 7.02,
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDanUpbz4TD3JwPFSPCnaLGIkZSO8_cjpoxskOU7eteFQgW_VAl8LLskHNq483vAzk9ttS56jwXI37tS2TwQnR7CDULOFM_2pSSOWG08OlizkQcP1IwX2l5kyLAk3eN5fasOI6KwQpkhyphenhyphenCwpKaFHjf9I1T-mwc7EN25RFtBiDmDtSQmyql4TBVvUvKDBM/s320/thumbnailpack.PNG",
+    description: "Complete digital marketing toolkit with templates, guides, and resources to grow your business online.",
+    features: [
+      "100+ Marketing Funnel Templates",
+      "Email Marketing Campaigns",
+      "Social Media Strategy Guide",
+      "SEO Optimization Toolkit",
+      "Analytics Dashboard Templates"
+    ],
+    deal: true,
+    originalPricePkr: 4000,
+    originalPriceUsd: 14.04
+  },
+  {
+    id: 3,
+    name: "AI Content Generation Suite",
+    category: "ai",
+    pricePkr: 1200,
+    priceUsd: 4.21,
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_Cm83xzQpINfADGAPSxZUd3zfTq2WFflEwP29JKd7LGJOueeH8kNOrChR_7PFJ4ggMpdxD_k6XXdUihldhUbaRJUReCRJ9dUIgX1tY7MOThhg75_SZaFGgXwG_ws1PB2WbE-hct2THlBKpsFsreS1Kq_RM8-cBDqced2sY6bZYI09Hgt4S9jK9O1higA/s320/images%20prompt.PNG",
+    description: "Advanced AI tools and prompts for generating high-quality content, images, and marketing materials.",
+    features: [
+      "1000+ AI Image Generation Prompts",
+      "Content Writing Templates",
+      "Social Media Post Generators",
+      "SEO-Optimized Article Templates",
+      "AI Video Script Templates"
+    ],
+    deal: false
+  },
+  {
+    id: 4,
+    name: "Web Development Starter Pack",
+    category: "development",
+    pricePkr: 1800,
+    priceUsd: 6.32,
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhVjNr2rObY-KP2doF_7UQ5aU_KAoRRO027Npg_IVg1BRlDIB7MLWGAPznaVhlKv1GTlKcRbSqjFTpkJDBfsRkm-D8niYg9YQEcIddOyGnl6_Ori7A6B7T-ldOtcHSc7frX20ew7JoirHatqK7ZgEMVTJZSo91gZyaZ_vV1x6dNTXABeyGtwofHhZGfJYs/w243-h320/ChatGPT%20Image%20Oct%202525,%2005_28_39%20AM.png",
+    description: "Complete web development resources for beginners and professionals to build stunning websites.",
+    features: [
+      "HTML5 & CSS3 Templates",
+      "JavaScript Code Snippets",
+      "Responsive Design Frameworks",
+      "UI/UX Design Resources",
+      "Website Deployment Guide"
+    ],
+    deal: true,
+    originalPricePkr: 3600,
+    originalPriceUsd: 12.63
+  },
+  {
+    id: 5,
+    name: "E-commerce Success Bundle",
+    category: "business",
+    pricePkr: 2200,
+    priceUsd: 7.72,
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEioLOtx1eiRvFaUA0LkZbanK19h6HgWVb1iwJsbhVJK20c5w1YFlrkAlBYtBo-o71aS6W79s4NGJ6OxpuAu2Q5TyTVTHoK5vf0cLQvq6lQHGNpOFvhwDRkxYt28IbP-6GTE-PTL8m3DN-AkdFS0dUDLtT5V6hyphenhyphenBLHtd2ccTFrRLP4JvxBmA1AppoTGtQpE/s320/roadmapstyle.PNG",
+    description: "Everything you need to start and grow a successful e-commerce business online.",
+    features: [
+      "Product Photography Templates",
+      "E-commerce Website Themes",
+      "Marketing Strategy Guide",
+      "Customer Service Templates",
+      "Inventory Management System"
+    ],
+    deal: true,
+    originalPricePkr: 4400,
+    originalPriceUsd: 15.44
+  },
+  {
+    id: 6,
+    name: "Graphic Design Pro Bundle",
+    category: "design",
+    pricePkr: 1600,
+    priceUsd: 5.61,
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitdN2vpyPrQYD8R3MIRoKcP7Uu8YBwvAo0F_fT1m9aWJLo0bv07b8SCVQuC_FkW1UakpiHWfN8fgRsDchVtHGoykfaGEcNeasjJWmAFR6tecCEGroAVgMnA1Xmn-X2VyB4SlfXPxW9kR6F55q9kilPsx5ema43ZPSAcm37wtjtJouaq4gwTzmLKwA1FK8/s320/cybersecurity.PNG",
+    description: "Professional graphic design resources for creating stunning visuals for any purpose.",
+    features: [
+      "500+ Premium Fonts Collection",
+      "Vector Icon Library",
+      "Color Palette Generator",
+      "Logo Design Templates",
+      "Social Media Graphics Kit"
+    ],
+    deal: false
+  },
+  {
+    id: 7,
+    name: "Video Production Master Pack",
+    category: "video",
+    pricePkr: 2500,
+    priceUsd: 8.77,
+    image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&w=500&q=80",
+    description: "Complete video production toolkit for creating professional videos for YouTube, social media, and more.",
+    features: [
+      "Video Editing Templates",
+      "Motion Graphics Library",
+      "Color Grading Presets",
+      "Sound Effects Collection",
+      "Video Script Templates"
+    ],
+    deal: true,
+    originalPricePkr: 5000,
+    originalPriceUsd: 17.54
+  },
+  {
+    id: 8,
+    name: "Social Media Growth Bundle",
+    category: "social",
+    pricePkr: 1400,
+    priceUsd: 4.91,
+    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=500&q=80",
+    description: "Strategies and resources to grow your social media presence across all platforms.",
+    features: [
+      "Content Calendar Templates",
+      "Hashtag Strategy Guide",
+      "Engagement Boosting Techniques",
+      "Analytics Tracking Templates",
+      "Influencer Collaboration Guide"
+    ],
+    deal: false
+  },
+  {
+    id: 9,
+    name: "Mobile App Development Kit",
+    category: "development",
+    pricePkr: 1900,
+    priceUsd: 6.67,
+    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=500&q=80",
+    description: "Resources and templates for developing successful mobile applications for iOS and Android.",
+    features: [
+      "UI/UX Design Templates",
+      "App Icon Design Kit",
+      "Code Snippets Library",
+      "App Store Optimization Guide",
+      "Monetization Strategy Templates"
+    ],
+    deal: true,
+    originalPricePkr: 3800,
+    originalPriceUsd: 13.33
+  },
+  {
+    id: 10,
+    name: "Freelancer Success Bundle",
+    category: "business",
+    pricePkr: 1700,
+    priceUsd: 5.96,
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80",
+    description: "Everything a freelancer needs to start, manage, and grow a successful freelance business.",
+    features: [
+      "Client Proposal Templates",
+      "Contract Agreement Samples",
+      "Invoice and Payment Templates",
+      "Portfolio Website Templates",
+      "Client Management System"
+    ],
+    deal: true,
+    originalPricePkr: 3400,
+    originalPriceUsd: 11.93
+  }
+];
+
+/* -------------------------
+   NEW: Exclusive Books Data for Full Screen Modal
+   ------------------------- */
+const exclusiveBooksData = [
+  {
+    id: 101,
+    name: "The Alchemist",
+    category: "fiction",
+    pricePkr: 500,
+    priceUsd: 1.75,
+    image: "https://picsum.photos/seed/alchemist/400/600",
+    description: "A philosophical book by Paulo Coelho that tells the magical story of Santiago, an Andalusian shepherd boy who dreams of traveling the world in search of a worldly treasure.",
+    features: ["Digital PDF format", "Instant download", "Timeless classic", "Inspirational story"],
+    deal: false
+  },
+  {
+    id: 102,
+    name: "Atomic Habits",
+    category: "self-help",
+    pricePkr: 650,
+    priceUsd: 2.28,
+    image: "https://picsum.photos/seed/atomichabits/400/600",
+    description: "An easy & proven way to build good habits & break bad ones by James Clear. Learn a practical framework for improving every day.",
+    features: ["Digital PDF format", "Actionable strategies", "Focus on tiny improvements", "Scientifically proven"],
+    deal: true,
+    originalPricePkr: 900,
+    originalPriceUsd: 3.16
+  },
+  {
+    id: 103,
+    name: "Rich Dad Poor Dad",
+    category: "business",
+    pricePkr: 550,
+    priceUsd: 1.93,
+    image: "https://picsum.photos/seed/richdad/400/600",
+    description: "Robert Kiyosaki's story of growing up with two dads — his real father and the father of his best friend, his rich dad — and the ways in which both men shaped his thoughts about money and investing.",
+    features: ["Digital PDF format", "Financial literacy guide", "Challenges conventional wisdom", "Best-seller worldwide"],
+    deal: false
+  },
+  {
+    id: 104,
+    name: "Sapiens: A Brief History of Humankind",
+    category: "non-fiction",
+    pricePkr: 700,
+    priceUsd: 2.46,
+    image: "https://picsum.photos/seed/sapiens/400/600",
+    description: "A groundbreaking narrative of humanity’s creation and evolution by Yuval Noah Harari that explores the ways in which biology and history have defined us.",
+    features: ["Digital PDF format", "Thought-provoking content", "Covers entire human history", "Engaging and accessible"],
+    deal: false
+  },
+  {
+    id: 105,
+    name: "The Psychology of Money",
+    category: "self-help",
+    pricePkr: 600,
+    priceUsd: 2.11,
+    image: "https://picsum.photos/seed/psychofmoney/400/600",
+    description: "Morgan Housel shares 19 short stories exploring the strange ways people think about money and teaches you how to make better sense of one of life’s most important topics.",
+    features: ["Digital PDF format", "Timeless lessons on wealth", "Easy to read", "Focuses on behavior"],
+    deal: true,
+    originalPricePkr: 850,
+    originalPriceUsd: 2.98
+  },
+  {
+    id: 106,
+    name: "To Kill a Mockingbird",
+    category: "fiction",
+    pricePkr: 450,
+    priceUsd: 1.58,
+    image: "https://picsum.photos/seed/mockingbird/400/600",
+    description: "Harper Lee's Pulitzer Prize-winning masterwork of honor and injustice in the deep South—and the heroism of one man in the face of blind and violent hatred.",
+    features: ["Digital PDF format", "Classic American literature", "Addresses racial injustice", "Powerful storytelling"],
+    deal: false
+  },
+  {
+    id: 107,
+    name: "The 7 Habits of Highly Effective People",
+    category: "self-help",
+    pricePkr: 600,
+    priceUsd: 2.11,
+    image: "https://picsum.photos/seed/7habits/400/600",
+    description: "Stephen Covey's celebrated book presents a principle-centered approach for solving personal and professional problems.",
+    features: ["Digital PDF format", "Holistic approach to effectiveness", "Includes personal and professional habits", "Highly influential"],
+    deal: false
+  },
+  {
+    id: 108,
+    name: "Thinking, Fast and Slow",
+    category: "non-fiction",
+    pricePkr: 750,
+    priceUsd: 2.63,
+    image: "https://picsum.photos/seed/thinking/400/600",
+    description: "Daniel Kahneman, the renowned psychologist and winner of the Nobel Prize in Economics, takes us on a groundbreaking tour of the mind and explains the two systems that drive the way we think.",
+    features: ["Digital PDF format", "Explores cognitive biases", "Based on decades of research", "Deep dive into human mind"],
+    deal: false
+  },
+  {
+    id: 109,
+    name: "Zero to One",
+    category: "business",
+    pricePkr: 550,
+    priceUsd: 1.93,
+    image: "https://picsum.photos/seed/zerotoone/400/600",
+    description: "Peter Thiel shows how we can find singular ways to create new things. It’s about how to build companies that create new things.",
+    features: ["Digital PDF format", "For entrepreneurs and startups", "Contrarian thinking", "Notes on startups"],
+    deal: true,
+    originalPricePkr: 750,
+    originalPriceUsd: 2.63
+  },
+  {
+    id: 110,
+    name: "The Subtle Art of Not Giving a F*ck",
+    category: "self-help",
+    pricePkr: 500,
+    priceUsd: 1.75,
+    image: "https://picsum.photos/seed/subtleart/400/600",
+    description: "Mark Manson's counterintuitive approach to living a good life, arguing that a good life is not about being positive all the time, but about being better at handling adversity.",
+    features: ["Digital PDF format", "Raw, honest advice", "Challenges self-help conventions", "A dose of reality"],
+    deal: false
+  }
+];
+
+/* -------------------------
    Utility & Rendering
    ------------------------- */
 function getDiscountedPrice(originalPrice) { 
@@ -3670,13 +4001,14 @@ document.getElementById('view-more-apps').addEventListener('click', function() {
 
 // Bundles Full Screen Modal
 document.getElementById('view-more-bundles').addEventListener('click', function() {
-  openFullScreenModal('bundles-modal', [], 'Bundles');
+  openFullScreenModal('bundles-modal', exclusiveBundlesData, 'Exclusive Bundles');
 });
 
 // Books Full Screen Modal
 document.getElementById('view-more-books').addEventListener('click', function() {
-  openFullScreenModal('books-modal', [], 'Books');
+  openFullScreenModal('books-modal', exclusiveBooksData, 'Exclusive Books');
 });
+
 
 // Close modals
 document.getElementById('close-premium-apps-modal').addEventListener('click', function() {
@@ -3709,20 +4041,47 @@ function openFullScreenModal(modalId, products, title) {
   const modal = document.getElementById(modalId);
   const modalBody = modal.querySelector('.fullscreen-modal-body');
   
-  // Clear previous content
+  // Clear previous content and custom classes
   modalBody.innerHTML = '';
+  modal.classList.remove('books-view-modal');
   
-  // Add title
+  // Add custom class for styling if it's the books modal
+  if (modalId === 'books-modal') {
+      modal.classList.add('books-view-modal');
+  }
+
+  let categoriesHTML = '';
+  if (modalId === 'books-modal') {
+      categoriesHTML = `
+        <button class="category-btn active" data-category="all">All</button>
+        <button class="category-btn" data-category="fiction">Fiction</button>
+        <button class="category-btn" data-category="self-help">Self-Help</button>
+        <button class="category-btn" data-category="business">Business</button>
+        <button class="category-btn" data-category="non-fiction">Non-Fiction</button>
+      `;
+  } else {
+      categoriesHTML = `
+        <button class="category-btn active" data-category="all">All</button>
+        <button class="category-btn" data-category="content">Content Creation</button>
+        <button class="category-btn" data-category="marketing">Digital Marketing</button>
+        <button class="category-btn" data-category="ai">AI Tools</button>
+        <button class="category-btn" data-category="development">Development</button>
+        <button class="category-btn" data-category="business">Business</button>
+        <button class="category-btn" data-category="design">Design</button>
+        <button class="category-btn" data-category="video">Video Production</button>
+        <button class="category-btn" data-category="social">Social Media</button>
+        <button class="category-btn" data-category="productivity">Productivity</button>
+        <button class="category-btn" data-category="security">Security</button>
+        <button class="category-btn" data-category="learning">Learning</button>
+      `;
+  }
+  
+  // Add title and category filters
   modalBody.innerHTML = `
     <h2 class="section-title mb-6">${title}</h2>
     <div class="categories">
       <div class="category-filters">
-        <button class="category-btn active" data-category="all">All</button>
-        <button class="category-btn" data-category="design">Design & Creative</button>
-        <button class="category-btn" data-category="productivity">Productivity</button>
-        <button class="category-btn" data-category="video">Video & Media</button>
-        <button class="category-btn" data-category="security">Security & VPN</button>
-        <button class="category-btn" data-category="learning">Learning</button>
+        ${categoriesHTML}
       </div>
       <div class="products-grid" id="fullscreen-products-container">
         <!-- Products will be dynamically loaded here -->
@@ -3734,7 +4093,6 @@ function openFullScreenModal(modalId, products, title) {
   if (products.length > 0) {
     renderFullScreenProducts(products, 'fullscreen-products-container');
   } else {
-    // For bundles and books, show a placeholder message
     document.getElementById('fullscreen-products-container').innerHTML = `
       <div class="text-center py-10 col-span-full">
         <i class="fas fa-box-open text-5xl text-gray-300 mb-4"></i>
@@ -3807,7 +4165,11 @@ function renderFullScreenProducts(productsToRender, containerId) {
   document.querySelectorAll('.view-detail-fullscreen').forEach(button => {
     button.addEventListener('click', function() {
       const productId = parseInt(this.getAttribute('data-id'));
-      openProductDetailFullScreen(productId);
+      let allProducts = [...premiumAppsData, ...exclusiveBundlesData, ...exclusiveBooksData];
+      const product = allProducts.find(p => p.id === productId);
+      if(product) {
+         openProductDetailFullScreen(product);
+      }
     });
   });
   
@@ -3817,14 +4179,11 @@ function renderFullScreenProducts(productsToRender, containerId) {
       const name = this.getAttribute('data-name');
       const price = parseFloat(this.getAttribute('data-price'));
       
-      // Check if item already exists in cart
       const existingItem = cart.find(item => item.name === name);
       
       if(existingItem) {
-        // If item exists, increase quantity
         existingItem.quantity += 1;
       } else {
-        // If item doesn't exist, add it with quantity 1
         cart.push({name, price, quantity: 1});
       }
       
@@ -3842,11 +4201,9 @@ function setupCategoryFilters(products) {
     button.addEventListener('click', () => {
       const category = button.getAttribute('data-category');
       
-      // Update active button
       categoryButtons.forEach(btn => btn.classList.remove('active'));
       button.classList.add('active');
       
-      // Filter products
       if (category === 'all') {
         renderFullScreenProducts(products, 'fullscreen-products-container');
       } else {
@@ -3858,12 +4215,11 @@ function setupCategoryFilters(products) {
 }
 
 // Function to open product detail in full screen modal
-function openProductDetailFullScreen(productId) {
-  const product = premiumAppsData.find(p => p.id === productId);
-  
+function openProductDetailFullScreen(product) {
   if (product) {
-    const modal = document.getElementById('premium-apps-modal');
+    const modal = document.querySelector('.fullscreen-modal[style*="display: block"]');
     const modalBody = modal.querySelector('.fullscreen-modal-body');
+    const originalModalId = modal.id;
     
     let priceHTML = `
       <div class="fullscreen-modal-price">
@@ -3911,7 +4267,13 @@ function openProductDetailFullScreen(productId) {
     
     // Add event listener for back button
     document.getElementById('back-to-products').addEventListener('click', function() {
-      openFullScreenModal('premium-apps-modal', premiumAppsData, 'Premium Apps');
+      if (originalModalId === 'premium-apps-modal') {
+        openFullScreenModal('premium-apps-modal', premiumAppsData, 'Premium Apps');
+      } else if (originalModalId === 'bundles-modal') {
+        openFullScreenModal('bundles-modal', exclusiveBundlesData, 'Exclusive Bundles');
+      } else if (originalModalId === 'books-modal') {
+        openFullScreenModal('books-modal', exclusiveBooksData, 'Exclusive Books');
+      }
     });
     
     // Add event listener for add to cart button
@@ -3919,14 +4281,11 @@ function openProductDetailFullScreen(productId) {
       const name = this.getAttribute('data-name');
       const price = parseFloat(this.getAttribute('data-price'));
       
-      // Check if item already exists in cart
       const existingItem = cart.find(item => item.name === name);
       
       if(existingItem) {
-        // If item exists, increase quantity
         existingItem.quantity += 1;
       } else {
-        // If item doesn't exist, add it with quantity 1
         cart.push({name, price, quantity: 1});
       }
       
@@ -3943,9 +4302,18 @@ function getCategoryName(category) {
     'productivity': 'Productivity',
     'video': 'Video & Media',
     'security': 'Security & VPN',
-    'learning': 'Learning'
+    'learning': 'Learning',
+    'content': 'Content Creation',
+    'marketing': 'Digital Marketing',
+    'ai': 'AI Tools',
+    'development': 'Development',
+    'business': 'Business',
+    'social': 'Social Media',
+    'fiction': 'Fiction',
+    'self-help': 'Self-Help',
+    'non-fiction': 'Non-Fiction',
   };
-  return categoryNames[category] || category;
+  return categoryNames[category] || category.charAt(0).toUpperCase() + category.slice(1);
 }
 
 /* -------------------------
