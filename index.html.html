@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -117,7 +116,7 @@
     
     .line-clamp-2 {
       display: -webkit-box;
-      -webkit-line-ramp: 2;
+      -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
@@ -2904,6 +2903,22 @@
 
 <script>
 /* -------------------------
+   One-Time Session Refresh
+   ------------------------- */
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if this is the first visit in this session
+    if (!sessionStorage.getItem('growzioRefreshed')) {
+        // Mark that we've refreshed for this session
+        sessionStorage.setItem('growzioRefreshed', 'true');
+        
+        // Refresh after a short delay to ensure everything is loaded
+        setTimeout(function() {
+            window.location.reload();
+        }, 100);
+    }
+});
+
+/* -------------------------
    Product Data - DUAL CURRENCY (PKR & USD)
    ------------------------- */
 
@@ -3276,7 +3291,7 @@ const exclusiveBundlesData = [
     category: "video",
     pricePkr: 2500,
     priceUsd: 8.77,
-    image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&w=500&q=80",
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitdN2vpyPrQYD8R3MIRoKcP7Uu8YBwvAo0F_fT1m9aWJLo0bv07b8SCVQuC_FkW1UakpiHWfN8fgRsDchVtHGoykfaGEcNeasjJWmAFR6tecCEGroAVgMnA1Xmn-X2VyB4SlfXPxW9kR6F55q9kilPsx5ema43ZPSAcm37wtjtJouaq4gwTzmLKwA1FK8/s320/cybersecurity.PNG",
     description: "Complete video production toolkit for creating professional videos for YouTube, social media, and more.",
     features: [
       "Video Editing Templates",
@@ -3295,7 +3310,7 @@ const exclusiveBundlesData = [
     category: "social",
     pricePkr: 1400,
     priceUsd: 4.91,
-    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=500&q=80",
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitdN2vpyPrQYD8R3MIRoKcP7Uu8YBwvAo0F_fT1m9aWJLo0bv07b8SCVQuC_FkW1UakpiHWfN8fgRsDchVtHGoykfaGEcNeasjJWmAFR6tecCEGroAVgMnA1Xmn-X2VyB4SlfXPxW9kR6F55q9kilPsx5ema43ZPSAcm37wtjtJouaq4gwTzmLKwA1FK8/s320/cybersecurity.PNG",
     description: "Strategies and resources to grow your social media presence across all platforms.",
     features: [
       "Content Calendar Templates",
@@ -3312,7 +3327,7 @@ const exclusiveBundlesData = [
     category: "development",
     pricePkr: 1900,
     priceUsd: 6.67,
-    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=500&q=80",
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitdN2vpyPrQYD8R3MIRoKcP7Uu8YBwvAo0F_fT1m9aWJLo0bv07b8SCVQuC_FkW1UakpiHWfN8fgRsDchVtHGoykfaGEcNeasjJWmAFR6tecCEGroAVgMnA1Xmn-X2VyB4SlfXPxW9kR6F55q9kilPsx5ema43ZPSAcm37wtjtJouaq4gwTzmLKwA1FK8/s320/cybersecurity.PNG",
     description: "Resources and templates for developing successful mobile applications for iOS and Android.",
     features: [
       "UI/UX Design Templates",
@@ -3331,7 +3346,7 @@ const exclusiveBundlesData = [
     category: "business",
     pricePkr: 1700,
     priceUsd: 5.96,
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80",
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitdN2vpyPrQYD8R3MIRoKcP7Uu8YBwvAo0F_fT1m9aWJLo0bv07b8SCVQuC_FkW1UakpiHWfN8fgRsDchVtHGoykfaGEcNeasjJWmAFR6tecCEGroAVgMnA1Xmn-X2VyB4SlfXPxW9kR6F55q9kilPsx5ema43ZPSAcm37wtjtJouaq4gwTzmLKwA1FK8/s320/cybersecurity.PNG",
     description: "Everything a freelancer needs to start, manage, and grow a successful freelance business.",
     features: [
       "Client Proposal Templates",
@@ -3356,7 +3371,7 @@ const exclusiveBooksData = [
     category: "fiction",
     pricePkr: 500,
     priceUsd: 1.75,
-    image: "https://picsum.photos/seed/alchemist/400/600",
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitdN2vpyPrQYD8R3MIRoKcP7Uu8YBwvAo0F_fT1m9aWJLo0bv07b8SCVQuC_FkW1UakpiHWfN8fgRsDchVtHGoykfaGEcNeasjJWmAFR6tecCEGroAVgMnA1Xmn-X2VyB4SlfXPxW9kR6F55q9kilPsx5ema43ZPSAcm37wtjtJouaq4gwTzmLKwA1FK8/s320/cybersecurity.PNG",
     description: "A philosophical book by Paulo Coelho that tells the magical story of Santiago, an Andalusian shepherd boy who dreams of traveling the world in search of a worldly treasure.",
     features: ["Digital PDF format", "Instant download", "Timeless classic", "Inspirational story"],
     deal: false
@@ -3367,7 +3382,7 @@ const exclusiveBooksData = [
     category: "self-help",
     pricePkr: 650,
     priceUsd: 2.28,
-    image: "https://picsum.photos/seed/atomichabits/400/600",
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitdN2vpyPrQYD8R3MIRoKcP7Uu8YBwvAo0F_fT1m9aWJLo0bv07b8SCVQuC_FkW1UakpiHWfN8fgRsDchVtHGoykfaGEcNeasjJWmAFR6tecCEGroAVgMnA1Xmn-X2VyB4SlfXPxW9kR6F55q9kilPsx5ema43ZPSAcm37wtjtJouaq4gwTzmLKwA1FK8/s320/cybersecurity.PNG",
     description: "An easy & proven way to build good habits & break bad ones by James Clear. Learn a practical framework for improving every day.",
     features: ["Digital PDF format", "Actionable strategies", "Focus on tiny improvements", "Scientifically proven"],
     deal: true,
@@ -3380,7 +3395,7 @@ const exclusiveBooksData = [
     category: "business",
     pricePkr: 550,
     priceUsd: 1.93,
-    image: "https://picsum.photos/seed/richdad/400/600",
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitdN2vpyPrQYD8R3MIRoKcP7Uu8YBwvAo0F_fT1m9aWJLo0bv07b8SCVQuC_FkW1UakpiHWfN8fgRsDchVtHGoykfaGEcNeasjJWmAFR6tecCEGroAVgMnA1Xmn-X2VyB4SlfXPxW9kR6F55q9kilPsx5ema43ZPSAcm37wtjtJouaq4gwTzmLKwA1FK8/s320/cybersecurity.PNG",
     description: "Robert Kiyosaki's story of growing up with two dads — his real father and the father of his best friend, his rich dad — and the ways in which both men shaped his thoughts about money and investing.",
     features: ["Digital PDF format", "Financial literacy guide", "Challenges conventional wisdom", "Best-seller worldwide"],
     deal: false
@@ -3391,7 +3406,7 @@ const exclusiveBooksData = [
     category: "non-fiction",
     pricePkr: 700,
     priceUsd: 2.46,
-    image: "https://picsum.photos/seed/sapiens/400/600",
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitdN2vpyPrQYD8R3MIRoKcP7Uu8YBwvAo0F_fT1m9aWJLo0bv07b8SCVQuC_FkW1UakpiHWfN8fgRsDchVtHGoykfaGEcNeasjJWmAFR6tecCEGroAVgMnA1Xmn-X2VyB4SlfXPxW9kR6F55q9kilPsx5ema43ZPSAcm37wtjtJouaq4gwTzmLKwA1FK8/s320/cybersecurity.PNG",
     description: "A groundbreaking narrative of humanity’s creation and evolution by Yuval Noah Harari that explores the ways in which biology and history have defined us.",
     features: ["Digital PDF format", "Thought-provoking content", "Covers entire human history", "Engaging and accessible"],
     deal: false
@@ -3402,7 +3417,7 @@ const exclusiveBooksData = [
     category: "self-help",
     pricePkr: 600,
     priceUsd: 2.11,
-    image: "https://picsum.photos/seed/psychofmoney/400/600",
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitdN2vpyPrQYD8R3MIRoKcP7Uu8YBwvAo0F_fT1m9aWJLo0bv07b8SCVQuC_FkW1UakpiHWfN8fgRsDchVtHGoykfaGEcNeasjJWmAFR6tecCEGroAVgMnA1Xmn-X2VyB4SlfXPxW9kR6F55q9kilPsx5ema43ZPSAcm37wtjtJouaq4gwTzmLKwA1FK8/s320/cybersecurity.PNG",
     description: "Morgan Housel shares 19 short stories exploring the strange ways people think about money and teaches you how to make better sense of one of life’s most important topics.",
     features: ["Digital PDF format", "Timeless lessons on wealth", "Easy to read", "Focuses on behavior"],
     deal: true,
@@ -3415,7 +3430,7 @@ const exclusiveBooksData = [
     category: "fiction",
     pricePkr: 450,
     priceUsd: 1.58,
-    image: "https://picsum.photos/seed/mockingbird/400/600",
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitdN2vpyPrQYD8R3MIRoKcP7Uu8YBwvAo0F_fT1m9aWJLo0bv07b8SCVQuC_FkW1UakpiHWfN8fgRsDchVtHGoykfaGEcNeasjJWmAFR6tecCEGroAVgMnA1Xmn-X2VyB4SlfXPxW9kR6F55q9kilPsx5ema43ZPSAcm37wtjtJouaq4gwTzmLKwA1FK8/s320/cybersecurity.PNG",
     description: "Harper Lee's Pulitzer Prize-winning masterwork of honor and injustice in the deep South—and the heroism of one man in the face of blind and violent hatred.",
     features: ["Digital PDF format", "Classic American literature", "Addresses racial injustice", "Powerful storytelling"],
     deal: false
@@ -3426,7 +3441,7 @@ const exclusiveBooksData = [
     category: "self-help",
     pricePkr: 600,
     priceUsd: 2.11,
-    image: "https://picsum.photos/seed/7habits/400/600",
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitdN2vpyPrQYD8R3MIRoKcP7Uu8YBwvAo0F_fT1m9aWJLo0bv07b8SCVQuC_FkW1UakpiHWfN8fgRsDchVtHGoykfaGEcNeasjJWmAFR6tecCEGroAVgMnA1Xmn-X2VyB4SlfXPxW9kR6F55q9kilPsx5ema43ZPSAcm37wtjtJouaq4gwTzmLKwA1FK8/s320/cybersecurity.PNG",
     description: "Stephen Covey's celebrated book presents a principle-centered approach for solving personal and professional problems.",
     features: ["Digital PDF format", "Holistic approach to effectiveness", "Includes personal and professional habits", "Highly influential"],
     deal: false
@@ -3437,7 +3452,7 @@ const exclusiveBooksData = [
     category: "non-fiction",
     pricePkr: 750,
     priceUsd: 2.63,
-    image: "https://picsum.photos/seed/thinking/400/600",
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitdN2vpyPrQYD8R3MIRoKcP7Uu8YBwvAo0F_fT1m9aWJLo0bv07b8SCVQuC_FkW1UakpiHWfN8fgRsDchVtHGoykfaGEcNeasjJWmAFR6tecCEGroAVgMnA1Xmn-X2VyB4SlfXPxW9kR6F55q9kilPsx5ema43ZPSAcm37wtjtJouaq4gwTzmLKwA1FK8/s320/cybersecurity.PNG",
     description: "Daniel Kahneman, the renowned psychologist and winner of the Nobel Prize in Economics, takes us on a groundbreaking tour of the mind and explains the two systems that drive the way we think.",
     features: ["Digital PDF format", "Explores cognitive biases", "Based on decades of research", "Deep dive into human mind"],
     deal: false
@@ -3448,8 +3463,8 @@ const exclusiveBooksData = [
     category: "business",
     pricePkr: 550,
     priceUsd: 1.93,
-    image: "https://picsum.photos/seed/zerotoone/400/600",
-    description: "Peter Thiel shows how we can find singular ways to create new things. It’s about how to build companies that create new things.",
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitdN2vpyPrQYD8R3MIRoKcP7Uu8YBwvAo0F_fT1m9aWJLo0bv07b8SCVQuC_FkW1UakpiHWfN8fgRsDchVtHGoykfaGEcNeasjJWmAFR6tecCEGroAVgMnA1Xmn-X2VyB4SlfXPxW9kR6F55q9kilPsx5ema43ZPSAcm37wtjtJouaq4gwTzmLKwA1FK8/s320/cybersecurity.PNG",
+    description: "Peter Thiel shows how we can find singular ways to create new things. It's about how to build companies that create new things.",
     features: ["Digital PDF format", "For entrepreneurs and startups", "Contrarian thinking", "Notes on startups"],
     deal: true,
     originalPricePkr: 750,
@@ -3461,7 +3476,7 @@ const exclusiveBooksData = [
     category: "self-help",
     pricePkr: 500,
     priceUsd: 1.75,
-    image: "https://picsum.photos/seed/subtleart/400/600",
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitdN2vpyPrQYD8R3MIRoKcP7Uu8YBwvAo0F_fT1m9aWJLo0bv07b8SCVQuC_FkW1UakpiHWfN8fgRsDchVtHGoykfaGEcNeasjJWmAFR6tecCEGroAVgMnA1Xmn-X2VyB4SlfXPxW9kR6F55q9kilPsx5ema43ZPSAcm37wtjtJouaq4gwTzmLKwA1FK8/s320/cybersecurity.PNG",
     description: "Mark Manson's counterintuitive approach to living a good life, arguing that a good life is not about being positive all the time, but about being better at handling adversity.",
     features: ["Digital PDF format", "Raw, honest advice", "Challenges self-help conventions", "A dose of reality"],
     deal: false
@@ -3512,6 +3527,7 @@ function renderProducts(list,containerId,category){
 
 // Render all products when page loads
 document.addEventListener('DOMContentLoaded', function() {
+  // Initial renders
   renderProducts(apps,'apps-list','apps');
   renderProducts(iptv,'iptv-list','iptv');
   renderProducts(games,'games-list','games');
@@ -3523,7 +3539,77 @@ document.addEventListener('DOMContentLoaded', function() {
     offset: 100,
     delay: 100,
   });
+
+  // Premium Apps Full Screen Modal
+  const viewMoreAppsBtn = document.getElementById('view-more-apps');
+  if (viewMoreAppsBtn) {
+    viewMoreAppsBtn.addEventListener('click', function() {
+      openFullScreenModal('premium-apps-modal', premiumAppsData, 'Premium Apps');
+    });
+  }
+
+  // Bundles Full Screen Modal
+  const viewMoreBundlesBtn = document.getElementById('view-more-bundles');
+  if (viewMoreBundlesBtn) {
+    viewMoreBundlesBtn.addEventListener('click', function() {
+      openFullScreenModal('bundles-modal', exclusiveBundlesData, 'Exclusive Bundles');
+    });
+  }
+
+  // Books Full Screen Modal
+  const viewMoreBooksBtn = document.getElementById('view-more-books');
+  if (viewMoreBooksBtn) {
+    viewMoreBooksBtn.addEventListener('click', function() {
+      openFullScreenModal('books-modal', exclusiveBooksData, 'Exclusive Books');
+    });
+  }
+
+  // Bundle and Book flip functionality
+  const bundleContainers = document.querySelectorAll('.bundle-product-container');
+  bundleContainers.forEach(container => {
+    container.addEventListener('click', function() {
+      const bundleCard = this.closest('.bundle-card');
+      bundleCard.classList.toggle('flipped');
+    });
+  });
+  
+  const bookContainers = document.querySelectorAll('.book-product-container');
+  bookContainers.forEach(container => {
+    container.addEventListener('click', function() {
+      const bookCard = this.closest('.book-card');
+      bookCard.classList.toggle('flipped');
+    });
+  });
+
+  /* Review Form Functionality */
+  const reviewForm = document.getElementById('reviewForm');
+  const reviewsList = document.getElementById('reviewsList');
+  const successMessage = document.getElementById('successMessage');
+  
+  loadReviews();
+  
+  reviewForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const username = document.getElementById('username').value;
+    const product = document.getElementById('product').value;
+    const rating = document.getElementById('rating').value;
+    const reviewText = document.getElementById('reviewText').value;
+    
+    const review = { username, product, rating, reviewText, date: new Date().toLocaleDateString(), time: new Date().toLocaleTimeString(), id: Date.now() };
+    
+    saveReviewToAll(review);
+    addReviewToPage(review);
+    
+    successMessage.style.display = 'block';
+    reviewForm.reset();
+    
+    setTimeout(() => {
+      successMessage.style.display = 'none';
+    }, 3000);
+  });
 });
+
 
 /* -------------------------
    Cart Logic with Quantity
@@ -3920,29 +4006,6 @@ document.querySelectorAll('.faq-question').forEach(q => {
   });
 });
 
-/* -------------------------
-   Bundle and Book Flip Logic
-   ------------------------- */
-document.addEventListener('DOMContentLoaded', function() {
-  const bundleContainers = document.querySelectorAll('.bundle-product-container');
-  const bookContainers = document.querySelectorAll('.book-product-container');
-  
-  // Bundle flip functionality
-  bundleContainers.forEach(container => {
-    container.addEventListener('click', function() {
-      const bundleCard = this.closest('.bundle-card');
-      bundleCard.classList.toggle('flipped');
-    });
-  });
-  
-  // Book flip functionality
-  bookContainers.forEach(container => {
-    container.addEventListener('click', function() {
-      const bookCard = this.closest('.book-card');
-      bookCard.classList.toggle('flipped');
-    });
-  });
-});
 
 /* -------------------------
    Product Detail Modal
@@ -3993,22 +4056,6 @@ document.addEventListener('click', function(e) {
 /* -------------------------
    Full Screen Modal Logic for View More Sections
    ------------------------- */
-
-// Premium Apps Full Screen Modal
-document.getElementById('view-more-apps').addEventListener('click', function() {
-  openFullScreenModal('premium-apps-modal', premiumAppsData, 'Premium Apps');
-});
-
-// Bundles Full Screen Modal
-document.getElementById('view-more-bundles').addEventListener('click', function() {
-  openFullScreenModal('bundles-modal', exclusiveBundlesData, 'Exclusive Bundles');
-});
-
-// Books Full Screen Modal
-document.getElementById('view-more-books').addEventListener('click', function() {
-  openFullScreenModal('books-modal', exclusiveBooksData, 'Exclusive Books');
-});
-
 
 // Close modals
 document.getElementById('close-premium-apps-modal').addEventListener('click', function() {
@@ -4426,51 +4473,6 @@ document.querySelectorAll('img').forEach(img => {
 });
 
 /* Review Form Functionality */
-document.addEventListener('DOMContentLoaded', function() {
-  const reviewForm = document.getElementById('reviewForm');
-  const reviewsList = document.getElementById('reviewsList');
-  const successMessage = document.getElementById('successMessage');
-  
-  // Load existing reviews from localStorage
-  loadReviews();
-  
-  // Handle form submission
-  reviewForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const username = document.getElementById('username').value;
-    const product = document.getElementById('product').value;
-    const rating = document.getElementById('rating').value;
-    const reviewText = document.getElementById('reviewText').value;
-    
-    // Create review object
-    const review = {
-      username,
-      product,
-      rating,
-      reviewText,
-      date: new Date().toLocaleDateString(),
-      time: new Date().toLocaleTimeString(),
-      id: Date.now() // Add unique ID for each review
-    };
-    
-  // Add to all reviews list
-  saveReviewToAll(review);
-  
-  // Add review to the page
-  addReviewToPage(review);
-  
-  // Show success message
-  successMessage.style.display = 'block';
-  
-  // Reset form
-  reviewForm.reset();
-  
-  // Hide success message after 3 seconds
-  setTimeout(() => {
-    successMessage.style.display = 'none';
-  }, 3000);
-});
 
 function saveReviewToAll(review) {
   let reviews = JSON.parse(localStorage.getItem('allReviews')) || [];
@@ -4479,15 +4481,16 @@ function saveReviewToAll(review) {
 }
 
 function loadReviews() {
+  const reviewsList = document.getElementById('reviewsList');
+  if (!reviewsList) return;
+
   let reviews = JSON.parse(localStorage.getItem('allReviews')) || [];
   
-  // If no reviews exist, create 5 random custom reviews
   if (reviews.length === 0) {
     reviews = createRandomReviews();
     localStorage.setItem('allReviews', JSON.stringify(reviews));
   }
   
-  // Show reviews in reverse chronological order
   reviews.reverse().forEach(review => {
     addReviewToPage(review);
   });
@@ -4546,10 +4549,12 @@ function createRandomReviews() {
 }
 
 function addReviewToPage(review) {
+  const reviewsList = document.getElementById('reviewsList');
+  if (!reviewsList) return;
+
   const reviewItem = document.createElement('div');
   reviewItem.classList.add('review-item');
   
-  // Convert rating to stars
   const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
   
   reviewItem.innerHTML = `
@@ -4567,7 +4572,7 @@ function addReviewToPage(review) {
   
   reviewsList.prepend(reviewItem);
 }
-});
+
 
 /* Init cart badge */
 updateCartDisplays();
