@@ -116,7 +116,7 @@
     
     .line-clamp-2 {
       display: -webkit-box;
-      -webkit-line-clamp: 2;
+      -webkit-line-ramp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
@@ -2538,10 +2538,10 @@
         
         <!-- View More Bundles Button -->
         <div class="view-more-container" data-aos="fade-up">
-          <button id="view-more-bundles" class="view-more-btn">
+          <a href="https://growzio-jpg.github.io/growziobundles/index.html" target="_blank" class="view-more-btn">
             <span>View More Bundles</span>
             <i class="fa-solid fa-arrow-right"></i>
-          </button>
+          </a>
         </div>
       </div>
     </section>
@@ -2651,10 +2651,10 @@
         
         <!-- View More Books Button -->
         <div class="view-more-container" data-aos="fade-up">
-          <button id="view-more-books" class="view-more-btn">
+          <a href="https://growzio-jpg.github.io/books/index.html" target="_blank" class="view-more-btn">
             <span>View More Books</span>
             <i class="fa-solid fa-arrow-right"></i>
-          </button>
+          </a>
         </div>
       </div>
     </section>
@@ -2902,22 +2902,6 @@
   </div>
 
 <script>
-/* -------------------------
-   One-Time Session Refresh
-   ------------------------- */
-document.addEventListener('DOMContentLoaded', function() {
-    // Check if this is the first visit in this session
-    if (!sessionStorage.getItem('growzioRefreshed')) {
-        // Mark that we've refreshed for this session
-        sessionStorage.setItem('growzioRefreshed', 'true');
-        
-        // Refresh after a short delay to ensure everything is loaded
-        setTimeout(function() {
-            window.location.reload();
-        }, 100);
-    }
-});
-
 /* -------------------------
    Product Data - DUAL CURRENCY (PKR & USD)
    ------------------------- */
@@ -3540,6 +3524,9 @@ document.addEventListener('DOMContentLoaded', function() {
     delay: 100,
   });
 
+  // ***** FIX INTEGRATED HERE *****
+  // The event listeners are now inside DOMContentLoaded to ensure the buttons exist.
+
   // Premium Apps Full Screen Modal
   const viewMoreAppsBtn = document.getElementById('view-more-apps');
   if (viewMoreAppsBtn) {
@@ -3548,21 +3535,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Bundles Full Screen Modal
-  const viewMoreBundlesBtn = document.getElementById('view-more-bundles');
-  if (viewMoreBundlesBtn) {
-    viewMoreBundlesBtn.addEventListener('click', function() {
-      openFullScreenModal('bundles-modal', exclusiveBundlesData, 'Exclusive Bundles');
-    });
-  }
-
-  // Books Full Screen Modal
-  const viewMoreBooksBtn = document.getElementById('view-more-books');
-  if (viewMoreBooksBtn) {
-    viewMoreBooksBtn.addEventListener('click', function() {
-      openFullScreenModal('books-modal', exclusiveBooksData, 'Exclusive Books');
-    });
-  }
+  // ***** MODIFIED: Bundles and Books buttons now redirect to external sites *****
+  // Bundles Full Screen Modal - REMOVED
+  // Books Full Screen Modal - REMOVED
+  // ***** END OF MODIFICATION *****
 
   // Bundle and Book flip functionality
   const bundleContainers = document.querySelectorAll('.bundle-product-container');
