@@ -2411,13 +2411,14 @@
         <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Get premium app subscriptions at the lowest prices in Pakistan with instant delivery</p>
         <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="apps-list"></div>
         
-        <!-- View More Apps Button -->
+        <!-- MODIFICATION START: Changed button to an anchor tag linking to Instagram -->
         <div class="view-more-container" data-aos="fade-up">
-          <button id="view-more-apps" class="view-more-btn">
+          <a href="https://www.instagram.com" target="_blank" class="view-more-btn">
             <span>View More Apps</span>
             <i class="fa-solid fa-arrow-right"></i>
-          </button>
+          </a>
         </div>
+        <!-- MODIFICATION END -->
       </div>
     </section>
 
@@ -3524,21 +3525,9 @@ document.addEventListener('DOMContentLoaded', function() {
     delay: 100,
   });
 
-  // ***** FIX INTEGRATED HERE *****
-  // The event listeners are now inside DOMContentLoaded to ensure the buttons exist.
-
-  // Premium Apps Full Screen Modal
-  const viewMoreAppsBtn = document.getElementById('view-more-apps');
-  if (viewMoreAppsBtn) {
-    viewMoreAppsBtn.addEventListener('click', function() {
-      openFullScreenModal('premium-apps-modal', premiumAppsData, 'Premium Apps');
-    });
-  }
-
-  // ***** MODIFIED: Bundles and Books buttons now redirect to external sites *****
-  // Bundles Full Screen Modal - REMOVED
-  // Books Full Screen Modal - REMOVED
-  // ***** END OF MODIFICATION *****
+  // ***** MODIFICATION: The event listener for 'view-more-apps' has been removed
+  // as the button was changed to a link. The code below for bundles and books
+  // remains as it was in the original file. *****
 
   // Bundle and Book flip functionality
   const bundleContainers = document.querySelectorAll('.bundle-product-container');
@@ -4555,3 +4544,4 @@ updateCartDisplays();
 </script>
 </body>
 </html>
+```
